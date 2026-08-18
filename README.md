@@ -1,6 +1,11 @@
 # Legal-GPT ⚖️
 
-> **Compilation of Legal Datasets & Intelligence to provide Clients/Users with sound Legal Information and links to Services in their areas, bridging Legal Services with the GPT Archive to safeguard members of Society and Increase the Effectiveness of Future Matters Resolved.**
+[![Python 3.10+](https://img.shields.io/badge/python-3.10+-blue.svg)](https://www.python.org/downloads/)
+[![Tests](https://img.shields.io/badge/tests-passing-brightgreen.svg)](https://github.com/VishnuSky/Legal-GPT)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+[![Version: v0.1.1](https://img.shields.io/badge/version-0.1.1-green.svg)](https://github.com/VishnuSky/Legal-GPT)
+
+> **Compilation of Legal Datasets & Intelligence to provide Clients/Users with sound Legal Advice and links to Services in their areas, bridging Legal Services with the GPT Archive to safeguard members of Society and Increase the Effectiveness of Future Matters Resolved.**
 
 **A Jurisdiction-Aware, Temporal, Citation-Verified Legal Intelligence Platform for Local AI & Child Welfare (CPS) Case Work.**
 
@@ -53,9 +58,22 @@ Legal-GPT/
 
 ## 🚀 Quick Start
 
-### 1. Installation
+### 1. Environment Setup
 ```bash
-pip install -r requirements.txt
+# Clone the repository
+git clone https://github.com/VishnuSky/Legal-GPT.git
+cd Legal-GPT
+
+# Create and activate a virtual environment (recommended)
+python -m venv .venv
+
+# On Windows:
+.venv\Scripts\activate
+# On macOS / Linux:
+source .venv/bin/activate
+
+# Install in editable mode
+pip install -e .
 ```
 
 ### 2. Run Automated Verification Tests
@@ -66,7 +84,10 @@ pytest tests/ -v
 ### 3. Interactive CLI Queries
 ```bash
 # Query a Washington State CPS scenario with jurisdiction locking
-python cli.py query "CPS took my child without court order and held no hearing" --state WA --county Skagit
+python cli.py query "CPS took my child without court order in Skagit County and held no hearing within 72 hours" --state WA --county Skagit
+
+# Query with an explicit event date for temporal law resolution
+python cli.py query "CPS removed child without notice" --state WA --event-date 2025-06-15
 
 # Verify a legal citation against the canonical registry
 python cli.py verify-citation "RCW 13.34.065"
@@ -79,8 +100,24 @@ python cli.py registry-summary
 ```bash
 uvicorn api.server:app --host 127.0.0.1 --port 8000 --reload
 ```
+API Documentation and interactive Swagger UI are available at: [http://127.0.0.1:8000/docs](http://127.0.0.1:8000/docs).
+
+---
+
+## 📊 Current Capabilities & Roadmap
+
+| Feature Area | Current Status (v0.1.1) | Upcoming Milestones |
+|---|---|---|
+| **50-State Legal Matrix** | Full metadata matrix for all 50 states + DC | Automated daily scrapers for all 50 state legislative portals |
+| **CPS Deep Vertical** | WA, IL, OH + Federal statutory & policy coverage | Expansion to CA, TX, FL, NY, PA, MI |
+| **Citation Verification** | Exact match against canonical registry & statutory patterns | Live CourtListener / GovInfo API verification fallback |
+| **Temporal Law Engine** | `law_effective_on(date)` validity & repeal tracking | Full text historical diff viewer |
+| **Parent Rights Engine** | Automated audit for notice, counsel, and reasonable efforts | State-specific pattern motion generator |
+| **Inference Backends** | LM Studio, Ollama, OpenWebUI REST endpoints & MCP server | Fine-tuned LoRA models for structured legal reasoning |
 
 ---
 
 ## 🛡️ License & Disclaimer
-This software is designed for legal research, educational analysis, and document intelligence. It does **not** constitute legal advice.
+This software is provided under the [MIT License](LICENSE).
+
+> **IMPORTANT LEGAL DISCLAIMER**: This software is designed and provided for **legal research, educational, and document intelligence purposes only**. It does **not** constitute legal advice, does **not** create an attorney-client relationship, and must **never** be used as a substitute for competent advice from a licensed attorney admitted to practice in the relevant jurisdiction.

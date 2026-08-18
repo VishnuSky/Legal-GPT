@@ -4,10 +4,26 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "legal-gpt"
-version = "0.1.0"
+version = "0.1.1"
 description = "Jurisdiction-Aware, Temporal, Citation-Verified Legal Intelligence Platform for Local AI & CPS Case Work"
 readme = "README.md"
+license = { text = "MIT" }
 requires-python = ">=3.10"
+authors = [
+    { name = "VishnuSky" }
+]
+keywords = [
+    "legal",
+    "ai",
+    "rag",
+    "child-welfare",
+    "cps",
+    "jurisdiction",
+    "courtlistener",
+    "govinfo",
+    "local-ai",
+    "lm-studio"
+]
 dependencies = [
     "pydantic>=2.7.0",
     "pyyaml>=6.0.1",
@@ -26,3 +42,13 @@ dev = [
     "pytest>=8.2.0",
     "pytest-asyncio>=0.23.0",
 ]
+
+[project.scripts]
+legal-gpt = "cli:app"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["agents*", "core*", "cps*", "legal_registry*", "normalization*", "storage*", "api*"]
+
+[tool.setuptools.package-data]
+"*" = ["*.yaml", "*.yml", "*.json"]
