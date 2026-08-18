@@ -2,11 +2,14 @@
 
 import os
 import yaml
+import logging
 from pathlib import Path
-from typing import Dict, List, Optional
+from typing import Dict, List, Optional, Any
 from legal_registry.schemas.registry_entry import LegalSourceEntry
 from legal_registry.schemas.cps_source_entry import CPSSourceEntry
 from legal_registry.schemas.court_entry import CourtEntry
+
+logger = logging.getLogger("legal_gpt.registry")
 
 
 class RegistryLoader:
@@ -21,9 +24,11 @@ class RegistryLoader:
         self.state_sources: Dict[str, List[LegalSourceEntry]] = {}
         self.cps_sources: Dict[str, CPSSourceEntry] = {}
         self.courts: Dict[str, CourtEntry] = {}
+        self.load_errors: List[str] = []
         self.load_all()
 
     def load_all(self):
+        self.load_errors.clear()
         self._load_federal()
         self._load_state_matrix()
         self._load_state_sources()
@@ -32,28 +37,51 @@ class RegistryLoader:
 
     def _load_federal(self):
         fed_file = self.base_dir / "federal" / "federal_sources.yaml"
-        if fed_file.exists():
+        if not fed_file.exists():
+            msg = f"Warning: Federal sources file not found at {fed_file}"
+            logger.warning(msg)
+            self.load_errors.append(msg)
+            return
+        try:
             with open(fed_file, "r", encoding="utf-8") as f:
-                data = yaml.safe_load(f)
+                data = yaml.safe_load(f) or {}
                 for item in data.get("sources", []):
                     entry = LegalSourceEntry(**item)
                     self.federal_sources[entry.source_id] = entry
+        except Exception as e:
+            msg = f"Error loading federal sources from {fed_file}: {e}"
+            logger.error(msg)
+            self.load_errors.append(msg)
 
     def _load_state_matrix(self):
         matrix_file = self.base_dir / "states" / "matrix.yaml"
-        if matrix_file.exists():
+        if not matrix_file.exists():
+            msg = f"Warning: State matrix file not found at {matrix_file}"
+            logger.warning(msg)
+            self.load_errors.append(msg)
+            return
+        try:
             with open(matrix_file, "r", encoding="utf-8") as f:
-                data = yaml.safe_load(f)
+                data = yaml.safe_load(f) or {}
                 self.state_matrix = data.get("states", {})
+        except Exception as e:
+            msg = f"Error loading state matrix from {matrix_file}: {e}"
+            logger.error(msg)
+            self.load_errors.append(msg)
 
     def _load_state_sources(self):
         states_dir = self.base_dir / "states"
-        if states_dir.exists():
-            for fpath in states_dir.glob("*.yaml"):
-                if fpath.name == "matrix.yaml":
-                    continue
+        if not states_dir.exists():
+            msg = f"Warning: States directory not found at {states_dir}"
+            logger.warning(msg)
+            self.load_errors.append(msg)
+            return
+        for fpath in states_dir.glob("*.yaml"):
+            if fpath.name == "matrix.yaml":
+                continue
+            try:
                 with open(fpath, "r", encoding="utf-8") as f:
-                    data = yaml.safe_load(f)
+                    data = yaml.safe_load(f) or {}
                     state_id = data.get("state_id")
                     entries = []
                     for item in data.get("sources", []):
@@ -61,25 +89,47 @@ class RegistryLoader:
                         entries.append(entry)
                     if state_id:
                         self.state_sources[state_id] = entries
+            except Exception as e:
+                msg = f"Error loading state source {fpath}: {e}"
+                logger.error(msg)
+                self.load_errors.append(msg)
 
     def _load_cps_sources(self):
         cps_dir = self.base_dir / "cps"
-        if cps_dir.exists():
-            for fpath in cps_dir.glob("*.yaml"):
+        if not cps_dir.exists():
+            msg = f"Warning: CPS directory not found at {cps_dir}"
+            logger.warning(msg)
+            self.load_errors.append(msg)
+            return
+        for fpath in cps_dir.glob("*.yaml"):
+            try:
                 with open(fpath, "r", encoding="utf-8") as f:
-                    data = yaml.safe_load(f)
+                    data = yaml.safe_load(f) or {}
                     for item in data.get("sources", []):
                         entry = CPSSourceEntry(**item)
                         self.cps_sources[entry.source_id] = entry
+            except Exception as e:
+                msg = f"Error loading CPS source {fpath}: {e}"
+                logger.error(msg)
+                self.load_errors.append(msg)
 
     def _load_courts(self):
         court_file = self.base_dir / "courts" / "court_registry.yaml"
-        if court_file.exists():
+        if not court_file.exists():
+            msg = f"Warning: Court registry file not found at {court_file}"
+            logger.warning(msg)
+            self.load_errors.append(msg)
+            return
+        try:
             with open(court_file, "r", encoding="utf-8") as f:
-                data = yaml.safe_load(f)
+                data = yaml.safe_load(f) or {}
                 for item in data.get("courts", []):
                     entry = CourtEntry(**item)
                     self.courts[entry.court_id] = entry
+        except Exception as e:
+            msg = f"Error loading courts from {court_file}: {e}"
+            logger.error(msg)
+            self.load_errors.append(msg)
 
     def get_source(self, source_id: str) -> Optional[LegalSourceEntry]:
         if source_id in self.federal_sources:
@@ -107,7 +157,7 @@ class RegistryLoader:
             if court.state == state:
                 if county is None or court.county is None or court.county.lower() == county.lower():
                     results.append(court)
-            elif court.jurisdiction == "US": # Federal
+            elif court.jurisdiction == "US":  # Federal
                 results.append(court)
         return results
 

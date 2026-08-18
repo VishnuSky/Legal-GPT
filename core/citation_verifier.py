@@ -1,7 +1,7 @@
 """Anti-Hallucination Citation Verifier: Validates that all legal citations resolve to real authority."""
 
 import re
-from typing import List, Dict, Tuple, Optional
+from typing import List, Dict, Tuple, Optional, Set
 from pydantic import BaseModel, Field
 from legal_registry.loader import default_registry
 
@@ -17,12 +17,19 @@ class CitationVerificationRecord(BaseModel):
 
 
 class CitationVerifier:
-    # Regex patterns for canonical citations
-    RCW_PATTERN = re.compile(r"\bRCW\s+(\d{1,2}\.\d{2,3}(?:\.\d{3,4})?)\b", re.IGNORECASE)
-    ILCS_PATTERN = re.compile(r"\b(\d+)\s+ILCS\s+(\d+)\/(\d+(?:-\d+)?)\b", re.IGNORECASE)
-    ORC_PATTERN = re.compile(r"\b(?:ORC|R\.C\.)\s*§?\s*(\d{4}\.\d{2,3})\b", re.IGNORECASE)
-    USC_PATTERN = re.compile(r"\b(\d+)\s+U\.S\.C\.\s*§?\s*(\d+[a-z]*(?:\(\w+\))*)\b", re.IGNORECASE)
+    # Regex patterns for canonical statutory citations
+    RCW_PATTERN = re.compile(r"\bRCW\s+(\d{1,3}\.\d{2,3}(?:\.\d{3,4})?)\b", re.IGNORECASE)
+    ILCS_PATTERN = re.compile(r"\b(\d+)\s+ILCS\s+(\d+)\/(\d+(?:-\d+)?(?:\.\d+)?)\b", re.IGNORECASE)
+    ORC_PATTERN = re.compile(r"\b(?:ORC|R\.C\.)\s*§?\s*(\d{1,4}\.\d{2,3})\b", re.IGNORECASE)
+    USC_PATTERN = re.compile(r"\b(\d+)\s+U\.S\.C\.\s*§?\s*(\d+[a-z]*(?:\([a-zA-Z0-9]+\))*)\b", re.IGNORECASE)
     CFR_PATTERN = re.compile(r"\b(\d+)\s+C\.F\.R\.\s*§?\s*(\d+(?:\.\d+)?)\b", re.IGNORECASE)
+
+    # Known statutory titles/chapters in CPS & Family law
+    VALID_RCW_TITLES = {"13", "26", "74", "10", "4", "2", "9", "9A"}
+    VALID_ILCS_CHAPTERS = {"705", "325", "750", "20", "720"}
+    VALID_ORC_CHAPTERS = {"2151", "3109", "3127", "2919", "5101"}
+    VALID_USC_TITLES = {"25", "42", "18", "28"}
+    VALID_CFR_TITLES = {"25", "45"}
 
     @classmethod
     def extract_citations(cls, text: str) -> List[str]:
@@ -35,101 +42,173 @@ class CitationVerifier:
             citations.append(f"{m[0]} U.S.C. § {m[1]}")
         for m in cls.CFR_PATTERN.findall(text):
             citations.append(f"{m[0]} C.F.R. § {m[1]}")
-        return list(dict.fromkeys(citations)) # deduplicate preserving order
+        return list(dict.fromkeys(citations))  # deduplicate preserving order
 
     @classmethod
-    def verify_citation(cls, raw_citation: str, known_canonical_citations: Optional[Set] = None) -> CitationVerificationRecord:
+    def verify_citation(cls, raw_citation: str) -> CitationVerificationRecord:
         """Resolves a single citation candidate against the legal registry and known canonical citations."""
-        cite = raw_citation.strip()
+        cite = re.sub(r"\s+", " ", raw_citation.strip())
+        upper_cite = cite.upper()
 
-        # Check known registry sources
-        # 1. Washington RCW
-        if cite.startswith("RCW"):
-            for cps_source in default_registry.cps_sources.values():
-                if cps_source.jurisdiction == "US-WA" and any(cite in sec for sec in cps_source.key_statutory_sections):
+        # 1. Washington RCW Verification
+        if "RCW" in upper_cite:
+            match = cls.RCW_PATTERN.search(cite)
+            if match:
+                sec_str = match.group(1)
+                title = sec_str.split(".")[0]
+                # Check exact registry key sections
+                for cps_source in default_registry.cps_sources.values():
+                    if cps_source.jurisdiction == "US-WA":
+                        for key_sec in cps_source.key_statutory_sections:
+                            if sec_str in key_sec:
+                                return CitationVerificationRecord(
+                                    raw_citation=raw_citation,
+                                    normalized_citation=f"RCW {sec_str}",
+                                    verified=True,
+                                    authority_tier="TIER_0",
+                                    publisher_name=cps_source.publisher.name,
+                                    source_url=cps_source.canonical_url,
+                                )
+                # Validate Title in RCW
+                if title in cls.VALID_RCW_TITLES:
                     return CitationVerificationRecord(
                         raw_citation=raw_citation,
-                        normalized_citation=cite,
+                        normalized_citation=f"RCW {sec_str}",
                         verified=True,
-                        authority_tier=cps_source.authority_tier,
-                        publisher_name=cps_source.publisher.name,
-                        source_url=cps_source.canonical_url,
+                        authority_tier="TIER_0",
+                        publisher_name="Washington State Legislature",
+                        source_url=f"https://app.leg.wa.gov/rcw/default.aspx?cite={sec_str}",
                     )
-            # Default WA registry match
-            if "WA_RCW" in default_registry.state_sources.get("WA", []):
                 return CitationVerificationRecord(
                     raw_citation=raw_citation,
-                    normalized_citation=cite,
-                    verified=True,
-                    authority_tier="TIER_0",
-                    publisher_name="Washington State Legislature",
-                    source_url="https://app.leg.wa.gov/rcw/",
+                    normalized_citation=f"RCW {sec_str}",
+                    verified=False,
+                    authority_tier="TIER_5",
+                    publisher_name="UNVERIFIED",
+                    rejection_reason=f"RCW Title '{title}' is unrecognized in Washington State Code."
                 )
 
-        # 2. Illinois ILCS
-        if "ILCS" in cite:
-            for cps_source in default_registry.cps_sources.values():
-                if cps_source.jurisdiction == "US-IL" and any(cite in sec for sec in cps_source.key_statutory_sections):
+        # 2. Illinois ILCS Verification
+        if "ILCS" in upper_cite:
+            match = cls.ILCS_PATTERN.search(cite)
+            if match:
+                chapter, act, sec = match.group(1), match.group(2), match.group(3)
+                norm_cite = f"{chapter} ILCS {act}/{sec}"
+                for cps_source in default_registry.cps_sources.values():
+                    if cps_source.jurisdiction == "US-IL":
+                        for key_sec in cps_source.key_statutory_sections:
+                            if f"{chapter} ILCS {act}/{sec}" in key_sec or f"{act}/{sec}" in key_sec:
+                                return CitationVerificationRecord(
+                                    raw_citation=raw_citation,
+                                    normalized_citation=norm_cite,
+                                    verified=True,
+                                    authority_tier="TIER_0",
+                                    publisher_name=cps_source.publisher.name,
+                                    source_url=cps_source.canonical_url,
+                                )
+                if chapter in cls.VALID_ILCS_CHAPTERS:
                     return CitationVerificationRecord(
                         raw_citation=raw_citation,
-                        normalized_citation=cite,
+                        normalized_citation=norm_cite,
                         verified=True,
-                        authority_tier=cps_source.authority_tier,
-                        publisher_name=cps_source.publisher.name,
-                        source_url=cps_source.canonical_url,
+                        authority_tier="TIER_0",
+                        publisher_name="Illinois General Assembly",
+                        source_url="https://www.ilga.gov/legislation/ilcs/ilcs.asp",
                     )
-            return CitationVerificationRecord(
-                raw_citation=raw_citation,
-                normalized_citation=cite,
-                verified=True,
-                authority_tier="TIER_0",
-                publisher_name="Illinois General Assembly",
-                source_url="https://www.ilga.gov/legislation/ilcs/ilcs.asp",
-            )
+                return CitationVerificationRecord(
+                    raw_citation=raw_citation,
+                    normalized_citation=norm_cite,
+                    verified=False,
+                    authority_tier="TIER_5",
+                    publisher_name="UNVERIFIED",
+                    rejection_reason=f"ILCS Chapter '{chapter}' is unrecognized in Illinois Compiled Statutes."
+                )
 
-        # 3. Ohio ORC
-        if "ORC" in cite:
-            for cps_source in default_registry.cps_sources.values():
-                if cps_source.jurisdiction == "US-OH" and any(cite in sec for sec in cps_source.key_statutory_sections):
+        # 3. Ohio ORC Verification
+        if "ORC" in upper_cite or "R.C." in upper_cite:
+            match = cls.ORC_PATTERN.search(cite)
+            if match:
+                sec_str = match.group(1)
+                chapter = sec_str.split(".")[0]
+                norm_cite = f"ORC § {sec_str}"
+                for cps_source in default_registry.cps_sources.values():
+                    if cps_source.jurisdiction == "US-OH":
+                        for key_sec in cps_source.key_statutory_sections:
+                            if sec_str in key_sec:
+                                return CitationVerificationRecord(
+                                    raw_citation=raw_citation,
+                                    normalized_citation=norm_cite,
+                                    verified=True,
+                                    authority_tier="TIER_0",
+                                    publisher_name=cps_source.publisher.name,
+                                    source_url=cps_source.canonical_url,
+                                )
+                if chapter in cls.VALID_ORC_CHAPTERS:
                     return CitationVerificationRecord(
                         raw_citation=raw_citation,
-                        normalized_citation=cite,
+                        normalized_citation=norm_cite,
                         verified=True,
-                        authority_tier=cps_source.authority_tier,
-                        publisher_name=cps_source.publisher.name,
-                        source_url=cps_source.canonical_url,
+                        authority_tier="TIER_0",
+                        publisher_name="Ohio General Assembly",
+                        source_url=f"https://codes.ohio.gov/ohio-revised-code/section-{sec_str}",
                     )
-            return CitationVerificationRecord(
-                raw_citation=raw_citation,
-                normalized_citation=cite,
-                verified=True,
-                authority_tier="TIER_0",
-                publisher_name="Ohio General Assembly",
-                source_url="https://codes.ohio.gov/ohio-revised-code",
-            )
+                return CitationVerificationRecord(
+                    raw_citation=raw_citation,
+                    normalized_citation=norm_cite,
+                    verified=False,
+                    authority_tier="TIER_5",
+                    publisher_name="UNVERIFIED",
+                    rejection_reason=f"ORC Chapter '{chapter}' is unrecognized in Ohio Revised Code."
+                )
 
-        # 4. Federal USC / CFR
-        if "U.S.C." in cite or "C.F.R." in cite:
-            for cps_source in default_registry.cps_sources.values():
-                if cps_source.jurisdiction == "US" and any(cite in sec for sec in cps_source.key_statutory_sections):
+        # 4. Federal USC / CFR Verification
+        if "U.S.C." in upper_cite or "USC" in upper_cite:
+            match = cls.USC_PATTERN.search(cite)
+            if match:
+                title, sec = match.group(1), match.group(2)
+                norm_cite = f"{title} U.S.C. § {sec}"
+                if title in cls.VALID_USC_TITLES:
                     return CitationVerificationRecord(
                         raw_citation=raw_citation,
-                        normalized_citation=cite,
+                        normalized_citation=norm_cite,
                         verified=True,
-                        authority_tier=cps_source.authority_tier,
-                        publisher_name=cps_source.publisher.name,
-                        source_url=cps_source.canonical_url,
+                        authority_tier="TIER_0",
+                        publisher_name="Office of the Law Revision Counsel of the U.S. House",
+                        source_url="https://uscode.house.gov/",
                     )
-            return CitationVerificationRecord(
-                raw_citation=raw_citation,
-                normalized_citation=cite,
-                verified=True,
-                authority_tier="TIER_0",
-                publisher_name="Office of the Law Revision Counsel / GPO",
-                source_url="https://uscode.house.gov/",
-            )
+                return CitationVerificationRecord(
+                    raw_citation=raw_citation,
+                    normalized_citation=norm_cite,
+                    verified=False,
+                    authority_tier="TIER_5",
+                    publisher_name="UNVERIFIED",
+                    rejection_reason=f"U.S.C. Title '{title}' is unrecognized or outside registered federal domains."
+                )
 
-        # If unknown citation format or hallucinated reference
+        if "C.F.R." in upper_cite or "CFR" in upper_cite:
+            match = cls.CFR_PATTERN.search(cite)
+            if match:
+                title, sec = match.group(1), match.group(2)
+                norm_cite = f"{title} C.F.R. § {sec}"
+                if title in cls.VALID_CFR_TITLES:
+                    return CitationVerificationRecord(
+                        raw_citation=raw_citation,
+                        normalized_citation=norm_cite,
+                        verified=True,
+                        authority_tier="TIER_0",
+                        publisher_name="National Archives and Records Administration & GPO",
+                        source_url="https://www.ecfr.gov/",
+                    )
+                return CitationVerificationRecord(
+                    raw_citation=raw_citation,
+                    normalized_citation=norm_cite,
+                    verified=False,
+                    authority_tier="TIER_5",
+                    publisher_name="UNVERIFIED",
+                    rejection_reason=f"C.F.R. Title '{title}' is unrecognized or outside registered regulations."
+                )
+
+        # Rejection for fabricated / unknown citations
         return CitationVerificationRecord(
             raw_citation=raw_citation,
             normalized_citation=cite,
