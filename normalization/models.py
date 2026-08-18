@@ -1,6 +1,6 @@
 """Canonical Legal Document Models and Data Structures."""
 
-from datetime import date, datetime
+from datetime import date, datetime, timezone
 from typing import List, Optional, Dict, Any, Literal
 from pydantic import BaseModel, Field
 import hashlib
@@ -60,7 +60,7 @@ class LegalDocument(BaseModel):
     authority: AuthorityScore
     source_url: str
     content_hash: str = ""
-    retrieved_at: datetime = Field(default_factory=datetime.utcnow)
+    retrieved_at: datetime = Field(default_factory=lambda: datetime.now(timezone.utc))
     cps_topics: List[str] = Field(default_factory=list)
     metadata: Dict[str, Any] = Field(default_factory=dict)
 

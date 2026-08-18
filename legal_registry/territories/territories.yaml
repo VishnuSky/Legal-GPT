@@ -1,0 +1,46 @@
+# U.S. Territories Legal Source Registry v1.0
+territories:
+  PR:
+    name: "Puerto Rico"
+    jurisdiction: "US-PR"
+    statutes_url: "https://www.lexisnexis.com/hottopics/prcode/"
+    judiciary_url: "https://poderjudicial.pr/"
+    child_welfare_agency: "Departamento de la Familia de Puerto Rico"
+    child_welfare_url: "https://www.familia.pr.gov/"
+    authority_tier: "TIER_0"
+
+  GU:
+    name: "Guam"
+    jurisdiction: "US-GU"
+    statutes_url: "https://guamlawlibrary.org/guam-code-annotated/"
+    judiciary_url: "http://www.guamcourts.org/"
+    child_welfare_agency: "Guam Department of Public Health and Social Services - Bureau of Social Services Administration (BOSSA)"
+    child_welfare_url: "https://dphss.guam.gov/"
+    authority_tier: "TIER_0"
+
+  VI:
+    name: "U.S. Virgin Islands"
+    jurisdiction: "US-VI"
+    statutes_url: "https://www.lexisnexis.com/hottopics/vicode/"
+    judiciary_url: "https://www.vicourts.org/"
+    child_welfare_agency: "USVI Department of Human Services - Division of Children and Family Services"
+    child_welfare_url: "https://dhs.vi.gov/"
+    authority_tier: "TIER_0"
+
+  AS:
+    name: "American Samoa"
+    jurisdiction: "US-AS"
+    statutes_url: "http://www.asbar.org/index.php?option=com_content&view=category&id=583&Itemid=172"
+    judiciary_url: "http://www.asbar.org/"
+    child_welfare_agency: "American Samoa Department of Human and Social Services (DHSS) - Child Care and Development Division"
+    child_welfare_url: "https://dhss.as/"
+    authority_tier: "TIER_0"
+
+  MP:
+    name: "Northern Mariana Islands"
+    jurisdiction: "US-MP"
+    statutes_url: "https://cnmilaw.org/statutes.php"
+    judiciary_url: "https://www.nmijudiciary.gov/"
+    child_welfare_agency: "CNMI Division of Youth Services (DYS) - Child Protective Services"
+    child_welfare_url: "https://www.cnmidys.org/"
+    authority_tier: "TIER_0"

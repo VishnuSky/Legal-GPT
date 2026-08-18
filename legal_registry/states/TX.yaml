@@ -1,0 +1,52 @@
+# Texas State (TX) Legal Source Registry v1.0
+state_id: TX
+state_name: "Texas"
+fips: "48"
+
+sources:
+  - source_id: TX_FAMILY_CODE
+    jurisdiction: US-TX
+    level: state
+    authority_tier: TIER_0
+    legal_domain: ["statutes", "family_law", "child_welfare", "investigation"]
+    source_type: statute
+    title: "Texas Family Code — Title 5: The Parent-Child Relationship and the Suit Affecting the Parent-Child Relationship"
+    citation_format: "Tex. Fam. Code § {section}"
+    publisher:
+      name: "Texas Legislature Online (TLO)"
+      official: true
+      entity_type: legislature
+      contact_url: "https://statutes.capitol.texas.gov/"
+    canonical_url: "https://statutes.capitol.texas.gov/Docs/FA/htm/FA.261.htm"
+    temporal:
+      versioned: true
+      effective_dates_available: true
+      historical_versions_available: true
+    acquisition_method: html_scrape
+    parser_name: texas_statutes_parser
+    update_frequency: daily
+    cps_priority: 10
+    active: true
+
+  - source_id: TX_DFPS_HANDBOOK
+    jurisdiction: US-TX
+    level: state
+    authority_tier: TIER_0
+    legal_domain: ["child_welfare", "agency_policy", "cps_handbook", "dfps_rules"]
+    source_type: agency_policy
+    title: "Texas DFPS Child Protective Services Handbook (CPS Handbook)"
+    publisher:
+      name: "Texas Department of Family and Protective Services"
+      official: true
+      entity_type: executive_agency
+      contact_url: "https://www.dfps.texas.gov/handbooks/CPS/"
+    canonical_url: "https://www.dfps.texas.gov/handbooks/CPS/"
+    temporal:
+      versioned: true
+      effective_dates_available: true
+      historical_versions_available: true
+    acquisition_method: html_scrape
+    parser_name: texas_dfps_parser
+    update_frequency: weekly
+    cps_priority: 10
+    active: true

@@ -1,0 +1,51 @@
+# California State (CA) CPS / Child Welfare Legal Source Registry v1.0
+sources:
+  - source_id: CPS_CA_WIC_300
+    jurisdiction: US-CA
+    level: state
+    authority_tier: TIER_0
+    legal_domain: ["child_welfare", "statutes", "dependency", "juvenile_court"]
+    cps_subdomain: state_statute
+    source_type: statute
+    title: "California Welfare and Institutions Code Section 300 et seq. (Juvenile Dependency)"
+    citation_format: "Cal. Welf. & Inst. Code § {section}"
+    publisher:
+      name: "California State Legislature"
+      official: true
+      entity_type: legislature
+      contact_url: "https://leginfo.legislature.ca.gov/"
+    canonical_url: "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=WIC&sectionNum=300"
+    key_statutory_sections:
+      - "Cal. Welf. & Inst. Code § 300" # Grounds for juvenile court dependency jurisdiction (subdivisions a through j)
+      - "Cal. Welf. & Inst. Code § 305" # Temporary custody by peace officer without warrant
+      - "Cal. Welf. & Inst. Code § 306" # Temporary custody by social worker
+      - "Cal. Welf. & Inst. Code § 315" # Detention hearing (within 48 to 72 hours excluding nonjudicial days)
+      - "Cal. Welf. & Inst. Code § 317" # Appointment of counsel for parent and child
+      - "Cal. Welf. & Inst. Code § 355" # Jurisdictional hearing - Preponderance standard
+      - "Cal. Welf. & Inst. Code § 358" # Disposition hearing
+      - "Cal. Welf. & Inst. Code § 361.5" # Reunification services and exceptions (reasonable efforts)
+      - "Cal. Welf. & Inst. Code § 366.21" # 6-month and 12-month status review hearings
+      - "Cal. Welf. & Inst. Code § 366.26" # Hearing terminating parental rights / selecting permanent plan (Clear & convincing standard)
+    topics:
+      emergency_removal: true
+      shelter_care_hearing: true
+      dependency_petition: true
+      fact_finding_adjudication: true
+      disposition_placement: true
+      visitation_family_time: true
+      reasonable_efforts: true
+      permanency_planning: true
+      termination_parental_rights: true
+      parent_rights_counsel: true
+    standard_of_proof: "Preponderance of evidence (Jurisdiction § 355) / Clear and Convincing (§ 361 removal & § 366.26 TPR)"
+    mandatory_timeframes_days:
+      detention_hearing_hours: 48 # Next judicial day following 48 hours
+      jurisdiction_hearing_days: 30
+      disposition_hearing_days: 30
+      status_review_months: 6
+      permanency_hearing_months: 12
+    acquisition_method: html_scrape
+    parser_name: california_codes_parser
+    update_frequency: daily
+    cps_priority: 10
+    active: true

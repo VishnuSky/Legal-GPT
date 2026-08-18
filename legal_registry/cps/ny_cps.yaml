@@ -1,0 +1,40 @@
+# New York State (NY) CPS / Child Welfare Legal Source Registry v1.0
+sources:
+  - source_id: CPS_NY_FCA_10
+    jurisdiction: US-NY
+    level: state
+    authority_tier: TIER_0
+    legal_domain: ["child_welfare", "statutes", "article_10", "abuse_neglect"]
+    cps_subdomain: state_statute
+    source_type: statute
+    title: "New York Family Court Act Article 10 (Child Protective Proceedings)"
+    citation_format: "N.Y. Fam. Ct. Act § {section}"
+    publisher:
+      name: "New York State Senate"
+      official: true
+      entity_type: legislature
+      contact_url: "https://www.nysenate.gov/"
+    canonical_url: "https://www.nysenate.gov/legislation/laws/FCT/A10"
+    key_statutory_sections:
+      - "N.Y. Fam. Ct. Act § 1012" # Definitions (Abused child, neglected child, person legally responsible)
+      - "N.Y. Fam. Ct. Act § 1024" # Emergency removal without court order
+      - "N.Y. Fam. Ct. Act § 1027" # Hearing concerning temporary removal
+      - "N.Y. Fam. Ct. Act § 1028" # Application by parent to return child temporarily removed (hearing within 3 court days)
+      - "N.Y. Fam. Ct. Act § 1046" # Evidence - Standard of proof (preponderance of evidence at fact-finding)
+      - "N.Y. Fam. Ct. Act § 1052" # Disposition on adjudication
+    topics:
+      emergency_removal: true
+      shelter_care_hearing: true
+      dependency_petition: true
+      fact_finding_adjudication: true
+      disposition_placement: true
+      reasonable_efforts: true
+      parent_rights_counsel: true
+    standard_of_proof: "Preponderance of the evidence (Fact-Finding § 1046) / Clear and Convincing (Permanent Neglect / TPR under SSL § 384-b)"
+    mandatory_timeframes_days:
+      parent_return_hearing_court_days: 3 # § 1028 hearing within 3 court days
+    acquisition_method: html_scrape
+    parser_name: new_york_statutes_parser
+    update_frequency: daily
+    cps_priority: 10
+    active: true

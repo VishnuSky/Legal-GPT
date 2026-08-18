@@ -1,0 +1,124 @@
+# California State (CA) Legal Source Registry v1.0
+state_id: CA
+state_name: "California"
+fips: "06"
+
+sources:
+  - source_id: CA_CODES
+    jurisdiction: US-CA
+    level: state
+    authority_tier: TIER_0
+    legal_domain: ["statutes", "general", "welfare_and_institutions_code", "family_code", "penal_code"]
+    source_type: statute
+    title: "California Legislative Information (Official California Codes)"
+    citation_format: "Cal. {code} Code § {section}"
+    publisher:
+      name: "California Office of Legislative Counsel"
+      official: true
+      entity_type: legislature
+      contact_url: "https://leginfo.legislature.ca.gov/"
+    canonical_url: "https://leginfo.legislature.ca.gov/faces/codes.xhtml"
+    temporal:
+      versioned: true
+      effective_dates_available: true
+      historical_versions_available: true
+    acquisition_method: html_scrape
+    parser_name: california_codes_parser
+    update_frequency: daily
+    cps_priority: 10
+    active: true
+
+  - source_id: CA_CCR
+    jurisdiction: US-CA
+    level: state
+    authority_tier: TIER_0
+    legal_domain: ["regulations", "administrative_code"]
+    source_type: regulation
+    title: "California Code of Regulations (CCR)"
+    citation_format: "{title} CCR § {section}"
+    publisher:
+      name: "California Office of Administrative Law (OAL)"
+      official: true
+      entity_type: executive_agency
+      contact_url: "https://oal.ca.gov/publications/ccr/"
+    canonical_url: "https://govt.westlaw.com/calregs"
+    temporal:
+      versioned: true
+      effective_dates_available: true
+      historical_versions_available: true
+    acquisition_method: html_scrape
+    parser_name: california_ccr_parser
+    update_frequency: weekly
+    cps_priority: 9
+    active: true
+
+  - source_id: CA_COURT_RULES
+    jurisdiction: US-CA
+    level: state
+    authority_tier: TIER_0
+    legal_domain: ["court_rules", "juvenile_court_rules", "family_rules"]
+    source_type: court_rule
+    title: "California Rules of Court — Title 5: Family and Juvenile Rules"
+    citation_format: "Cal. Rules of Court, rule {rule}"
+    publisher:
+      name: "Judicial Council of California"
+      official: true
+      entity_type: court
+      contact_url: "https://www.courts.ca.gov/rules.htm"
+    canonical_url: "https://www.courts.ca.gov/cms/rules/index.cfm?title=five"
+    temporal:
+      versioned: true
+      effective_dates_available: true
+      historical_versions_available: true
+    acquisition_method: html_scrape
+    parser_name: california_rules_parser
+    update_frequency: monthly
+    cps_priority: 10
+    active: true
+
+  - source_id: CA_SUPREME_COURT_OPINIONS
+    jurisdiction: US-CA
+    level: state
+    authority_tier: TIER_0
+    legal_domain: ["case_law", "supreme_court_opinions"]
+    source_type: court_opinion
+    title: "Supreme Court of California Slip Opinions"
+    citation_format: "{volume} Cal. {series} {page}"
+    publisher:
+      name: "Supreme Court of California"
+      official: true
+      entity_type: court
+      contact_url: "https://supreme.courts.ca.gov/"
+    canonical_url: "https://www.courts.ca.gov/opinions.htm"
+    temporal:
+      versioned: true
+      effective_dates_available: true
+      historical_versions_available: true
+    acquisition_method: html_scrape
+    parser_name: california_opinions_parser
+    update_frequency: daily
+    cps_priority: 10
+    active: true
+
+  - source_id: CA_CDSS_MANUAL
+    jurisdiction: US-CA
+    level: state
+    authority_tier: TIER_0
+    legal_domain: ["child_welfare", "agency_policy", "child_welfare_services_manual"]
+    source_type: agency_policy
+    title: "California CDSS Manual of Policies and Procedures (MPP) - Division 31: Child Welfare Services"
+    publisher:
+      name: "California Department of Social Services (CDSS)"
+      official: true
+      entity_type: executive_agency
+      contact_url: "https://www.cdss.ca.gov/"
+    canonical_url: "https://www.cdss.ca.gov/inforesources/letters-regulations/legislation-and-regulations/child-welfare-services-manual"
+    temporal:
+      versioned: true
+      effective_dates_available: true
+      historical_versions_available: true
+    acquisition_method: html_scrape
+    parser_name: california_cdss_parser
+    update_frequency: weekly
+    cps_priority: 10
+    active: true

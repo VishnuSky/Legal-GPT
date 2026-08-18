@@ -1,0 +1,96 @@
+# Tribal Jurisdictions & ICWA Designated Agent Registry v1.0
+tribal_sources:
+  - source_id: TRIBAL_BIA_DESIGNATED_AGENTS
+    jurisdiction: TRIBAL
+    level: tribal
+    authority_tier: TIER_0
+    legal_domain: ["tribal_law", "icwa", "designated_agents", "notice_directory"]
+    source_type: regulation
+    title: "BIA Annual Listing of Designated Tribal ICWA Agents (Federal Register Notice)"
+    publisher:
+      name: "Bureau of Indian Affairs, U.S. Department of the Interior"
+      official: true
+      entity_type: executive_agency
+      contact_url: "https://www.bia.gov/bia/ois/dhs/icwa"
+    canonical_url: "https://www.bia.gov/bia/ois/dhs/icwa"
+    temporal:
+      versioned: true
+      effective_dates_available: true
+      historical_versions_available: true
+    acquisition_method: html_scrape
+    parser_name: bia_icwa_parser
+    update_frequency: annually
+    cps_priority: 10
+    active: true
+
+  - source_id: TRIBAL_NAVAJO_CHILD_CODE
+    jurisdiction: TRIBAL-NAVAJO
+    level: tribal
+    authority_tier: TIER_0
+    legal_domain: ["tribal_law", "navajo_nation", "children_code"]
+    source_type: statute
+    title: "Navajo Nation Code — Title 9: Domestic Relations & Children"
+    citation_format: "9 N.N.C. § {section}"
+    publisher:
+      name: "Navajo Nation Council & Office of Legislative Services"
+      official: true
+      entity_type: legislature
+      contact_url: "https://www.navajonationcouncil.org/"
+    canonical_url: "https://www.nnols.org/navajo-nation-code/"
+    temporal:
+      versioned: true
+      effective_dates_available: true
+      historical_versions_available: true
+    acquisition_method: html_scrape
+    parser_name: tribal_code_parser
+    update_frequency: monthly
+    cps_priority: 10
+    active: true
+
+  - source_id: TRIBAL_PUYALLUP_CHILD_CODE
+    jurisdiction: TRIBAL-PUYALLUP
+    level: tribal
+    authority_tier: TIER_0
+    legal_domain: ["tribal_law", "puyallup_tribe", "children_code", "washington_tribal"]
+    source_type: statute
+    title: "Puyallup Tribal Law — Title 7: Children's Code"
+    citation_format: "PTC 7.{section}"
+    publisher:
+      name: "Puyallup Tribal Council"
+      official: true
+      entity_type: legislature
+      contact_url: "http://www.puyallup-tribe.com/"
+    canonical_url: "https://www.codepublishing.com/WA/PuyallupTribe/#!/PuyallupTribe07/PuyallupTribe07.html"
+    temporal:
+      versioned: true
+      effective_dates_available: true
+      historical_versions_available: true
+    acquisition_method: html_scrape
+    parser_name: tribal_code_parser
+    update_frequency: monthly
+    cps_priority: 10
+    active: true
+
+  - source_id: TRIBAL_CHEROKEE_CHILD_CODE
+    jurisdiction: TRIBAL-CHEROKEE
+    level: tribal
+    authority_tier: TIER_0
+    legal_domain: ["tribal_law", "cherokee_nation", "children_code"]
+    source_type: statute
+    title: "Cherokee Nation Code Annotated — Title 10: Children"
+    citation_format: "10 C.N.C.A. § {section}"
+    publisher:
+      name: "Cherokee Nation Tribal Council"
+      official: true
+      entity_type: legislature
+      contact_url: "https://www.cherokee.org/"
+    canonical_url: "https://attorneygeneral.cherokee.org/laws-and-code/"
+    temporal:
+      versioned: true
+      effective_dates_available: true
+      historical_versions_available: true
+    acquisition_method: html_scrape
+    parser_name: tribal_code_parser
+    update_frequency: monthly
+    cps_priority: 10
+    active: true

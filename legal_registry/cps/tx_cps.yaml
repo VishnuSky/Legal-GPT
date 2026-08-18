@@ -1,0 +1,44 @@
+# Texas State (TX) CPS / Child Welfare Legal Source Registry v1.0
+sources:
+  - source_id: CPS_TX_FAM_CODE_262
+    jurisdiction: US-TX
+    level: state
+    authority_tier: TIER_0
+    legal_domain: ["child_welfare", "statutes", "removal", "adversary_hearing"]
+    cps_subdomain: state_statute
+    source_type: statute
+    title: "Texas Family Code Chapter 262: Procedures in Suit by Governmental Entity to Protect Health and Safety of Child"
+    citation_format: "Tex. Fam. Code § {section}"
+    publisher:
+      name: "Texas Legislature Online"
+      official: true
+      entity_type: legislature
+      contact_url: "https://statutes.capitol.texas.gov/"
+    canonical_url: "https://statutes.capitol.texas.gov/Docs/FA/htm/FA.262.htm"
+    key_statutory_sections:
+      - "Tex. Fam. Code § 262.101" # Filing petition before taking possession of child
+      - "Tex. Fam. Code § 262.104" # Taking possession of child in emergency without prior court order
+      - "Tex. Fam. Code § 262.109" # Notice to parent regarding removal and emergency hearing
+      - "Tex. Fam. Code § 262.201" # Full Adversary Hearing (mandatory within 14 days of removal)
+      - "Tex. Fam. Code § 263.306" # Permanency hearings (initial within 180 days)
+      - "Tex. Fam. Code § 263.401" # Dismissal after one year unless trial commenced (strict 12-month statutory deadline)
+      - "Tex. Fam. Code § 161.001" # Involuntary termination of parental rights (Clear and convincing standard)
+    topics:
+      emergency_removal: true
+      shelter_care_hearing: true
+      dependency_petition: true
+      fact_finding_adjudication: true
+      disposition_placement: true
+      reasonable_efforts: true
+      permanency_planning: true
+      termination_parental_rights: true
+      parent_rights_counsel: true
+    standard_of_proof: "Clear and Convincing Evidence (Termination § 161.001 & Removal § 262.201)"
+    mandatory_timeframes_days:
+      adversary_hearing_days: 14
+      dismissal_deadline_days: 365 # Strict statutory dismissal if no final order within 1 year
+    acquisition_method: html_scrape
+    parser_name: texas_statutes_parser
+    update_frequency: daily
+    cps_priority: 10
+    active: true

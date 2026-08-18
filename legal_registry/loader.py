@@ -1,4 +1,4 @@
-"""Unified loader for Legal Source Registries, 50-State Matrix, and Court Registries."""
+"""Unified loader for Legal Source Registries, 50-State Matrix, Territories, Tribal Codes, and Court Registries."""
 
 import os
 import yaml
@@ -23,6 +23,8 @@ class RegistryLoader:
         self.state_matrix: Dict[str, dict] = {}
         self.state_sources: Dict[str, List[LegalSourceEntry]] = {}
         self.cps_sources: Dict[str, CPSSourceEntry] = {}
+        self.territories: Dict[str, dict] = {}
+        self.tribal_sources: Dict[str, LegalSourceEntry] = {}
         self.courts: Dict[str, CourtEntry] = {}
         self.load_errors: List[str] = []
         self.load_all()
@@ -33,6 +35,8 @@ class RegistryLoader:
         self._load_state_matrix()
         self._load_state_sources()
         self._load_cps_sources()
+        self._load_territories()
+        self._load_tribal_sources()
         self._load_courts()
 
     def _load_federal(self):
@@ -113,6 +117,32 @@ class RegistryLoader:
                 logger.error(msg)
                 self.load_errors.append(msg)
 
+    def _load_territories(self):
+        terr_file = self.base_dir / "territories" / "territories.yaml"
+        if terr_file.exists():
+            try:
+                with open(terr_file, "r", encoding="utf-8") as f:
+                    data = yaml.safe_load(f) or {}
+                    self.territories = data.get("territories", {})
+            except Exception as e:
+                msg = f"Error loading territories from {terr_file}: {e}"
+                logger.error(msg)
+                self.load_errors.append(msg)
+
+    def _load_tribal_sources(self):
+        tribal_file = self.base_dir / "tribal" / "tribal_sources.yaml"
+        if tribal_file.exists():
+            try:
+                with open(tribal_file, "r", encoding="utf-8") as f:
+                    data = yaml.safe_load(f) or {}
+                    for item in data.get("tribal_sources", []):
+                        entry = LegalSourceEntry(**item)
+                        self.tribal_sources[entry.source_id] = entry
+            except Exception as e:
+                msg = f"Error loading tribal sources from {tribal_file}: {e}"
+                logger.error(msg)
+                self.load_errors.append(msg)
+
     def _load_courts(self):
         court_file = self.base_dir / "courts" / "court_registry.yaml"
         if not court_file.exists():
@@ -136,6 +166,8 @@ class RegistryLoader:
             return self.federal_sources[source_id]
         if source_id in self.cps_sources:
             return self.cps_sources[source_id]
+        if source_id in self.tribal_sources:
+            return self.tribal_sources[source_id]
         for entries in self.state_sources.values():
             for entry in entries:
                 if entry.source_id == source_id:
@@ -143,7 +175,7 @@ class RegistryLoader:
         return None
 
     def get_cps_sources_for_jurisdiction(self, jurisdiction: str) -> List[CPSSourceEntry]:
-        """Returns all CPS sources relevant for a given jurisdiction e.g. US, US-WA, US-IL, US-OH."""
+        """Returns all CPS sources relevant for a given jurisdiction e.g. US, US-WA, US-IL, US-OH, US-CA, US-TX, US-NY."""
         results = []
         for entry in self.cps_sources.values():
             if entry.jurisdiction in (jurisdiction, "US", "TRIBAL"):

@@ -1,0 +1,53 @@
+# New York State (NY) Legal Source Registry v1.0
+state_id: NY
+state_name: "New York"
+fips: "36"
+
+sources:
+  - source_id: NY_FCA
+    jurisdiction: US-NY
+    level: state
+    authority_tier: TIER_0
+    legal_domain: ["statutes", "family_court_act", "child_protective_proceedings"]
+    source_type: statute
+    title: "New York Family Court Act (FCA) — Article 10: Child Protective Proceedings"
+    citation_format: "N.Y. Fam. Ct. Act § {section}"
+    publisher:
+      name: "New York State Senate"
+      official: true
+      entity_type: legislature
+      contact_url: "https://www.nysenate.gov/legislation/laws/FCT"
+    canonical_url: "https://www.nysenate.gov/legislation/laws/FCT/A10"
+    temporal:
+      versioned: true
+      effective_dates_available: true
+      historical_versions_available: true
+    acquisition_method: html_scrape
+    parser_name: new_york_statutes_parser
+    update_frequency: daily
+    cps_priority: 10
+    active: true
+
+  - source_id: NY_SSL
+    jurisdiction: US-NY
+    level: state
+    authority_tier: TIER_0
+    legal_domain: ["statutes", "social_services_law", "child_welfare", "abuse_reporting"]
+    source_type: statute
+    title: "New York Social Services Law (SSL) — Article 6: Children"
+    citation_format: "N.Y. Soc. Serv. Law § {section}"
+    publisher:
+      name: "New York State Senate"
+      official: true
+      entity_type: legislature
+      contact_url: "https://www.nysenate.gov/legislation/laws/SOS"
+    canonical_url: "https://www.nysenate.gov/legislation/laws/SOS/A6"
+    temporal:
+      versioned: true
+      effective_dates_available: true
+      historical_versions_available: true
+    acquisition_method: html_scrape
+    parser_name: new_york_statutes_parser
+    update_frequency: daily
+    cps_priority: 10
+    active: true

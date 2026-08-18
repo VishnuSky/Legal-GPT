@@ -121,6 +121,72 @@ class CPSLifecycleEngine:
                 mandatory_findings=["Child is abused, neglected, or dependent under ORC 2151.03/2151.031/2151.04"],
                 controlling_statute="ORC § 2151.35"
             )
+        },
+        "CA": {
+            CPSStage.SHELTER_CARE_HEARING: CPSStageRequirements(
+                stage=CPSStage.SHELTER_CARE_HEARING,
+                state="CA",
+                required_notice_hours_or_days="Detention hearing within 48 to 72 hours of removal (excluding nonjudicial days)",
+                right_to_counsel_appointed=True,
+                standard_of_proof="Prima facie showing of dependency",
+                mandatory_findings=["Continuance in home contrary to child's welfare", "Reasonable efforts made to prevent removal"],
+                controlling_statute="Cal. Welf. & Inst. Code § 315 & § 319"
+            ),
+            CPSStage.FACT_FINDING_ADJUDICATION: CPSStageRequirements(
+                stage=CPSStage.FACT_FINDING_ADJUDICATION,
+                state="CA",
+                required_notice_hours_or_days="Jurisdictional hearing held within 30 days of detention",
+                right_to_counsel_appointed=True,
+                standard_of_proof="Preponderance of the evidence",
+                mandatory_findings=["Child is described by one or more subdivisions of Section 300"],
+                controlling_statute="Cal. Welf. & Inst. Code § 355"
+            ),
+            CPSStage.TPR_OR_GUARDIANSHIP: CPSStageRequirements(
+                stage=CPSStage.TPR_OR_GUARDIANSHIP,
+                state="CA",
+                right_to_counsel_appointed=True,
+                standard_of_proof="Clear and convincing evidence of adoptability",
+                mandatory_findings=["Child is likely to be adopted", "Termination of parental rights not detrimental to child"],
+                controlling_statute="Cal. Welf. & Inst. Code § 366.26"
+            )
+        },
+        "TX": {
+            CPSStage.SHELTER_CARE_HEARING: CPSStageRequirements(
+                stage=CPSStage.SHELTER_CARE_HEARING,
+                state="TX",
+                required_notice_hours_or_days="Full Adversary Hearing held within 14 days of removal",
+                right_to_counsel_appointed=True,
+                standard_of_proof="Sufficient evidence to satisfy a person of ordinary prudence and caution",
+                mandatory_findings=["Danger to physical health/safety caused by parent acts/omissions", "Reasonable efforts made to prevent removal"],
+                controlling_statute="Tex. Fam. Code § 262.201"
+            ),
+            CPSStage.TPR_OR_GUARDIANSHIP: CPSStageRequirements(
+                stage=CPSStage.TPR_OR_GUARDIANSHIP,
+                state="TX",
+                right_to_counsel_appointed=True,
+                standard_of_proof="Clear and convincing evidence",
+                mandatory_findings=["Parent committed one or more predicate acts under § 161.001(b)(1)", "Termination is in child's best interest"],
+                controlling_statute="Tex. Fam. Code § 161.001"
+            )
+        },
+        "NY": {
+            CPSStage.SHELTER_CARE_HEARING: CPSStageRequirements(
+                stage=CPSStage.SHELTER_CARE_HEARING,
+                state="NY",
+                required_notice_hours_or_days="Section 1028 hearing held within 3 court days of parent application",
+                right_to_counsel_appointed=True,
+                standard_of_proof="Imminent risk to child's life or health",
+                mandatory_findings=["Imminent risk to child", "Reasonable efforts made to eliminate need for removal"],
+                controlling_statute="N.Y. Fam. Ct. Act § 1027 & § 1028"
+            ),
+            CPSStage.FACT_FINDING_ADJUDICATION: CPSStageRequirements(
+                stage=CPSStage.FACT_FINDING_ADJUDICATION,
+                state="NY",
+                right_to_counsel_appointed=True,
+                standard_of_proof="Preponderance of the evidence",
+                mandatory_findings=["Child is abused or neglected as defined in § 1012"],
+                controlling_statute="N.Y. Fam. Ct. Act § 1046"
+            )
         }
     }
 
