@@ -1,0 +1,107 @@
+# Illinois State (IL) CPS / Child Welfare Legal Source Registry v1.0
+sources:
+  - source_id: CPS_IL_705_ILCS_405
+    jurisdiction: US-IL
+    level: state
+    authority_tier: TIER_0
+    legal_domain: ["child_welfare", "statutes", "juvenile_court_act", "dependency"]
+    cps_subdomain: state_statute
+    source_type: statute
+    title: "705 ILCS 405: Juvenile Court Act of 1987 — Article II (Abused, Neglected or Dependent Minors)"
+    citation_format: "705 ILCS 405/{section}"
+    publisher:
+      name: "Illinois General Assembly"
+      official: true
+      entity_type: legislature
+      contact_url: "https://www.ilga.gov/"
+    canonical_url: "https://www.ilga.gov/legislation/ilcs/ilcs4.asp?DocName=070504050HArt.+II&ActID=1863&ChapterID=50&SeqStart=800000&SeqEnd=5300000"
+    key_statutory_sections:
+      - "705 ILCS 405/2-3" # Neglected or abused minor defined
+      - "705 ILCS 405/2-4" # Dependent minor defined
+      - "705 ILCS 405/2-6" # Temporary custody hearing (within 48 hours excluding weekends/holidays)
+      - "705 ILCS 405/2-9" # Parties respondent (right to counsel)
+      - "705 ILCS 405/2-10" # Temporary custody hearing procedure & urgent and immediate necessity
+      - "705 ILCS 405/2-14" # Date for adjudicatory hearing (within 90 days of service)
+      - "705 ILCS 405/2-18" # Evidence - Standard of proof (preponderance)
+      - "705 ILCS 405/2-21" # Findings and adjudication
+      - "705 ILCS 405/2-22" # Dispositional hearing
+      - "705 ILCS 405/2-28" # Permanency hearings (initial within 12 months, every 6 months thereafter)
+    topics:
+      emergency_removal: true
+      shelter_care_hearing: true
+      dependency_petition: true
+      fact_finding_adjudication: true
+      disposition_placement: true
+      visitation_family_time: true
+      reasonable_efforts: true
+      permanency_planning: true
+      termination_parental_rights: true
+      parent_rights_counsel: true
+    standard_of_proof: "Preponderance of evidence (Adjudication) / Clear and Convincing (Unfitness/TPR)"
+    mandatory_timeframes_days:
+      temporary_custody_hearing_hours: 48 # Excluding weekends & holidays
+      adjudicatory_hearing_days: 90
+      dispositional_hearing_days: 30
+      permanency_hearing_months: 12
+    acquisition_method: html_scrape
+    parser_name: illinois_ilcs_parser
+    update_frequency: daily
+    cps_priority: 10
+    active: true
+
+  - source_id: CPS_IL_325_ILCS_5
+    jurisdiction: US-IL
+    level: state
+    authority_tier: TIER_0
+    legal_domain: ["child_welfare", "statutes", "abuse_reporting", "ancra"]
+    cps_subdomain: state_statute
+    source_type: statute
+    title: "325 ILCS 5: Abused and Neglected Child Reporting Act (ANCRA)"
+    citation_format: "325 ILCS 5/{section}"
+    publisher:
+      name: "Illinois General Assembly"
+      official: true
+      entity_type: legislature
+      contact_url: "https://www.ilga.gov/"
+    canonical_url: "https://www.ilga.gov/legislation/ilcs/ilcs3.asp?ActID=1460&ChapterID=32"
+    key_statutory_sections:
+      - "325 ILCS 5/3" # Definitions (Abused child, neglected child)
+      - "325 ILCS 5/4" # Persons required to report (Mandated reporters)
+      - "325 ILCS 5/5" # Temporary protective custody (72 hours max by physician/law enforcement)
+      - "325 ILCS 5/7.4" # Investigation of reports (Indicated vs Unfounded findings)
+      - "325 ILCS 5/7.16" # Administrative appeal rights for indicated findings (expungement)
+    topics:
+      intake_screening: true
+      investigation_assessment: true
+      safety_planning: true
+      emergency_removal: true
+      records_discovery: true
+    acquisition_method: html_scrape
+    parser_name: illinois_ilcs_parser
+    update_frequency: daily
+    cps_priority: 10
+    active: true
+
+  - source_id: CPS_IL_DCFS_PROCEDURES_300
+    jurisdiction: US-IL
+    level: state
+    authority_tier: TIER_0
+    legal_domain: ["child_welfare", "agency_policy", "investigations", "dcfs_procedures"]
+    cps_subdomain: state_agency_policy
+    source_type: agency_policy
+    title: "Illinois DCFS Procedures 300: Reports of Child Abuse and Neglect"
+    publisher:
+      name: "Illinois Department of Children and Family Services"
+      official: true
+      entity_type: executive_agency
+      contact_url: "https://dcfs.illinois.gov/"
+    canonical_url: "https://dcfs.illinois.gov/about-us/rules-and-codes/procedures/procedures-300.html"
+    topics:
+      intake_screening: true
+      investigation_assessment: true
+      safety_planning: true
+    acquisition_method: html_scrape
+    parser_name: illinois_dcfs_parser
+    update_frequency: weekly
+    cps_priority: 10
+    active: true

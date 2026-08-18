@@ -1,0 +1,77 @@
+# Ohio State (OH) CPS / Child Welfare Legal Source Registry v1.0
+sources:
+  - source_id: CPS_OH_ORC_2151
+    jurisdiction: US-OH
+    level: state
+    authority_tier: TIER_0
+    legal_domain: ["child_welfare", "statutes", "juvenile_court", "dependency_neglect_abuse"]
+    cps_subdomain: state_statute
+    source_type: statute
+    title: "Ohio Revised Code Chapter 2151: Juvenile Court — Children Cases"
+    citation_format: "ORC § 2151.{section}"
+    publisher:
+      name: "Ohio General Assembly & Legislative Service Commission"
+      official: true
+      entity_type: legislature
+      contact_url: "https://codes.ohio.gov/"
+    canonical_url: "https://codes.ohio.gov/ohio-revised-code/chapter-2151"
+    key_statutory_sections:
+      - "ORC § 2151.03" # Neglected child defined
+      - "ORC § 2151.031" # Abused child defined
+      - "ORC § 2151.04" # Dependent child defined
+      - "ORC § 2151.27" # Complaint involving child
+      - "ORC § 2151.31" # Apprehension, custody, and detention (Emergency removal)
+      - "ORC § 2151.314" # Detention or shelter care hearing (within 72 hours)
+      - "ORC § 2151.35" # Hearing procedure - Adjudication within 30 days of complaint, disposition within 90 days
+      - "ORC § 2151.353" # Disposition of abused, neglected, or dependent child
+      - "ORC § 2151.414" # Procedures and standards for granting permanent custody to agency (Clear and convincing standard)
+      - "ORC § 2151.419" # Determination as to reasonable efforts of agency
+      - "ORC § 2151.421" # Reporting child abuse or neglect - Mandatory reporters
+    topics:
+      emergency_removal: true
+      shelter_care_hearing: true
+      dependency_petition: true
+      fact_finding_adjudication: true
+      disposition_placement: true
+      visitation_family_time: true
+      reasonable_efforts: true
+      permanency_planning: true
+      termination_parental_rights: true
+      parent_rights_counsel: true
+    standard_of_proof: "Clear and convincing evidence (Adjudication & Permanent Custody)"
+    mandatory_timeframes_days:
+      shelter_care_hearing_hours: 72
+      adjudicatory_hearing_days: 30
+      dispositional_hearing_days: 90
+    acquisition_method: html_scrape
+    parser_name: ohio_orc_parser
+    update_frequency: daily
+    cps_priority: 10
+    active: true
+
+  - source_id: CPS_OH_OAC_5101_2
+    jurisdiction: US-OH
+    level: state
+    authority_tier: TIER_0
+    legal_domain: ["child_welfare", "regulations", "odjfs_rules", "foster_care"]
+    cps_subdomain: state_administrative_code
+    source_type: regulation
+    title: "Ohio Administrative Code Chapter 5101:2: Division of Social Services - Child Welfare"
+    citation_format: "OAC 5101:2-{chapter}-{rule}"
+    publisher:
+      name: "Ohio Department of Job and Family Services"
+      official: true
+      entity_type: executive_agency
+      contact_url: "https://codes.ohio.gov/ohio-administrative-code/division-5101:2"
+    canonical_url: "https://codes.ohio.gov/ohio-administrative-code/division-5101:2"
+    topics:
+      intake_screening: true
+      investigation_assessment: true
+      safety_planning: true
+      disposition_placement: true
+      reasonable_efforts: true
+    acquisition_method: html_scrape
+    parser_name: ohio_oac_parser
+    update_frequency: weekly
+    cps_priority: 10
+    active: true

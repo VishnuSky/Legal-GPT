@@ -1,0 +1,147 @@
+# Washington State (WA) CPS / Child Welfare Legal Source Registry v1.0
+sources:
+  - source_id: CPS_WA_RCW_13_34
+    jurisdiction: US-WA
+    level: state
+    authority_tier: TIER_0
+    legal_domain: ["child_welfare", "statutes", "dependency", "tpr"]
+    cps_subdomain: state_statute
+    source_type: statute
+    title: "RCW 13.34: Juvenile Court Act — Dependency and Termination of Parent-Child Relationship"
+    citation_format: "RCW 13.34.{section}"
+    publisher:
+      name: "Washington State Legislature"
+      official: true
+      entity_type: legislature
+      contact_url: "https://leg.wa.gov/"
+    canonical_url: "https://app.leg.wa.gov/rcw/default.aspx?cite=13.34"
+    key_statutory_sections:
+      - "RCW 13.34.030" # Definitions (Dependent child, custodian, parent, guardian)
+      - "RCW 13.34.040" # Petition filing requirements
+      - "RCW 13.34.050" # Court order to take child into custody (Emergency removal)
+      - "RCW 13.34.055" # Custody by law enforcement officer without court order (48-hour limit)
+      - "RCW 13.34.060" # Shelter care hearing - Notice requirements
+      - "RCW 13.34.065" # Shelter care - Hearing within 72 hours excluding weekends/holidays
+      - "RCW 13.34.070" # Summons - Issuance - Notice
+      - "RCW 13.34.090" # Rights of parties - Right to counsel, confrontation, cross-examination
+      - "RCW 13.34.092" # Right to counsel in dependency/termination proceedings
+      - "RCW 13.34.110" # Fact-finding hearing - Preponderance standard
+      - "RCW 13.34.130" # Order of disposition
+      - "RCW 13.34.136" # Permanency plan of care
+      - "RCW 13.34.138" # Review hearings - Status check every 6 months
+      - "RCW 13.34.145" # Permanency planning hearing within 12 months
+      - "RCW 13.34.180" # Petition seeking termination of parent-child relationship (6 statutory elements)
+      - "RCW 13.34.190" # Order terminating parent-child relationship - Clear, cogent, and convincing evidence
+    topics:
+      emergency_removal: true
+      shelter_care_hearing: true
+      dependency_petition: true
+      fact_finding_adjudication: true
+      disposition_placement: true
+      visitation_family_time: true
+      case_planning_services: true
+      reasonable_efforts: true
+      permanency_planning: true
+      termination_parental_rights: true
+      parent_rights_counsel: true
+      records_discovery: true
+    standard_of_proof: "Preponderance of evidence (Fact-Finding) / Clear, Cogent, and Convincing (TPR)"
+    mandatory_timeframes_days:
+      emergency_custody_without_court_order_hours: 48
+      shelter_care_hearing_hours: 72 # Excluding weekends & holidays
+      fact_finding_hearing_days: 75
+      permanency_planning_hearing_months: 12
+      periodic_review_hearing_months: 6
+    acquisition_method: api
+    parser_name: washington_rcw_parser
+    update_frequency: daily
+    cps_priority: 10
+    active: true
+
+  - source_id: CPS_WA_RCW_26_44
+    jurisdiction: US-WA
+    level: state
+    authority_tier: TIER_0
+    legal_domain: ["child_welfare", "statutes", "abuse_reporting", "investigation"]
+    cps_subdomain: state_statute
+    source_type: statute
+    title: "RCW 26.44: Abuse of Children"
+    citation_format: "RCW 26.44.{section}"
+    publisher:
+      name: "Washington State Legislature"
+      official: true
+      entity_type: legislature
+      contact_url: "https://leg.wa.gov/"
+    canonical_url: "https://app.leg.wa.gov/rcw/default.aspx?cite=26.44"
+    key_statutory_sections:
+      - "RCW 26.44.020" # Definitions (Abuse, neglect, sexual abuse, negligent treatment)
+      - "RCW 26.44.030" # Mandatory reporting requirements
+      - "RCW 26.44.050" # Abuse or neglect of child - Duty of law enforcement or DCYF to investigate
+      - "RCW 26.44.100" # Information regarding child abuse or neglect - Central registry
+    topics:
+      intake_screening: true
+      investigation_assessment: true
+      safety_planning: true
+      records_discovery: true
+    acquisition_method: api
+    parser_name: washington_rcw_parser
+    update_frequency: daily
+    cps_priority: 10
+    active: true
+
+  - source_id: CPS_WA_WICWA
+    jurisdiction: US-WA
+    level: state
+    authority_tier: TIER_0
+    legal_domain: ["child_welfare", "tribal_law", "wicwa", "statutes"]
+    cps_subdomain: state_statute
+    source_type: statute
+    title: "RCW 13.38: Washington State Indian Child Welfare Act (WICWA)"
+    citation_format: "RCW 13.38.{section}"
+    publisher:
+      name: "Washington State Legislature"
+      official: true
+      entity_type: legislature
+      contact_url: "https://leg.wa.gov/"
+    canonical_url: "https://app.leg.wa.gov/rcw/default.aspx?cite=13.38"
+    key_statutory_sections:
+      - "RCW 13.38.040" # Definitions (Indian child, active efforts)
+      - "RCW 13.38.070" # Determination of Indian child status - Duty of inquiry
+      - "RCW 13.38.080" # Transfer of proceeding to tribal court
+      - "RCW 13.38.130" # Standard of proof - Active efforts requirement
+    topics:
+      icwa_tribal_welfare: true
+      reasonable_efforts: true
+      parent_rights_counsel: true
+      termination_parental_rights: true
+    standard_of_proof: "Clear, Cogent, and Convincing (Foster Care) / Beyond a Reasonable Doubt (TPR)"
+    icwa_specific: true
+    acquisition_method: api
+    parser_name: washington_rcw_parser
+    update_frequency: daily
+    cps_priority: 10
+    active: true
+
+  - source_id: CPS_WA_DCYF_POLICY_2331
+    jurisdiction: US-WA
+    level: state
+    authority_tier: TIER_0
+    legal_domain: ["child_welfare", "agency_policy", "present_danger", "safety_assessment"]
+    cps_subdomain: state_agency_policy
+    source_type: agency_policy
+    title: "WA DCYF Policy 2331: Child Safety Assessment & Present Danger"
+    publisher:
+      name: "Washington DCYF"
+      official: true
+      entity_type: executive_agency
+      contact_url: "https://dcyf.wa.gov/"
+    canonical_url: "https://dcyf.wa.gov/2000-child-safety/2331-child-safety-assessment"
+    topics:
+      safety_planning: true
+      emergency_removal: true
+      investigation_assessment: true
+    acquisition_method: html_scrape
+    parser_name: washington_dcyf_parser
+    update_frequency: weekly
+    cps_priority: 10
+    active: true

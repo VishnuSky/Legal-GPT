@@ -1,0 +1,235 @@
+# Washington State (WA) Legal Source Registry v1.0
+state_id: WA
+state_name: "Washington"
+fips: "53"
+
+sources:
+  - source_id: WA_RCW
+    jurisdiction: US-WA
+    level: state
+    authority_tier: TIER_0
+    legal_domain: ["statutes", "general"]
+    source_type: statute
+    title: "Revised Code of Washington (RCW)"
+    citation_format: "RCW {title}.{chapter}.{section}"
+    publisher:
+      name: "Washington State Legislature"
+      official: true
+      entity_type: legislature
+      contact_url: "https://leg.wa.gov/"
+    canonical_url: "https://app.leg.wa.gov/rcw/"
+    search_url: "https://app.leg.wa.gov/rcw/default.aspx"
+    api:
+      available: true
+      api_type: REST
+      auth_required: false
+      documentation_url: "https://wslwebservices.leg.wa.gov/"
+    temporal:
+      versioned: true
+      effective_dates_available: true
+      historical_versions_available: true
+    acquisition_method: api
+    parser_name: washington_rcw_parser
+    update_frequency: daily
+    cps_priority: 10
+    active: true
+
+  - source_id: WA_WAC
+    jurisdiction: US-WA
+    level: state
+    authority_tier: TIER_0
+    legal_domain: ["regulations", "administrative_code"]
+    source_type: regulation
+    title: "Washington Administrative Code (WAC)"
+    citation_format: "WAC {title}-{chapter}-{section}"
+    publisher:
+      name: "Washington State Legislature & Office of the Code Reviser"
+      official: true
+      entity_type: executive_agency
+      contact_url: "https://app.leg.wa.gov/wac/"
+    canonical_url: "https://app.leg.wa.gov/wac/"
+    api:
+      available: true
+      api_type: REST
+      auth_required: false
+      documentation_url: "https://wslwebservices.leg.wa.gov/"
+    temporal:
+      versioned: true
+      effective_dates_available: true
+      historical_versions_available: true
+    acquisition_method: api
+    parser_name: washington_wac_parser
+    update_frequency: weekly
+    cps_priority: 9
+    active: true
+
+  - source_id: WA_CONST
+    jurisdiction: US-WA
+    level: state
+    authority_tier: TIER_0
+    legal_domain: ["constitution"]
+    source_type: constitution
+    title: "Constitution of the State of Washington"
+    citation_format: "Wash. Const. art. {article}, § {section}"
+    publisher:
+      name: "Washington State Legislature"
+      official: true
+      entity_type: legislature
+      contact_url: "https://leg.wa.gov/"
+    canonical_url: "https://leg.wa.gov/lawsandagencyrules/pages/constitution.aspx"
+    temporal:
+      versioned: true
+      effective_dates_available: true
+      historical_versions_available: true
+    acquisition_method: html_scrape
+    parser_name: washington_const_parser
+    update_frequency: monthly
+    cps_priority: 7
+    active: true
+
+  - source_id: WA_COURT_RULES
+    jurisdiction: US-WA
+    level: state
+    authority_tier: TIER_0
+    legal_domain: ["court_rules", "civil_procedure", "juvenile_rules", "evidence"]
+    source_type: court_rule
+    title: "Washington State Court Rules (GR, CR, JuCR, ER, RAP)"
+    publisher:
+      name: "Washington State Administrative Office of the Courts"
+      official: true
+      entity_type: court
+      contact_url: "https://www.courts.wa.gov/court_rules/"
+    canonical_url: "https://www.courts.wa.gov/court_rules/"
+    temporal:
+      versioned: true
+      effective_dates_available: true
+      historical_versions_available: true
+    acquisition_method: html_scrape
+    parser_name: washington_court_rules_parser
+    update_frequency: monthly
+    cps_priority: 9
+    active: true
+
+  - source_id: WA_SUPREME_COURT_OPINIONS
+    jurisdiction: US-WA
+    level: state
+    authority_tier: TIER_0
+    legal_domain: ["case_law", "supreme_court_opinions"]
+    source_type: court_opinion
+    title: "Washington Supreme Court Official Slip Opinions"
+    citation_format: "{volume} Wn.2d {page}"
+    publisher:
+      name: "Washington State Supreme Court"
+      official: true
+      entity_type: court
+      contact_url: "https://www.courts.wa.gov/opinions/"
+    canonical_url: "https://www.courts.wa.gov/opinions/"
+    api:
+      available: true
+      api_type: RSS
+      documentation_url: "https://www.courts.wa.gov/opinions/rss/"
+    temporal:
+      versioned: true
+      effective_dates_available: true
+      historical_versions_available: true
+    acquisition_method: rss_feed
+    parser_name: washington_opinions_parser
+    update_frequency: daily
+    cps_priority: 10
+    active: true
+
+  - source_id: WA_COURT_OF_APPEALS_OPINIONS
+    jurisdiction: US-WA
+    level: state
+    authority_tier: TIER_0
+    legal_domain: ["case_law", "appellate_opinions"]
+    source_type: court_opinion
+    title: "Washington Court of Appeals Official Slip Opinions (Div I, II, III)"
+    citation_format: "{volume} Wn. App. {page}"
+    publisher:
+      name: "Washington Court of Appeals"
+      official: true
+      entity_type: court
+      contact_url: "https://www.courts.wa.gov/opinions/"
+    canonical_url: "https://www.courts.wa.gov/opinions/"
+    api:
+      available: true
+      api_type: RSS
+    temporal:
+      versioned: true
+      effective_dates_available: true
+      historical_versions_available: true
+    acquisition_method: rss_feed
+    parser_name: washington_opinions_parser
+    update_frequency: daily
+    cps_priority: 10
+    active: true
+
+  - source_id: WA_SKAGIT_LOCAL_RULES
+    jurisdiction: US-WA
+    level: county
+    authority_tier: TIER_0
+    legal_domain: ["local_rules", "skagit_county", "superior_court"]
+    source_type: court_rule
+    title: "Skagit County Superior Court Local Rules (SCLCR, SCLSPR)"
+    publisher:
+      name: "Skagit County Superior Court"
+      official: true
+      entity_type: court
+      contact_url: "https://www.skagitcounty.net/Department/SuperiorCourt"
+    canonical_url: "https://www.courts.wa.gov/court_rules/?fa=court_rules.list&group=superior&set=supSka"
+    temporal:
+      versioned: true
+      effective_dates_available: true
+      historical_versions_available: true
+    acquisition_method: html_scrape
+    parser_name: generic_local_rules_parser
+    update_frequency: monthly
+    cps_priority: 8
+    active: true
+
+  - source_id: WA_DCYF_POLICY_MANUAL
+    jurisdiction: US-WA
+    level: state
+    authority_tier: TIER_0
+    legal_domain: ["child_welfare", "agency_policy", "cps_procedures"]
+    source_type: agency_policy
+    title: "Washington DCYF Child Welfare Policies and Procedures Manual"
+    publisher:
+      name: "Washington Department of Children, Youth, and Families"
+      official: true
+      entity_type: executive_agency
+      contact_url: "https://dcyf.wa.gov/"
+    canonical_url: "https://dcyf.wa.gov/practices-and-instruction/child-welfare-policies-and-procedures"
+    temporal:
+      versioned: true
+      effective_dates_available: true
+      historical_versions_available: true
+    acquisition_method: html_scrape
+    parser_name: washington_dcyf_parser
+    update_frequency: weekly
+    cps_priority: 10
+    active: true
+
+  - source_id: WA_COURT_FORMS_DEPENDENCY
+    jurisdiction: US-WA
+    level: state
+    authority_tier: TIER_0
+    legal_domain: ["court_forms", "juvenile_dependency", "forms"]
+    source_type: form
+    title: "Washington Courts Pattern Dependency Forms (JU 03 Series)"
+    publisher:
+      name: "Washington Administrative Office of the Courts"
+      official: true
+      entity_type: court
+      contact_url: "https://www.courts.wa.gov/forms/"
+    canonical_url: "https://www.courts.wa.gov/forms/?fa=forms.contribute&formID=2"
+    temporal:
+      versioned: true
+      effective_dates_available: true
+      historical_versions_available: true
+    acquisition_method: html_scrape
+    parser_name: washington_forms_parser
+    update_frequency: monthly
+    cps_priority: 9
+    active: true

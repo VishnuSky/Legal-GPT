@@ -1,0 +1,125 @@
+# Ohio State (OH) Legal Source Registry v1.0
+state_id: OH
+state_name: "Ohio"
+fips: "39"
+
+sources:
+  - source_id: OH_ORC
+    jurisdiction: US-OH
+    level: state
+    authority_tier: TIER_0
+    legal_domain: ["statutes", "general"]
+    source_type: statute
+    title: "Ohio Revised Code (ORC)"
+    citation_format: "ORC § {title}.{section}"
+    publisher:
+      name: "Ohio Legislative Service Commission & Ohio General Assembly"
+      official: true
+      entity_type: legislature
+      contact_url: "https://codes.ohio.gov/"
+    canonical_url: "https://codes.ohio.gov/ohio-revised-code"
+    search_url: "https://codes.ohio.gov/search"
+    temporal:
+      versioned: true
+      effective_dates_available: true
+      historical_versions_available: true
+    acquisition_method: html_scrape
+    parser_name: ohio_orc_parser
+    update_frequency: daily
+    cps_priority: 10
+    active: true
+
+  - source_id: OH_OAC
+    jurisdiction: US-OH
+    level: state
+    authority_tier: TIER_0
+    legal_domain: ["regulations", "administrative_code"]
+    source_type: regulation
+    title: "Ohio Administrative Code (OAC)"
+    citation_format: "OAC {agency}:{sub}-{rule}"
+    publisher:
+      name: "Ohio Legislative Service Commission"
+      official: true
+      entity_type: executive_agency
+      contact_url: "https://codes.ohio.gov/ohio-administrative-code"
+    canonical_url: "https://codes.ohio.gov/ohio-administrative-code"
+    temporal:
+      versioned: true
+      effective_dates_available: true
+      historical_versions_available: true
+    acquisition_method: html_scrape
+    parser_name: ohio_oac_parser
+    update_frequency: weekly
+    cps_priority: 9
+    active: true
+
+  - source_id: OH_JUVENILE_RULES
+    jurisdiction: US-OH
+    level: state
+    authority_tier: TIER_0
+    legal_domain: ["court_rules", "juvenile_rules", "procedure"]
+    source_type: court_rule
+    title: "Ohio Rules of Juvenile Procedure (Juv.R.)"
+    citation_format: "Ohio Juv. R. {rule}"
+    publisher:
+      name: "Supreme Court of Ohio"
+      official: true
+      entity_type: court
+      contact_url: "https://www.supremecourt.ohio.gov/rules/rules-of-juvenile-procedure/"
+    canonical_url: "https://www.supremecourt.ohio.gov/rules/rules-of-juvenile-procedure/"
+    temporal:
+      versioned: true
+      effective_dates_available: true
+      historical_versions_available: true
+    acquisition_method: html_scrape
+    parser_name: ohio_rules_parser
+    update_frequency: monthly
+    cps_priority: 10
+    active: true
+
+  - source_id: OH_SUPREME_COURT_OPINIONS
+    jurisdiction: US-OH
+    level: state
+    authority_tier: TIER_0
+    legal_domain: ["case_law", "supreme_court_opinions"]
+    source_type: court_opinion
+    title: "Supreme Court of Ohio Slip Opinions and Merit Decisions"
+    citation_format: "{year}-Ohio-{webcite}"
+    publisher:
+      name: "Supreme Court of Ohio"
+      official: true
+      entity_type: court
+      contact_url: "https://www.supremecourt.ohio.gov/opinions-and-cases/"
+    canonical_url: "https://www.supremecourt.ohio.gov/opinions-and-cases/"
+    temporal:
+      versioned: true
+      effective_dates_available: true
+      historical_versions_available: true
+    acquisition_method: html_scrape
+    parser_name: ohio_opinions_parser
+    update_frequency: daily
+    cps_priority: 10
+    active: true
+
+  - source_id: OH_ODJFS_CHILD_WELFARE_MANUAL
+    jurisdiction: US-OH
+    level: state
+    authority_tier: TIER_0
+    legal_domain: ["child_welfare", "agency_policy", "foster_care_manual", "cps_policy"]
+    source_type: agency_policy
+    title: "ODJFS Family, Children and Adult Services Manual (FCASM)"
+    publisher:
+      name: "Ohio Department of Job and Family Services (ODJFS)"
+      official: true
+      entity_type: executive_agency
+      contact_url: "https://emanuals.jfs.ohio.gov/"
+    canonical_url: "https://emanuals.jfs.ohio.gov/FamChild/FCASM/"
+    temporal:
+      versioned: true
+      effective_dates_available: true
+      historical_versions_available: true
+    acquisition_method: html_scrape
+    parser_name: ohio_odjfs_parser
+    update_frequency: weekly
+    cps_priority: 10
+    active: true

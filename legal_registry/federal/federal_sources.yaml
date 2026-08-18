@@ -1,0 +1,259 @@
+# Machine-Readable Federal Legal Sources Registry v1.0
+sources:
+  - source_id: FED_USCODE
+    jurisdiction: US
+    level: federal
+    authority_tier: TIER_0
+    legal_domain: ["statutes", "federal_law", "general"]
+    source_type: statute
+    title: "United States Code (Official Office of the Law Revision Counsel)"
+    citation_format: "{title} U.S.C. § {section}"
+    publisher:
+      name: "Office of the Law Revision Counsel of the U.S. House of Representatives"
+      official: true
+      entity_type: legislature
+      contact_url: "https://uscode.house.gov/"
+    canonical_url: "https://uscode.house.gov/"
+    search_url: "https://uscode.house.gov/search/criteria.shtml"
+    api:
+      available: true
+      api_type: BULK_DOWNLOAD
+      auth_required: false
+      bulk_download_url: "https://uscode.house.gov/download/download.shtml"
+    temporal:
+      versioned: true
+      effective_dates_available: true
+      historical_versions_available: true
+    acquisition_method: bulk_download
+    parser_name: uscode_xml_parser
+    update_frequency: daily
+    cps_priority: 10
+    active: true
+
+  - source_id: FED_GOVINFO
+    jurisdiction: US
+    level: federal
+    authority_tier: TIER_0
+    legal_domain: ["statutes", "regulations", "congressional", "presidential", "court_opinions"]
+    source_type: statute
+    title: "GovInfo (U.S. Government Publishing Office)"
+    publisher:
+      name: "U.S. Government Publishing Office (GPO)"
+      official: true
+      entity_type: executive_agency
+      contact_url: "https://www.govinfo.gov/"
+    canonical_url: "https://www.govinfo.gov/"
+    api:
+      available: true
+      api_type: REST
+      auth_required: true
+      auth_env_var: "GOVINFO_API_KEY"
+      rate_limit_rpm: 1000
+      documentation_url: "https://api.govinfo.gov/docs/"
+    temporal:
+      versioned: true
+      effective_dates_available: true
+      historical_versions_available: true
+    acquisition_method: api
+    parser_name: govinfo_api_parser
+    update_frequency: daily
+    cps_priority: 9
+    active: true
+
+  - source_id: FED_ECFR
+    jurisdiction: US
+    level: federal
+    authority_tier: TIER_0
+    legal_domain: ["regulations", "administrative_law"]
+    source_type: regulation
+    title: "Electronic Code of Federal Regulations (eCFR)"
+    citation_format: "{title} C.F.R. § {section}"
+    publisher:
+      name: "National Archives and Records Administration (NARA) & GPO"
+      official: true
+      entity_type: executive_agency
+      contact_url: "https://www.ecfr.gov/"
+    canonical_url: "https://www.ecfr.gov/"
+    api:
+      available: true
+      api_type: REST
+      auth_required: false
+      documentation_url: "https://www.ecfr.gov/developers/documentation/api/v1"
+    temporal:
+      versioned: true
+      effective_dates_available: true
+      historical_versions_available: true
+    acquisition_method: api
+    parser_name: ecfr_api_parser
+    update_frequency: daily
+    cps_priority: 9
+    active: true
+
+  - source_id: FED_FEDREG
+    jurisdiction: US
+    level: federal
+    authority_tier: TIER_0
+    legal_domain: ["regulations", "rulemaking", "agency_notices"]
+    source_type: regulation
+    title: "Federal Register (Daily Journal of the United States Government)"
+    publisher:
+      name: "Office of the Federal Register"
+      official: true
+      entity_type: executive_agency
+      contact_url: "https://www.federalregister.gov/"
+    canonical_url: "https://www.federalregister.gov/"
+    api:
+      available: true
+      api_type: REST
+      auth_required: false
+      documentation_url: "https://www.federalregister.gov/developers/documentation/api/v1"
+    temporal:
+      versioned: true
+      effective_dates_available: true
+      historical_versions_available: true
+    acquisition_method: api
+    parser_name: federal_register_parser
+    update_frequency: daily
+    cps_priority: 8
+    active: true
+
+  - source_id: FED_CONGRESS_API
+    jurisdiction: US
+    level: federal
+    authority_tier: TIER_1
+    legal_domain: ["legislation", "bills", "public_laws", "committees"]
+    source_type: statute
+    title: "Congress.gov API"
+    publisher:
+      name: "Library of Congress"
+      official: true
+      entity_type: legislature
+      contact_url: "https://api.congress.gov/"
+    canonical_url: "https://www.congress.gov/"
+    api:
+      available: true
+      api_type: REST
+      auth_required: true
+      auth_env_var: "CONGRESS_API_KEY"
+      documentation_url: "https://api.congress.gov/"
+    temporal:
+      versioned: true
+      effective_dates_available: true
+      historical_versions_available: true
+    acquisition_method: api
+    parser_name: congress_api_parser
+    update_frequency: daily
+    cps_priority: 7
+    active: true
+
+  - source_id: FED_COURTLISTENER
+    jurisdiction: US
+    level: federal
+    authority_tier: TIER_1
+    legal_domain: ["case_law", "opinions", "dockets", "oral_arguments", "recap"]
+    source_type: court_opinion
+    title: "CourtListener (Free Law Project)"
+    publisher:
+      name: "Free Law Project"
+      official: false
+      entity_type: non_profit
+      contact_url: "https://www.courtlistener.com/"
+    canonical_url: "https://www.courtlistener.com/"
+    api:
+      available: true
+      api_type: REST
+      auth_required: true
+      auth_env_var: "COURTLISTENER_API_TOKEN"
+      documentation_url: "https://www.courtlistener.com/api/"
+      bulk_download_url: "https://www.courtlistener.com/api/bulk-data/"
+    temporal:
+      versioned: true
+      effective_dates_available: true
+      historical_versions_available: true
+    acquisition_method: api
+    parser_name: courtlistener_parser
+    update_frequency: daily
+    cps_priority: 10
+    active: true
+
+  - source_id: FED_HARVARD_CAP
+    jurisdiction: US
+    level: federal
+    authority_tier: TIER_1
+    legal_domain: ["case_law", "historical_cases", "all_jurisdictions"]
+    source_type: court_opinion
+    title: "Harvard Caselaw Access Project (Historical Decisions up to 2020)"
+    publisher:
+      name: "President and Fellows of Harvard College"
+      official: false
+      entity_type: non_profit
+      contact_url: "https://case.law/"
+    canonical_url: "https://case.law/"
+    api:
+      available: true
+      api_type: BULK_DOWNLOAD
+      auth_required: false
+      bulk_download_url: "https://case.law/download/"
+    temporal:
+      versioned: true
+      effective_dates_available: true
+      historical_versions_available: true
+      latest_available_date: "2020-12-31"
+    acquisition_method: bulk_download
+    parser_name: harvard_cap_parser
+    update_frequency: static
+    cps_priority: 8
+    active: true
+
+  - source_id: FED_BIA_ICWA
+    jurisdiction: US
+    level: federal
+    authority_tier: TIER_0
+    legal_domain: ["child_welfare", "tribal_law", "icwa", "regulations"]
+    source_type: regulation
+    title: "Bureau of Indian Affairs - Indian Child Welfare Act (ICWA) Portal & Regulations"
+    citation_format: "25 C.F.R. Part 23"
+    publisher:
+      name: "Bureau of Indian Affairs, U.S. Department of the Interior"
+      official: true
+      entity_type: executive_agency
+      contact_url: "https://www.bia.gov/bia/ois/dhs/icwa"
+    canonical_url: "https://www.bia.gov/bia/ois/dhs/icwa"
+    api:
+      available: false
+      api_type: NONE
+    temporal:
+      versioned: true
+      effective_dates_available: true
+      historical_versions_available: true
+    acquisition_method: html_scrape
+    parser_name: bia_icwa_parser
+    update_frequency: monthly
+    cps_priority: 10
+    active: true
+
+  - source_id: FED_ACF_CHILDRENS_BUREAU
+    jurisdiction: US
+    level: federal
+    authority_tier: TIER_0
+    legal_domain: ["child_welfare", "agency_policy", "funding", "child_welfare_policy_manual"]
+    source_type: agency_policy
+    title: "Administration for Children and Families (ACF) - Children's Bureau Policy Manual"
+    publisher:
+      name: "Administration on Children, Youth and Families, U.S. HHS"
+      official: true
+      entity_type: executive_agency
+      contact_url: "https://www.acf.hhs.gov/cb"
+    canonical_url: "https://www.acf.hhs.gov/cb/laws-policies/child-welfare-policy-manual"
+    api:
+      available: false
+      api_type: NONE
+    temporal:
+      versioned: true
+      effective_dates_available: true
+      historical_versions_available: true
+    acquisition_method: html_scrape
+    parser_name: acf_cwpm_parser
+    update_frequency: weekly
+    cps_priority: 10
+    active: true

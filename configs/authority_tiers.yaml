@@ -1,0 +1,63 @@
+tiers:
+  TIER_0:
+    name: "Primary Official Government"
+    weight: 1.00
+    description: "Official statutory code, official state/federal constitutions, officially published agency regulations, and official slip opinions directly from courts and legislatures."
+    sources:
+      - "US_CODE_OFFICIAL"
+      - "GOVINFO_OFFICIAL"
+      - "STATE_LEGISLATURE_OFFICIAL"
+      - "STATE_COURT_OFFICIAL"
+      - "FEDERAL_REGISTER_OFFICIAL"
+      - "TRIBAL_CODE_OFFICIAL"
+
+  TIER_1:
+    name: "Primary Curated Public Databases"
+    weight: 0.95
+    description: "Authoritative open-access court record repositories, public legal databases with verified provenance."
+    sources:
+      - "COURTLISTENER"
+      - "HARVARD_CAP"
+      - "RECAP"
+      - "CONGRESS_GOV"
+      - "BIA_ICWA_OFFICIAL"
+      - "ACF_CHILDRENS_BUREAU"
+
+  TIER_2:
+    name: "Institutional & Bar Associations & Legal Aid"
+    weight: 0.90
+    description: "American Bar Association, State Bar ethics opinions, Legal Aid manuals, University law review repositories."
+    sources:
+      - "ABA"
+      - "STATE_BAR_ASSOCIATIONS"
+      - "LEGAL_SERVICES_CORP"
+      - "LAWHELP_ORG"
+      - "PRO_BONO_NET"
+
+  TIER_3:
+    name: "Secondary Legal Indexes & Reference Treatises"
+    weight: 0.80
+    description: "Cornell LII, Justia, FindLaw, Nolo, Wex, open law treatises."
+    sources:
+      - "CORNELL_LII"
+      - "JUSTIA"
+      - "FINDLAW"
+      - "NOLO"
+
+  TIER_4:
+    name: "Legal Commentary & Law Firm Publications"
+    weight: 0.50
+    description: "Law firm analysis alerts, practitioner blogs, continuing legal education slides."
+    sources:
+      - "LAW_FIRM_ARTICLES"
+      - "LEGAL_BLOGS"
+      - "PRACTITIONER_COMMENTARY"
+
+  TIER_5:
+    name: "Unverified / Social / AI-Generated"
+    weight: 0.00
+    description: "Forums, Reddit, social media, ungrounded LLM completions. Strictly barred from serving as legal authority."
+    sources:
+      - "FORUM"
+      - "SOCIAL_MEDIA"
+      - "UNGROUNDED_LLM"

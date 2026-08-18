@@ -1,0 +1,149 @@
+# Court Hierarchy & Jurisdiction Registry v1.0
+courts:
+  # Federal Courts
+  - court_id: FED-SCOTUS
+    name: "Supreme Court of the United States"
+    jurisdiction: US
+    level: supreme
+    court_type: federal_supreme
+    official_url: "https://www.supremecourt.gov/"
+    opinions_url: "https://www.supremecourt.gov/opinions/opinions.aspx"
+    courtlistener_id: "scotus"
+    citation_abbreviation: "U.S."
+    cps_jurisdiction: true
+    active: true
+
+  - court_id: FED-9TH-CIR
+    name: "United States Court of Appeals for the Ninth Circuit"
+    jurisdiction: US
+    level: appellate
+    court_type: federal_circuit
+    official_url: "https://www.ca9.uscourts.gov/"
+    opinions_url: "https://www.ca9.uscourts.gov/opinions/"
+    courtlistener_id: "ca9"
+    citation_abbreviation: "F.4th"
+    cps_jurisdiction: true
+    active: true
+
+  - court_id: FED-7TH-CIR
+    name: "United States Court of Appeals for the Seventh Circuit"
+    jurisdiction: US
+    level: appellate
+    court_type: federal_circuit
+    official_url: "https://www.ca7.uscourts.gov/"
+    courtlistener_id: "ca7"
+    citation_abbreviation: "F.4th"
+    cps_jurisdiction: true
+    active: true
+
+  - court_id: FED-6TH-CIR
+    name: "United States Court of Appeals for the Sixth Circuit"
+    jurisdiction: US
+    level: appellate
+    court_type: federal_circuit
+    official_url: "https://www.ca6.uscourts.gov/"
+    courtlistener_id: "ca6"
+    citation_abbreviation: "F.4th"
+    cps_jurisdiction: true
+    active: true
+
+  # Washington State Courts
+  - court_id: WA-SUPREME
+    name: "Washington State Supreme Court"
+    jurisdiction: US-WA
+    state: WA
+    level: supreme
+    court_type: state_supreme
+    official_url: "https://www.courts.wa.gov/"
+    opinions_url: "https://www.courts.wa.gov/opinions/"
+    courtlistener_id: "wash"
+    citation_abbreviation: "Wn.2d"
+    cps_jurisdiction: true
+    active: true
+
+  - court_id: WA-APPEALS
+    name: "Washington Court of Appeals (Divisions I, II, III)"
+    jurisdiction: US-WA
+    state: WA
+    level: appellate
+    court_type: state_appellate
+    official_url: "https://www.courts.wa.gov/"
+    courtlistener_id: "washctapp"
+    citation_abbreviation: "Wn. App."
+    cps_jurisdiction: true
+    active: true
+
+  - court_id: WA-SKAGIT-SUPERIOR
+    name: "Skagit County Superior Court (Juvenile & Dependency Division)"
+    jurisdiction: US-WA
+    state: WA
+    county: Skagit
+    level: specialized_juvenile
+    court_type: juvenile_dependency
+    official_url: "https://www.skagitcounty.net/Department/SuperiorCourt"
+    local_rules_url: "https://www.courts.wa.gov/court_rules/?fa=court_rules.list&group=superior&set=supSka"
+    courtlistener_id: "wa-skagit-superior"
+    cps_jurisdiction: true
+    active: true
+
+  # Illinois State Courts
+  - court_id: IL-SUPREME
+    name: "Supreme Court of Illinois"
+    jurisdiction: US-IL
+    state: IL
+    level: supreme
+    court_type: state_supreme
+    official_url: "https://www.illinoiscourts.gov/"
+    courtlistener_id: "ill"
+    citation_abbreviation: "IL"
+    cps_jurisdiction: true
+    active: true
+
+  - court_id: IL-APPELLATE-1ST
+    name: "Illinois Appellate Court - First District (Cook County)"
+    jurisdiction: US-IL
+    state: IL
+    county: Cook
+    level: appellate
+    court_type: state_appellate
+    official_url: "https://www.illinoiscourts.gov/"
+    courtlistener_id: "illappct"
+    citation_abbreviation: "IL App (1st)"
+    cps_jurisdiction: true
+    active: true
+
+  - court_id: IL-COOK-JUVENILE
+    name: "Circuit Court of Cook County - Child Protection Division"
+    jurisdiction: US-IL
+    state: IL
+    county: Cook
+    level: specialized_juvenile
+    court_type: juvenile_dependency
+    official_url: "https://www.cookcountycourt.org/ABOUT-THE-COURT/County-Department/Child-Protection-Division"
+    courtlistener_id: "il-cook-juvenile"
+    cps_jurisdiction: true
+    active: true
+
+  # Ohio State Courts
+  - court_id: OH-SUPREME
+    name: "Supreme Court of Ohio"
+    jurisdiction: US-OH
+    state: OH
+    level: supreme
+    court_type: state_supreme
+    official_url: "https://www.supremecourt.ohio.gov/"
+    courtlistener_id: "ohio"
+    citation_abbreviation: "Ohio St.3d"
+    cps_jurisdiction: true
+    active: true
+
+  - court_id: OH-CUYAHOGA-JUVENILE
+    name: "Cuyahoga County Juvenile Court"
+    jurisdiction: US-OH
+    state: OH
+    county: Cuyahoga
+    level: specialized_juvenile
+    court_type: juvenile_dependency
+    official_url: "https://juvenile.cuyahogacounty.us/"
+    cps_jurisdiction: true
+    active: true

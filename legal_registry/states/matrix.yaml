@@ -1,0 +1,613 @@
+# Complete 50-State + DC + Territories Legal Source Master Matrix v1.0
+states:
+  AL:
+    name: "Alabama"
+    fips: "01"
+    legislature_url: "https://www.legislature.state.al.us/"
+    statutes_url: "https://arc-sos.state.al.us/CGI/KEYWORD.MBR/INPUT"
+    admin_code_url: "https://rules.alabama.gov/"
+    judiciary_url: "https://judicial.alabama.gov/"
+    child_welfare_agency: "Alabama Department of Human Resources (DHR)"
+    child_welfare_url: "https://dhr.alabama.gov/child-protective-services/"
+    authority_tier: "TIER_0"
+    deep_implementation: false
+
+  AK:
+    name: "Alaska"
+    fips: "02"
+    legislature_url: "https://www.akleg.gov/"
+    statutes_url: "https://www.akleg.gov/basis/statutes.asp"
+    admin_code_url: "https://www.akleg.gov/basis/aac.asp"
+    judiciary_url: "https://courts.alaska.gov/"
+    child_welfare_agency: "Alaska Office of Children's Services (OCS)"
+    child_welfare_url: "https://health.alaska.gov/ocs/Pages/default.aspx"
+    authority_tier: "TIER_0"
+    deep_implementation: false
+
+  AZ:
+    name: "Arizona"
+    fips: "04"
+    legislature_url: "https://www.azleg.gov/"
+    statutes_url: "https://www.azleg.gov/arstitle/"
+    admin_code_url: "https://apps.azsos.gov/public_services/table_of_contents.htm"
+    judiciary_url: "https://www.azcourts.gov/"
+    child_welfare_agency: "Arizona Department of Child Safety (DCS)"
+    child_welfare_url: "https://dcs.az.gov/"
+    authority_tier: "TIER_0"
+    deep_implementation: false
+
+  AR:
+    name: "Arkansas"
+    fips: "05"
+    legislature_url: "https://www.arkleg.state.ar.us/"
+    statutes_url: "https://www.arkleg.state.ar.us/ArkansasCode"
+    admin_code_url: "https://www.sos.arkansas.gov/rules-and-regulations"
+    judiciary_url: "https://www.arcourts.gov/"
+    child_welfare_agency: "Arkansas Division of Children and Family Services (DCFS)"
+    child_welfare_url: "https://humanservices.arkansas.gov/divisions-shared-services/children-family-services/"
+    authority_tier: "TIER_0"
+    deep_implementation: false
+
+  CA:
+    name: "California"
+    fips: "06"
+    legislature_url: "https://leginfo.legislature.ca.gov/"
+    statutes_url: "https://leginfo.legislature.ca.gov/faces/codes.xhtml"
+    admin_code_url: "https://govt.westlaw.com/calregs"
+    judiciary_url: "https://www.courts.ca.gov/"
+    child_welfare_agency: "California Department of Social Services (CDSS)"
+    child_welfare_url: "https://www.cdss.ca.gov/inforesources/foster-care/child-welfare-services"
+    authority_tier: "TIER_0"
+    deep_implementation: true
+
+  CO:
+    name: "Colorado"
+    fips: "08"
+    legislature_url: "https://leg.colorado.gov/"
+    statutes_url: "https://leg.colorado.gov/colorado-revised-statutes"
+    admin_code_url: "https://www.sos.state.co.us/CCR/CCRHome.do"
+    judiciary_url: "https://www.courts.state.co.us/"
+    child_welfare_agency: "Colorado Department of Human Services (CDHS) - Division of Child Welfare"
+    child_welfare_url: "https://cdhs.colorado.gov/our-services/child-and-family-services/child-welfare"
+    authority_tier: "TIER_0"
+    deep_implementation: false
+
+  CT:
+    name: "Connecticut"
+    fips: "09"
+    legislature_url: "https://www.cga.ct.gov/"
+    statutes_url: "https://www.cga.ct.gov/current/pub/titles.htm"
+    admin_code_url: "https://eregulations.ct.gov/"
+    judiciary_url: "https://www.jud.ct.gov/"
+    child_welfare_agency: "Connecticut Department of Children and Families (DCF)"
+    child_welfare_url: "https://portal.ct.gov/dcf"
+    authority_tier: "TIER_0"
+    deep_implementation: false
+
+  DE:
+    name: "Delaware"
+    fips: "10"
+    legislature_url: "https://legis.delaware.gov/"
+    statutes_url: "https://delcode.delaware.gov/"
+    admin_code_url: "https://regulations.delaware.gov/AdminCode/"
+    judiciary_url: "https://courts.delaware.gov/"
+    child_welfare_agency: "Delaware Division of Family Services (DFS)"
+    child_welfare_url: "https://kids.delaware.gov/fs/fs_index.shtml"
+    authority_tier: "TIER_0"
+    deep_implementation: false
+
+  FL:
+    name: "Florida"
+    fips: "12"
+    legislature_url: "https://www.leg.state.fl.us/"
+    statutes_url: "https://www.leg.state.fl.us/Statutes/"
+    admin_code_url: "https://www.flrules.org/"
+    judiciary_url: "https://www.flcourts.gov/"
+    child_welfare_agency: "Florida Department of Children and Families (DCF)"
+    child_welfare_url: "https://www.myflfamilies.com/services/child-family/child-welfare"
+    authority_tier: "TIER_0"
+    deep_implementation: false
+
+  GA:
+    name: "Georgia"
+    fips: "13"
+    legislature_url: "https://www.legis.ga.gov/"
+    statutes_url: "https://www.legis.ga.gov/legislation/all"
+    admin_code_url: "https://rules.sos.ga.gov/"
+    judiciary_url: "https://www.gasupreme.us/"
+    child_welfare_agency: "Georgia Division of Family & Children Services (DFCS)"
+    child_welfare_url: "https://dfcs.georgia.gov/child-protective-services"
+    authority_tier: "TIER_0"
+    deep_implementation: false
+
+  HI:
+    name: "Hawaii"
+    fips: "15"
+    legislature_url: "https://www.capitol.hawaii.gov/"
+    statutes_url: "https://www.capitol.hawaii.gov/docs/hrs.htm"
+    admin_code_url: "https://humanservices.hawaii.gov/admin-rules-2/"
+    judiciary_url: "https://www.courts.state.hi.us/"
+    child_welfare_agency: "Hawaii Child Welfare Services Branch (CWS)"
+    child_welfare_url: "https://humanservices.hawaii.gov/ssd/home/child-welfare-services/"
+    authority_tier: "TIER_0"
+    deep_implementation: false
+
+  ID:
+    name: "Idaho"
+    fips: "16"
+    legislature_url: "https://legislature.idaho.gov/"
+    statutes_url: "https://legislature.idaho.gov/statutesrules/idstat/"
+    admin_code_url: "https://adminrules.idaho.gov/"
+    judiciary_url: "https://isc.idaho.gov/"
+    child_welfare_agency: "Idaho Department of Health and Welfare - Child Welfare"
+    child_welfare_url: "https://healthandwelfare.idaho.gov/services-programs/children-families/child-welfare"
+    authority_tier: "TIER_0"
+    deep_implementation: false
+
+  IL:
+    name: "Illinois"
+    fips: "17"
+    legislature_url: "https://www.ilga.gov/"
+    statutes_url: "https://www.ilga.gov/legislation/ilcs/ilcs.asp"
+    admin_code_url: "https://www.ilsos.gov/departments/index/admincode/home.html"
+    judiciary_url: "https://www.illinoiscourts.gov/"
+    child_welfare_agency: "Illinois Department of Children and Family Services (DCFS)"
+    child_welfare_url: "https://dcfs.illinois.gov/"
+    authority_tier: "TIER_0"
+    deep_implementation: true
+
+  IN:
+    name: "Indiana"
+    fips: "18"
+    legislature_url: "https://iga.in.gov/"
+    statutes_url: "https://iga.in.gov/laws/current/ic/titles"
+    admin_code_url: "http://iac.iga.in.gov/"
+    judiciary_url: "https://www.in.gov/courts/"
+    child_welfare_agency: "Indiana Department of Child Services (DCS)"
+    child_welfare_url: "https://www.in.gov/dcs/"
+    authority_tier: "TIER_0"
+    deep_implementation: false
+
+  IA:
+    name: "Iowa"
+    fips: "19"
+    legislature_url: "https://www.legis.iowa.gov/"
+    statutes_url: "https://www.legis.iowa.gov/law/iowaCode"
+    admin_code_url: "https://www.legis.iowa.gov/law/administrativeRules"
+    judiciary_url: "https://www.iowacourts.gov/"
+    child_welfare_agency: "Iowa Department of Health and Human Services (HHS)"
+    child_welfare_url: "https://hhs.iowa.gov/programs/programs-and-services/child-welfare"
+    authority_tier: "TIER_0"
+    deep_implementation: false
+
+  KS:
+    name: "Kansas"
+    fips: "20"
+    legislature_url: "https://www.kslegislature.org/"
+    statutes_url: "https://www.ksrevisor.org/statutes.html"
+    admin_code_url: "https://www.kssos.org/rules_regulations.html"
+    judiciary_url: "https://www.kscourts.org/"
+    child_welfare_agency: "Kansas Department for Children and Families (DCF)"
+    child_welfare_url: "https://www.dcf.ks.gov/services/pps/Pages/default.aspx"
+    authority_tier: "TIER_0"
+    deep_implementation: false
+
+  KY:
+    name: "Kentucky"
+    fips: "21"
+    legislature_url: "https://legislature.ky.gov/"
+    statutes_url: "https://legislature.ky.gov/Law/Statutes/Pages/default.aspx"
+    admin_code_url: "https://apps.legislature.ky.gov/law/kar/titles.aspx"
+    judiciary_url: "https://www.kycourts.gov/"
+    child_welfare_agency: "Kentucky Department for Community Based Services (DCBS)"
+    child_welfare_url: "https://www.chfs.ky.gov/agencies/dcbs/dpp/cpb/Pages/default.aspx"
+    authority_tier: "TIER_0"
+    deep_implementation: false
+
+  LA:
+    name: "Louisiana"
+    fips: "22"
+    legislature_url: "https://www.legis.la.gov/"
+    statutes_url: "https://www.legis.la.gov/legis/LawSearch.aspx"
+    admin_code_url: "https://www.doa.la.gov/doa/osr/louisiana-administrative-code/"
+    judiciary_url: "https://www.lasc.org/"
+    child_welfare_agency: "Louisiana Department of Children and Family Services (DCFS)"
+    child_welfare_url: "https://www.dcfs.louisiana.gov/page/child-welfare"
+    authority_tier: "TIER_0"
+    deep_implementation: false
+
+  ME:
+    name: "Maine"
+    fips: "23"
+    legislature_url: "https://legislature.maine.gov/"
+    statutes_url: "https://legislature.maine.gov/statutes/"
+    admin_code_url: "https://www.maine.gov/sos/cec/rules/rules.html"
+    judiciary_url: "https://www.courts.maine.gov/"
+    child_welfare_agency: "Maine Office of Child and Family Services (OCFS)"
+    child_welfare_url: "https://www.maine.gov/dhhs/ocfs/cw"
+    authority_tier: "TIER_0"
+    deep_implementation: false
+
+  MD:
+    name: "Maryland"
+    fips: "24"
+    legislature_url: "https://mgaleg.maryland.gov/"
+    statutes_url: "https://mgaleg.maryland.gov/mgawebsite/Laws/Statutes"
+    admin_code_url: "https://dsd.maryland.gov/Pages/COMARSearch.aspx"
+    judiciary_url: "https://www.mdcourts.gov/"
+    child_welfare_agency: "Maryland Social Services Administration (SSA)"
+    child_welfare_url: "https://dhs.maryland.gov/child-protective-services/"
+    authority_tier: "TIER_0"
+    deep_implementation: false
+
+  MA:
+    name: "Massachusetts"
+    fips: "25"
+    legislature_url: "https://malegislature.gov/"
+    statutes_url: "https://malegislature.gov/Laws/GeneralLaws"
+    admin_code_url: "https://www.mass.gov/code-of-massachusetts-regulations-cmr"
+    judiciary_url: "https://www.mass.gov/orgs/massachusetts-court-system"
+    child_welfare_agency: "Massachusetts Department of Children and Families (DCF)"
+    child_welfare_url: "https://www.mass.gov/orgs/department-of-children-and-families"
+    authority_tier: "TIER_0"
+    deep_implementation: false
+
+  MI:
+    name: "Michigan"
+    fips: "26"
+    legislature_url: "https://www.legislature.mi.gov/"
+    statutes_url: "https://www.legislature.mi.gov/(S(1))/mileg.aspx?page=MCLIndex"
+    admin_code_url: "https://ars.apps.lara.state.mi.us/"
+    judiciary_url: "https://www.courts.michigan.gov/"
+    child_welfare_agency: "Michigan Children's Services Agency (MDHHS)"
+    child_welfare_url: "https://www.michigan.gov/mdhhs/adult-child-serv/childrens-services"
+    authority_tier: "TIER_0"
+    deep_implementation: false
+
+  MN:
+    name: "Minnesota"
+    fips: "27"
+    legislature_url: "https://www.revisor.mn.gov/"
+    statutes_url: "https://www.revisor.mn.gov/statutes/"
+    admin_code_url: "https://www.revisor.mn.gov/rules/"
+    judiciary_url: "https://www.mncourts.gov/"
+    child_welfare_agency: "Minnesota Child Safety and Permanency Division (DHS)"
+    child_welfare_url: "https://mn.gov/dhs/people-we-serve/children-and-families/services/child-protection/"
+    authority_tier: "TIER_0"
+    deep_implementation: false
+
+  MS:
+    name: "Mississippi"
+    fips: "28"
+    legislature_url: "https://www.legislature.ms.gov/"
+    statutes_url: "https://www.sos.ms.gov/administrative-code"
+    admin_code_url: "https://www.sos.ms.gov/administrative-code"
+    judiciary_url: "https://courts.ms.gov/"
+    child_welfare_agency: "Mississippi Department of Child Protection Services (MDCPS)"
+    child_welfare_url: "https://www.mdcps.ms.gov/"
+    authority_tier: "TIER_0"
+    deep_implementation: false
+
+  MO:
+    name: "Missouri"
+    fips: "29"
+    legislature_url: "https://www.senate.mo.gov/"
+    statutes_url: "https://revisor.mo.gov/main/Home.aspx"
+    admin_code_url: "https://www.sos.mo.gov/adrules/csr/csr.asp"
+    judiciary_url: "https://www.courts.mo.gov/"
+    child_welfare_agency: "Missouri Children's Division (DSS)"
+    child_welfare_url: "https://dss.mo.gov/cd/"
+    authority_tier: "TIER_0"
+    deep_implementation: false
+
+  MT:
+    name: "Montana"
+    fips: "30"
+    legislature_url: "https://leg.mt.gov/"
+    statutes_url: "https://leg.mt.gov/bills/mca/index.html"
+    admin_code_url: "https://rules.mt.gov/"
+    judiciary_url: "https://courts.mt.gov/"
+    child_welfare_agency: "Montana Child and Family Services Division (CFSD)"
+    child_welfare_url: "https://dphhs.mt.gov/cfsd"
+    authority_tier: "TIER_0"
+    deep_implementation: false
+
+  NE:
+    name: "Nebraska"
+    fips: "31"
+    legislature_url: "https://nebraskalegislature.gov/"
+    statutes_url: "https://nebraskalegislature.gov/laws/browse-statutes.php"
+    admin_code_url: "https://www.sos.nebraska.gov/rules-and-regs/regsearch/"
+    judiciary_url: "https://supremecourt.nebraska.gov/"
+    child_welfare_agency: "Nebraska Division of Children and Family Services (DHHS)"
+    child_welfare_url: "https://dhhs.ne.gov/Pages/Child-Welfare.aspx"
+    authority_tier: "TIER_0"
+    deep_implementation: false
+
+  NV:
+    name: "Nevada"
+    fips: "32"
+    legislature_url: "https://www.leg.state.nv.us/"
+    statutes_url: "https://www.leg.state.nv.us/NRS/"
+    admin_code_url: "https://www.leg.state.nv.us/NAC/"
+    judiciary_url: "https://nvcourts.gov/"
+    child_welfare_agency: "Nevada Division of Child and Family Services (DCFS)"
+    child_welfare_url: "https://dcfs.nv.gov/"
+    authority_tier: "TIER_0"
+    deep_implementation: false
+
+  NH:
+    name: "New Hampshire"
+    fips: "33"
+    legislature_url: "https://www.gencourt.state.nh.us/"
+    statutes_url: "https://www.gencourt.state.nh.us/rsa/html/nhtoc.htm"
+    admin_code_url: "https://www.gencourt.state.nh.us/rules/default.htm"
+    judiciary_url: "https://www.courts.nh.gov/"
+    child_welfare_agency: "New Hampshire Division for Children, Youth and Families (DCYF)"
+    child_welfare_url: "https://www.dhhs.nh.gov/programs-services/child-protection"
+    authority_tier: "TIER_0"
+    deep_implementation: false
+
+  NJ:
+    name: "New Jersey"
+    fips: "34"
+    legislature_url: "https://www.njleg.state.nj.us/"
+    statutes_url: "https://www.njleg.state.nj.us/statutes"
+    admin_code_url: "https://www.lexisnexis.com/hottopics/njcode/"
+    judiciary_url: "https://www.njcourts.gov/"
+    child_welfare_agency: "New Jersey Division of Child Protection and Permanency (DCP&P)"
+    child_welfare_url: "https://www.nj.gov/dcf/about/divisions/dcpp/"
+    authority_tier: "TIER_0"
+    deep_implementation: false
+
+  NM:
+    name: "New Mexico"
+    fips: "35"
+    legislature_url: "https://www.nmlegis.gov/"
+    statutes_url: "https://nmonesource.com/nmos/nmsa/en/nav.do"
+    admin_code_url: "https://www.srca.nm.gov/nmac-rules/"
+    judiciary_url: "https://supremecourt.nmcourts.gov/"
+    child_welfare_agency: "New Mexico Children, Youth and Families Department (CYFD)"
+    child_welfare_url: "https://cyfd.nm.gov/"
+    authority_tier: "TIER_0"
+    deep_implementation: false
+
+  NY:
+    name: "New York"
+    fips: "36"
+    legislature_url: "https://www.nysenate.gov/legislation/laws"
+    statutes_url: "https://www.nysenate.gov/legislation/laws"
+    admin_code_url: "https://dos.ny.gov/state-register"
+    judiciary_url: "https://www.nycourts.gov/"
+    child_welfare_agency: "New York State Office of Children and Family Services (OCFS)"
+    child_welfare_url: "https://ocfs.ny.gov/main/cps/"
+    authority_tier: "TIER_0"
+    deep_implementation: false
+
+  NC:
+    name: "North Carolina"
+    fips: "37"
+    legislature_url: "https://www.ncleg.gov/"
+    statutes_url: "https://www.ncleg.gov/Laws/GeneralStatutes"
+    admin_code_url: "https://www.oah.nc.gov/rules-division/north-carolina-administrative-code"
+    judiciary_url: "https://www.nccourts.gov/"
+    child_welfare_agency: "North Carolina Division of Social Services (NCDHHS)"
+    child_welfare_url: "https://www.ncdhhs.gov/divisions/social-services/child-welfare-services"
+    authority_tier: "TIER_0"
+    deep_implementation: false
+
+  ND:
+    name: "North Dakota"
+    fips: "38"
+    legislature_url: "https://ndlegis.gov/"
+    statutes_url: "https://ndlegis.gov/general-information/north-dakota-century-code"
+    admin_code_url: "https://ndlegis.gov/agency-rules/north-dakota-administrative-code"
+    judiciary_url: "https://www.ndcourts.gov/"
+    child_welfare_agency: "North Dakota Children and Family Services Division (HHS)"
+    child_welfare_url: "https://www.hhs.nd.gov/cfs"
+    authority_tier: "TIER_0"
+    deep_implementation: false
+
+  OH:
+    name: "Ohio"
+    fips: "39"
+    legislature_url: "https://www.legislature.ohio.gov/"
+    statutes_url: "https://codes.ohio.gov/ohio-revised-code"
+    admin_code_url: "https://codes.ohio.gov/ohio-administrative-code"
+    judiciary_url: "https://www.supremecourt.ohio.gov/"
+    child_welfare_agency: "Ohio Department of Job and Family Services (ODJFS) - Office of Families and Children"
+    child_welfare_url: "https://jfs.ohio.gov/foster-care-and-adoption"
+    authority_tier: "TIER_0"
+    deep_implementation: true
+
+  OK:
+    name: "Oklahoma"
+    fips: "40"
+    legislature_url: "http://www.oklegislature.gov/"
+    statutes_url: "https://www.oscn.net/applications/oscn/index.asp?ftdb=STOKST&level=1"
+    admin_code_url: "https://www.sos.ok.gov/oar/Default.aspx"
+    judiciary_url: "https://www.oscn.net/"
+    child_welfare_agency: "Oklahoma Human Services - Child Welfare Services"
+    child_welfare_url: "https://oklahoma.gov/okdhs/services/child-welfare.html"
+    authority_tier: "TIER_0"
+    deep_implementation: false
+
+  OR:
+    name: "Oregon"
+    fips: "41"
+    legislature_url: "https://olis.oregonlegislature.gov/"
+    statutes_url: "https://www.oregonlegislature.gov/bills_laws/Pages/ORS.aspx"
+    admin_code_url: "https://sos.oregon.gov/archives/Pages/oregon_administrative_rules.aspx"
+    judiciary_url: "https://www.courts.oregon.gov/"
+    child_welfare_agency: "Oregon Department of Human Services (ODHS) - Child Welfare"
+    child_welfare_url: "https://www.oregon.gov/odhs/child-welfare/pages/default.aspx"
+    authority_tier: "TIER_0"
+    deep_implementation: false
+
+  PA:
+    name: "Pennsylvania"
+    fips: "42"
+    legislature_url: "https://www.legis.state.pa.us/"
+    statutes_url: "https://www.legis.state.pa.us/cfdocs/legis/LI/Public/cons_index.cfm"
+    admin_code_url: "https://www.pacodeandbulletin.gov/"
+    judiciary_url: "https://www.pacourts.us/"
+    child_welfare_agency: "Pennsylvania Office of Children, Youth, and Families (OCYF)"
+    child_welfare_url: "https://www.dhs.pa.gov/Services/Children/Pages/default.aspx"
+    authority_tier: "TIER_0"
+    deep_implementation: false
+
+  RI:
+    name: "Rhode Island"
+    fips: "44"
+    legislature_url: "https://www.rilegislature.gov/"
+    statutes_url: "http://webserver.rilin.state.ri.us/Statutes/"
+    admin_code_url: "https://rules.sos.ri.gov/"
+    judiciary_url: "https://www.courts.ri.gov/"
+    child_welfare_agency: "Rhode Island Department of Children, Youth, and Families (DCYF)"
+    child_welfare_url: "https://dcyf.ri.gov/"
+    authority_tier: "TIER_0"
+    deep_implementation: false
+
+  SC:
+    name: "South Carolina"
+    fips: "45"
+    legislature_url: "https://www.scstatehouse.gov/"
+    statutes_url: "https://www.scstatehouse.gov/code/statmast.php"
+    admin_code_url: "https://www.scstatehouse.gov/coderegs/statregs.php"
+    judiciary_url: "https://www.sccourts.org/"
+    child_welfare_agency: "South Carolina Department of Social Services (SCDSS)"
+    child_welfare_url: "https://dss.sc.gov/child-well-being/"
+    authority_tier: "TIER_0"
+    deep_implementation: false
+
+  SD:
+    name: "South Dakota"
+    fips: "46"
+    legislature_url: "https://sdlegislature.gov/"
+    statutes_url: "https://sdlegislature.gov/Statutes/Codified_Laws"
+    admin_code_url: "https://sdlegislature.gov/Rules/Administrative_Rules"
+    judiciary_url: "https://ujs.sd.gov/"
+    child_welfare_agency: "South Dakota Division of Child Protection Services (DSS)"
+    child_welfare_url: "https://dss.sd.gov/childprotection/"
+    authority_tier: "TIER_0"
+    deep_implementation: false
+
+  TN:
+    name: "Tennessee"
+    fips: "47"
+    legislature_url: "https://www.capitol.tn.gov/"
+    statutes_url: "https://www.lexisnexis.com/hottopics/tncode/"
+    admin_code_url: "https://publications.tnsosfiles.com/rules/rules.htm"
+    judiciary_url: "https://www.tncourts.gov/"
+    child_welfare_agency: "Tennessee Department of Children's Services (DCS)"
+    child_welfare_url: "https://www.tn.gov/dcs.html"
+    authority_tier: "TIER_0"
+    deep_implementation: false
+
+  TX:
+    name: "Texas"
+    fips: "48"
+    legislature_url: "https://capitol.texas.gov/"
+    statutes_url: "https://statutes.capitol.texas.gov/"
+    admin_code_url: "https://www.sos.state.tx.us/tac/index.shtml"
+    judiciary_url: "https://www.txcourts.gov/"
+    child_welfare_agency: "Texas Department of Family and Protective Services (DFPS) - Child Protective Services (CPS)"
+    child_welfare_url: "https://www.dfps.texas.gov/Child_Protection/"
+    authority_tier: "TIER_0"
+    deep_implementation: false
+
+  UT:
+    name: "Utah"
+    fips: "49"
+    legislature_url: "https://le.utah.gov/"
+    statutes_url: "https://le.utah.gov/xcode/code.html"
+    admin_code_url: "https://rules.utah.gov/"
+    judiciary_url: "https://www.utcourts.gov/"
+    child_welfare_agency: "Utah Division of Child and Family Services (DCFS)"
+    child_welfare_url: "https://dcfs.utah.gov/"
+    authority_tier: "TIER_0"
+    deep_implementation: false
+
+  VT:
+    name: "Vermont"
+    fips: "50"
+    legislature_url: "https://legislature.vermont.gov/"
+    statutes_url: "https://legislature.vermont.gov/statutes/"
+    admin_code_url: "https://sos.vermont.gov/administrative-rules/"
+    judiciary_url: "https://www.vermontjudiciary.org/"
+    child_welfare_agency: "Vermont Family Services Division (AHS)"
+    child_welfare_url: "https://dcf.vermont.gov/fsd"
+    authority_tier: "TIER_0"
+    deep_implementation: false
+
+  VA:
+    name: "Virginia"
+    fips: "51"
+    legislature_url: "https://virginiageneralassembly.gov/"
+    statutes_url: "https://law.lis.virginia.gov/vacode"
+    admin_code_url: "https://law.lis.virginia.gov/admincode/"
+    judiciary_url: "https://www.vacourts.gov/"
+    child_welfare_agency: "Virginia Department of Social Services (VDSS) - Child Protective Services"
+    child_welfare_url: "https://www.dss.virginia.gov/family/cps/index.cgi"
+    authority_tier: "TIER_0"
+    deep_implementation: false
+
+  WA:
+    name: "Washington"
+    fips: "53"
+    legislature_url: "https://leg.wa.gov/"
+    statutes_url: "https://app.leg.wa.gov/rcw/"
+    admin_code_url: "https://app.leg.wa.gov/wac/"
+    judiciary_url: "https://www.courts.wa.gov/"
+    child_welfare_agency: "Washington Department of Children, Youth, and Families (DCYF)"
+    child_welfare_url: "https://dcyf.wa.gov/services/child-welfare-system"
+    authority_tier: "TIER_0"
+    deep_implementation: true
+
+  WV:
+    name: "West Virginia"
+    fips: "54"
+    legislature_url: "https://www.wvlegislature.gov/"
+    statutes_url: "https://www.wvlegislature.gov/WVCODE/Code.cfm"
+    admin_code_url: "https://apps.sos.wv.gov/adlaw/csr/"
+    judiciary_url: "http://www.courtswv.gov/"
+    child_welfare_agency: "West Virginia Bureau for Social Services (DoHS)"
+    child_welfare_url: "https://dhhr.wv.gov/bcf/Services/familyassistance/Pages/Child-Protective-Services.aspx"
+    authority_tier: "TIER_0"
+    deep_implementation: false
+
+  WI:
+    name: "Wisconsin"
+    fips: "55"
+    legislature_url: "https://legis.wisconsin.gov/"
+    statutes_url: "https://docs.legis.wisconsin.gov/statutes"
+    admin_code_url: "https://docs.legis.wisconsin.gov/code"
+    judiciary_url: "https://www.wicourts.gov/"
+    child_welfare_agency: "Wisconsin Division of Safety and Permanence (DCF)"
+    child_welfare_url: "https://dcf.wisconsin.gov/cw-overview"
+    authority_tier: "TIER_0"
+    deep_implementation: false
+
+  WY:
+    name: "Wyoming"
+    fips: "56"
+    legislature_url: "https://www.wyoleg.gov/"
+    statutes_url: "https://www.wyoleg.gov/NXT/gateway.dll?f=templates&fn=default.htm"
+    admin_code_url: "https://rules.wyo.gov/"
+    judiciary_url: "https://www.courts.state.wy.us/"
+    child_welfare_agency: "Wyoming Department of Family Services (DFS)"
+    child_welfare_url: "https://dfs.wyo.gov/services/child-safety-and-protection/"
+    authority_tier: "TIER_0"
+    deep_implementation: false
+
+  DC:
+    name: "District of Columbia"
+    fips: "11"
+    legislature_url: "https://dccouncil.gov/"
+    statutes_url: "https://code.dccouncil.gov/"
+    admin_code_url: "https://www.dcregs.dc.gov/"
+    judiciary_url: "https://www.dccourts.gov/"
+    child_welfare_agency: "DC Child and Family Services Agency (CFSA)"
+    child_welfare_url: "https://cfsa.dc.gov/"
+    authority_tier: "TIER_0"
+    deep_implementation: false

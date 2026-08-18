@@ -1,0 +1,184 @@
+# Specialized CPS / Child Welfare Federal Registry v1.0
+sources:
+  - source_id: CPS_FED_CAPTA
+    jurisdiction: US
+    level: federal
+    authority_tier: TIER_0
+    legal_domain: ["child_welfare", "statutes", "cps_reporting", "investigation"]
+    cps_subdomain: federal_statute
+    source_type: statute
+    title: "Child Abuse Prevention and Treatment Act (CAPTA)"
+    citation_format: "42 U.S.C. § 5101 et seq."
+    publisher:
+      name: "United States Congress"
+      official: true
+      entity_type: legislature
+      contact_url: "https://uscode.house.gov/"
+    canonical_url: "https://uscode.house.gov/view.xhtml?path=/prelim@title42/chapter67&edition=prelim"
+    key_statutory_sections:
+      - "42 U.S.C. § 5106a" # Grants to States for child abuse or neglect prevention and treatment programs
+      - "42 U.S.C. § 5106g" # Definitions
+    topics:
+      intake_screening: true
+      investigation_assessment: true
+      safety_planning: true
+      parent_rights_counsel: true
+      records_discovery: true
+    acquisition_method: api
+    parser_name: uscode_xml_parser
+    update_frequency: monthly
+    cps_priority: 10
+    active: true
+
+  - source_id: CPS_FED_TITLE_IV_E
+    jurisdiction: US
+    level: federal
+    authority_tier: TIER_0
+    legal_domain: ["child_welfare", "statutes", "foster_care", "reasonable_efforts"]
+    cps_subdomain: federal_statute
+    source_type: statute
+    title: "Social Security Act Title IV-E (Foster Care and Adoption Assistance)"
+    citation_format: "42 U.S.C. § 670 et seq."
+    publisher:
+      name: "United States Congress"
+      official: true
+      entity_type: legislature
+      contact_url: "https://uscode.house.gov/"
+    canonical_url: "https://uscode.house.gov/view.xhtml?path=/prelim@title42/chapter7/subchapter4/partE&edition=prelim"
+    key_statutory_sections:
+      - "42 U.S.C. § 671" # State plan requirements (mandatory reasonable efforts)
+      - "42 U.S.C. § 672" # Foster care maintenance payments
+      - "42 U.S.C. § 675" # Definitions (case plan, case review system)
+      - "42 U.S.C. § 675a" # Additional case plan and case review requirements
+    topics:
+      reasonable_efforts: true
+      case_planning_services: true
+      permanency_planning: true
+      disposition_placement: true
+      guardianship_adoption: true
+    acquisition_method: api
+    parser_name: uscode_xml_parser
+    update_frequency: monthly
+    cps_priority: 10
+    active: true
+
+  - source_id: CPS_FED_ICWA
+    jurisdiction: US
+    level: federal
+    authority_tier: TIER_0
+    legal_domain: ["child_welfare", "tribal_law", "icwa", "statutes"]
+    cps_subdomain: federal_statute
+    source_type: statute
+    title: "Indian Child Welfare Act of 1978 (ICWA)"
+    citation_format: "25 U.S.C. § 1901 et seq."
+    publisher:
+      name: "United States Congress"
+      official: true
+      entity_type: legislature
+      contact_url: "https://uscode.house.gov/"
+    canonical_url: "https://uscode.house.gov/view.xhtml?path=/prelim@title25/chapter21&edition=prelim"
+    key_statutory_sections:
+      - "25 U.S.C. § 1903" # Definitions (Indian child, custody proceeding)
+      - "25 U.S.C. § 1911" # Indian tribe jurisdiction over Indian child custody proceedings
+      - "25 U.S.C. § 1912" # Pending court proceedings (Active efforts, Qualified Expert Witness, Beyond a Reasonable Doubt for TPR)
+      - "25 U.S.C. § 1915" # Placement preferences for adoptive/foster placement
+    topics:
+      icwa_tribal_welfare: true
+      emergency_removal: true
+      parent_rights_counsel: true
+      reasonable_efforts: true
+      termination_parental_rights: true
+    standard_of_proof: "Clear and Convincing Evidence (Foster Care) / Beyond a Reasonable Doubt (TPR)"
+    icwa_specific: true
+    acquisition_method: api
+    parser_name: uscode_xml_parser
+    update_frequency: monthly
+    cps_priority: 10
+    active: true
+
+  - source_id: CPS_FED_ICWA_REGS
+    jurisdiction: US
+    level: federal
+    authority_tier: TIER_0
+    legal_domain: ["child_welfare", "tribal_law", "icwa", "regulations"]
+    cps_subdomain: federal_regulation
+    source_type: regulation
+    title: "BIA ICWA Regulations (25 CFR Part 23)"
+    citation_format: "25 C.F.R. Part 23"
+    publisher:
+      name: "Bureau of Indian Affairs"
+      official: true
+      entity_type: executive_agency
+      contact_url: "https://www.ecfr.gov/"
+    canonical_url: "https://www.ecfr.gov/current/title-25/chapter-I/subchapter-D/part-23"
+    key_statutory_sections:
+      - "25 C.F.R. § 23.107" # How should a State court determine if there is reason to know the child is an Indian child?
+      - "25 C.F.R. § 23.111" # Notice requirements
+      - "25 C.F.R. § 23.120" # What standards apply for active efforts?
+      - "25 C.F.R. § 23.121" # Standard of proof for foster-care placement
+      - "25 C.F.R. § 23.122" # Standard of proof for termination of parental rights
+      - "25 C.F.R. § 23.130" # Placement preferences in adoptive placements
+    topics:
+      icwa_tribal_welfare: true
+      reasonable_efforts: true
+      parent_rights_counsel: true
+    icwa_specific: true
+    acquisition_method: api
+    parser_name: ecfr_api_parser
+    update_frequency: monthly
+    cps_priority: 10
+    active: true
+
+  - source_id: CPS_FED_ASFA
+    jurisdiction: US
+    level: federal
+    authority_tier: TIER_0
+    legal_domain: ["child_welfare", "statutes", "permanency", "tpr_timelines"]
+    cps_subdomain: federal_statute
+    source_type: statute
+    title: "Adoption and Safe Families Act of 1997 (ASFA)"
+    citation_format: "Pub. L. 105-89"
+    publisher:
+      name: "United States Congress"
+      official: true
+      entity_type: legislature
+      contact_url: "https://www.congress.gov/"
+    canonical_url: "https://www.congress.gov/bill/105th-congress/house-bill/867"
+    key_statutory_sections:
+      - "42 U.S.C. § 675(5)(E)" # 15 of 22 months rule for filing TPR
+    topics:
+      permanency_planning: true
+      termination_parental_rights: true
+      reasonable_efforts: true
+    mandatory_timeframes_days:
+      tpr_filing_requirement_months: 15
+    acquisition_method: api
+    parser_name: congress_api_parser
+    update_frequency: monthly
+    cps_priority: 10
+    active: true
+
+  - source_id: CPS_FED_FFPSA
+    jurisdiction: US
+    level: federal
+    authority_tier: TIER_0
+    legal_domain: ["child_welfare", "statutes", "prevention_services", "kinship"]
+    cps_subdomain: federal_statute
+    source_type: statute
+    title: "Family First Prevention Services Act (FFPSA)"
+    citation_format: "Pub. L. 115-123"
+    publisher:
+      name: "United States Congress"
+      official: true
+      entity_type: legislature
+      contact_url: "https://www.congress.gov/"
+    canonical_url: "https://www.congress.gov/bill/115th-congress/house-bill/1892"
+    topics:
+      safety_planning: true
+      case_planning_services: true
+      disposition_placement: true
+    acquisition_method: api
+    parser_name: congress_api_parser
+    update_frequency: monthly
+    cps_priority: 9
+    active: true

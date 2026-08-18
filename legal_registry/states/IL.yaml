@@ -1,0 +1,172 @@
+# Illinois State (IL) Legal Source Registry v1.0
+state_id: IL
+state_name: "Illinois"
+fips: "17"
+
+sources:
+  - source_id: IL_ILCS
+    jurisdiction: US-IL
+    level: state
+    authority_tier: TIER_0
+    legal_domain: ["statutes", "general"]
+    source_type: statute
+    title: "Illinois Compiled Statutes (ILCS)"
+    citation_format: "{chapter} ILCS {act}/{section}"
+    publisher:
+      name: "Illinois General Assembly"
+      official: true
+      entity_type: legislature
+      contact_url: "https://www.ilga.gov/"
+    canonical_url: "https://www.ilga.gov/legislation/ilcs/ilcs.asp"
+    search_url: "https://www.ilga.gov/legislation/ilcs/ilcs.asp"
+    temporal:
+      versioned: true
+      effective_dates_available: true
+      historical_versions_available: true
+    acquisition_method: html_scrape
+    parser_name: illinois_ilcs_parser
+    update_frequency: daily
+    cps_priority: 10
+    active: true
+
+  - source_id: IL_ADMIN_CODE
+    jurisdiction: US-IL
+    level: state
+    authority_tier: TIER_0
+    legal_domain: ["regulations", "administrative_code"]
+    source_type: regulation
+    title: "Illinois Administrative Code"
+    citation_format: "{title} Ill. Adm. Code § {section}"
+    publisher:
+      name: "Illinois Secretary of State - Index Department"
+      official: true
+      entity_type: executive_agency
+      contact_url: "https://www.ilsos.gov/departments/index/admincode/home.html"
+    canonical_url: "https://www.ilsos.gov/departments/index/admincode/home.html"
+    temporal:
+      versioned: true
+      effective_dates_available: true
+      historical_versions_available: true
+    acquisition_method: html_scrape
+    parser_name: illinois_admin_code_parser
+    update_frequency: weekly
+    cps_priority: 9
+    active: true
+
+  - source_id: IL_SUPREME_COURT_RULES
+    jurisdiction: US-IL
+    level: state
+    authority_tier: TIER_0
+    legal_domain: ["court_rules", "civil_procedure", "evidence", "appeals"]
+    source_type: court_rule
+    title: "Illinois Supreme Court Rules"
+    citation_format: "Ill. S. Ct. R. {rule}"
+    publisher:
+      name: "Supreme Court of Illinois"
+      official: true
+      entity_type: court
+      contact_url: "https://www.illinoiscourts.gov/rules/supreme-court-rules"
+    canonical_url: "https://www.illinoiscourts.gov/rules/supreme-court-rules"
+    temporal:
+      versioned: true
+      effective_dates_available: true
+      historical_versions_available: true
+    acquisition_method: html_scrape
+    parser_name: illinois_court_rules_parser
+    update_frequency: monthly
+    cps_priority: 9
+    active: true
+
+  - source_id: IL_SUPREME_COURT_OPINIONS
+    jurisdiction: US-IL
+    level: state
+    authority_tier: TIER_0
+    legal_domain: ["case_law", "supreme_court_opinions"]
+    source_type: court_opinion
+    title: "Illinois Supreme Court Opinions"
+    citation_format: "{year} IL {docket}"
+    publisher:
+      name: "Supreme Court of Illinois"
+      official: true
+      entity_type: court
+      contact_url: "https://www.illinoiscourts.gov/top-level-opinions"
+    canonical_url: "https://www.illinoiscourts.gov/top-level-opinions"
+    temporal:
+      versioned: true
+      effective_dates_available: true
+      historical_versions_available: true
+    acquisition_method: html_scrape
+    parser_name: illinois_opinions_parser
+    update_frequency: daily
+    cps_priority: 10
+    active: true
+
+  - source_id: IL_APPELLATE_OPINIONS
+    jurisdiction: US-IL
+    level: state
+    authority_tier: TIER_0
+    legal_domain: ["case_law", "appellate_opinions"]
+    source_type: court_opinion
+    title: "Illinois Appellate Court Opinions (1st through 5th Districts)"
+    citation_format: "{year} IL App ({district}) {docket}"
+    publisher:
+      name: "Illinois Appellate Court"
+      official: true
+      entity_type: court
+      contact_url: "https://www.illinoiscourts.gov/top-level-opinions"
+    canonical_url: "https://www.illinoiscourts.gov/top-level-opinions"
+    temporal:
+      versioned: true
+      effective_dates_available: true
+      historical_versions_available: true
+    acquisition_method: html_scrape
+    parser_name: illinois_opinions_parser
+    update_frequency: daily
+    cps_priority: 10
+    active: true
+
+  - source_id: IL_COOK_COUNTY_RULES
+    jurisdiction: US-IL
+    level: county
+    authority_tier: TIER_0
+    legal_domain: ["local_rules", "cook_county", "child_protection_division"]
+    source_type: court_rule
+    title: "Circuit Court of Cook County Rules - Part 11: Child Protection Division"
+    publisher:
+      name: "Circuit Court of Cook County, Illinois"
+      official: true
+      entity_type: court
+      contact_url: "https://www.cookcountycourt.org/"
+    canonical_url: "https://www.cookcountycourt.org/rules"
+    temporal:
+      versioned: true
+      effective_dates_available: true
+      historical_versions_available: true
+    acquisition_method: html_scrape
+    parser_name: cook_county_rules_parser
+    update_frequency: monthly
+    cps_priority: 9
+    active: true
+
+  - source_id: IL_DCFS_POLICY_GUIDES
+    jurisdiction: US-IL
+    level: state
+    authority_tier: TIER_0
+    legal_domain: ["child_welfare", "agency_policy", "procedures", "policy_guides"]
+    source_type: agency_policy
+    title: "Illinois DCFS Rules, Policy Guides, and Procedures Manual"
+    publisher:
+      name: "Illinois Department of Children and Family Services"
+      official: true
+      entity_type: executive_agency
+      contact_url: "https://dcfs.illinois.gov/"
+    canonical_url: "https://dcfs.illinois.gov/about-us/rules-and-codes.html"
+    temporal:
+      versioned: true
+      effective_dates_available: true
+      historical_versions_available: true
+    acquisition_method: html_scrape
+    parser_name: illinois_dcfs_parser
+    update_frequency: weekly
+    cps_priority: 10
+    active: true

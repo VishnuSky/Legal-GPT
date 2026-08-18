@@ -1,0 +1,35 @@
+app:
+  name: "Legal-GPT"
+  version: "0.1.0"
+  environment: "development"
+
+inference:
+  provider: "lm_studio" # Options: "lm_studio", "ollama", "openwebui", "mock"
+  lm_studio:
+    base_url: "http://localhost:1234/v1"
+    default_model: "qwen2.5-7b-instruct"
+    reasoning_model: "qwen2.5-32b-instruct"
+  ollama:
+    base_url: "http://localhost:11434/v1"
+    default_model: "llama3.1:8b"
+  temperature: 0.1
+  max_tokens: 4096
+
+storage:
+  database_url: "sqlite:///legal_gpt.db"
+  data_dir: "data"
+  registry_dir: "legal_registry"
+  cache_dir: ".cache"
+
+cps:
+  deep_states:
+    - "WA"
+    - "IL"
+    - "OH"
+  icwa_strict_mode: true
+  uccjea_strict_mode: true
+
+verification:
+  strict_citation_enforcement: true
+  allow_unverified_claims: false
+  min_authority_score: 0.70
