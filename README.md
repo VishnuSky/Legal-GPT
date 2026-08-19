@@ -83,16 +83,19 @@ pytest tests/ -v
 
 ### 3. Interactive CLI Queries
 ```bash
-# Query a Washington State CPS scenario with jurisdiction locking
-python cli.py query "CPS took my child without court order in Skagit County and held no hearing within 72 hours" --state WA --county Skagit
+# Query statutory procedures, notice requirements, and hearing deadlines in Washington State
+python cli.py query "What are the statutory notice requirements and hearing deadlines for emergency temporary custody under dependency procedure?" --state WA --county Skagit
 
-# Query with an explicit event date for temporal law resolution
-python cli.py query "CPS removed child without notice" --state WA --event-date 2025-06-15
+# Query child welfare procedure with an event date for temporal law validation
+python cli.py query "What statutory standards apply for administrative review and shelter care hearings?" --state IL --county Cook --event-date 2025-06-15
+
+# Evaluate ICWA compliance, active efforts, and tribal notice requirements
+python cli.py query "What are the required legal standards for ICWA inquiry, active efforts, and designated tribal notice?" --state WA
 
 # Verify a legal citation against the canonical registry
 python cli.py verify-citation "RCW 13.34.065"
 
-# View Registry Summary
+# View Registry Summary across federal, state, tribal, and territorial domains
 python cli.py registry-summary
 ```
 

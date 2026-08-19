@@ -74,7 +74,7 @@ def test_ingestion_connectors_initialization():
 
 def test_seed_documents_integrity():
     docs = build_seed_documents()
-    assert len(docs) == 5
+    assert len(docs) == 9
     for d in docs:
         assert d.content_hash != ""
         assert len(d.chunks) >= 1

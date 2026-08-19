@@ -69,14 +69,18 @@ class IntakeClassifier:
 
         # 4. CPS Stage detection
         stage = None
-        if any(w in lower_q for w in ["took my child", "removed", "emergency custody", "police took", "without notice"]):
+        if any(w in lower_q for w in ["emergency temporary custody", "emergency removal", "emergency custody", "took my child", "police took", "without court order", "imminent danger", "imminent harm"]):
             stage = CPSStage.EMERGENCY_REMOVAL
-        elif any(w in lower_q for w in ["72 hour", "shelter care", "temporary custody hearing", "48 hour"]):
+        elif any(w in lower_q for w in ["shelter care", "detention hearing", "temporary custody hearing", "adversary hearing", "72 hour", "48 hour", "hearing deadline", "section 1028", "1028 hearing"]):
             stage = CPSStage.SHELTER_CARE_HEARING
-        elif any(w in lower_q for w in ["dependency petition", "fact finding", "adjudication", "allegations of abuse"]):
+        elif any(w in lower_q for w in ["dependency petition", "fact finding", "adjudication", "jurisdictional hearing", "jurisdiction hearing", "allegations of abuse", "section 300"]):
             stage = CPSStage.FACT_FINDING_ADJUDICATION
-        elif any(w in lower_q for w in ["terminate", "tpr", "permanent custody", "termination of parental rights"]):
+        elif any(w in lower_q for w in ["terminate", "termination of parental rights", "tpr", "permanent custody", "sever parental rights", "adoptability"]):
             stage = CPSStage.TPR_OR_GUARDIANSHIP
+        elif any(w in lower_q for w in ["visitation", "family time", "supervised visits", "visitation schedule"]):
+            stage = CPSStage.VISITATION_FAMILY_TIME
+        elif any(w in lower_q for w in ["permanency", "permanency planning", "12 month review"]):
+            stage = CPSStage.PERMANENCY_PLANNING
 
         # 5. ICWA & Interstate flags
         is_tribal = any(w in lower_q for w in ["tribal", "tribe", "indian child", "native american", "icwa", "wicwa", "reservation"])
