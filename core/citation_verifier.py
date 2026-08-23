@@ -12,6 +12,7 @@ class CitationVerificationRecord(BaseModel):
     verified: bool
     authority_tier: str
     publisher_name: str
+    jurisdiction: str = "US"
     source_url: Optional[str] = None
     rejection_reason: Optional[str] = None
 
@@ -67,6 +68,7 @@ class CitationVerifier:
                                     verified=True,
                                     authority_tier="TIER_0",
                                     publisher_name=cps_source.publisher.name,
+                                    jurisdiction="US-WA",
                                     source_url=cps_source.canonical_url,
                                 )
                 # Validate Title in RCW
@@ -77,6 +79,7 @@ class CitationVerifier:
                         verified=True,
                         authority_tier="TIER_0",
                         publisher_name="Washington State Legislature",
+                        jurisdiction="US-WA",
                         source_url=f"https://app.leg.wa.gov/rcw/default.aspx?cite={sec_str}",
                     )
                 return CitationVerificationRecord(
@@ -85,6 +88,7 @@ class CitationVerifier:
                     verified=False,
                     authority_tier="TIER_5",
                     publisher_name="UNVERIFIED",
+                    jurisdiction="US-WA",
                     rejection_reason=f"RCW Title '{title}' is unrecognized in Washington State Code."
                 )
 
@@ -104,6 +108,7 @@ class CitationVerifier:
                                     verified=True,
                                     authority_tier="TIER_0",
                                     publisher_name=cps_source.publisher.name,
+                                    jurisdiction="US-IL",
                                     source_url=cps_source.canonical_url,
                                 )
                 if chapter in cls.VALID_ILCS_CHAPTERS:
@@ -113,6 +118,7 @@ class CitationVerifier:
                         verified=True,
                         authority_tier="TIER_0",
                         publisher_name="Illinois General Assembly",
+                        jurisdiction="US-IL",
                         source_url="https://www.ilga.gov/legislation/ilcs/ilcs.asp",
                     )
                 return CitationVerificationRecord(
@@ -121,6 +127,7 @@ class CitationVerifier:
                     verified=False,
                     authority_tier="TIER_5",
                     publisher_name="UNVERIFIED",
+                    jurisdiction="US-IL",
                     rejection_reason=f"ILCS Chapter '{chapter}' is unrecognized in Illinois Compiled Statutes."
                 )
 
@@ -141,6 +148,7 @@ class CitationVerifier:
                                     verified=True,
                                     authority_tier="TIER_0",
                                     publisher_name=cps_source.publisher.name,
+                                    jurisdiction="US-OH",
                                     source_url=cps_source.canonical_url,
                                 )
                 if chapter in cls.VALID_ORC_CHAPTERS:
@@ -150,6 +158,7 @@ class CitationVerifier:
                         verified=True,
                         authority_tier="TIER_0",
                         publisher_name="Ohio General Assembly",
+                        jurisdiction="US-OH",
                         source_url=f"https://codes.ohio.gov/ohio-revised-code/section-{sec_str}",
                     )
                 return CitationVerificationRecord(
@@ -158,6 +167,7 @@ class CitationVerifier:
                     verified=False,
                     authority_tier="TIER_5",
                     publisher_name="UNVERIFIED",
+                    jurisdiction="US-OH",
                     rejection_reason=f"ORC Chapter '{chapter}' is unrecognized in Ohio Revised Code."
                 )
 

@@ -32,6 +32,7 @@ def query(
     state: Optional[str] = typer.Option(None, "--state", "-s", help="Jurisdiction state code e.g. WA, IL, OH, CA, TX, NY"),
     county: Optional[str] = typer.Option(None, "--county", "-c", help="County e.g. Skagit, Cook, Cuyahoga"),
     event_date: Optional[str] = typer.Option(None, "--event-date", "-d", help="Date event occurred (YYYY-MM-DD) for temporal validity"),
+    mode: str = typer.Option("standard", "--mode", "-m", help="Persona mode: standard, self_represented, investigator, attorney, court"),
 ):
     """Analyze a legal question or case situation with jurisdiction locking, temporal checks, and citation verification."""
     if not prompt.strip():
@@ -51,13 +52,16 @@ def query(
         console.print(f"[bold yellow]Jurisdiction Locked to:[/bold yellow] {state}" + (f" ({county})" if county else ""))
     if parsed_date:
         console.print(f"[bold magenta]Temporal Evaluation Date:[/bold magenta] {parsed_date.isoformat()}")
+    if mode != "standard":
+        console.print(f"[bold green]Persona Review Mode:[/bold green] {mode}")
 
     try:
         resp = orchestrator.process_query(
             query=prompt,
             override_state=state,
             override_county=county,
-            event_date=parsed_date
+            event_date=parsed_date,
+            persona_mode=mode # type: ignore
         )
         console.print("\n" + resp.render_markdown() + "\n")
     except Exception as e:

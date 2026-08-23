@@ -2,19 +2,27 @@
 
 import os
 from datetime import date
-from typing import Optional, Dict, Any, List
+from typing import Optional, Dict, Any, List, Literal
 from agents.intake_classifier import IntakeClassifier, IntakeClassificationResult
 from agents.response_formatter import StandardLegalResponse
+from agents.adversarial_reviewer import AdversarialReviewer, AdversarialCounterargument
+from agents.human_review_modes import PersonaRenderer
 from core.jurisdiction import JurisdictionEngine, JurisdictionContext
 from core.temporal import TemporalEngine, TemporalValidityResult
 from core.citation_verifier import CitationVerifier
+from core.proposition_verifier import PropositionVerifier, PropositionVerificationReport, PropositionStatus
+from core.procedural_engine import procedural_engine, ProceduralMotionGuide
+from core.temporal_graph import temporal_graph, LawAtDateResult
+from core.authority_calculator import DynamicAuthorityCalculator, AuthorityTier
 from cps.lifecycle import CPSLifecycleEngine, CPSStage
 from cps.parent_rights import ParentRightsAuditor
 from cps.icwa_engine import ICWAEngine
 from cps.interstate import InterstateEngine
+from cps.knowledge_graph import cps_knowledge_graph, CPSLifecycleStage
 from legal_registry.loader import default_registry
 from normalization.models import TemporalMetadata
 from storage.vector_store import SimpleHybridStore, SearchResult
+from audit.ledger import audit_ledger, AuditLogEntry
 
 
 class LegalGPTOrchestrator:
@@ -41,7 +49,8 @@ class LegalGPTOrchestrator:
         tribe_notified: Optional[bool] = None,
         notice_given: Optional[bool] = None,
         counsel_present: Optional[bool] = None,
-        services_offered: Optional[bool] = None
+        services_offered: Optional[bool] = None,
+        persona_mode: Literal["standard", "self_represented", "investigator", "attorney", "court"] = "standard"
     ) -> StandardLegalResponse:
         lower_q = query.lower()
 
@@ -83,7 +92,7 @@ class LegalGPTOrchestrator:
             legal_issues.append("Jurisdiction Not Specified (Illustrating with Washington State Reference Model)")
             facts_change.append("CRITICAL: Jurisdiction is unstated. Statutory timelines, court rules, and agency procedures vary significantly between states.")
 
-        # CPS Stage Evaluation
+        # CPS Stage Evaluation via Lifecycle & Knowledge Graph
         if intake.identified_cps_stage:
             stage_req = CPSLifecycleEngine.get_stage_requirements(target_state, intake.identified_cps_stage)
             if stage_req:
@@ -169,30 +178,56 @@ class LegalGPTOrchestrator:
                 "findings, immediate statutory notice to parents, and a mandatory court hearing with court-appointed counsel."
             )
 
-        # Step 4: Hybrid Store Excerpt Retrieval
+        # Step 4: Procedural Motion Engine Integration
+        motion_guides = procedural_engine.get_guides_for_posture(
+            jurisdiction=f"US-{target_state}",
+            posture="Shelter" if "shelter" in lower_q else "Removal"
+        )
+        if motion_guides:
+            guide = motion_guides[0]
+            analysis_parts.append(
+                f"### Procedural Remedy & Motion Guide: {guide.motion_name}\n"
+                f"- **Governing Rule/Statute**: `{guide.governing_court_rule}` / `{guide.governing_statute}`\n"
+                f"- **Deadline**: {guide.statutory_deadline}\n"
+                f"- **Service Requirements**: {guide.service_requirements}\n"
+                f"- **Required Exhibits**: {', '.join(guide.required_exhibits_and_forms)}"
+            )
+
+        # Step 5: Adversarial Counterargument Review
+        stage_name_str = intake.identified_cps_stage.value if intake.identified_cps_stage else "EMERGENCY_REMOVAL"
+        counterarguments: List[AdversarialCounterargument] = AdversarialReviewer.review_case_theory(
+            state=target_state,
+            stage=stage_name_str,
+            notice_given=inferred_notice,
+            counsel_present=inferred_counsel,
+            services_offered=inferred_services,
+            is_icwa=intake.is_tribal_icwa_matter
+        )
+
+        # Step 6: Hybrid Store Excerpt Retrieval
         search_results = self.vector_store.search(query=query, jurisdiction=f"US-{target_state}", top_k=2)
+        chunks_used_ids = []
         if search_results:
             excerpts = []
             for sr in search_results:
                 if sr.citation:
                     controlling_auth.append(sr.citation)
+                chunks_used_ids.append(sr.chunk_id)
                 excerpts.append(f"> **{sr.heading or sr.citation or 'Statutory Authority'}**: \"{sr.text[:220]}...\"")
             if excerpts:
                 analysis_parts.append("### Relevant Authoritative Excerpts:\n" + "\n\n".join(excerpts))
 
-        # Step 5: Temporal Engine Integration
+        # Step 7: Temporal Engine & Point-in-Time Check
         if target_event_date:
-            sample_temporal = TemporalMetadata(
-                enacted_date=date(1977, 1, 1),
-                effective_date=date(1977, 7, 1),
-                repealed_date=None,
-                is_current=True
-            )
-            temp_res: TemporalValidityResult = TemporalEngine.check_validity_on_date(sample_temporal, target_event_date)
-            if temp_res.is_valid_on_date:
-                temporal_notes.append(f"Temporal Check: Applicable statutory frameworks verified in effect on event date {target_event_date.isoformat()}.")
-            else:
-                temporal_notes.append(f"Temporal Notice: {temp_res.reason}")
+            for auth_item in controlling_auth[:2]:
+                first_cite = CitationVerifier.extract_citations(auth_item)
+                if first_cite:
+                    law_at_date: LawAtDateResult = temporal_graph.evaluate_law_at_date(
+                        citation=first_cite[0],
+                        jurisdiction=f"US-{target_state}",
+                        target_date=target_event_date
+                    )
+                    temporal_notes.append(law_at_date.analysis)
 
         facts_change.extend([
             "Whether formal written notice and summons were personally served on the parent.",
@@ -206,14 +241,14 @@ class LegalGPTOrchestrator:
             "Active attorney representation status on the court docket."
         ])
 
-        # Step 6: Verification & Anti-Hallucination Audit
+        # Step 8: Multi-Stage Proposition & Citation Verification
         citations_to_verify: List[str] = []
         for auth_str in controlling_auth:
             citations_to_verify.extend(CitationVerifier.extract_citations(auth_str))
 
         verified_records = [CitationVerifier.verify_citation(c) for c in set(citations_to_verify)]
 
-        # Step 7: Cross-Jurisdiction Contamination Check
+        # Step 9: Cross-Jurisdiction Contamination Check
         contamination_errors = JurisdictionEngine.detect_cross_contamination(
             context=jurisdiction_ctx,
             citations=citations_to_verify
@@ -227,7 +262,7 @@ class LegalGPTOrchestrator:
 
         conflicting_text = "\n".join(temporal_notes) if temporal_notes else None
 
-        return StandardLegalResponse(
+        base_response = StandardLegalResponse(
             jurisdiction=jurisdiction_desc,
             legal_issues=legal_issues,
             short_answer=f"Under {target_state} law, actions in this matter are governed by strict statutory timeframes, mandatory parent notice, and required court hearings.",
@@ -239,3 +274,30 @@ class LegalGPTOrchestrator:
             what_user_should_verify=verify_items,
             verified_sources=verified_records
         )
+
+        # Log session into Immutable AI Audit Ledger
+        audit_entry = audit_ledger.record_session(
+            user_query=query,
+            jurisdiction=jurisdiction_desc,
+            authorities_used=base_response.controlling_authority,
+            output_text=base_response.render_markdown(),
+            retrieval_queries=[query],
+            chunks_used=chunks_used_ids,
+            counterarguments_count=len(counterarguments)
+        )
+
+        # Persona Rendering Transformation if requested
+        if persona_mode == "self_represented":
+            rendered = PersonaRenderer.render_self_represented(base_response, counterarguments)
+            base_response.analysis = rendered
+        elif persona_mode == "investigator":
+            rendered = PersonaRenderer.render_investigator(base_response)
+            base_response.analysis = rendered
+        elif persona_mode == "attorney":
+            rendered = PersonaRenderer.render_attorney_memo(base_response, counterarguments)
+            base_response.analysis = rendered
+        elif persona_mode == "court":
+            rendered = PersonaRenderer.render_court_review(base_response, session_id=audit_entry.session_id)
+            base_response.analysis = rendered
+
+        return base_response
