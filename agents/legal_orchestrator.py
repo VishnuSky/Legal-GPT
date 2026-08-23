@@ -1,5 +1,6 @@
 """Legal GPT Master Multi-Agent Orchestrator."""
 
+import os
 from datetime import date
 from typing import Optional, Dict, Any, List
 from agents.intake_classifier import IntakeClassifier, IntakeClassificationResult
@@ -13,11 +14,22 @@ from cps.icwa_engine import ICWAEngine
 from cps.interstate import InterstateEngine
 from legal_registry.loader import default_registry
 from normalization.models import TemporalMetadata
+from storage.vector_store import SimpleHybridStore, SearchResult
 
 
 class LegalGPTOrchestrator:
-    def __init__(self):
+    def __init__(self, db_path: str = "legal_gpt.db"):
         self.registry = default_registry
+        self.db_path = db_path
+        self.vector_store = SimpleHybridStore()
+        self._init_vector_store()
+
+    def _init_vector_store(self):
+        if os.path.exists(self.db_path):
+            try:
+                self.vector_store.load_from_database(self.db_path)
+            except Exception:
+                pass
 
     def process_query(
         self,
@@ -133,7 +145,7 @@ class LegalGPTOrchestrator:
         # Fallback authorities if general
         if not controlling_auth:
             if target_state == "WA":
-                controlling_auth.append("RCW 13.34.050 (Emergency removal) & RCW 13.34.065 (Shelter care)")
+                controlling_auth.append("RCW 13.34.050 & RCW 13.34.065")
                 legal_issues.append("Washington Child Welfare / Dependency Procedure")
             elif target_state == "IL":
                 controlling_auth.append("705 ILCS 405/2-6 & 705 ILCS 405/2-10")
@@ -141,6 +153,15 @@ class LegalGPTOrchestrator:
             elif target_state == "OH":
                 controlling_auth.append("ORC § 2151.31 & ORC § 2151.314")
                 legal_issues.append("Ohio Revised Code / Juvenile Shelter Care")
+            elif target_state == "CA":
+                controlling_auth.append("Cal. Welf. & Inst. Code § 300 & § 315")
+                legal_issues.append("California Juvenile Dependency Procedure")
+            elif target_state == "TX":
+                controlling_auth.append("Tex. Fam. Code § 262.201")
+                legal_issues.append("Texas Family Code Child Protection Procedure")
+            elif target_state == "NY":
+                controlling_auth.append("N.Y. Fam. Ct. Act § 1024 & § 1028")
+                legal_issues.append("New York Family Court Act Article 10")
 
         if not analysis_parts:
             analysis_parts.append(
@@ -148,7 +169,18 @@ class LegalGPTOrchestrator:
                 "findings, immediate statutory notice to parents, and a mandatory court hearing with court-appointed counsel."
             )
 
-        # Step 4: Temporal Engine Integration
+        # Step 4: Hybrid Store Excerpt Retrieval
+        search_results = self.vector_store.search(query=query, jurisdiction=f"US-{target_state}", top_k=2)
+        if search_results:
+            excerpts = []
+            for sr in search_results:
+                if sr.citation:
+                    controlling_auth.append(sr.citation)
+                excerpts.append(f"> **{sr.heading or sr.citation or 'Statutory Authority'}**: \"{sr.text[:220]}...\"")
+            if excerpts:
+                analysis_parts.append("### Relevant Authoritative Excerpts:\n" + "\n\n".join(excerpts))
+
+        # Step 5: Temporal Engine Integration
         if target_event_date:
             sample_temporal = TemporalMetadata(
                 enacted_date=date(1977, 1, 1),
@@ -174,14 +206,14 @@ class LegalGPTOrchestrator:
             "Active attorney representation status on the court docket."
         ])
 
-        # Step 5: Verification & Anti-Hallucination Audit
+        # Step 6: Verification & Anti-Hallucination Audit
         citations_to_verify: List[str] = []
         for auth_str in controlling_auth:
             citations_to_verify.extend(CitationVerifier.extract_citations(auth_str))
 
         verified_records = [CitationVerifier.verify_citation(c) for c in set(citations_to_verify)]
 
-        # Step 6: Cross-Jurisdiction Contamination Check
+        # Step 7: Cross-Jurisdiction Contamination Check
         contamination_errors = JurisdictionEngine.detect_cross_contamination(
             context=jurisdiction_ctx,
             citations=citations_to_verify

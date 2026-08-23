@@ -1,10 +1,10 @@
-"""Local Semantic & Lexical Hybrid Vector Store."""
+"""Local Semantic & Lexical Hybrid Vector Store with BM25 Search."""
 
 import math
 import re
 from typing import List, Dict, Any, Optional
 from pydantic import BaseModel
-from normalization.models import LegalChunk
+from normalization.models import LegalChunk, LegalDocument
 
 
 class SearchResult(BaseModel):
@@ -33,7 +33,7 @@ class SimpleHybridStore:
             self.chunks[c.chunk_id] = c
             self.doc_index[c.chunk_id] = meta
 
-            tokens = self._tokenize(c.text)
+            tokens = self._tokenize(c.text + " " + (c.heading or ""))
             self.doc_lengths[c.chunk_id] = len(tokens)
             tf = {}
             for t in tokens:
@@ -42,6 +42,23 @@ class SimpleHybridStore:
 
         total_len = sum(self.doc_lengths.values())
         self.avg_doc_len = total_len / max(len(self.doc_lengths), 1)
+
+    def add_document(self, doc: LegalDocument):
+        doc_meta = {
+            "citation": doc.citation,
+            "jurisdiction": doc.jurisdiction,
+            "document_type": doc.document_type,
+            "title": doc.title,
+            "source_url": doc.source_url
+        }
+        self.add_chunks(doc.chunks, doc_metadata=doc_meta)
+
+    def load_from_database(self, db_path: str = "legal_gpt.db"):
+        from storage.db import LegalDatabase
+        db = LegalDatabase(db_path=db_path)
+        docs = db.get_all_documents()
+        for doc in docs:
+            self.add_document(doc)
 
     def _tokenize(self, text: str) -> List[str]:
         return [w.lower() for w in re.findall(r"\b\w+\b", text)]
@@ -53,6 +70,8 @@ class SimpleHybridStore:
         k1 = 1.5
         b = 0.75
         N = len(self.chunks)
+        if N == 0:
+            return []
 
         for token in q_tokens:
             df = sum(1 for cid in self.chunks if token in self.term_freqs.get(cid, {}))
@@ -63,7 +82,8 @@ class SimpleHybridStore:
             for cid, chunk in self.chunks.items():
                 if jurisdiction:
                     doc_meta = self.doc_index.get(cid, {})
-                    if doc_meta.get("jurisdiction") and doc_meta.get("jurisdiction") not in (jurisdiction, "US"):
+                    doc_juris = doc_meta.get("jurisdiction")
+                    if doc_juris and doc_juris not in (jurisdiction, "US", "TRIBAL"):
                         continue
 
                 tf = self.term_freqs.get(cid, {}).get(token, 0)
@@ -82,7 +102,7 @@ class SimpleHybridStore:
                 document_id=chunk.document_id,
                 heading=chunk.heading,
                 text=chunk.text,
-                score=score,
+                score=round(score, 4),
                 citation=doc_meta.get("citation"),
                 jurisdiction=doc_meta.get("jurisdiction")
             ))

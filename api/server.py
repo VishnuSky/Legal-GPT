@@ -6,11 +6,13 @@ from typing import Optional, List, Dict, Any
 from datetime import date
 from agents.legal_orchestrator import LegalGPTOrchestrator
 from legal_registry.loader import default_registry
+from storage.vector_store import SimpleHybridStore
+from ingestion.pipeline import IngestionPipeline
 
 app = FastAPI(
     title="Legal-GPT API",
     description="Jurisdiction-Aware, Temporal, Citation-Verified Legal Intelligence Platform for Child Welfare & General Legal Work",
-    version="0.1.1"
+    version="0.2.0"
 )
 
 orchestrator = LegalGPTOrchestrator()
@@ -18,7 +20,7 @@ orchestrator = LegalGPTOrchestrator()
 
 class LegalQueryRequest(BaseModel):
     query: str = Field(..., description="Fact pattern or legal research inquiry")
-    state: Optional[str] = Field(None, description="2-letter State code e.g. WA, IL, OH")
+    state: Optional[str] = Field(None, description="2-letter State code e.g. WA, IL, OH, CA, TX, NY")
     county: Optional[str] = Field(None, description="County name e.g. Skagit, Cook, Cuyahoga")
     event_date: Optional[date] = Field(None, description="Date when the event occurred (YYYY-MM-DD) for temporal validity")
     months_in_state: Optional[int] = Field(None, description="Months child has resided in current state (for UCCJEA evaluation)")
@@ -38,11 +40,24 @@ class LegalQueryResponse(BaseModel):
     verified_sources: List[Dict[str, Any]]
 
 
+class IngestionSyncRequest(BaseModel):
+    categories: Optional[List[str]] = Field(default_factory=lambda: ["all"], description="Categories to ingest: all, federal, caselaw, states, policies")
+
+
+class IngestionSyncResponse(BaseModel):
+    status: str
+    duration_seconds: float
+    total_documents: int
+    total_chunks: int
+    by_category: Dict[str, int]
+    by_jurisdiction: Dict[str, int]
+
+
 @app.get("/health")
 def health_check():
     return {
         "status": "healthy",
-        "version": "0.1.1",
+        "version": "0.2.0",
         "federal_sources_count": len(default_registry.federal_sources),
         "states_in_matrix_count": len(default_registry.state_matrix),
         "cps_sources_count": len(default_registry.cps_sources),
@@ -80,8 +95,45 @@ def handle_query(req: LegalQueryRequest):
         raise HTTPException(status_code=500, detail=f"Internal reasoning error: {str(e)}")
 
 
+@app.post("/api/v1/ingest/sync", response_model=IngestionSyncResponse)
+def trigger_ingestion_sync(req: IngestionSyncRequest):
+    try:
+        pipeline = IngestionPipeline()
+        manifest = pipeline.run_sync(categories=req.categories)
+        return IngestionSyncResponse(
+            status=manifest.status,
+            duration_seconds=manifest.duration_seconds,
+            total_documents=manifest.total_documents,
+            total_chunks=manifest.total_chunks,
+            by_category=manifest.by_category,
+            by_jurisdiction=manifest.by_jurisdiction
+        )
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Ingestion pipeline error: {str(e)}")
+
+
+@app.get("/api/v1/search")
+def search_authorities(
+    query: str = Query(..., description="Keywords or legal questions"),
+    jurisdiction: Optional[str] = Query(None, description="Filter e.g. US, US-WA, US-IL, US-OH, US-CA, US-TX, US-NY"),
+    top_k: int = Query(5, description="Number of results")
+):
+    try:
+        store = SimpleHybridStore()
+        store.load_from_database("legal_gpt.db")
+        results = store.search(query=query, jurisdiction=jurisdiction, top_k=top_k)
+        return {
+            "query": query,
+            "jurisdiction": jurisdiction,
+            "count": len(results),
+            "results": [r.model_dump() for r in results]
+        }
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Search error: {str(e)}")
+
+
 @app.get("/api/v1/registry/sources")
-def list_sources(jurisdiction: Optional[str] = Query(None, description="e.g. US, US-WA, US-IL, US-OH")):
+def list_sources(jurisdiction: Optional[str] = Query(None, description="e.g. US, US-WA, US-IL, US-OH, US-CA, US-TX, US-NY")):
     try:
         if jurisdiction:
             sources = default_registry.get_cps_sources_for_jurisdiction(jurisdiction)

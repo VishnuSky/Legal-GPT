@@ -1,7 +1,7 @@
 """Structure-aware legal chunkers for statutes, court opinions, and agency policies."""
 
 import re
-from typing import List
+from typing import List, Optional
 from normalization.models import LegalChunk
 
 
@@ -64,6 +64,92 @@ class StatuteChunker(LegalChunker):
                 hierarchy_path=[title, label],
             ))
             idx += 1
+
+        return chunks
+
+
+class OpinionChunker(LegalChunker):
+    """Chunks appellate court opinions into Syllabus, Holding, and Reasoning blocks."""
+
+    @classmethod
+    def chunk_opinion(
+        cls,
+        document_id: str,
+        case_name: str,
+        full_text: str,
+        holding: Optional[str] = None
+    ) -> List[LegalChunk]:
+        chunks = []
+        idx = 1
+
+        # Section extraction by standard keywords
+        sections = {"SYLLABUS": "", "HOLDING": "", "REASONING & OPINION": ""}
+        current_sec = "REASONING & OPINION"
+        lines = full_text.splitlines()
+
+        for line in lines:
+            line_clean = line.strip()
+            if line_clean.startswith("SYLLABUS:"):
+                current_sec = "SYLLABUS"
+                continue
+            elif line_clean.startswith("HOLDING:"):
+                current_sec = "HOLDING"
+                continue
+            elif line_clean.startswith("REASONING & OPINION:"):
+                current_sec = "REASONING & OPINION"
+                continue
+
+            sections[current_sec] += line + "\n"
+
+        if sections["SYLLABUS"].strip():
+            s_text = sections["SYLLABUS"].strip()
+            chunks.append(LegalChunk(
+                chunk_id=f"{document_id}_{idx:03d}",
+                document_id=document_id,
+                chunk_type="syllabus",
+                heading=f"{case_name} - Syllabus",
+                text=s_text,
+                tokens_estimate=cls.estimate_tokens(s_text),
+                hierarchy_path=[case_name, "Syllabus"],
+            ))
+            idx += 1
+
+        if sections["HOLDING"].strip() or holding:
+            h_text = sections["HOLDING"].strip() or holding or ""
+            chunks.append(LegalChunk(
+                chunk_id=f"{document_id}_{idx:03d}",
+                document_id=document_id,
+                chunk_type="holding",
+                heading=f"{case_name} - Holding",
+                text=h_text,
+                tokens_estimate=cls.estimate_tokens(h_text),
+                hierarchy_path=[case_name, "Holding"],
+            ))
+            idx += 1
+
+        if sections["REASONING & OPINION"].strip():
+            r_text = sections["REASONING & OPINION"].strip()
+            chunks.append(LegalChunk(
+                chunk_id=f"{document_id}_{idx:03d}",
+                document_id=document_id,
+                chunk_type="reasoning",
+                heading=f"{case_name} - Reasoning & Analysis",
+                text=r_text,
+                tokens_estimate=cls.estimate_tokens(r_text),
+                hierarchy_path=[case_name, "Reasoning"],
+            ))
+            idx += 1
+
+        if not chunks:
+            chunks.append(LegalChunk(
+                chunk_id=f"{document_id}_001",
+                document_id=document_id,
+                chunk_type="reasoning",
+                heading=case_name,
+                text=full_text.strip(),
+                tokens_estimate=cls.estimate_tokens(full_text),
+                hierarchy_path=[case_name],
+            ))
 
         return chunks
 

@@ -4,7 +4,7 @@ import sqlite3
 import json
 from pathlib import Path
 from typing import List, Optional, Dict, Any
-from datetime import date
+from datetime import date, datetime, timezone
 from normalization.models import LegalDocument, TemporalMetadata, AuthorityScore, LegalChunk
 
 
@@ -158,6 +158,36 @@ class LegalDatabase:
             authority=authority,
             source_url=row["source_url"],
             content_hash=row["content_hash"],
+            retrieved_at=datetime.fromisoformat(row["retrieved_at"]) if "retrieved_at" in row.keys() and row["retrieved_at"] else datetime.now(timezone.utc),
             cps_topics=json.loads(row["cps_topics"]) if row["cps_topics"] else [],
             metadata=json.loads(row["metadata_json"]) if row["metadata_json"] else {}
         )
+
+    def get_all_documents(self) -> List[LegalDocument]:
+        with self._get_connection() as conn:
+            cursor = conn.cursor()
+            cursor.execute("SELECT * FROM legal_documents")
+            rows = cursor.fetchall()
+            docs = []
+            for row in rows:
+                doc = self._row_to_document(row)
+                cursor.execute("SELECT * FROM legal_chunks WHERE document_id = ?", (doc.document_id,))
+                chunk_rows = cursor.fetchall()
+                for cr in chunk_rows:
+                    doc.chunks.append(LegalChunk(
+                        chunk_id=cr["chunk_id"],
+                        document_id=cr["document_id"],
+                        chunk_type=cr["chunk_type"],
+                        heading=cr["heading"],
+                        text=cr["text"],
+                        hierarchy_path=json.loads(cr["hierarchy_path"]) if cr["hierarchy_path"] else [],
+                        citations_mentioned=json.loads(cr["citations_mentioned"]) if cr["citations_mentioned"] else []
+                    ))
+                docs.append(doc)
+            return docs
+
+    def get_document_count(self) -> int:
+        with self._get_connection() as conn:
+            cursor = conn.cursor()
+            cursor.execute("SELECT COUNT(*) FROM legal_documents")
+            return cursor.fetchone()[0]
