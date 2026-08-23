@@ -2,17 +2,20 @@
 
 from fastapi import FastAPI, HTTPException, Query
 from pydantic import BaseModel, Field
-from typing import Optional, List, Dict, Any
+from typing import Optional, List, Dict, Any, Literal
 from datetime import date
 from agents.legal_orchestrator import LegalGPTOrchestrator
 from legal_registry.loader import default_registry
 from storage.vector_store import SimpleHybridStore
 from ingestion.pipeline import IngestionPipeline
+from knowledge_graph.relational_graph import citator_graph, CitatorReport
+from knowledge_graph.point_in_time_diff import PointInTimeDiffEngine
+from core.temporal_graph import temporal_graph
 
 app = FastAPI(
     title="Legal-GPT API",
-    description="Jurisdiction-Aware, Temporal, Citation-Verified Legal Intelligence Platform for Child Welfare & General Legal Work",
-    version="0.2.0"
+    description="Jurisdiction-Aware, Temporal, Citation-Verified Legal Intelligence Platform with Citator & Procedure Engines",
+    version="0.3.0"
 )
 
 orchestrator = LegalGPTOrchestrator()
@@ -27,6 +30,7 @@ class LegalQueryRequest(BaseModel):
     tribe_notified: Optional[bool] = Field(None, description="Whether registered mail notice was sent to designated tribal agent")
     notice_given: Optional[bool] = Field(None, description="Whether parent received timely formal notice")
     counsel_present: Optional[bool] = Field(None, description="Whether parent has legal counsel appointed/retained")
+    mode: Literal["standard", "self_represented", "investigator", "attorney", "court"] = "standard"
 
 
 class LegalQueryResponse(BaseModel):
@@ -57,7 +61,7 @@ class IngestionSyncResponse(BaseModel):
 def health_check():
     return {
         "status": "healthy",
-        "version": "0.2.0",
+        "version": "0.3.0",
         "federal_sources_count": len(default_registry.federal_sources),
         "states_in_matrix_count": len(default_registry.state_matrix),
         "cps_sources_count": len(default_registry.cps_sources),
@@ -79,7 +83,8 @@ def handle_query(req: LegalQueryRequest):
             months_in_state=req.months_in_state,
             tribe_notified=req.tribe_notified,
             notice_given=req.notice_given,
-            counsel_present=req.counsel_present
+            counsel_present=req.counsel_present,
+            persona_mode=req.mode
         )
         return LegalQueryResponse(
             jurisdiction=resp.jurisdiction,
@@ -93,6 +98,43 @@ def handle_query(req: LegalQueryRequest):
         )
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Internal reasoning error: {str(e)}")
+
+
+@app.get("/api/v1/citator")
+def evaluate_citator(
+    citation: str = Query(..., description="Legal citation or case name to evaluate")
+):
+    try:
+        report = citator_graph.evaluate_citator_status(citation)
+        return report.model_dump()
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Citator evaluation error: {str(e)}")
+
+
+@app.get("/api/v1/law-at-date")
+def get_law_at_date(
+    citation: str = Query(..., description="Citation e.g. RCW 13.34.065"),
+    target_date: date = Query(..., description="Date to evaluate (YYYY-MM-DD)"),
+    jurisdiction: str = Query("US-WA", description="Jurisdiction code e.g. US-WA, US-IL"),
+    diff_with: Optional[date] = Query(None, description="Optional secondary date to compare differences")
+):
+    try:
+        res = temporal_graph.evaluate_law_at_date(citation, jurisdiction, target_date)
+        data: Dict[str, Any] = {
+            "citation": citation,
+            "target_date": target_date.isoformat(),
+            "valid_on_date": res.valid_on_date,
+            "superseded": res.superseded,
+            "applicable_status": res.applicable_status,
+            "operative_version": res.active_version.model_dump() if res.active_version else None,
+            "analysis": res.analysis
+        }
+        if diff_with:
+            diff_res = PointInTimeDiffEngine.diff_statute_at_dates(citation, target_date, diff_with, jurisdiction)
+            data["diff"] = diff_res.model_dump()
+        return data
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Law-at-date evaluation error: {str(e)}")
 
 
 @app.post("/api/v1/ingest/sync", response_model=IngestionSyncResponse)

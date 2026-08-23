@@ -1,27 +1,29 @@
-"""Interactive Command Line Interface for Legal-GPT."""
+"""Command Line Interface for Legal-GPT."""
 
+import os
 import sys
 from datetime import date
-from typing import Optional, List
+from typing import Optional
 import typer
 from rich.console import Console
 from rich.table import Table
+
+# Reconfigure console output on Windows to support UTF-8 formatting
+if sys.platform == "win32" and hasattr(sys.stdout, "reconfigure"):
+    try:
+        sys.stdout.reconfigure(encoding="utf-8")
+    except Exception:
+        pass
+
 from agents.legal_orchestrator import LegalGPTOrchestrator
 from legal_registry.loader import default_registry
 from storage.vector_store import SimpleHybridStore
 from ingestion.pipeline import IngestionPipeline
+from knowledge_graph.relational_graph import citator_graph, CitatorSignal
+from knowledge_graph.point_in_time_diff import PointInTimeDiffEngine
+from core.temporal_graph import temporal_graph
 
-# Reconfigure stdout for utf-8 on Windows
-if sys.platform == "win32":
-    try:
-        sys.stdout.reconfigure(encoding="utf-8", errors="replace")
-    except Exception:
-        pass
-
-app = typer.Typer(
-    name="legal-gpt",
-    help="Legal-GPT: Jurisdiction-Aware, Temporal, Citation-Verified Legal Intelligence CLI"
-)
+app = typer.Typer(help="Legal-GPT: Jurisdiction-Aware, Temporal, Citation-Verified Legal Intelligence Platform")
 console = Console(highlight=False)
 orchestrator = LegalGPTOrchestrator()
 
@@ -71,13 +73,12 @@ def query(
 
 @app.command()
 def ingest(
-    category: str = typer.Option("all", "--category", "-c", help="Category to ingest: all, federal, caselaw, states, policies"),
+    category: str = typer.Option("all", "--category", "-c", help="Category to ingest: all, federal, caselaw, states, policies")
 ):
-    """Run data ingestion pipeline across authoritative statutes, precedents, and agency policy manuals."""
+    """Run data ingestion across Federal statutory, landmark appellate caselaw, state codes, and CPS policies."""
     console.print(f"[bold cyan]Running Legal-GPT Ingestion Pipeline (Category: {category})...[/bold cyan]")
     pipeline = IngestionPipeline()
-    categories = [category] if category != "all" else ["federal", "caselaw", "states", "policies"]
-    manifest = pipeline.run_sync(categories=categories)
+    manifest = pipeline.run_sync(categories=[category])
 
     table = Table(title="Ingestion Pipeline Manifest")
     table.add_column("Metric", style="cyan")
@@ -87,16 +88,18 @@ def ingest(
     table.add_row("Duration", f"{manifest.duration_seconds:.2f} seconds")
     table.add_row("Total Ingested Documents", str(manifest.total_documents))
     table.add_row("Total Chunked Units", str(manifest.total_chunks))
-    for cat, count in manifest.by_category.items():
-        table.add_row(f"Category: {cat.capitalize()}", str(count))
+
+    for cat_name, cnt in manifest.by_category.items():
+        table.add_row(f"Category: {cat_name.capitalize()}", str(cnt))
+
     console.print(table)
 
 
 @app.command()
 def search(
-    query_text: str = typer.Argument(..., help="Search query or keyword terms"),
-    jurisdiction: Optional[str] = typer.Option(None, "--jurisdiction", "-j", help="Jurisdiction filter e.g. US, US-WA, US-IL, US-OH, US-CA, US-TX, US-NY"),
-    top_k: int = typer.Option(5, "--top-k", "-k", help="Number of results to return"),
+    query_text: str = typer.Argument(..., help="Search query or keywords"),
+    jurisdiction: Optional[str] = typer.Option(None, "--jurisdiction", "-j", help="e.g. US, US-WA, US-IL, US-OH, US-CA, US-TX, US-NY"),
+    top_k: int = typer.Option(5, "--top-k", "-k", help="Number of results to retrieve")
 ):
     """Search authoritative statutes, precedent cases, and policy chunks using hybrid BM25 search."""
     store = SimpleHybridStore()
@@ -121,6 +124,60 @@ def search(
             res.text[:140] + ("..." if len(res.text) > 140 else "")
         )
     console.print(table)
+
+
+@app.command()
+def citator(
+    citation: str = typer.Argument(..., help="Citation or case name to analyze in Citator (e.g. 'Haaland v. Brackeen' or 'RCW 13.34.065')")
+):
+    """Inspect subsequent treatment, citing references, and Shepard's/KeyCite-style signals for a legal authority."""
+    report = citator_graph.evaluate_citator_status(citation)
+
+    color = "green" if report.overall_signal == CitatorSignal.GOOD_LAW else ("yellow" if report.overall_signal == CitatorSignal.CAUTION else "red")
+    console.print(f"\n[bold {color}]Citator Treatment Status:[/bold {color}] [{report.overall_signal.value}] {citation}")
+    console.print(f"[bold]Summary:[/bold] {report.treatment_summary}\n")
+
+    if report.citing_references:
+        table = Table(title=f"Citing Authorities & Historical Graph ({len(report.citing_references)} References)")
+        table.add_column("Citing Authority", style="cyan")
+        table.add_column("Relation", style="yellow")
+        table.add_column("Signal", style="magenta")
+        table.add_column("Context Snippet", style="white")
+
+        for ref in report.citing_references:
+            table.add_row(
+                ref.get("source_citation", "Unknown"),
+                ref.get("relation_type", "CITES"),
+                ref.get("treatment_signal", "NEUTRAL"),
+                ref.get("context_snippet", "")[:120]
+            )
+        console.print(table)
+
+
+@app.command()
+def law_at_date(
+    citation: str = typer.Argument(..., help="Statute citation e.g. 'RCW 13.34.065'"),
+    target_date: str = typer.Option(..., "--date", "-d", help="Calendar date to evaluate (YYYY-MM-DD)"),
+    diff_with: Optional[str] = typer.Option(None, "--diff-with", help="Secondary date (YYYY-MM-DD) to compare text diff")
+):
+    """Resolve point-in-time statutory text on a specific date, or compute a line-by-line diff between two dates."""
+    parsed_date = date.fromisoformat(target_date)
+    eval_res = temporal_graph.evaluate_law_at_date(citation, "US-WA", parsed_date)
+
+    console.print(f"\n[bold cyan]Point-in-Time Resolution for {citation} on {parsed_date.isoformat()}:[/bold cyan]")
+    console.print(f"- **Valid on Date**: {'[green]YES[/green]' if eval_res.valid_on_date else '[red]NO[/red]'}")
+    console.print(f"- **Superseded**: {'[yellow]YES[/yellow]' if eval_res.superseded else '[green]NO[/green]'}")
+    console.print(f"- **Operative Version**: {eval_res.active_version.version_id if eval_res.active_version else 'None'}")
+    console.print(f"- **Analysis**: {eval_res.analysis}\n")
+
+    if eval_res.active_version:
+        console.print(f"[dim]Operative Statutory Text:[/dim]\n> \"{eval_res.active_version.text}\"\n")
+
+    if diff_with:
+        diff_date = date.fromisoformat(diff_with)
+        diff_res = PointInTimeDiffEngine.diff_statute_at_dates(citation, parsed_date, diff_date)
+        console.print(f"[bold yellow]Statutory Text Diff ({parsed_date.isoformat()} -> {diff_date.isoformat()}):[/bold yellow]")
+        console.print(diff_res.diff_unified_text)
 
 
 @app.command()

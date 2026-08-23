@@ -1,9 +1,9 @@
-"""Relational Database Layer for Documents, Citations, and Temporal Versions."""
+"""Relational Database Layer for Documents, Citations, Citator Graphs, and Temporal Versions."""
 
 import sqlite3
 import json
 from pathlib import Path
-from typing import List, Optional, Dict, Any
+from typing import List, Optional, Dict, Any, Tuple
 from datetime import date, datetime, timezone
 from normalization.models import LegalDocument, TemporalMetadata, AuthorityScore, LegalChunk
 
@@ -61,14 +61,36 @@ class LegalDatabase:
                 )
             """)
 
-            # Precedent & Citation relationships
+            # Precedent, Citation & Citator relationships table
             cursor.execute("""
-                CREATE TABLE IF NOT EXISTS citation_graph (
+                CREATE TABLE IF NOT EXISTS legal_relationships (
                     source_citation TEXT,
                     target_citation TEXT,
-                    relationship_type TEXT, -- cites, interprets, overrules, distinguishes, applies
+                    relation_type TEXT, -- cites, interprets, follows, distinguishes, overrules, abrogates, supersedes, amends
+                    treatment_signal TEXT, -- POSITIVE, CAUTION, NEGATIVE, NEUTRAL
+                    pinpoint_citation TEXT,
+                    context_snippet TEXT,
                     jurisdiction TEXT,
-                    PRIMARY KEY (source_citation, target_citation, relationship_type)
+                    created_at TEXT,
+                    PRIMARY KEY (source_citation, target_citation, relation_type)
+                )
+            """)
+
+            # Historical Revisions & Law-At-Date table
+            cursor.execute("""
+                CREATE TABLE IF NOT EXISTS legal_historical_revisions (
+                    version_id TEXT PRIMARY KEY,
+                    citation TEXT,
+                    jurisdiction TEXT,
+                    title TEXT,
+                    full_text TEXT,
+                    effective_start TEXT,
+                    effective_end TEXT,
+                    is_current INTEGER,
+                    enacted_bill TEXT,
+                    repealed_by TEXT,
+                    superseded_by TEXT,
+                    amendment_notes TEXT
                 )
             """)
             conn.commit()
@@ -122,6 +144,124 @@ class LegalDatabase:
                     json.dumps(chunk.citations_mentioned)
                 ))
             conn.commit()
+
+    def insert_relationship(
+        self,
+        source_citation: str,
+        target_citation: str,
+        relation_type: str,
+        treatment_signal: str = "NEUTRAL",
+        pinpoint_citation: Optional[str] = None,
+        context_snippet: Optional[str] = None,
+        jurisdiction: str = "US"
+    ):
+        with self._get_connection() as conn:
+            cursor = conn.cursor()
+            cursor.execute("""
+                INSERT OR REPLACE INTO legal_relationships (
+                    source_citation, target_citation, relation_type, treatment_signal,
+                    pinpoint_citation, context_snippet, jurisdiction, created_at
+                ) VALUES (?, ?, ?, ?, ?, ?, ?, ?)
+            """, (
+                source_citation,
+                target_citation,
+                relation_type.upper(),
+                treatment_signal.upper(),
+                pinpoint_citation,
+                context_snippet,
+                jurisdiction,
+                datetime.now(timezone.utc).isoformat()
+            ))
+            conn.commit()
+
+    def get_relationships_for_citation(self, citation: str) -> List[Dict[str, Any]]:
+        with self._get_connection() as conn:
+            cursor = conn.cursor()
+            pattern = f"%{citation.strip()}%"
+            cursor.execute("""
+                SELECT * FROM legal_relationships
+                WHERE source_citation LIKE ? OR target_citation LIKE ?
+            """, (pattern, pattern))
+            rows = cursor.fetchall()
+            return [dict(r) for r in rows]
+
+    def get_citing_authorities(self, target_citation: str) -> List[Dict[str, Any]]:
+        with self._get_connection() as conn:
+            cursor = conn.cursor()
+            pattern = f"%{target_citation.strip()}%"
+            cursor.execute("""
+                SELECT * FROM legal_relationships
+                WHERE target_citation LIKE ?
+            """, (pattern,))
+            rows = cursor.fetchall()
+            return [dict(r) for r in rows]
+
+    def insert_historical_revision(
+        self,
+        version_id: str,
+        citation: str,
+        jurisdiction: str,
+        title: str,
+        full_text: str,
+        effective_start: date,
+        effective_end: Optional[date] = None,
+        is_current: bool = True,
+        enacted_bill: Optional[str] = None,
+        repealed_by: Optional[str] = None,
+        superseded_by: Optional[str] = None,
+        amendment_notes: Optional[str] = None
+    ):
+        with self._get_connection() as conn:
+            cursor = conn.cursor()
+            cursor.execute("""
+                INSERT OR REPLACE INTO legal_historical_revisions (
+                    version_id, citation, jurisdiction, title, full_text,
+                    effective_start, effective_end, is_current, enacted_bill,
+                    repealed_by, superseded_by, amendment_notes
+                ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+            """, (
+                version_id,
+                citation,
+                jurisdiction,
+                title,
+                full_text,
+                effective_start.isoformat(),
+                effective_end.isoformat() if effective_end else None,
+                1 if is_current else 0,
+                enacted_bill,
+                repealed_by,
+                superseded_by,
+                amendment_notes
+            ))
+            conn.commit()
+
+    def get_historical_revisions(self, citation: str) -> List[Dict[str, Any]]:
+        with self._get_connection() as conn:
+            cursor = conn.cursor()
+            cursor.execute("""
+                SELECT * FROM legal_historical_revisions
+                WHERE citation = ?
+                ORDER BY effective_start ASC
+            """, (citation,))
+            rows = cursor.fetchall()
+            return [dict(r) for r in rows]
+
+    def get_revision_at_date(self, citation: str, target_date: date) -> Optional[Dict[str, Any]]:
+        with self._get_connection() as conn:
+            cursor = conn.cursor()
+            target_str = target_date.isoformat()
+            cursor.execute("""
+                SELECT * FROM legal_historical_revisions
+                WHERE citation = ?
+                  AND effective_start <= ?
+                  AND (effective_end IS NULL OR effective_end >= ?)
+                ORDER BY effective_start DESC
+                LIMIT 1
+            """, (citation, target_str, target_str))
+            row = cursor.fetchone()
+            if row:
+                return dict(row)
+            return None
 
     def query_statute_by_citation(self, citation: str) -> Optional[LegalDocument]:
         with self._get_connection() as conn:
