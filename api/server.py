@@ -11,11 +11,15 @@ from ingestion.pipeline import IngestionPipeline
 from knowledge_graph.relational_graph import citator_graph, CitatorReport
 from knowledge_graph.point_in_time_diff import PointInTimeDiffEngine
 from core.temporal_graph import temporal_graph
+from cps.evidence_matrix import EvidentiaryMatrixEvaluation
+from cps.evidence_bridge import ExternalEvidenceContract, EvidenceBridgeEngine
+from cps.pleading_generator import PleadingDraftRequest, PleadingDraftResponse, PleadingGenerator
+from cps.due_process_audit import DueProcessAuditor, DueProcessAuditReport
 
 app = FastAPI(
     title="Legal-GPT API",
     description="Jurisdiction-Aware, Temporal, Citation-Verified Legal Intelligence Platform with Citator & Procedure Engines",
-    version="0.3.0"
+    version="0.4.0"
 )
 
 orchestrator = LegalGPTOrchestrator()
@@ -57,11 +61,25 @@ class IngestionSyncResponse(BaseModel):
     by_jurisdiction: Dict[str, int]
 
 
+class DueProcessAuditRequest(BaseModel):
+    state: str = Field("WA", description="State code e.g. WA, IL, OH, CA, TX, NY")
+    stage: str = Field("EMERGENCY_REMOVAL", description="CPS Stage")
+    notice_served_personally: bool = True
+    counsel_appointed: bool = True
+    counsel_present_at_hearing: bool = True
+    relative_placement_explored: bool = True
+    services_tailored_and_offered: bool = True
+    family_visitation_ordered: bool = True
+    is_icwa_eligible: bool = False
+    tribal_notice_registered_mail: bool = True
+    statutory_deadline_met: bool = True
+
+
 @app.get("/health")
 def health_check():
     return {
         "status": "healthy",
-        "version": "0.3.0",
+        "version": "0.4.0",
         "federal_sources_count": len(default_registry.federal_sources),
         "states_in_matrix_count": len(default_registry.state_matrix),
         "cps_sources_count": len(default_registry.cps_sources),
@@ -98,6 +116,42 @@ def handle_query(req: LegalQueryRequest):
         )
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Internal reasoning error: {str(e)}")
+
+
+@app.post("/api/v1/cps/evidence/evaluate", response_model=EvidentiaryMatrixEvaluation)
+def evaluate_evidence(contract: ExternalEvidenceContract):
+    try:
+        return EvidenceBridgeEngine.ingest_and_evaluate_contract(contract)
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Evidence evaluation error: {str(e)}")
+
+
+@app.post("/api/v1/cps/motions/generate", response_model=PleadingDraftResponse)
+def generate_court_pleading(req: PleadingDraftRequest):
+    try:
+        return PleadingGenerator.generate_pleading(req)
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Pleading generation error: {str(e)}")
+
+
+@app.post("/api/v1/cps/audit/due-process", response_model=DueProcessAuditReport)
+def audit_due_process(req: DueProcessAuditRequest):
+    try:
+        return DueProcessAuditor.audit_case(
+            state=req.state,
+            stage=req.stage,
+            notice_served_personally=req.notice_served_personally,
+            counsel_appointed=req.counsel_appointed,
+            counsel_present_at_hearing=req.counsel_present_at_hearing,
+            relative_placement_explored=req.relative_placement_explored,
+            services_tailored_and_offered=req.services_tailored_and_offered,
+            family_visitation_ordered=req.family_visitation_ordered,
+            is_icwa_eligible=req.is_icwa_eligible,
+            tribal_notice_registered_mail=req.tribal_notice_registered_mail,
+            statutory_deadline_met=req.statutory_deadline_met
+        )
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Due process audit error: {str(e)}")
 
 
 @app.get("/api/v1/citator")

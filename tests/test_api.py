@@ -12,7 +12,7 @@ def test_api_health_endpoint():
     assert response.status_code == 200
     data = response.json()
     assert data["status"] == "healthy"
-    assert data["version"] == "0.3.0"
+    assert data["version"] == "0.4.0"
     assert data["federal_sources_count"] >= 5
     assert data["states_in_matrix_count"] >= 50
 
@@ -74,3 +74,61 @@ def test_api_law_at_date_endpoint():
     assert data["valid_on_date"] is True
     assert data["superseded"] is False
     assert data["operative_version"] is not None
+
+
+def test_api_cps_evidence_evaluate():
+    payload = {
+        "external_case_id": "TEST-API-001",
+        "jurisdiction": "US-WA",
+        "cps_stage": "EMERGENCY_REMOVAL",
+        "items": [
+            {
+                "id": "EV-1",
+                "description": "Allegation of unkempt home",
+                "type": "UNVERIFIED_ALLEGATION",
+                "statutory_element": "Imminent Physical Danger"
+            },
+            {
+                "id": "EV-2",
+                "description": "Clean home inspection report",
+                "type": "DOCUMENTED_EXHIBIT",
+                "statutory_element": "Environmental Safety"
+            }
+        ]
+    }
+    response = client.post("/api/v1/cps/evidence/evaluate", json=payload)
+    assert response.status_code == 200
+    data = response.json()
+    assert data["total_items_analyzed"] == 2
+    assert data["unverified_allegations_count"] == 1
+    assert data["documented_exhibits_count"] == 1
+
+
+def test_api_cps_motion_generation():
+    payload = {
+        "state": "WA",
+        "motion_type": "shelter_rehearing",
+        "county": "Skagit",
+        "factual_basis": "Parent had no actual notice of the preliminary hearing."
+    }
+    response = client.post("/api/v1/cps/motions/generate", json=payload)
+    assert response.status_code == 200
+    data = response.json()
+    assert "REHEARING" in data["title"]
+    assert "RCW 13.34.065" in data["governing_rule_and_statute"]
+    assert "SUPERIOR COURT" in data["caption"]
+
+
+def test_api_cps_due_process_audit():
+    payload = {
+        "state": "WA",
+        "stage": "EMERGENCY_REMOVAL",
+        "notice_served_personally": False,
+        "counsel_appointed": True,
+        "statutory_deadline_met": True
+    }
+    response = client.post("/api/v1/cps/audit/due-process", json=payload)
+    assert response.status_code == 200
+    data = response.json()
+    assert data["violations_count"] >= 1
+    assert any("Notice" in c["right_name"] for c in data["checks"])

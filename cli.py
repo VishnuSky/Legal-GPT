@@ -2,6 +2,7 @@
 
 import os
 import sys
+import json
 from datetime import date
 from typing import Optional
 import typer
@@ -22,6 +23,10 @@ from ingestion.pipeline import IngestionPipeline
 from knowledge_graph.relational_graph import citator_graph, CitatorSignal
 from knowledge_graph.point_in_time_diff import PointInTimeDiffEngine
 from core.temporal_graph import temporal_graph
+from cps.evidence_matrix import EvidenceMatrixEngine, CaseEvidenceItem, EvidenceType
+from cps.evidence_bridge import ExternalEvidenceContract, EvidenceBridgeEngine
+from cps.pleading_generator import PleadingGenerator, PleadingDraftRequest
+from cps.due_process_audit import DueProcessAuditor
 
 app = typer.Typer(help="Legal-GPT: Jurisdiction-Aware, Temporal, Citation-Verified Legal Intelligence Platform")
 console = Console(highlight=False)
@@ -69,6 +74,132 @@ def query(
     except Exception as e:
         console.print(f"[bold red]Execution Error:[/bold red] {e}")
         raise typer.Exit(code=1)
+
+
+@app.command()
+def generate_motion(
+    state: str = typer.Option("WA", "--state", "-s", help="State code: WA, IL, OH, CA, TX, NY, ICWA"),
+    motion: str = typer.Option("shelter_rehearing", "--motion", "-m", help="Motion type: shelter_rehearing, return_child, section_1028, icwa_intervention, section_388"),
+    county: str = typer.Option("Skagit", "--county", "-c", help="County name e.g. Skagit, Cook, Cuyahoga"),
+    facts: str = typer.Option("Lack of timely statutory notice and availability of verified relative placement.", "--facts", "-f", help="Summary factual basis")
+):
+    """Generate a formal court motion and pleading template customized to state court rules."""
+    req = PleadingDraftRequest(
+        state=state,
+        motion_type=motion,
+        county=county,
+        factual_basis=facts
+    )
+    draft = PleadingGenerator.generate_pleading(req)
+
+    console.print(f"\n[bold green]=== GENERATED COURT PLEADING: {draft.title} ===[/bold green]")
+    console.print(f"[bold cyan]Governing Authority:[/bold cyan] {draft.governing_rule_and_statute}")
+    console.print(f"[bold yellow]Jurisdiction:[/bold yellow] {draft.jurisdiction}\n")
+    console.print(f"```\n{draft.caption}\n```\n")
+    console.print(draft.body_markdown)
+    console.print(f"\n[dim]{draft.certificate_of_service}[/dim]\n")
+
+
+@app.command()
+def due_process_audit(
+    state: str = typer.Option("WA", "--state", "-s", help="State code: WA, IL, OH, CA, TX, NY"),
+    stage: str = typer.Option("EMERGENCY_REMOVAL", "--stage", help="CPS stage: EMERGENCY_REMOVAL, SHELTER_CARE, ADJUDICATION"),
+    notice: bool = typer.Option(True, "--notice/--no-notice", help="Whether formal personal service was provided"),
+    counsel: bool = typer.Option(True, "--counsel/--no-counsel", help="Whether parent had appointed counsel present"),
+    services: bool = typer.Option(True, "--services/--no-services", help="Whether active/reasonable services were offered"),
+    visitation: bool = typer.Option(True, "--visitation/--no-visitation", help="Whether parent-child visitation was ordered"),
+    icwa: bool = typer.Option(False, "--icwa/--no-icwa", help="Whether child is ICWA eligible"),
+    tribal_notice: bool = typer.Option(True, "--tribal-notice/--no-tribal-notice", help="Whether registered mail tribal notice was sent")
+):
+    """Perform a comprehensive multi-pillar due process audit for child welfare proceedings."""
+    report = DueProcessAuditor.audit_case(
+        state=state,
+        stage=stage,
+        notice_served_personally=notice,
+        counsel_appointed=counsel,
+        counsel_present_at_hearing=counsel,
+        services_tailored_and_offered=services,
+        family_visitation_ordered=visitation,
+        is_icwa_eligible=icwa,
+        tribal_notice_registered_mail=tribal_notice
+    )
+
+    console.print(f"\n[bold cyan]=== DUE PROCESS HEALTH AUDIT REPORT ===[/bold cyan]")
+    console.print(f"[bold]Summary:[/bold] {report.summary_narrative}\n")
+
+    table = Table(title=f"Due Process Compliance Matrix ({state} - {stage})")
+    table.add_column("Due Process Pillar", style="cyan", width=30)
+    table.add_column("Status", style="yellow", width=20)
+    table.add_column("Authority & Recommended Remedy", style="white")
+
+    for chk in report.checks:
+        status_style = "green" if chk.status == "COMPLIANT" else "bold red"
+        table.add_row(
+            chk.right_name,
+            f"[{status_style}]{chk.status}[/{status_style}]",
+            f"{chk.guaranteeing_authority}\n[dim]Remedy: {chk.recommended_remedy}[/dim]"
+        )
+
+    console.print(table)
+
+
+@app.command()
+def evaluate_evidence(
+    jurisdiction: str = typer.Option("US-WA", "--jurisdiction", "-j", help="Jurisdiction code e.g. US-WA"),
+    stage: str = typer.Option("EMERGENCY_REMOVAL", "--stage", help="CPS lifecycle stage")
+):
+    """Analyze a synthetic evidentiary matrix to separate unverified allegations from documented exhibits."""
+    sample_contract = ExternalEvidenceContract(
+        external_case_id="SYNTHETIC-CASE-001",
+        jurisdiction=jurisdiction,
+        cps_stage=stage,
+        items=[
+            {
+                "id": "EV-001",
+                "description": "Anonymous referral alleging untidy home and potential substance use.",
+                "type": "UNVERIFIED_ALLEGATION",
+                "statutory_element": "Imminent Physical Harm",
+                "source": "Caseworker Intake Report"
+            },
+            {
+                "id": "EV-002",
+                "description": "Verified negative 10-panel urinalysis toxicology laboratory report.",
+                "type": "DOCUMENTED_EXHIBIT",
+                "statutory_element": "Substance Impairment",
+                "source": "Certified Lab Exhibit A"
+            },
+            {
+                "id": "EV-003",
+                "description": "Maternal Grandparent approved relative home assessment.",
+                "type": "DOCUMENTED_EXHIBIT",
+                "statutory_element": "Kinship Placement Viability",
+                "source": "Relative Home Study Exhibit B"
+            }
+        ]
+    )
+
+    evaluation = EvidenceBridgeEngine.ingest_and_evaluate_contract(sample_contract)
+
+    console.print(f"\n[bold cyan]=== EVIDENTIARY MATRIX SUFFICIENCY EVALUATION ===[/bold cyan]")
+    console.print(f"[bold]Summary:[/bold] {evaluation.case_summary}\n")
+
+    table = Table(title=f"Evidentiary Balance ({evaluation.jurisdiction})")
+    table.add_column("Category", style="cyan")
+    table.add_column("Count", style="green")
+
+    table.add_row("Total Items Analyzed", str(evaluation.total_items_analyzed))
+    table.add_row("Documented Exhibits", str(evaluation.documented_exhibits_count))
+    table.add_row("Disputed Facts", str(evaluation.disputed_facts_count))
+    table.add_row("Unverified Allegations", str(evaluation.unverified_allegations_count), style="red" if evaluation.unverified_allegations_count > 0 else "green")
+    table.add_row("Sufficiency Rating", evaluation.sufficiency_rating.value, style="bold magenta")
+
+    console.print(table)
+
+    if evaluation.evidentiary_gaps:
+        console.print("\n[bold yellow]Evidentiary Proof Gaps Identified:[/bold yellow]")
+        for gap in evaluation.evidentiary_gaps:
+            console.print(f"- [bold red]{gap.statutory_element}[/bold red]: {gap.missing_evidence_description}")
+            console.print(f"  [dim]Rebuttal: {gap.rebuttal_strategy}[/dim]")
 
 
 @app.command()
