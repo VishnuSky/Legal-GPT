@@ -344,5 +344,23 @@ def verify_citation(citation: str = typer.Argument(..., help="Legal citation to 
         console.print(f"[bold red][FAILED][/bold red] {res.raw_citation} -> Reason: {res.rejection_reason}")
 
 
+@app.command()
+def mcp():
+    """Start the Model Context Protocol (MCP) JSON-RPC 2.0 stdio server for LM Studio & OpenWebUI."""
+    from api.mcp_server import run_stdio_server
+    run_stdio_server()
+
+
+@app.command()
+def serve(
+    host: str = typer.Option("127.0.0.1", "--host", "-h", help="Host IP to bind"),
+    port: int = typer.Option(8000, "--port", "-p", help="Port to bind")
+):
+    """Start the FastAPI local REST server."""
+    import uvicorn
+    console.print(f"[bold green]Starting Legal-GPT REST Server on http://{host}:{port}...[/bold green]")
+    uvicorn.run("api.server:app", host=host, port=port, reload=False)
+
+
 if __name__ == "__main__":
     app()

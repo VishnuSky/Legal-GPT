@@ -12,7 +12,7 @@ def test_api_health_endpoint():
     assert response.status_code == 200
     data = response.json()
     assert data["status"] == "healthy"
-    assert data["version"] == "0.4.0"
+    assert data["version"] == "0.5.0"
     assert data["federal_sources_count"] >= 5
     assert data["states_in_matrix_count"] >= 50
 

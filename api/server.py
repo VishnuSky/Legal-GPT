@@ -19,7 +19,7 @@ from cps.due_process_audit import DueProcessAuditor, DueProcessAuditReport
 app = FastAPI(
     title="Legal-GPT API",
     description="Jurisdiction-Aware, Temporal, Citation-Verified Legal Intelligence Platform with Citator & Procedure Engines",
-    version="0.4.0"
+    version="0.5.0"
 )
 
 orchestrator = LegalGPTOrchestrator()
@@ -79,7 +79,7 @@ class DueProcessAuditRequest(BaseModel):
 def health_check():
     return {
         "status": "healthy",
-        "version": "0.4.0",
+        "version": "0.5.0",
         "federal_sources_count": len(default_registry.federal_sources),
         "states_in_matrix_count": len(default_registry.state_matrix),
         "cps_sources_count": len(default_registry.cps_sources),
