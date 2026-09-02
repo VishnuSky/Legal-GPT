@@ -106,7 +106,20 @@ Thumbs.db
 logs/
 audit_dumps/
 session_dumps/
+traces/
+data/traces/
+*.jsonl
+
+# Ingestion Caches & Large Local Artifacts
+.cache/
+data/cache/
+*.gguf
+*.lora
+*.bin
+*.safetensors
+unsloth_runs/
 
 # Exceptions: Allow public schemas & synthetic data only
 !data/public/
 !data/synthetic/
+!tests/data/synthetic/

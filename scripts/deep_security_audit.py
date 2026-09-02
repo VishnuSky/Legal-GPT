@@ -20,6 +20,8 @@ PATTERNS = {
         r"[A-Za-z]:[\\/]Users[\\/][a-zA-Z0-9_\-\.]+",
         r"(?:^|[\s\"'\(])/home/[a-zA-Z0-9_\-\.]+(?:/[a-zA-Z0-9_\-\.]+)?",
         r"Users[\\/][a-zA-Z0-9_\-\.]+[\\/](?:Documents|Desktop|Downloads|AppData)",
+        r"[L-Z]:\\",
+        r"/media/ixtly",
     ],
     "Private IP Addresses (Non-Localhost)": [
         r"\b192\.168\.\d{1,3}\.\d{1,3}\b",
@@ -35,8 +37,13 @@ PATTERNS = {
     ],
     "Private Project References": [
         r"evidence_manager_db",
+        r"EvidenceWorkspace",
         r"vr_forensics_private",
         r"swarms_private_vault",
+        r"\bAeon\b",
+        r"\bvoiceprint\b",
+        r"\.wav\b",
+        r"\bMetaVault\b",
     ]
 }
 

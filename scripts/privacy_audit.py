@@ -28,12 +28,20 @@ SECRET_PATTERNS = [
 # Sensitive local filesystem leaks (matching file paths, not web URLs)
 LOCAL_PATH_PATTERNS = [
     (r"(?<!https://)(?<!http://)[C-Z]:\\Users\\[A-Za-z0-9_.\-]+(?!\.gemini)", "Windows Local User Path"),
+    (r"(?<!https://)(?<!http://)[L-Z]:\\", "Windows Private Drive Letter (L:\\, J:\\)"),
+    (r"/media/ixtly", "Private Linux Media Mount"),
+    (r"EvidenceWorkspace", "EvidenceWorkspace Reference"),
+    (r"\b10\.0\.0\.\d{1,3}\b", "Private 10.0.0.x Subnet IP"),
+    (r"\bAeon\b", "Private Aeon Identifier"),
+    (r"\bvoiceprint\b", "Biometric Voiceprint Data"),
+    (r"\.wav\b", "WAV Audio Evidence File"),
+    (r"\bMetaVault\b", "Private MetaVault Reference"),
     (r"(?<!https://)(?<!http://)(?<!/)\b/home/[a-zA-Z0-9_.\-]+/(?:Documents|Desktop|Downloads|projects|code|workspace|\.ssh)", "Linux Local Home Directory Path"),
     (r"(?<!https://)(?<!http://)(?<!/)\b/Users/[a-zA-Z0-9_.\-]+/(?:Documents|Desktop|Downloads|projects|code|workspace|\.ssh)", "macOS Local Home Directory Path"),
 ]
 
 # Prohibited file extensions/patterns
-PROHIBITED_EXTENSIONS = {".sqlite", ".sqlite3", ".db-journal", ".pem", ".key", ".pfx", ".p12"}
+PROHIBITED_EXTENSIONS = {".sqlite", ".sqlite3", ".db-journal", ".pem", ".key", ".pfx", ".p12", ".wav", ".mp3", ".m4a", ".flac", ".safetensors", ".gguf", ".lora"}
 ALLOWED_EXTENSIONS = {".py", ".md", ".yaml", ".yml", ".toml", ".json", ".txt", ".example", ".gitignore", ".gitattributes"}
 
 

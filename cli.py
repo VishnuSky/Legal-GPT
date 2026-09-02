@@ -204,12 +204,13 @@ def evaluate_evidence(
 
 @app.command()
 def ingest(
-    category: str = typer.Option("all", "--category", "-c", help="Category to ingest: all, federal, caselaw, states, policies")
+    category: str = typer.Option("all", "--category", "-c", help="Category to ingest: all, federal, caselaw, states, policies"),
+    state: Optional[str] = typer.Option(None, "--state", "-s", help="Optional state code filter: WA, IL, OH, CA, TX, NY")
 ):
     """Run data ingestion across Federal statutory, landmark appellate caselaw, state codes, and CPS policies."""
-    console.print(f"[bold cyan]Running Legal-GPT Ingestion Pipeline (Category: {category})...[/bold cyan]")
+    console.print(f"[bold cyan]Running Legal-GPT Ingestion Pipeline (Category: {category}, State: {state or 'All'})...[/bold cyan]")
     pipeline = IngestionPipeline()
-    manifest = pipeline.run_sync(categories=[category])
+    manifest = pipeline.run_sync(categories=[category], state=state)
 
     table = Table(title="Ingestion Pipeline Manifest")
     table.add_column("Metric", style="cyan")

@@ -65,8 +65,8 @@ class IngestionPipeline:
             "NY": NewYorkOCFSPolicyConnector(),
         }
 
-    def run_sync(self, categories: Optional[List[str]] = None) -> IngestionManifest:
-        """Executes ingestion pipeline across specified categories ('federal', 'caselaw', 'states', 'policies', or all)."""
+    def run_sync(self, categories: Optional[List[str]] = None, state: Optional[str] = None) -> IngestionManifest:
+        """Executes ingestion pipeline across specified categories and optional state filter."""
         start_time = datetime.now(timezone.utc)
         target_cats = set(categories or ["federal", "caselaw", "states", "policies"])
         if "all" in target_cats:
@@ -77,13 +77,13 @@ class IngestionPipeline:
         by_jurisdiction_counts: Dict[str, int] = {}
 
         # 1. Federal Statutes & Regulations
-        if "federal" in target_cats:
+        if "federal" in target_cats and not state:
             fed_docs = self.govinfo.ingest()
             collected_docs.extend(fed_docs)
             by_category_counts["federal"] = len(fed_docs)
 
         # 2. Case Law & Precedent Opinions
-        if "caselaw" in target_cats:
+        if "caselaw" in target_cats and not state:
             case_docs = self.courtlistener.ingest()
             collected_docs.extend(case_docs)
             by_category_counts["caselaw"] = len(case_docs)
@@ -91,7 +91,12 @@ class IngestionPipeline:
         # 3. State Statutes
         if "states" in target_cats:
             state_count = 0
-            for state_code, crawler in self.state_crawlers.items():
+            crawlers_to_run = self.state_crawlers
+            if state:
+                st_upper = state.upper().strip()
+                crawlers_to_run = {st_upper: self.state_crawlers[st_upper]} if st_upper in self.state_crawlers else {}
+
+            for state_code, crawler in crawlers_to_run.items():
                 docs = crawler.ingest()
                 collected_docs.extend(docs)
                 state_count += len(docs)
@@ -100,7 +105,12 @@ class IngestionPipeline:
         # 4. CPS Agency Policies
         if "policies" in target_cats:
             policy_count = 0
-            for state_code, crawler in self.policy_crawlers.items():
+            policy_crawlers_to_run = self.policy_crawlers
+            if state:
+                st_upper = state.upper().strip()
+                policy_crawlers_to_run = {st_upper: self.policy_crawlers[st_upper]} if st_upper in self.policy_crawlers else {}
+
+            for state_code, crawler in policy_crawlers_to_run.items():
                 docs = crawler.ingest()
                 collected_docs.extend(docs)
                 policy_count += len(docs)
