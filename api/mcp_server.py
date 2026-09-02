@@ -119,8 +119,8 @@ class LegalMCPHandler:
                 "properties": {
                     "state": {"type": "string", "description": "State code e.g. WA, IL, OH, CA, TX, NY, ICWA"},
                     "motion_type": {"type": "string", "default": "shelter_rehearing"},
-                    "county": {"type": "string", "default": "Skagit"},
-                    "case_number": {"type": "string", "default": "26-7-00000-00"},
+                    "county": {"type": "string", "default": "District 1"},
+                    "case_number": {"type": "string", "default": "[CAUSE_NO_REDACTED]"},
                     "factual_basis": {"type": "string", "description": "Summary factual basis"}
                 },
                 "required": ["state", "motion_type"]
@@ -252,8 +252,8 @@ class LegalMCPHandler:
             req = PleadingDraftRequest(
                 state=args["state"],
                 motion_type=args.get("motion_type", "shelter_rehearing"),
-                county=args.get("county", "Skagit"),
-                case_number=args.get("case_number", "26-7-00000-00"),
+                county=args.get("county", "District 1"),
+                case_number=args.get("case_number", "[CAUSE_NO_REDACTED]"),
                 factual_basis=args.get("factual_basis", "Lack of statutory notice.")
             )
             draft = PleadingGenerator.generate_pleading(req)

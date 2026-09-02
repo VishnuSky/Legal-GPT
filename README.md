@@ -78,7 +78,7 @@ python cli.py benchmark --category all
 
 ```bash
 # 1. Query a legal inquiry with jurisdiction locking and citation verification
-python cli.py query "What are the statutory notice requirements for emergency temporary custody?" --state WA --county Skagit
+python cli.py query "What are the statutory notice requirements for emergency temporary custody?" --state WA
 
 # 2. Query child welfare procedure with temporal event date
 python cli.py query "What statutory standards apply for shelter care?" --state IL --event-date 2024-01-01
@@ -91,8 +91,8 @@ python cli.py citator "RCW 13.34.065"
 python cli.py law-at-date "RCW 13.34.065" --date 2015-01-01 --diff-with 2024-01-01
 
 # 5. Generate formal state-specific court motions and pleadings
-python cli.py generate-motion --state WA --motion shelter_rehearing --county Skagit
-python cli.py generate-motion --state NY --motion section_1028 --county Kings
+python cli.py generate-motion --state WA --motion shelter_rehearing
+python cli.py generate-motion --state NY --motion section_1028
 
 # 6. Audit 7-pillar constitutional and statutory due process health
 python cli.py due-process-audit --state WA --no-notice --no-counsel --icwa

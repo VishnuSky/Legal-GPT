@@ -24,22 +24,22 @@ from cps.due_process_audit import (
 def test_evidence_matrix_classification_and_gaps():
     items = [
         CaseEvidenceItem(
-            item_id="EV-001",
-            description="Caseworker states parent appeared nervous during unannounced home visit.",
+            item_id="ITEM-001",
+            description="Uncorroborated intake allegation regarding home condition.",
             evidence_type=EvidenceType.UNVERIFIED_ALLEGATION,
-            source_agency_or_person="DCYF Caseworker",
+            source_agency_or_person="Intake Worker",
             statutory_element_targeted="Imminent Physical Danger"
         ),
         CaseEvidenceItem(
-            item_id="EV-002",
+            item_id="ITEM-002",
             description="Contested neighbor statement regarding noise.",
             evidence_type=EvidenceType.DISPUTED_FACT,
-            source_agency_or_person="Anonymous Neighbor",
+            source_agency_or_person="Anonymous Report",
             statutory_element_targeted="Environmental Safety"
         ),
         CaseEvidenceItem(
-            item_id="EV-003",
-            description="Certified negative urinalysis toxicology report from Northwest Toxicology Labs.",
+            item_id="ITEM-003",
+            description="Certified negative urinalysis toxicology laboratory report.",
             evidence_type=EvidenceType.DOCUMENTED_EXHIBIT,
             source_agency_or_person="Certified Laboratory Exhibit A",
             statutory_element_targeted="Substance Impairment"
@@ -63,7 +63,7 @@ def test_evidence_matrix_classification_and_gaps():
 
 def test_evidence_bridge_contract_parsing():
     contract = ExternalEvidenceContract(
-        external_case_id="ANON-TEST-CASE-99",
+        external_case_id="[ANONYMIZED_CASE_REFERENCE]",
         jurisdiction="US-IL",
         cps_stage="TEMPORARY_CUSTODY",
         items=[
@@ -75,7 +75,7 @@ def test_evidence_bridge_contract_parsing():
             },
             {
                 "id": "ITEM-2",
-                "description": "Doctor physical examination report confirming well-nourished child",
+                "description": "Doctor physical examination report confirming healthy child",
                 "type": "DOCUMENTED_EXHIBIT",
                 "statutory_element": "Medical Health"
             }
@@ -94,8 +94,8 @@ def test_pleading_generator_multi_state():
     wa_req = PleadingDraftRequest(
         state="WA",
         motion_type="shelter_rehearing",
-        county="Skagit",
-        case_number="26-7-00123-29",
+        county="District 1",
+        case_number="[CAUSE_NO_REDACTED]",
         factual_basis="Parent lacked notice and relative home is available."
     )
     wa_draft = PleadingGenerator.generate_pleading(wa_req)
@@ -108,8 +108,8 @@ def test_pleading_generator_multi_state():
     ny_req = PleadingDraftRequest(
         state="NY",
         motion_type="section_1028",
-        county="Kings",
-        case_number="NN-12345-26",
+        county="District 2",
+        case_number="[CAUSE_NO_REDACTED]",
         factual_basis="No imminent risk to life or health under Nicholson standard."
     )
     ny_draft = PleadingGenerator.generate_pleading(ny_req)
@@ -121,8 +121,8 @@ def test_pleading_generator_multi_state():
     icwa_req = PleadingDraftRequest(
         state="ICWA",
         motion_type="icwa_intervention",
-        county="Whatcom",
-        case_number="26-7-00555-37",
+        county="District 3",
+        case_number="[CAUSE_NO_REDACTED]",
         factual_basis="State court failed to send registered mail notice to Tribe."
     )
     icwa_draft = PleadingGenerator.generate_pleading(icwa_req)

@@ -7,14 +7,14 @@ from pydantic import BaseModel, Field
 class PleadingDraftRequest(BaseModel):
     state: str = Field(..., description="2-letter state code e.g. WA, IL, OH, CA, TX, NY or ICWA")
     motion_type: str = Field("shelter_rehearing", description="Motion type: shelter_rehearing, return_child, section_1028, icwa_intervention, section_388")
-    county: str = Field("Skagit", description="County or Judicial District")
+    county: str = Field("District 1", description="County or Judicial District")
     court_name: Optional[str] = None
-    case_number: str = Field("26-7-00000-00", description="Court Docket / Cause Number")
-    parent_name: str = Field("PERSON_A (Parent)", description="Synthetic parent identifier")
-    child_name: str = Field("CHILD_A", description="Synthetic child identifier")
+    case_number: str = Field("[CAUSE_NO_REDACTED]", description="Court Docket / Cause Number")
+    parent_name: str = Field("[RESPONDENT_PARENT]", description="Parent identifier placeholder")
+    child_name: str = Field("[CHILD_INITIALS]", description="Child identifier placeholder")
     caseworker_agency: Optional[str] = None
-    factual_basis: str = Field("Lack of timely statutory notice and availability of viable relative safety plan.", description="Summary of facts")
-    proposed_relative_placement: Optional[str] = "Maternal Grandparent / Kinship Placement"
+    factual_basis: str = Field("Statutory notice and evidentiary threshold grounds under governing juvenile court rules.", description="Summary of facts")
+    proposed_relative_placement: Optional[str] = "[PROPOSED_KINSHIP_PLACEMENT]"
 
 
 class PleadingDraftResponse(BaseModel):
@@ -55,7 +55,7 @@ class PleadingGenerator:
     def _generate_wa_shelter_rehearing(cls, req: PleadingDraftRequest) -> PleadingDraftResponse:
         title = "MOTION AND AFFIDAVIT FOR REHEARING OF SHELTER CARE ORDER & IMMEDIATE RELEASE"
         governing = "JuCR 2.4 & RCW 13.34.065"
-        court = req.court_name or f"SUPERIOR COURT OF WASHINGTON FOR {req.county.upper()} COUNTY (JUVENILE DIVISION)"
+        court = req.court_name or f"SUPERIOR COURT OF WASHINGTON FOR {req.county.upper()} (JUVENILE DIVISION)"
 
         caption = (
             f"IN THE {court}\n"
@@ -97,7 +97,7 @@ class PleadingGenerator:
 
         return PleadingDraftResponse(
             title=title,
-            jurisdiction=f"US-WA ({req.county} County)",
+            jurisdiction=f"US-WA ({req.county})",
             governing_rule_and_statute=governing,
             caption=caption,
             body_markdown=body,
@@ -108,7 +108,7 @@ class PleadingGenerator:
     def _generate_ny_1028_application(cls, req: PleadingDraftRequest) -> PleadingDraftResponse:
         title = "APPLICATION FOR RETURN OF CHILD TEMPORARILY REMOVED (FCA § 1028)"
         governing = "N.Y. Fam. Ct. Act § 1028 & 22 NYCRR Part 205"
-        court = req.court_name or f"FAMILY COURT OF THE STATE OF NEW YORK: COUNTY OF {req.county.upper()}"
+        court = req.court_name or f"FAMILY COURT OF THE STATE OF NEW YORK: {req.county.upper()}"
 
         caption = (
             f"{court}\n"
@@ -134,13 +134,13 @@ class PleadingGenerator:
         )
 
         cert = (
-            f"I hereby certify that on this date, a copy of this § 1028 Application was personally served on the County Attorney / ACS "
+            f"I hereby certify that on this date, a copy of this § 1028 Application was served on the County Attorney / ACS "
             f"and the Attorney for the Child."
         )
 
         return PleadingDraftResponse(
             title=title,
-            jurisdiction=f"US-NY ({req.county} County)",
+            jurisdiction=f"US-NY ({req.county})",
             governing_rule_and_statute=governing,
             caption=caption,
             body_markdown=body,
@@ -151,7 +151,7 @@ class PleadingGenerator:
     def _generate_il_temporary_custody_rehearing(cls, req: PleadingDraftRequest) -> PleadingDraftResponse:
         title = "MOTION FOR REHEARING ON TEMPORARY CUSTODY (705 ILCS 405/2-10)"
         governing = "705 ILCS 405/2-10(b) & Ill. S. Ct. Rule Part F"
-        court = req.court_name or f"IN THE CIRCUIT COURT OF {req.county.upper()} COUNTY, ILLINOIS (CHILD PROTECTION DIVISION)"
+        court = req.court_name or f"IN THE CIRCUIT COURT OF {req.county.upper()}, ILLINOIS (CHILD PROTECTION DIVISION)"
 
         caption = f"{court}\nIn the Interest of {req.child_name}\tCause No.: {req.case_number}\nMOTION FOR REHEARING"
         body = (
@@ -163,7 +163,7 @@ class PleadingGenerator:
 
         return PleadingDraftResponse(
             title=title,
-            jurisdiction=f"US-IL ({req.county} County)",
+            jurisdiction=f"US-IL ({req.county})",
             governing_rule_and_statute=governing,
             caption=caption,
             body_markdown=body,
@@ -174,7 +174,7 @@ class PleadingGenerator:
     def _generate_ca_section_388_petition(cls, req: PleadingDraftRequest) -> PleadingDraftResponse:
         title = "PETITION FOR MODIFICATION / CHANGE OF CIRCUMSTANCES (WIC § 388)"
         governing = "Cal. Welf. & Inst. Code § 388 & CRC Rule 5.570"
-        court = req.court_name or f"SUPERIOR COURT OF CALIFORNIA, COUNTY OF {req.county.upper()} (JUVENILE DIVISION)"
+        court = req.court_name or f"SUPERIOR COURT OF CALIFORNIA, {req.county.upper()} (JUVENILE DIVISION)"
         caption = f"{court}\nIn re {req.child_name}, a Person Coming Under the Juvenile Court Law\tCase No.: {req.case_number}"
         body = (
             f"# {title}\n\n"
@@ -184,7 +184,7 @@ class PleadingGenerator:
         cert = "Proof of service on County Counsel and Minor's Counsel."
         return PleadingDraftResponse(
             title=title,
-            jurisdiction=f"US-CA ({req.county} County)",
+            jurisdiction=f"US-CA ({req.county})",
             governing_rule_and_statute=governing,
             caption=caption,
             body_markdown=body,
@@ -195,7 +195,7 @@ class PleadingGenerator:
     def _generate_tx_adversary_motion(cls, req: PleadingDraftRequest) -> PleadingDraftResponse:
         title = "MOTION TO CONTEST ADVERSARY HEARING & DEMAND FOR IMMEDIATE RETURN"
         governing = "Tex. Fam. Code § 262.201"
-        court = req.court_name or f"IN THE DISTRICT COURT OF {req.county.upper()} COUNTY, TEXAS"
+        court = req.court_name or f"IN THE DISTRICT COURT OF {req.county.upper()}, TEXAS"
         caption = f"{court}\nIN THE INTEREST OF {req.child_name}, A CHILD\tCAUSE NO.: {req.case_number}"
         body = (
             f"# {title}\n\n"
@@ -205,7 +205,7 @@ class PleadingGenerator:
         cert = "Certificate of service on DFPS Attorney."
         return PleadingDraftResponse(
             title=title,
-            jurisdiction=f"US-TX ({req.county} County)",
+            jurisdiction=f"US-TX ({req.county})",
             governing_rule_and_statute=governing,
             caption=caption,
             body_markdown=body,
@@ -216,7 +216,7 @@ class PleadingGenerator:
     def _generate_icwa_intervention(cls, req: PleadingDraftRequest) -> PleadingDraftResponse:
         title = "NOTICE OF TRIBAL INTERVENTION & PETITION TO INVALIDATE STATE CUSTODY ACTION"
         governing = "25 U.S.C. §§ 1911(c), 1914 & 25 C.F.R. § 23.107"
-        court = req.court_name or f"STATE COURT OF COMPETENT JURISDICTION ({req.county.upper()} COUNTY)"
+        court = req.court_name or f"STATE COURT OF COMPETENT JURISDICTION ({req.county.upper()})"
         caption = f"{court}\nIN THE MATTER OF {req.child_name}, AN INDIAN CHILD\tCAUSE NO.: {req.case_number}"
         body = (
             f"# {title}\n\n"

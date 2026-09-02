@@ -20,8 +20,7 @@ def orchestrator():
 def test_scenario_01_washington_emergency_removal(orchestrator):
     resp = orchestrator.process_query(
         query="What are the statutory notice requirements and hearing deadlines for emergency temporary custody under dependency procedure?",
-        override_state="WA",
-        override_county="Skagit"
+        override_state="WA"
     )
     assert "WA" in resp.jurisdiction
     assert any("RCW 13.34.050" in auth or "RCW 13.34.065" in auth for auth in resp.controlling_authority)
@@ -31,9 +30,8 @@ def test_scenario_01_washington_emergency_removal(orchestrator):
 # Scenario 2: Illinois 48-Hour Temporary Custody Hearing
 def test_scenario_02_illinois_temporary_custody(orchestrator):
     resp = orchestrator.process_query(
-        query="What statutory standards and timeframes apply for shelter care and temporary custody hearings in Cook County?",
-        override_state="IL",
-        override_county="Cook"
+        query="What statutory standards and timeframes apply for shelter care and temporary custody hearings in Illinois?",
+        override_state="IL"
     )
     assert "IL" in resp.jurisdiction
     assert any("705 ILCS 405" in auth for auth in resp.controlling_authority)
@@ -44,8 +42,7 @@ def test_scenario_02_illinois_temporary_custody(orchestrator):
 def test_scenario_03_ohio_shelter_care(orchestrator):
     resp = orchestrator.process_query(
         query="What are the hearing deadlines for shelter care and detention in Ohio juvenile court proceedings?",
-        override_state="OH",
-        override_county="Cuyahoga"
+        override_state="OH"
     )
     assert "OH" in resp.jurisdiction
     assert any("ORC § 2151.314" in auth or "ORC § 2151.31" in auth for auth in resp.controlling_authority)
@@ -166,7 +163,7 @@ def test_scenario_13_uccjea_temporary_emergency():
 
 # Scenario 14: Cross-Jurisdiction Contamination Defense
 def test_scenario_14_cross_jurisdiction_contamination_defense():
-    ctx = JurisdictionEngine.lock_jurisdiction("IL", "Cook")
+    ctx = JurisdictionEngine.lock_jurisdiction("IL")
     citations = ["705 ILCS 405/2-10", "RCW 13.34.050", "ORC § 2151.314"]
     violations = JurisdictionEngine.detect_cross_contamination(ctx, citations)
     assert len(violations) == 2  # Both WA and OH citations flagged as contamination in IL

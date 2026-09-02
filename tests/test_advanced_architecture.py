@@ -190,7 +190,7 @@ def test_human_review_persona_renderers():
     resp = orchestrator.process_query(
         query="What are the statutory notice requirements and hearing deadlines for emergency temporary custody under dependency procedure?",
         override_state="WA",
-        override_county="Skagit"
+        override_county="District 1"
     )
 
     # Self-Represented

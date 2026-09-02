@@ -19,9 +19,9 @@ def test_api_health_endpoint():
 
 def test_api_query_endpoint():
     payload = {
-        "query": "CPS removed child without notice in Skagit County",
+        "query": "What are the statutory notice requirements and hearing deadlines for emergency custody hearings under RCW 13.34.065?",
         "state": "WA",
-        "county": "Skagit",
+        "county": "District 1",
         "notice_given": False,
         "counsel_present": False
     }
@@ -108,7 +108,7 @@ def test_api_cps_motion_generation():
     payload = {
         "state": "WA",
         "motion_type": "shelter_rehearing",
-        "county": "Skagit",
+        "county": "District 1",
         "factual_basis": "Parent had no actual notice of the preliminary hearing."
     }
     response = client.post("/api/v1/cps/motions/generate", json=payload)

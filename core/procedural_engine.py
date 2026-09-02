@@ -36,7 +36,7 @@ class ProceduralEngine:
             jurisdiction="US-WA",
             court_level="Superior Court (Juvenile Division)",
             procedural_posture="Post-Emergency Removal / 72-Hour Shelter Care",
-            governing_court_rule="JuCR 2.4 & Skagit County Local Juvenile Rule 2.4",
+            governing_court_rule="JuCR 2.4 & Local Juvenile Rule 2.4",
             governing_statute="RCW 13.34.065(1)(b) & RCW 13.34.065(4)",
             statutory_deadline="Rehearing must be held within 72 hours of filing parent affidavit",
             prerequisites=[

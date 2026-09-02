@@ -80,7 +80,7 @@ def query(
 def generate_motion(
     state: str = typer.Option("WA", "--state", "-s", help="State code: WA, IL, OH, CA, TX, NY, ICWA"),
     motion: str = typer.Option("shelter_rehearing", "--motion", "-m", help="Motion type: shelter_rehearing, return_child, section_1028, icwa_intervention, section_388"),
-    county: str = typer.Option("Skagit", "--county", "-c", help="County name e.g. Skagit, Cook, Cuyahoga"),
+    county: str = typer.Option("District 1", "--county", "-c", help="County or Judicial District"),
     facts: str = typer.Option("Lack of timely statutory notice and availability of verified relative placement.", "--facts", "-f", help="Summary factual basis")
 ):
     """Generate a formal court motion and pleading template customized to state court rules."""
