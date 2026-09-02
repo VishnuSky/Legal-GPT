@@ -10,6 +10,8 @@ jobs:
   security-and-tests:
     name: Privacy Audit & Automated Test Suite
     runs-on: ubuntu-latest
+    env:
+      PYTHONPATH: .
 
     steps:
       - name: Checkout Code

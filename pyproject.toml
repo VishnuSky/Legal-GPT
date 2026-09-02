@@ -48,7 +48,24 @@ legal-gpt = "cli:app"
 
 [tool.setuptools.packages.find]
 where = ["."]
-include = ["agents*", "core*", "cps*", "legal_registry*", "normalization*", "storage*", "api*"]
+include = [
+    "agents*",
+    "core*",
+    "cps*",
+    "legal_registry*",
+    "normalization*",
+    "storage*",
+    "api*",
+    "audit*",
+    "ingestion*",
+    "knowledge_graph*",
+    "benchmarks*",
+    "scripts*"
+]
 
 [tool.setuptools.package-data]
 "*" = ["*.yaml", "*.yml", "*.json"]
+
+[tool.pytest.ini_options]
+pythonpath = ["."]
+testpaths = ["tests"]
