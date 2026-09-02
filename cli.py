@@ -362,5 +362,34 @@ def serve(
     uvicorn.run("api.server:app", host=host, port=port, reload=False)
 
 
+@app.command()
+def benchmark(
+    category: str = typer.Option("all", "--category", "-c", help="Category: all, cps_emergency, icwa, uccjea, parent_rights, temporal, procedural, due_process")
+):
+    """Run the comprehensive 50-scenario multi-jurisdiction benchmark suite."""
+    from benchmarks.scenarios import BenchmarkEvaluator
+    console.print(f"[bold cyan]Running Comprehensive 50-Scenario Benchmark Suite (Category: {category.upper()})...[/bold cyan]\n")
+    report = BenchmarkEvaluator.run_benchmark(category=category)
+
+    table = Table(title=f"Benchmark Evaluation Results ({report.accuracy_rate * 100:.1f}% Pass Rate)")
+    table.add_column("Category", style="cyan")
+    table.add_column("Passed / Total", style="green")
+    table.add_column("Accuracy Rate", style="yellow")
+
+    for cat_name, stats in report.category_breakdown.items():
+        rate = (stats["passed"] / max(1, stats["total"])) * 100
+        table.add_row(cat_name, f"{stats['passed']}/{stats['total']}", f"{rate:.1f}%")
+
+    table.add_row("OVERALL TOTAL", f"{report.scenarios_passed}/{report.total_scenarios}", f"{report.accuracy_rate * 100:.1f}%", style="bold magenta")
+    console.print(table)
+
+    if report.failed_scenario_details:
+        console.print("\n[bold red]Failed Scenarios Details:[/bold red]")
+        for f in report.failed_scenario_details:
+            console.print(f"- [{f['scenario_id']}] {f['title']}: {f['reason']}")
+    else:
+        console.print("\n[bold green]✅ All benchmark scenarios passed with 100% precision & jurisdiction integrity![/bold green]\n")
+
+
 if __name__ == "__main__":
     app()

@@ -29,7 +29,7 @@ If you cannot verify that a document, dataset, example, citation, or prompt is i
 - **Private Legal & CPS Case Files**: Personal court filings, sealed dockets, guardian ad litem reports, CPS investigation logs, private correspondence.
 - **Evidence Collections & Forensic Media**: Audio recordings, video footage, body-camera evidence, police reports obtained privately, OCR outputs, personal transcripts, timeline notes.
 - **Credentials & Secrets**: API keys, tokens, SSH keys, passwords, certificates, OAuth secrets, database credentials, connection strings.
-- **Private Infrastructure Metadata**: Hardcoded local machine filesystem paths (`C:\Users\...`, `/home/...`), internal IP addresses, network topologies, NAS mount points.
+- **Private Infrastructure Metadata**: Hardcoded local machine filesystem paths (such as user profile paths, local drives, or home directories), internal IP addresses, local network domain names, or workstation identifiers.
 - **Unrelated Project Materials**: Code, databases, indexes, or documentation from other workspaces or personal repositories (e.g., Evidence Manager, AI Swarms, VR/forensics, model training scripts).
 - **Private AI Artifacts**: Transcripts of private conversations with ChatGPT, Claude, Gemini, or Antigravity containing confidential or personal context.
 
@@ -75,7 +75,7 @@ python scripts/privacy_audit.py
 ```
 This scanner inspects staged files for:
 - API key and token signatures.
-- Local user path leaks (`C:\Users\`, `/home/`).
+- Local user profile path leaks and system directories.
 - Private email addresses and telephone numbers.
 - Uncommitted database files or raw media.
 
