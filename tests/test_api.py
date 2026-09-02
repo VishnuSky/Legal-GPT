@@ -12,7 +12,7 @@ def test_api_health_endpoint():
     assert response.status_code == 200
     data = response.json()
     assert data["status"] == "healthy"
-    assert data["version"] == "0.5.0"
+    assert data["version"] == "1.0.0"
     assert data["federal_sources_count"] >= 5
     assert data["states_in_matrix_count"] >= 50
 
@@ -132,3 +132,12 @@ def test_api_cps_due_process_audit():
     data = response.json()
     assert data["violations_count"] >= 1
     assert any("Notice" in c["right_name"] for c in data["checks"])
+
+
+def test_api_benchmark_endpoint():
+    response = client.get("/api/v1/benchmark?category=uccjea")
+    assert response.status_code == 200
+    data = response.json()
+    assert data["total_scenarios"] == 5
+    assert data["scenarios_passed"] == 5
+    assert data["accuracy_rate"] == 1.0

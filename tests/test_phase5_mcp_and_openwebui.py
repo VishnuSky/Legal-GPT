@@ -19,7 +19,7 @@ def test_mcp_server_initialize():
     assert res["id"] == 1
     assert "serverInfo" in res["result"]
     assert res["result"]["serverInfo"]["name"] == "Legal-GPT MCP Server"
-    assert res["result"]["serverInfo"]["version"] == "0.5.0"
+    assert res["result"]["serverInfo"]["version"] == "1.0.0"
 
 
 def test_mcp_server_tools_list():

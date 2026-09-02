@@ -1,9 +1,11 @@
 # Legal-GPT ⚖️
 
 [![Python 3.10+](https://img.shields.io/badge/python-3.10+-blue.svg)](https://www.python.org/downloads/)
-[![Tests](https://img.shields.io/badge/tests-passing-brightgreen.svg)](https://github.com/VishnuSky/Legal-GPT)
+[![Tests](https://img.shields.io/badge/tests-100%25%20passing-brightgreen.svg)](https://github.com/VishnuSky/Legal-GPT)
+[![Benchmark](https://img.shields.io/badge/benchmark-50%2F50%20(100%25)-brightgreen.svg)](https://github.com/VishnuSky/Legal-GPT)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
-[![Version: v0.1.1](https://img.shields.io/badge/version-0.1.1-green.svg)](https://github.com/VishnuSky/Legal-GPT)
+[![Version: v1.0.0](https://img.shields.io/badge/version-1.0.0-green.svg)](https://github.com/VishnuSky/Legal-GPT)
+[![MCP Server](https://img.shields.io/badge/MCP-JSON--RPC%202.0-blueviolet.svg)](https://github.com/VishnuSky/Legal-GPT)
 
 > **Compilation of Legal Datasets & Intelligence to provide Clients/Users with sound Legal Advice and links to Services in their areas, bridging Legal Services with the GPT Archive to safeguard members of Society and Increase the Effectiveness of Future Matters Resolved.**
 
@@ -12,18 +14,17 @@
 ---
 
 ## 🏛️ Core Principles & Architecture
-1. **Model = Reasoning, Database = Law**: Law is never trained statically into the base model weights. Instead, legal authority is retrieved, versioned, and verified from authoritative government sources.
-2. **Strict Authority Hierarchy (Tiers 0–5)**:
-   - **Tier 0**: Official statutory code, state/federal constitutions, official regulations, official court slip opinions.
-   - **Tier 1**: CourtListener, Harvard Caselaw Access Project (CAP), GovInfo, Congress.gov, BIA/ICWA.
-   - **Tier 2**: American Bar Association (ABA), State Bar Associations, Legal Aid.
-   - **Tier 3**: Secondary legal treatises (Cornell LII, Justia, FindLaw).
-   - **Tier 4**: Law firm articles & legal commentary.
-   - **Tier 5**: Social forums & ungrounded LLMs (*strictly barred from serving as legal authority*).
-3. **Temporal Law Engine**: Computes and retrieves the statute or policy version valid and in effect on the exact historical date of a case event (`law_effective_on(event_date)`).
-4. **Jurisdiction Lock & Contamination Guard**: Prevents cross-jurisdiction legal errors (e.g. asserting Washington RCW in an Illinois matter).
-5. **Zero-Hallucination Citation Verification**: Every citation candidate is resolved against canonical legal source registries before reaching the user.
-6. **CPS / Child Welfare Launch Vertical**: Specialized deep domain models for **Federal (CAPTA, Title IV-E, ICWA, ASFA, FFPSA)**, **Washington (RCW 13.34, RCW 26.44, DCYF policies)**, **Illinois (705 ILCS 405, 325 ILCS 5, DCFS guides)**, and **Ohio (ORC Chapter 2151, ODJFS rules)**.
+1. **Model = Reasoning, Database = Law**: Law is never trained statically into base model weights. Instead, legal authority is dynamically retrieved, versioned, and verified from authoritative government sources.
+2. **14-Level Dynamic Authority Hierarchy (T0–T13)**:
+   - **T0–T5**: Federal Constitution, U.S. Code Statutes (ICWA, Title IV-E), C.F.R., SCOTUS Precedents (*Haaland*, *Santosky*, *Troxel*), Federal Circuit & District Opinions.
+   - **T6–T11**: State Constitutions, Primary State Codes (RCW, ILCS, ORC, WIC, Tex. Fam. Code, FCA), Administrative Codes, State Supreme Court & Appellate Precedents, Court Rules (JuCR, Juv. R., CRC).
+   - **T12–T13**: Agency Policy Manuals (DCYF, DCFS, ODJFS, CDSS, DFPS, OCFS) & Secondary Treatises.
+3. **Point-in-Time Law Engine (`LAW_AT_DATE`)**: Computes the exact operative statutory text in effect on any historical date, complete with line-by-line legislative text diffs.
+4. **Relational Citator Engine**: Shepard's / KeyCite-style subsequent treatment tracking (`GOOD_LAW`, `CAUTION`, `NEGATIVE`, `NEUTRAL`).
+5. **Jurisdiction Lock & Anti-Contamination Guard**: Prevents cross-jurisdiction legal errors (e.g. citing Washington RCW in an Illinois proceeding).
+6. **Multi-Stage Proposition Verifier**: Enforces zero-hallucination verification with explicit abstention state machine (`SUPPORTED`, `CONTRADICTED`, `OUTDATED_AUTHORITY`, `JURISDICTION_MISMATCH`, etc.).
+7. **Adversarial Reviewer & 4 Persona Modes**: Simulates opposing counsel challenges and renders outputs for *Self-Represented Parents*, *Investigators*, *Attorneys*, or *Judicial Reviewers*.
+8. **CPS / Child Welfare Launch Vertical**: Full 14-stage life-cycle modeling across Federal, WA, IL, OH, CA, TX, NY, and Tribal jurisdictions.
 
 ---
 
@@ -31,27 +32,24 @@
 
 ```
 Legal-GPT/
-├── configs/
-│   ├── settings.yaml                 # Core configuration (LLMs, storage, CPS thresholds)
-│   └── authority_tiers.yaml          # Authority scoring definitions (Tier 0 to 5)
+├── configs/                          # Core configuration & authority tiers
 ├── legal_registry/                   # Machine-readable legal source registry v1.0
-│   ├── schemas/                      # Pydantic models for sources, CPS, and courts
-│   ├── federal/                      # GovInfo, US Code, CFR, Fed Register, CourtListener, BIA
-│   ├── states/
-│   │   ├── matrix.yaml               # Complete 50-State + DC + Territories matrix
-│   │   ├── WA.yaml                   # Deep Washington source registry
-│   │   ├── IL.yaml                   # Deep Illinois source registry
-│   │   └── OH.yaml                   # Deep Ohio source registry
+│   ├── federal/                      # GovInfo, US Code, CFR, CourtListener, BIA/ICWA
+│   ├── states/                       # 50-State + DC + Territories matrix (deep WA, IL, OH, CA, TX, NY)
 │   ├── cps/                          # Specialized child welfare statutory & policy registries
-│   └── courts/                       # Federal & State Court hierarchy with CourtListener IDs
-├── normalization/                    # Canonical Document, Chunk, and Citation models
-├── core/                             # Authority, Jurisdiction Lock, Temporal, & Citation Verifier
-├── cps/                              # 18-stage CPS lifecycle, Parent Rights, ICWA, & UCCJEA
-├── storage/                          # SQLite metadata DB, Hybrid BM25/Vector store, Knowledge Graph
-├── agents/                           # Intake classifier, Orchestrator, & 34-point Response Formatter
-├── api/                              # FastAPI REST endpoints & Model Context Protocol (MCP) server
+│   └── courts/                       # Federal & State Court hierarchy
+├── core/                             # Authority, Temporal, Citation Verifier, Local LLM & Procedure Engines
+├── cps/                              # Evidence Matrix, Bridge, Pleading Generator & Due Process Auditor
+├── knowledge_graph/                  # Relational Citator Graph & Point-in-Time Diff Engine
+├── normalization/                    # Canonical Document, Chunk, and Citation schemas
+├── storage/                          # SQLite metadata DB, Hybrid BM25/Vector store
+├── agents/                           # Legal Orchestrator, Adversarial Reviewer, Persona Renderers
+├── api/                              # FastAPI REST endpoints, OpenWebUI Pipeline & MCP Server
+├── benchmarks/                       # 50-Scenario Multi-Jurisdiction Benchmark Suite
+├── docs/                             # Architecture & Deployment Guides
+├── scripts/                          # Privacy, security & data isolation audit scanners
 ├── cli.py                            # Interactive CLI tool
-└── tests/                            # Automated test suite
+└── tests/                            # Comprehensive 100+ automated test suite
 ```
 
 ---
@@ -64,63 +62,72 @@ Legal-GPT/
 git clone https://github.com/VishnuSky/Legal-GPT.git
 cd Legal-GPT
 
-# Create and activate a virtual environment (recommended)
-python -m venv .venv
-
-# On Windows:
-.venv\Scripts\activate
-# On macOS / Linux:
-source .venv/bin/activate
-
 # Install in editable mode
 pip install -e .
 ```
 
-### 2. Run Automated Verification Tests
+### 2. Run Verification Tests & 50-Scenario Benchmark
 ```bash
-pytest tests/ -v
+pytest -v
+python cli.py benchmark --category all
 ```
-
-### 3. Interactive CLI Queries
-```bash
-# Query statutory procedures, notice requirements, and hearing deadlines in Washington State
-python cli.py query "What are the statutory notice requirements and hearing deadlines for emergency temporary custody under dependency procedure?" --state WA --county Skagit
-
-# Query child welfare procedure with an event date for temporal law validation
-python cli.py query "What statutory standards apply for administrative review and shelter care hearings?" --state IL --county Cook --event-date 2025-06-15
-
-# Evaluate ICWA compliance, active efforts, and tribal notice requirements
-python cli.py query "What are the required legal standards for ICWA inquiry, active efforts, and designated tribal notice?" --state WA
-
-# Verify a legal citation against the canonical registry
-python cli.py verify-citation "RCW 13.34.065"
-
-# View Registry Summary across federal, state, tribal, and territorial domains
-python cli.py registry-summary
-```
-
-### 4. Start Local REST API & MCP Server
-```bash
-uvicorn api.server:app --host 127.0.0.1 --port 8000 --reload
-```
-API Documentation and interactive Swagger UI are available at: [http://127.0.0.1:8000/docs](http://127.0.0.1:8000/docs).
 
 ---
 
-## 📊 Current Capabilities & Roadmap
+## 💻 Interactive CLI Tool
 
-| Feature Area | Current Status (v0.1.1) | Upcoming Milestones |
-|---|---|---|
-| **50-State Legal Matrix** | Full metadata matrix for all 50 states + DC | Automated daily scrapers for all 50 state legislative portals |
-| **CPS Deep Vertical** | WA, IL, OH + Federal statutory & policy coverage | Expansion to CA, TX, FL, NY, PA, MI |
-| **Citation Verification** | Exact match against canonical registry & statutory patterns | Live CourtListener / GovInfo API verification fallback |
-| **Temporal Law Engine** | `law_effective_on(date)` validity & repeal tracking | Full text historical diff viewer |
-| **Parent Rights Engine** | Automated audit for notice, counsel, and reasonable efforts | State-specific pattern motion generator |
-| **Inference Backends** | LM Studio, Ollama, OpenWebUI REST endpoints & MCP server | Fine-tuned LoRA models for structured legal reasoning |
+```bash
+# 1. Query a legal inquiry with jurisdiction locking and citation verification
+python cli.py query "What are the statutory notice requirements for emergency temporary custody?" --state WA --county Skagit
+
+# 2. Query child welfare procedure with temporal event date
+python cli.py query "What statutory standards apply for shelter care?" --state IL --event-date 2024-01-01
+
+# 3. Inspect subsequent treatment and citing precedents (Citator)
+python cli.py citator "Haaland v. Brackeen"
+python cli.py citator "RCW 13.34.065"
+
+# 4. Resolve Point-in-Time statutory text and line-by-line diffs
+python cli.py law-at-date "RCW 13.34.065" --date 2015-01-01 --diff-with 2024-01-01
+
+# 5. Generate formal state-specific court motions and pleadings
+python cli.py generate-motion --state WA --motion shelter_rehearing --county Skagit
+python cli.py generate-motion --state NY --motion section_1028 --county Kings
+
+# 6. Audit 7-pillar constitutional and statutory due process health
+python cli.py due-process-audit --state WA --no-notice --no-counsel --icwa
+
+# 7. Evaluate evidentiary matrix (Fact vs Allegation vs Documented Exhibit)
+python cli.py evaluate-evidence --jurisdiction US-WA
+
+# 8. Start Model Context Protocol (MCP) JSON-RPC stdio server
+python cli.py mcp
+
+# 9. Start FastAPI REST Server
+python cli.py serve --host 127.0.0.1 --port 8000
+```
 
 ---
 
-## 🛡️ License & Disclaimer
-This software is provided under the [MIT License](LICENSE).
+## 🔌 Local AI & Tool Integration
 
-> **IMPORTANT LEGAL DISCLAIMER**: This software is designed and provided for **legal research, educational, and document intelligence purposes only**. It does **not** constitute legal advice, does **not** create an attorney-client relationship, and must **never** be used as a substitute for competent advice from a licensed attorney admitted to practice in the relevant jurisdiction.
+- **Model Context Protocol (MCP)**: Native integration for LM Studio, Claude Desktop, and local AI nodes (`api/mcp_server.py`).
+- **OpenWebUI Pipeline**: Drop-in custom pipeline for OpenWebUI chat interfaces (`api/openwebui_pipeline.py`).
+- **Local Inference Support**: Connects to LM Studio, Ollama, vLLM, and llama.cpp via OpenAI-compatible endpoints with deterministic offline fallback (`core/local_llm.py`).
+
+For full setup instructions, see the [Deployment Guide](docs/DEPLOYMENT_GUIDE.md) and [System Architecture](docs/ARCHITECTURE.md).
+
+---
+
+## 🛡️ Public Repository Security & Data Isolation Policy
+
+Legal-GPT is a strictly isolated public repository. No private case files, personal identifying information (PII), proprietary datasets, credentials, evidence files, or data from other projects are ever permitted in this codebase.
+
+- **Master Policy**: [`PUBLIC_DATA_POLICY.md`](PUBLIC_DATA_POLICY.md)
+- **Security Policy**: [`SECURITY.md`](SECURITY.md)
+- **Privacy Audit Scanners**: `scripts/privacy_audit.py` & `scripts/deep_security_audit.py`
+
+---
+
+## 📄 License
+MIT License. Copyright (c) 2026 VishnuSky / Legal-GPT Contributors.

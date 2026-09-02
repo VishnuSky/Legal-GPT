@@ -22,7 +22,7 @@ class LegalMCPHandler:
 
     SERVER_INFO = {
         "name": "Legal-GPT MCP Server",
-        "version": "0.5.0",
+        "version": "1.0.0",
         "protocolVersion": "2024-11-05"
     }
 

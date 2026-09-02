@@ -19,7 +19,7 @@ from cps.due_process_audit import DueProcessAuditor, DueProcessAuditReport
 app = FastAPI(
     title="Legal-GPT API",
     description="Jurisdiction-Aware, Temporal, Citation-Verified Legal Intelligence Platform with Citator & Procedure Engines",
-    version="0.5.0"
+    version="1.0.0"
 )
 
 orchestrator = LegalGPTOrchestrator()
@@ -79,7 +79,7 @@ class DueProcessAuditRequest(BaseModel):
 def health_check():
     return {
         "status": "healthy",
-        "version": "0.5.0",
+        "version": "1.0.0",
         "federal_sources_count": len(default_registry.federal_sources),
         "states_in_matrix_count": len(default_registry.state_matrix),
         "cps_sources_count": len(default_registry.cps_sources),
@@ -241,3 +241,15 @@ def list_sources(jurisdiction: Optional[str] = Query(None, description="e.g. US,
         }
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Registry lookup error: {str(e)}")
+
+
+@app.get("/api/v1/benchmark")
+def run_benchmark_endpoint(
+    category: Optional[str] = Query(None, description="Category filter: all, cps_emergency, icwa, uccjea, parent_rights, temporal, procedural, due_process")
+):
+    try:
+        from benchmarks.scenarios import BenchmarkEvaluator
+        report = BenchmarkEvaluator.run_benchmark(category=category)
+        return report.model_dump()
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Benchmark execution error: {str(e)}")
