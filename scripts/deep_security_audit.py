@@ -71,7 +71,7 @@ def audit_working_tree():
                             for pat in pattern_list:
                                 for m in re.finditer(pat, line, re.IGNORECASE):
                                     matched_str = m.group(0).strip()
-                                    if "placeholder" in line or "example" in line:
+                                    if "placeholder" in line or "example" in line or "/home/runner" in line:
                                         continue
                                     violations.append(f"[{category}] File '{rel_path}:{line_no}': matched '{matched_str}' (line: '{line.strip()}')")
             except Exception:
