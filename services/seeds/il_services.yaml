@@ -1,0 +1,153 @@
+# Official Illinois State Public Legal & Civil Services Registry
+# Sources: Verified official state court, legal aid (ILAO/LSC), AG, and DCFS public directories
+
+services:
+  - service_id: "IL-SERV-LEGAL-AID-CHICAGO"
+    name: "Legal Aid Chicago"
+    jurisdiction:
+      country: "US"
+      state: "US-IL"
+      county: "Cook"
+      tribe: null
+    matters:
+      - "FAMILY_CPS"
+      - "HOUSING"
+      - "CONSUMER_DEBT"
+      - "BENEFITS"
+      - "EMPLOYMENT"
+    service_type: "LEGAL_AID"
+    description: "Largest provider of free civil legal representation and counsel to people living in poverty across Cook County and metropolitan Chicago."
+    contact:
+      phone: "312-341-1070"
+      website: "https://www.legalaidchicago.org"
+      address: "120 S. LaSalle St., Suite 900, Chicago, IL 60603"
+      intake_url: "https://www.legalaidchicago.org/get-help"
+      email: null
+      hours: "Monday - Friday 9:00 AM - 4:00 PM"
+    eligibility_summary: "Cook County residents with income below 150-200% of the Federal Poverty Guidelines."
+    source_url: "https://www.legalaidchicago.org"
+    is_official: true
+
+  - service_id: "IL-SERV-ILAO"
+    name: "Illinois Legal Aid Online (ILAO)"
+    jurisdiction:
+      country: "US"
+      state: "US-IL"
+      county: null
+      tribe: null
+    matters:
+      - "FAMILY_CPS"
+      - "HOUSING"
+      - "CONSUMER_DEBT"
+      - "EMPLOYMENT"
+      - "BENEFITS"
+      - "EDUCATION"
+      - "DISABILITY"
+      - "SMALL_CLAIMS"
+      - "PUBLIC_RECORDS"
+    service_type: "COURT_SELF_HELP"
+    description: "Official statewide online portal providing standardized Illinois court forms, guided interviews, legal information, and legal aid directory lookup."
+    contact:
+      phone: null
+      website: "https://www.illinoislegalaid.org"
+      address: null
+      intake_url: "https://www.illinoislegalaid.org/get-legal-help"
+      email: null
+      hours: "Available online 24/7"
+    eligibility_summary: "Free public access to all Illinois residents seeking legal information and court self-help tools."
+    source_url: "https://www.illinoislegalaid.org"
+    is_official: true
+
+  - service_id: "IL-SERV-COOK-HELP-DESK"
+    name: "Circuit Court of Cook County Self-Represented Litigant Help Desk"
+    jurisdiction:
+      country: "US"
+      state: "US-IL"
+      county: "Cook"
+      tribe: null
+    matters:
+      - "FAMILY_CPS"
+      - "HOUSING"
+      - "SMALL_CLAIMS"
+    service_type: "COURT_SELF_HELP"
+    description: "Official court-based help desk providing procedural assistance, approved Supreme Court standardized forms, and clerk filing information for unrepresented parties."
+    contact:
+      phone: "312-603-6000"
+      website: "https://www.cookcountycourt.org"
+      address: "Richard J. Daley Center, 50 W. Washington St., Chicago, IL 60602"
+      intake_url: "https://www.cookcountycourt.org/ABOUT-THE-COURT/Self-Represented-Litigants"
+      email: null
+      hours: "Monday - Friday 8:30 AM - 4:30 PM"
+    eligibility_summary: "Self-represented litigants with active or prospective matters in the Circuit Court of Cook County."
+    source_url: "https://www.cookcountycourt.org"
+    is_official: true
+
+  - service_id: "IL-SERV-DCFS-ADVOCACY"
+    name: "Illinois DCFS Advocacy Office for Children and Families"
+    jurisdiction:
+      country: "US"
+      state: "US-IL"
+      county: null
+      tribe: null
+    matters:
+      - "FAMILY_CPS"
+    service_type: "PUBLIC_CONTACT"
+    description: "Independent ombudsman within DCFS responsible for receiving, investigating, and resolving complaints and concerns from parents, foster families, and youth in care."
+    contact:
+      phone: "1-800-232-3798"
+      website: "https://dcfs.illinois.gov"
+      address: "406 E. Monroe St., Springfield, IL 62701"
+      intake_url: "https://dcfs.illinois.gov/about-us/advocacy-office.html"
+      email: "DCFS.Advocacy@illinois.gov"
+      hours: "Monday - Friday 8:30 AM - 5:00 PM"
+    eligibility_summary: "Biological parents, foster parents, caseworkers, or minors involved with Illinois child protection services."
+    source_url: "https://dcfs.illinois.gov"
+    is_official: true
+
+  - service_id: "IL-SERV-AG-CONSUMER"
+    name: "Office of the Illinois Attorney General Consumer Protection Bureau"
+    jurisdiction:
+      country: "US"
+      state: "US-IL"
+      county: null
+      tribe: null
+    matters:
+      - "CONSUMER_DEBT"
+      - "HOUSING"
+    service_type: "AG_CONSUMER"
+    description: "State agency protecting Illinois consumers from fraud, deceptive business practices, unlawful lending, and unlawful tenant utility shutoffs."
+    contact:
+      phone: "1-800-386-5438"
+      website: "https://illinoisattorneygeneral.gov"
+      address: "100 W. Randolph St., Chicago, IL 60601"
+      intake_url: "https://illinoisattorneygeneral.gov/consumers/filecomplaint.html"
+      email: null
+      hours: "Monday - Friday 9:00 AM - 5:00 PM"
+    eligibility_summary: "All Illinois consumers who have experienced commercial deception or predatory lending."
+    source_url: "https://illinoisattorneygeneral.gov"
+    is_official: true
+
+  - service_id: "IL-SERV-CBA-REFERRAL"
+    name: "Chicago Bar Association Lawyer Referral Service"
+    jurisdiction:
+      country: "US"
+      state: "US-IL"
+      county: "Cook"
+      tribe: null
+    matters:
+      - "FAMILY_CPS"
+      - "HOUSING"
+      - "EMPLOYMENT"
+      - "CONSUMER_DEBT"
+    service_type: "BAR_REFERRAL"
+    description: "ABA-accredited lawyer referral program connecting individuals with vetted, experienced attorneys in specific practice areas."
+    contact:
+      phone: "312-554-2001"
+      website: "https://www.chicagobar.org"
+      address: "321 S. Plymouth Court, Chicago, IL 60604"
+      intake_url: "https://www.chicagobar.org/lrs"
+      email: null
+      hours: "Monday - Friday 9:00 AM - 4:30 PM"
+    eligibility_summary: "Open to the general public seeking qualified legal representation in Illinois."
+    source_url: "https://www.chicagobar.org"
+    is_official: true

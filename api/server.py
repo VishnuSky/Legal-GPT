@@ -253,3 +253,158 @@ def run_benchmark_endpoint(
         return report.model_dump()
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Benchmark execution error: {str(e)}")
+
+
+# ============================================================
+# PUBLIC LAW SCOUT BRIDGE & CIVIL SERVICES CONTRACT
+# ============================================================
+
+class PublicResolveRequest(BaseModel):
+    question: str = Field(..., description="Legal question or public legal research inquiry")
+    jurisdiction: str = Field(..., description="Target jurisdiction state code e.g. WA, IL, OH, US")
+    county: Optional[str] = Field(None, description="County name e.g. Skagit, Cook, Cuyahoga")
+    eval_date: Optional[date] = Field(None, alias="date", description="Event or evaluation date for point-in-time check (YYYY-MM-DD)")
+    matter: Optional[str] = Field(None, description="Civil matter taxonomy e.g. FAMILY_CPS, HOUSING, CONSUMER_DEBT")
+
+    model_config = {"populate_by_name": True}
+
+
+class ProcedureOption(BaseModel):
+    title: str
+    governing_statute_or_rule: str
+    deadline: Optional[str] = None
+    filing_steps: List[str] = Field(default_factory=list)
+    required_forms: List[str] = Field(default_factory=list)
+    service_requirements: Optional[str] = None
+
+
+class PublicResolveResponse(BaseModel):
+    jurisdiction_lock: str
+    matter: str
+    controlling_sources: List[str]
+    verified_citations: List[Dict[str, Any]]
+    procedure_options: List[ProcedureOption]
+    service_hits: List[Dict[str, Any]]
+    abstention_state: Literal["ANSWERED", "ABSTAIN", "PARTIAL"]
+    abstention_reason: Optional[str] = None
+    short_answer: str
+    analysis: str
+    disclaimer: str
+
+
+@app.post("/api/v1/public/resolve", response_model=PublicResolveResponse)
+def resolve_public_query(request: PublicResolveRequest):
+    """Public Resolution Engine: Evaluates civil legal queries with strict jurisdiction locking, citation verification, procedural guidance, and official service directory routing."""
+    if not request.question.strip():
+        raise HTTPException(status_code=400, detail="Question cannot be empty.")
+
+    try:
+        # 1. Orchestrate legal resolution
+        resp = orchestrator.process_query(
+            query=request.question,
+            override_state=request.jurisdiction,
+            override_county=request.county,
+            event_date=request.eval_date,
+            persona_mode="standard"
+        )
+
+        # 2. Extract verified sources
+        verified_sources = [s.model_dump() for s in resp.verified_sources]
+        controlling_auth = resp.controlling_authority
+
+        # 3. Determine abstention state
+        abstention_state: Literal["ANSWERED", "ABSTAIN", "PARTIAL"] = "ANSWERED"
+        abstention_reason = None
+        if not controlling_auth or (len(verified_sources) == 0 and "ABSTAIN" in resp.analysis):
+            abstention_state = "ABSTAIN"
+            abstention_reason = "No controlling primary statutory, regulatory, or precedent authority verified for the requested jurisdiction."
+
+        # 4. Query matching public services
+        from services.registry import default_service_registry
+        services = default_service_registry.query_services(
+            state=request.jurisdiction,
+            county=request.county,
+            matter=request.matter
+        )
+        service_hits = [s.model_dump() for s in services]
+
+        # 5. Build procedural options
+        procedure_options: List[ProcedureOption] = []
+        if "shelter care" in request.question.lower() or "removal" in request.question.lower():
+            if request.jurisdiction.upper() in ("WA", "US-WA"):
+                procedure_options.append(ProcedureOption(
+                    title="Affidavit for Rehearing of Shelter Care Order & Motion for Immediate Return",
+                    governing_statute_or_rule="RCW 13.34.065(1)(b) & JuCR 2.4",
+                    deadline="Within 72 hours of filing parent affidavit",
+                    filing_steps=[
+                        "Obtain court-approved Form WPF JU 02.0200 (Motion and Declaration for Rehearing)",
+                        "Attach Parent Affidavit establishing lack of notice or new evidence",
+                        "File with County Superior Court Clerk Juvenile Division",
+                        "Serve DCYF Assistant Attorney General and Child's Counsel within 24 hours"
+                    ],
+                    required_forms=["Form WPF JU 02.0200", "Proposed In-Home Safety Plan"],
+                    service_requirements="Personal service on AAG and Child CASA/Attorney within 24 hours"
+                ))
+
+        # Default general court procedure option if none specific
+        if not procedure_options and controlling_auth:
+            procedure_options.append(ProcedureOption(
+                title="Pro Se Civil Court Appearance / Response",
+                governing_statute_or_rule=controlling_auth[0],
+                deadline="Check local summons / notice for appearance deadline",
+                filing_steps=[
+                    "Consult official court self-help center or facilitator",
+                    "Complete state-approved standardized pattern forms",
+                    "File original pleadings with the Clerk of Court",
+                    "Serve copies on all parties in compliance with local civil/juvenile rules"
+                ],
+                required_forms=["Standard Notice of Appearance / Answer"],
+                service_requirements="Formal service of process per state civil procedure rules"
+            ))
+
+        matter_label = request.matter or "GENERAL_CIVIL"
+
+        return PublicResolveResponse(
+            jurisdiction_lock=resp.jurisdiction,
+            matter=matter_label,
+            controlling_sources=controlling_auth,
+            verified_citations=verified_sources,
+            procedure_options=procedure_options,
+            service_hits=service_hits,
+            abstention_state=abstention_state,
+            abstention_reason=abstention_reason,
+            short_answer=resp.short_answer,
+            analysis=resp.analysis,
+            disclaimer=resp.disclaimer
+        )
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Public resolve error: {str(e)}")
+
+
+@app.get("/api/v1/public/services")
+def list_public_services(
+    state: Optional[str] = Query(None, description="State code e.g. WA, IL, OH"),
+    county: Optional[str] = Query(None, description="County name e.g. Skagit, Cook, Cuyahoga"),
+    matter: Optional[str] = Query(None, description="Matter taxonomy: FAMILY_CPS, HOUSING, CONSUMER_DEBT, etc."),
+    service_type: Optional[str] = Query(None, description="Service type: LEGAL_AID, COURT_SELF_HELP, BAR_REFERRAL, AG_CONSUMER, TRIBAL_ICWA, PUBLIC_CONTACT")
+):
+    """Returns verified official civil legal aid, court self-help, and public support service records."""
+    try:
+        from services.registry import default_service_registry
+        results = default_service_registry.query_services(
+            state=state,
+            county=county,
+            matter=matter,
+            service_type=service_type
+        )
+        return {
+            "count": len(results),
+            "jurisdiction_state": state,
+            "jurisdiction_county": county,
+            "matter": matter,
+            "service_type": service_type,
+            "services": [r.model_dump() for r in results]
+        }
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Public services query error: {str(e)}")
+

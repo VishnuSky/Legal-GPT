@@ -1,0 +1,173 @@
+# Official Washington State Public Legal & Civil Services Registry
+# Sources: Verified official state court, legal aid (IOLTA/LSC), AG, and DCYF public directories
+
+services:
+  - service_id: "WA-SERV-NJP-CLEAR"
+    name: "Northwest Justice Project (NJP) / CLEAR Hotline"
+    jurisdiction:
+      country: "US"
+      state: "US-WA"
+      county: null
+      tribe: null
+    matters:
+      - "FAMILY_CPS"
+      - "HOUSING"
+      - "CONSUMER_DEBT"
+      - "BENEFITS"
+      - "DISABILITY"
+    service_type: "LEGAL_AID"
+    description: "Washington state's publicly funded civil legal aid organization providing free legal advice, representation, and advocacy to low-income individuals and families."
+    contact:
+      phone: "1-888-201-1014"
+      website: "https://nwjustice.org"
+      address: "401 Second Avenue S, Suite 407, Seattle, WA 98104"
+      intake_url: "https://nwjustice.org/apply-online"
+      email: null
+      hours: "Monday - Friday 9:15 AM - 12:15 PM"
+    eligibility_summary: "Income under 200% Federal Poverty Level for civil legal matters in Washington State."
+    source_url: "https://nwjustice.org/get-legal-help"
+    is_official: true
+
+  - service_id: "WA-SERV-LAWHELP"
+    name: "Washington LawHelp (Northwest Justice Project)"
+    jurisdiction:
+      country: "US"
+      state: "US-WA"
+      county: null
+      tribe: null
+    matters:
+      - "FAMILY_CPS"
+      - "HOUSING"
+      - "CONSUMER_DEBT"
+      - "EMPLOYMENT"
+      - "BENEFITS"
+      - "EDUCATION"
+      - "DISABILITY"
+      - "SMALL_CLAIMS"
+      - "PUBLIC_RECORDS"
+    service_type: "COURT_SELF_HELP"
+    description: "Official statewide legal self-help portal maintained by NJP with court-approved DIY forms, step-by-step rights guides, and legal process explanations."
+    contact:
+      phone: null
+      website: "https://www.washingtonlawhelp.org"
+      address: null
+      intake_url: "https://www.washingtonlawhelp.org/find-legal-help"
+      email: null
+      hours: "Available online 24/7"
+    eligibility_summary: "Free public access to all Washington residents and self-represented litigants."
+    source_url: "https://www.washingtonlawhelp.org"
+    is_official: true
+
+  - service_id: "WA-SERV-SKAGIT-FACILITATOR"
+    name: "Skagit County Superior Court Family Law Facilitator"
+    jurisdiction:
+      country: "US"
+      state: "US-WA"
+      county: "Skagit"
+      tribe: null
+    matters:
+      - "FAMILY_CPS"
+      - "SMALL_CLAIMS"
+    service_type: "COURT_SELF_HELP"
+    description: "Official Skagit County Court program assisting self-represented parties with court procedures, mandatory form packets, local filing rules, and court hearing scheduling."
+    contact:
+      phone: "360-416-1200"
+      website: "https://www.skagitcounty.net/Departments/SuperiorCourt"
+      address: "205 W. Kincaid St., Room 202, Mount Vernon, WA 98273"
+      intake_url: "https://www.skagitcounty.net/Departments/SuperiorCourt/facilitator.htm"
+      email: "superiorcourt@co.skagit.wa.us"
+      hours: "Monday - Friday 8:30 AM - 4:30 PM (Appointment required)"
+    eligibility_summary: "Self-represented litigants filing family law or guardianship cases in Skagit County Superior Court."
+    source_url: "https://www.skagitcounty.net/Departments/SuperiorCourt/facilitator.htm"
+    is_official: true
+
+  - service_id: "WA-SERV-OFCO-OMBUDS"
+    name: "Washington State Office of the Family and Children's Ombuds (OFCO)"
+    jurisdiction:
+      country: "US"
+      state: "US-WA"
+      county: null
+      tribe: null
+    matters:
+      - "FAMILY_CPS"
+    service_type: "PUBLIC_CONTACT"
+    description: "Independent state agency established to investigate administrative complaints regarding DCYF actions, child welfare services, and foster care placements."
+    contact:
+      phone: "1-800-571-7321"
+      website: "https://ofco.wa.gov"
+      address: "6720 Fort Dent Way, Suite 240, Tukwila, WA 98168"
+      intake_url: "https://ofco.wa.gov/complaints"
+      email: "ofcoinfo@gov.wa.gov"
+      hours: "Monday - Friday 8:00 AM - 5:00 PM"
+    eligibility_summary: "Any parent, child, caregiver, or citizen with a complaint regarding DCYF child welfare or foster care administrative handling."
+    source_url: "https://ofco.wa.gov"
+    is_official: true
+
+  - service_id: "WA-SERV-AGO-CONSUMER"
+    name: "Washington State Attorney General Consumer Protection Division"
+    jurisdiction:
+      country: "US"
+      state: "US-WA"
+      county: null
+      tribe: null
+    matters:
+      - "CONSUMER_DEBT"
+      - "HOUSING"
+    service_type: "AG_CONSUMER"
+    description: "Official state division that investigates unfair business practices, debt collection violations, unlawful landlord fees, and consumer fraud."
+    contact:
+      phone: "1-800-551-4636"
+      website: "https://www.atg.wa.gov/consumer-protection"
+      address: "800 Fifth Avenue, Suite 2000, Seattle, WA 98104"
+      intake_url: "https://www.atg.wa.gov/file-complaint"
+      email: null
+      hours: "Monday - Friday 10:00 AM - 3:00 PM"
+    eligibility_summary: "All Washington consumers experiencing deceptive business or unlawful debt collection practices."
+    source_url: "https://www.atg.wa.gov"
+    is_official: true
+
+  - service_id: "WA-SERV-PUYALLUP-ICWA"
+    name: "Puyallup Tribe of Indians Children & Family Services (ICWA Liaison)"
+    jurisdiction:
+      country: "US"
+      state: "US-WA"
+      county: "Pierce"
+      tribe: "Puyallup Tribe"
+    matters:
+      - "FAMILY_CPS"
+    service_type: "TRIBAL_ICWA"
+    description: "Official Tribal Children and Family Services department providing ICWA advocacy, tribal court representation, relative kinship search, and cultural support services."
+    contact:
+      phone: "253-573-7800"
+      website: "https://www.puyalluptribe-nsn.gov"
+      address: "3009 E Portland Ave, Tacoma, WA 98404"
+      intake_url: null
+      email: "cfs@puyalluptribe-nsn.gov"
+      hours: "Monday - Friday 8:00 AM - 5:00 PM"
+    eligibility_summary: "Enrolled Puyallup tribal members, eligible children, and families involved in state or tribal dependency proceedings."
+    source_url: "https://www.puyalluptribe-nsn.gov"
+    is_official: true
+
+  - service_id: "WA-SERV-WSBA-REFERRAL"
+    name: "Washington State Bar Association (WSBA) Moderate Means Program & Referral"
+    jurisdiction:
+      country: "US"
+      state: "US-WA"
+      county: null
+      tribe: null
+    matters:
+      - "FAMILY_CPS"
+      - "HOUSING"
+      - "CONSUMER_DEBT"
+    service_type: "BAR_REFERRAL"
+    description: "Joint program between the WSBA and Washington law schools connecting moderate-income residents with attorneys offering reduced-fee assistance."
+    contact:
+      phone: "1-855-741-6930"
+      website: "https://www.wsba.org/connect-serve/pro-bono-public-service/mmp"
+      address: "1325 4th Ave, Suite 600, Seattle, WA 98101"
+      intake_url: "https://www.wsba.org/connect-serve/pro-bono-public-service/mmp/apply"
+      email: null
+      hours: "Monday - Friday 9:00 AM - 4:00 PM"
+    eligibility_summary: "Washington residents earning between 200% and 400% of the Federal Poverty Level."
+    source_url: "https://www.wsba.org"
+    is_official: true
