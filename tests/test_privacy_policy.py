@@ -57,3 +57,4 @@ def test_private_drive_pattern_matches_only_real_path_prefixes():
             assert re.search(pattern, sample) is None
 
         assert re.search(pattern, r"L:\Legal") is not None
+        assert re.search(pattern, r"L:\A") is not None
