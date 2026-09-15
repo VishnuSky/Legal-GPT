@@ -14,7 +14,7 @@ if sys.platform == "win32" and hasattr(sys.stdout, "reconfigure"):
         pass
 
 ROOT_DIR = Path(__file__).resolve().parent.parent
-WINDOWS_PRIVATE_DRIVE_PATTERN = r"[L-Z]:(?:\\\\|[/\\])(?:[A-Za-z0-9_. -]{2,}|(?![abfnrtv])[A-Za-z0-9_. -])(?:[/\\]|$)"
+WINDOWS_PRIVATE_DRIVE_PATTERN = r"(?<![A-Za-z0-9_])[L-Z]:(?:\\\\|[/\\])(?:[A-Za-z0-9_. -]{2,}|(?![abfnrtv])[A-Za-z0-9_. -])(?:[/\\]|$)"
 
 PATTERNS = {
     "Local User Profile Path": [

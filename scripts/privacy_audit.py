@@ -26,7 +26,7 @@ SECRET_PATTERNS = [
 ]
 
 # Sensitive local filesystem leaks (matching file paths, not web URLs)
-WINDOWS_PRIVATE_DRIVE_PATTERN = r"(?<!https://)(?<!http://)[L-Z]:(?:\\\\|[/\\])(?:[A-Za-z0-9_. -]{2,}|(?![abfnrtv])[A-Za-z0-9_. -])(?:[/\\]|$)"
+WINDOWS_PRIVATE_DRIVE_PATTERN = r"(?<!https://)(?<!http://)(?<![A-Za-z0-9_])[L-Z]:(?:\\\\|[/\\])(?:[A-Za-z0-9_. -]{2,}|(?![abfnrtv])[A-Za-z0-9_. -])(?:[/\\]|$)"
 
 LOCAL_PATH_PATTERNS = [
     (r"(?<!https://)(?<!http://)[C-Z]:\\Users\\[A-Za-z0-9_.\-]+(?!\.gemini)", "Windows Local User Path"),
