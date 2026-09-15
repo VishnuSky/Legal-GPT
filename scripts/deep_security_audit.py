@@ -20,7 +20,7 @@ PATTERNS = {
         r"[A-Za-z]:[\\/]Users[\\/][a-zA-Z0-9_\-\.]+",
         r"(?:^|[\s\"'\(])/home/[a-zA-Z0-9_\-\.]+(?:/[a-zA-Z0-9_\-\.]+)?",
         r"Users[\\/][a-zA-Z0-9_\-\.]+[\\/](?:Documents|Desktop|Downloads|AppData)",
-        r"[L-Z]:\\",
+        r"[L-Z]:\\(?![nrt])",  # ignore Python :\n / :\r / :\t string escapes
         r"/media/ixtly",
     ],
     "Private IP Addresses (Non-Localhost)": [
