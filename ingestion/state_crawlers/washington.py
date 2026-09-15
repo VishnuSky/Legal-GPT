@@ -90,62 +90,16 @@ class WashingtonLegConnector(BaseLegalConnector):
         parsed = self._extract_clean_text_from_html(html_content)
         title = parsed["caption"] or default_title
         body_text = parsed["text"] if len(parsed["text"]) > 100 else default_title
+        return self._build_rcw_document(
+            section=section,
+            title=title,
+            body_text=body_text,
+            effective_date=parsed["effective_date"]
+        )
+
+    def _build_rcw_document(self, section: str, title: str, body_text: str, effective_date: date) -> LegalDocument:
         citation = f"RCW {section}"
         doc_id = f"WA-RCW-{section.replace('.', '_')}"
-        url = f"{self.RCW_BASE_URL}?cite={section}"
-
-        temporal = TemporalMetadata(
-            effective_date=parsed["effective_date"],
-            is_current=True
-        )
-        authority = AuthorityScore(
-            tier="TIER_0",
-            weight=1.00,
-            official_source=True,
-            provider_name="Washington State Legislature (app.leg.wa.gov)"
-        )
-        chunks = StatuteChunker.chunk_statute(
-            document_id=doc_id,
-            title=f"{citation}: {title}",
-            full_text=body_text
-        )
-
-        doc = LegalDocument(
-            document_id=doc_id,
-            source_id="WA_RCW",
-            jurisdiction="US-WA",
-            level="state",
-            document_type="statute",
-            title=f"{citation} - {title}",
-            citation=citation,
-            full_text=body_text,
-            chunks=chunks,
-            temporal=temporal,
-            authority=authority,
-            source_url=url,
-            cps_topics=["child_welfare", "dependency", "state_statute", "washington_rcw"]
-        )
-        doc.compute_hash()
-        return doc
-
-    def fetch_rcw_section(self, section: str, default_title: str) -> LegalDocument:
-        """Fetches a single RCW section from official legislature or cached store."""
-        url = f"{self.RCW_BASE_URL}?cite={section}"
-        citation = f"RCW {section}"
-        doc_id = f"WA-RCW-{section.replace('.', '_')}"
-
-        try:
-            html = self.fetch_url(url, use_cache=True)
-            parsed = self._extract_clean_text_from_html(html)
-            title = parsed["caption"] or default_title
-            body_text = parsed["text"] if len(parsed["text"]) > 100 else default_title
-            effective_date = parsed["effective_date"]
-        except Exception as e:
-            logger.info(f"Live fetch for {citation} fell back to offline fixture ({e})")
-            title = default_title
-            body_text = self._get_fixture_text(section, default_title)
-            effective_date = date(2021, 7, 1)
-
         temporal = TemporalMetadata(
             effective_date=effective_date,
             is_current=True
@@ -174,11 +128,25 @@ class WashingtonLegConnector(BaseLegalConnector):
             chunks=chunks,
             temporal=temporal,
             authority=authority,
-            source_url=url,
+            source_url=f"{self.RCW_BASE_URL}?cite={section}",
             cps_topics=["child_welfare", "dependency", "state_statute", "washington_rcw"]
         )
         doc.compute_hash()
         return doc
+
+    def fetch_rcw_section(self, section: str, default_title: str) -> LegalDocument:
+        """Fetches a single RCW section from official legislature or cached store."""
+        url = f"{self.RCW_BASE_URL}?cite={section}"
+
+        try:
+            html = self.fetch_url(url, use_cache=True)
+            return self.parse_rcw_html(section, default_title, html)
+        except Exception as e:
+            logger.info(f"Live fetch for RCW {section} fell back to offline fixture ({e})")
+            title = default_title
+            body_text = self._get_fixture_text(section, default_title)
+            effective_date = date(2021, 7, 1)
+        return self._build_rcw_document(section, title, body_text, effective_date)
 
     def fetch_wac_section(self, section: str, default_title: str) -> LegalDocument:
         """Fetches a single WAC administrative rule from official legislature."""
