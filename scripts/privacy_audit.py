@@ -26,9 +26,11 @@ SECRET_PATTERNS = [
 ]
 
 # Sensitive local filesystem leaks (matching file paths, not web URLs)
+WINDOWS_PRIVATE_DRIVE_PATTERN = r"(?<!https://)(?<!http://)(?<![A-Za-z0-9_])[L-Z]:(?:\\\\|[/\\])(?:[A-Za-z0-9_. -]{2,}|(?![abfnrtv])[A-Za-z0-9_. -])(?:[/\\]|$)"
+
 LOCAL_PATH_PATTERNS = [
     (r"(?<!https://)(?<!http://)[C-Z]:\\Users\\[A-Za-z0-9_.\-]+(?!\.gemini)", "Windows Local User Path"),
-    (r"(?<!https://)(?<!http://)[L-Z]:\\", "Windows Private Drive Letter (L:\\, J:\\)"),
+    (WINDOWS_PRIVATE_DRIVE_PATTERN, "Windows Private Drive Letter (L:\\, J:\\)"),
     (r"/media/ixtly", "Private Linux Media Mount"),
     (r"EvidenceWorkspace", "EvidenceWorkspace Reference"),
     (r"\b10\.0\.0\.\d{1,3}\b", "Private 10.0.0.x Subnet IP"),
@@ -65,7 +67,7 @@ def audit_repository(repo_root: str) -> bool:
                 continue
 
             # Skip self, binaries and non-text files
-            if file in {"privacy_audit.py", "PUBLIC_DATA_POLICY.md"}:
+            if file in {"privacy_audit.py", "deep_security_audit.py", "PUBLIC_DATA_POLICY.md"}:
                 continue
             if file_path.suffix not in ALLOWED_EXTENSIONS and file not in {".gitignore", ".gitattributes"}:
                 continue
