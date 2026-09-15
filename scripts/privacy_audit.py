@@ -26,9 +26,11 @@ SECRET_PATTERNS = [
 ]
 
 # Sensitive local filesystem leaks (matching file paths, not web URLs)
+WINDOWS_PRIVATE_DRIVE_PATTERN = r"(?<!https://)(?<!http://)[L-Z]:(?:\\\\|[/\\])[A-Za-z0-9_. -]{2,}(?:[/\\]|$)"
+
 LOCAL_PATH_PATTERNS = [
     (r"(?<!https://)(?<!http://)[C-Z]:\\Users\\[A-Za-z0-9_.\-]+(?!\.gemini)", "Windows Local User Path"),
-    (r"(?<!https://)(?<!http://)[L-Z]:\\(?![nrt])", "Windows Private Drive Letter (L:\\, J:\\)"),
+    (WINDOWS_PRIVATE_DRIVE_PATTERN, "Windows Private Drive Letter (L:\\, J:\\)"),
     (r"/media/ixtly", "Private Linux Media Mount"),
     (r"EvidenceWorkspace", "EvidenceWorkspace Reference"),
     (r"\b10\.0\.0\.\d{1,3}\b", "Private 10.0.0.x Subnet IP"),

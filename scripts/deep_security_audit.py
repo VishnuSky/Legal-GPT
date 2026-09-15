@@ -14,13 +14,14 @@ if sys.platform == "win32" and hasattr(sys.stdout, "reconfigure"):
         pass
 
 ROOT_DIR = Path(__file__).resolve().parent.parent
+WINDOWS_PRIVATE_DRIVE_PATTERN = r"[L-Z]:(?:\\\\|[/\\])[A-Za-z0-9_. -]{2,}(?:[/\\]|$)"
 
 PATTERNS = {
     "Local User Profile Path": [
         r"[A-Za-z]:[\\/]Users[\\/][a-zA-Z0-9_\-\.]+",
         r"(?:^|[\s\"'\(])/home/[a-zA-Z0-9_\-\.]+(?:/[a-zA-Z0-9_\-\.]+)?",
         r"Users[\\/][a-zA-Z0-9_\-\.]+[\\/](?:Documents|Desktop|Downloads|AppData)",
-        r"[L-Z]:\\(?![nrt])",  # ignore Python :\n / :\r / :\t string escapes
+        WINDOWS_PRIVATE_DRIVE_PATTERN,
         r"/media/ixtly",
     ],
     "Private IP Addresses (Non-Localhost)": [

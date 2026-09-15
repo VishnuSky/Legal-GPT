@@ -1,8 +1,10 @@
 """Automated Security & Privacy Policy Unit Tests."""
 
-import os
+import re
 from pathlib import Path
 from scripts.privacy_audit import audit_repository
+from scripts.privacy_audit import WINDOWS_PRIVATE_DRIVE_PATTERN as PRIVACY_WINDOWS_PRIVATE_DRIVE_PATTERN
+from scripts.deep_security_audit import WINDOWS_PRIVATE_DRIVE_PATTERN as DEEP_WINDOWS_PRIVATE_DRIVE_PATTERN
 
 
 def test_repository_privacy_audit_passes():
@@ -38,3 +40,20 @@ def test_gitignore_covers_critical_exclusions():
     assert "data/private/" in gitignore_text
     assert "evidence/" in gitignore_text
     assert "case_files/" in gitignore_text
+
+
+def test_private_drive_pattern_matches_only_real_path_prefixes():
+    samples = [
+        r'L:\n',
+        r'L:\r',
+        r'L:\t',
+        r'L:\b',
+        r'L:\f',
+        r'L:\"',
+    ]
+
+    for pattern in (PRIVACY_WINDOWS_PRIVATE_DRIVE_PATTERN, DEEP_WINDOWS_PRIVATE_DRIVE_PATTERN):
+        for sample in samples:
+            assert re.search(pattern, sample) is None
+
+        assert re.search(pattern, r"L:\Legal") is not None
