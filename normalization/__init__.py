@@ -5,7 +5,7 @@ from normalization.models import (
     TemporalMetadata,
     AuthorityScore,
 )
-from normalization.chunkers import StatuteChunker, PolicyChunker
+from normalization.chunkers import StatuteChunker, PolicyChunker, RegulationChunker
 
 __all__ = [
     "LegalDocument",
@@ -15,4 +15,6 @@ __all__ = [
     "AuthorityScore",
     "StatuteChunker",
     "PolicyChunker",
+    "RegulationChunker",
 ]
+

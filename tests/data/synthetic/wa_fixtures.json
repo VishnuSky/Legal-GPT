@@ -14,6 +14,13 @@
     "source_url": "https://app.leg.wa.gov/rcw/default.aspx?cite=13.34.055"
   },
   {
+    "section": "13.34.060",
+    "title_name": "Shelter care — Placement — Custody",
+    "full_text": "(1) A child taken into custody must be placed in shelter care unless released under RCW 13.34.050 or 13.34.055. (2) The department shall make diligent efforts to place the child with a relative or suitable person, or with siblings whenever possible.",
+    "effective_date": "2021-07-01",
+    "source_url": "https://app.leg.wa.gov/rcw/default.aspx?cite=13.34.060"
+  },
+  {
     "section": "13.34.065",
     "title_name": "Shelter care — Hearing — Recommendation as to further custody — Release",
     "full_text": "(1)(a) When a child is taken into custody, the court shall hold a shelter care hearing within seventy-two hours, excluding Saturdays, Sundays, and legal holidays. The primary purpose of the shelter care hearing is to determine whether the child can be immediately and safely returned home while the adjudication of the dependency is pending. (b) If a parent or guardian is not given notice of the shelter care hearing, the parent may file an affidavit establishing that fact and the court shall hold a rehearing within seventy-two hours. (4) The court shall release a child alleged to be dependent to the care, custody, and control of the child's parent unless the court finds by a preponderance of the evidence that: (a) Serious danger to health, safety, or welfare exists; and (b) Reasonable efforts have been made to prevent or eliminate the need for removal.",
@@ -22,30 +29,114 @@
   },
   {
     "section": "13.34.090",
-    "title_name": "Rights of parties — Appointment of counsel",
-    "full_text": "(1) Any parent or guardian has the right to be represented by counsel at all stages of dependency proceedings under this chapter. (2) At the initial hearing, the court shall advise the parent of their right to counsel, and if the parent is indigent, the court shall appoint counsel immediately.",
+    "title_name": "Rights of parties — Appointment of counsel — Notice",
+    "full_text": "(1) Any parent or guardian has the right to be represented by counsel at all stages of dependency proceedings under this chapter. (2) At the initial hearing, the court shall advise the parent of their right to counsel, and if the parent is indigent, the court shall appoint counsel immediately. (3) Notice of rights and hearing dates shall be provided promptly.",
     "effective_date": "2021-07-01",
     "source_url": "https://app.leg.wa.gov/rcw/default.aspx?cite=13.34.090"
   },
   {
     "section": "13.34.130",
     "title_name": "Order of disposition — Foster care placement",
-    "full_text": "If the court adjudicates a child dependent, the court shall enter an order of disposition. The court shall not order that a child be removed from the custody of a parent unless the court finds by clear, cogent, and convincing evidence that: (a) A manifest danger exists that the child will suffer serious abuse or neglect if not removed; and (b) Reasonable efforts have been made to prevent removal.",
+    "full_text": "(1) If the court adjudicates a child dependent, the court shall enter an order of disposition. The court shall not order that a child be removed from the custody of a parent unless the court finds by clear, cogent, and convincing evidence that: (a) A manifest danger exists that the child will suffer serious abuse or neglect if not removed; and (b) Reasonable efforts have been made to prevent removal. (2) Preference is accorded to relative placement.",
     "effective_date": "2021-07-01",
     "source_url": "https://app.leg.wa.gov/rcw/default.aspx?cite=13.34.130"
   },
   {
     "section": "13.34.136",
-    "title_name": "Permanency plan of care",
-    "full_text": "(1) Whenever a child is ordered removed from the home, a permanency plan of care shall be developed. (2) The plan shall identify services to be provided to the parent to resolve the identified parental deficiencies and facilitate reunification.",
+    "title_name": "Permanency plan of care — Tailored remedial services",
+    "full_text": "(1) Whenever a child is ordered removed from the home, a permanency plan of care shall be developed. (2) The plan shall identify services to be provided to the parent to resolve the identified parental deficiencies and facilitate reunification. (3) The department shall actively provide tailored remedial services.",
     "effective_date": "2021-07-01",
     "source_url": "https://app.leg.wa.gov/rcw/default.aspx?cite=13.34.136"
   },
   {
+    "section": "13.34.145",
+    "title_name": "Permanency planning hearing — Timeframe",
+    "full_text": "(1) A permanency planning hearing shall be held in all cases where the child has remained in out-of-home care for at least nine months and an adoption decree, guardianship order, or permanent custody order has not been entered. The hearing shall take place no later than twelve months following the date of removal.",
+    "effective_date": "2021-07-01",
+    "source_url": "https://app.leg.wa.gov/rcw/default.aspx?cite=13.34.145"
+  },
+  {
+    "section": "13.34.180",
+    "title_name": "Petition seeking termination of parent-child relationship",
+    "full_text": "(1) A petition seeking termination of a parent and child relationship may be filed in juvenile court. The petition must allege that: (a) The child has been found to be a dependent child; (b) The court has entered a dispositional order; (c) The child has been removed from custody for at least six months; (d) Services have been offered or provided; (e) Little likelihood exists that conditions will be remedied in the near future; and (f) Continuation of the parent-child relationship diminishes the child's prospects for early integration into a stable home.",
+    "effective_date": "2021-07-01",
+    "source_url": "https://app.leg.wa.gov/rcw/default.aspx?cite=13.34.180"
+  },
+  {
+    "section": "13.34.190",
+    "title_name": "Order terminating parent-child relationship",
+    "full_text": "(1) The court may enter an order terminating all parental rights to a child if the court finds that: (a)(i) The allegations contained in the petition under RCW 13.34.180(1) are established by clear, cogent, and convincing evidence; and (b) Termination is in the best interests of the child.",
+    "effective_date": "2021-07-01",
+    "source_url": "https://app.leg.wa.gov/rcw/default.aspx?cite=13.34.190"
+  },
+  {
+    "section": "13.38.010",
+    "title_name": "Washington State Indian Child Welfare Act — Legislative findings",
+    "full_text": "(1) The legislature finds that there is no resource more vital to the continued existence and integrity of Indian tribes than their children. (2) It is the policy of the state to protect the best interests of Indian children and promote the stability and security of Indian tribes and families.",
+    "effective_date": "2021-07-01",
+    "source_url": "https://app.leg.wa.gov/rcw/default.aspx?cite=13.38.010"
+  },
+  {
+    "section": "13.38.070",
+    "title_name": "Involuntary child custody proceeding — Notice — Active efforts",
+    "full_text": "(1) In any involuntary child custody proceeding involving an Indian child, the petitioning party shall notify the parent or Indian custodian and the Indian child's tribe. (2) Any party seeking involuntary foster care placement or termination of parental rights shall satisfy the court that active efforts have been made to provide remedial services.",
+    "effective_date": "2021-07-01",
+    "source_url": "https://app.leg.wa.gov/rcw/default.aspx?cite=13.38.070"
+  },
+  {
+    "section": "13.38.120",
+    "title_name": "Order terminating parental rights — Evidentiary standard",
+    "full_text": "(1) An order terminating parental rights to an Indian child shall not be ordered without a determination, supported by evidence beyond a reasonable doubt, including testimony of qualified expert witnesses, that continued custody is likely to result in serious emotional or physical damage to the child.",
+    "effective_date": "2021-07-01",
+    "source_url": "https://app.leg.wa.gov/rcw/default.aspx?cite=13.38.120"
+  },
+  {
     "section": "26.44.050",
-    "title_name": "Abuse or neglect of child — Duty of law enforcement, department",
-    "full_text": "Upon the receipt of a report concerning the possible occurrence of abuse or neglect, the law enforcement agency or the department of children, youth, and families must investigate and provide protective services section.",
+    "title_name": "Abuse or neglect of child — Duty of law enforcement and department",
+    "full_text": "(1) Upon the receipt of a report concerning the possible occurrence of abuse or neglect, the law enforcement agency or the department of children, youth, and families must investigate and provide protective services section as required by law.",
     "effective_date": "2021-07-01",
     "source_url": "https://app.leg.wa.gov/rcw/default.aspx?cite=26.44.050"
+  },
+  {
+    "section": "26.44.030",
+    "title_name": "Reports — Duty and authority to make",
+    "full_text": "(1) When any professional person, law enforcement officer, or mandatory reporter has reasonable cause to believe that a child has suffered abuse or neglect, they shall report such incident, or cause a report to be made, to the proper law enforcement agency or to the department.",
+    "effective_date": "2021-07-01",
+    "source_url": "https://app.leg.wa.gov/rcw/default.aspx?cite=26.44.030"
+  },
+  {
+    "section": "26.27.201",
+    "title_name": "Initial child custody jurisdiction (UCCJEA Home State)",
+    "full_text": "(1) A court of this state has jurisdiction to make an initial child custody determination only if: (a) This state is the home state of the child on the date of the commencement of the proceeding, or was the home state of the child within six months before commencement.",
+    "effective_date": "2021-07-01",
+    "source_url": "https://app.leg.wa.gov/rcw/default.aspx?cite=26.27.201"
+  },
+  {
+    "section": "26.27.231",
+    "title_name": "Temporary emergency jurisdiction (UCCJEA § 204)",
+    "full_text": "(1) A court of this state has temporary emergency jurisdiction if the child is present in this state and the child has been abandoned or it is necessary in an emergency to protect the child because the child, or a sibling or parent of the child, is subjected to or threatened with mistreatment or abuse.",
+    "effective_date": "2021-07-01",
+    "source_url": "https://app.leg.wa.gov/rcw/default.aspx?cite=26.27.231"
+  },
+  {
+    "section": "110-30-0010",
+    "title_name": "Department of Children, Youth, and Families — Authority and Purpose",
+    "full_text": "(1) The department of children, youth, and families was established to improve delivery of services to children and families. (2) These rules implement child welfare and juvenile justice statutory duties under Title 13 and Title 74 RCW.",
+    "effective_date": "2021-07-01",
+    "source_url": "https://app.leg.wa.gov/wac/default.aspx?cite=110-30-0010"
+  },
+  {
+    "section": "110-300-0010",
+    "title_name": "Child Care and Early Learning Programs — Requirements",
+    "full_text": "(1) Licensed providers must deliver safe, healthy, and culturally responsive environments for children. (2) Background checks and mandatory reporting compliance are strictly required across all operations.",
+    "effective_date": "2021-07-01",
+    "source_url": "https://app.leg.wa.gov/wac/default.aspx?cite=110-300-0010"
+  },
+  {
+    "section": "110-148-1300",
+    "title_name": "Foster Care Licensing Requirements — Kinship Placement Standards",
+    "full_text": "(1) Kinship caregivers and relative placements must be evaluated promptly under department standards. (2) The department provides expedited safety inspections and supports to facilitate immediate kinship care when safe.",
+    "effective_date": "2021-07-01",
+    "source_url": "https://app.leg.wa.gov/wac/default.aspx?cite=110-148-1300"
   }
 ]

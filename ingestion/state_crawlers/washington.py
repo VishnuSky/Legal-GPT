@@ -1,15 +1,14 @@
 """Washington State Legislature (RCW & WAC) Ingestion Crawler with Live Official Fetch & Local Caching."""
 
-import os
 import re
 import json
 import logging
 from pathlib import Path
-from typing import List, Optional, Dict, Any
-from datetime import date, datetime, timezone
+from typing import List, Dict, Any
+from datetime import date
 from ingestion.base import BaseLegalConnector
 from normalization.models import LegalDocument, TemporalMetadata, AuthorityScore
-from normalization.chunkers import StatuteChunker
+from normalization.chunkers import StatuteChunker, RegulationChunker
 
 logger = logging.getLogger("legal_gpt.ingestion.wa")
 
@@ -53,109 +52,67 @@ class WashingtonLegConnector(BaseLegalConnector):
 
     def _extract_clean_text_from_html(self, html_content: str) -> Dict[str, Any]:
         """Extracts the title/caption, text body, and legislative history from Washington Legislative HTML."""
-        # Find main content block
-        content_match = re.search(r'<div id="ContentPlaceHolder1_divContent"[^>]*>(.*?)</div>\s*<div id="ContentPlaceHolder1_divBottomContent"', html_content, re.DOTALL)
-        if content_match:
-            main_html = content_match.group(1)
-        else:
-            main_html = html_content
+        # 1. Strip script and style tags completely
+        clean_html = re.sub(r'<script[^>]*>.*?</script>', '', html_content, flags=re.DOTALL | re.IGNORECASE)
+        clean_html = re.sub(r'<style[^>]*>.*?</style>', '', clean_html, flags=re.DOTALL | re.IGNORECASE)
 
-        # Extract caption / heading
-        caption_match = re.search(r'<span id="ContentPlaceHolder1_lblTitle"[^>]*>(.*?)</span>', html_content)
-        caption = caption_match.group(1).strip() if caption_match else ""
+        # 2. Extract caption / heading from lblTitle or header elements
+        caption = ""
+        caption_match = re.search(r'<span id="ContentPlaceHolder1_lblTitle"[^>]*>(.*?)</span>', clean_html, re.DOTALL | re.IGNORECASE)
+        if caption_match:
+            caption = re.sub(r'<[^>]+>', '', caption_match.group(1)).strip()
+        if not caption:
+            h_match = re.search(r'<h[1-4][^>]*>(.*?)</h[1-4]>', clean_html, re.DOTALL | re.IGNORECASE)
+            if h_match:
+                caption = re.sub(r'<[^>]+>', '', h_match.group(1)).strip()
 
-        # Extract legislative history note if present: [ 2021 c 211 § 9; ... ]
+        # 3. Find main content block if available
+        content_match = re.search(r'<div id="ContentPlaceHolder1_divContent"[^>]*>(.*?)</div>\s*<div id="ContentPlaceHolder1_divBottomContent"', clean_html, re.DOTALL | re.IGNORECASE)
+        if not content_match:
+            content_match = re.search(r'<div id="ContentPlaceHolder1_divContent"[^>]*>(.*?)</div>', clean_html, re.DOTALL | re.IGNORECASE)
+        if not content_match:
+            content_match = re.search(r'<div class="rcwcontent"[^>]*>(.*?)</div>', clean_html, re.DOTALL | re.IGNORECASE)
+
+        main_html = content_match.group(1) if content_match else clean_html
+
+        # 4. Extract legislative history note if present: [ 2021 c 211 § 9; ... ]
         hist_match = re.search(r'\[\s*(\d{4})\s+c\s+\d+.*?\]', main_html)
         effective_year = int(hist_match.group(1)) if hist_match else 2021
         effective_date = date(effective_year, 7, 1)
 
-        # Clean tags
-        clean_text = re.sub(r'<script[^>]*>.*?</script>', '', main_html, flags=re.DOTALL)
-        clean_text = re.sub(r'<style[^>]*>.*?</style>', '', clean_text, flags=re.DOTALL)
-        clean_text = re.sub(r'<[^>]+>', '\n', clean_text)
-        clean_text = re.sub(r'&nbsp;', ' ', clean_text)
-        clean_text = re.sub(r'&amp;', '&', clean_text)
-        clean_text = re.sub(r'&quot;', '"', clean_text)
-        clean_text = re.sub(r'&#39;', "'", clean_text)
-        clean_text = re.sub(r'\n\s*\n', '\n\n', clean_text).strip()
+        # 5. Preserve subsection and paragraph linebreaks
+        text = re.sub(r'<br\s*/?>', '\n', main_html, flags=re.IGNORECASE)
+        text = re.sub(r'</?(?:p|div|li|tr|h[1-6])[^>]*>', '\n', text, flags=re.IGNORECASE)
+        text = re.sub(r'<[^>]+>', ' ', text)
+
+        # HTML entities
+        text = text.replace('&nbsp;', ' ').replace('&amp;', '&').replace('&quot;', '"').replace('&#39;', "'").replace('&lt;', '<').replace('&gt;', '>')
+        text = re.sub(r'[ \t]+', ' ', text)
+        text = re.sub(r'\n\s*\n+', '\n\n', text).strip()
 
         return {
             "caption": caption,
-            "text": clean_text,
+            "text": text,
             "effective_date": effective_date
         }
 
-    def parse_rcw_html(self, section: str, title_name: str, html_text: str) -> LegalDocument:
-        """Parses raw HTML snippet into LegalDocument."""
-        parsed = self._extract_clean_text_from_html(html_text)
-        title = parsed["caption"] or title_name
-        body_text = parsed["text"] if len(parsed["text"]) > 0 else title_name
-        effective_date = parsed["effective_date"]
-        citation = f"RCW {section}"
-        doc_id = f"WA-RCW-{section.replace('.', '_')}"
-
-        doc = LegalDocument(
-            document_id=doc_id,
-            source_id="WA_RCW",
-            jurisdiction="US-WA",
-            level="state",
-            document_type="statute",
-            title=f"{citation} - {title}",
-            citation=citation,
-            full_text=body_text,
-            chunks=StatuteChunker.chunk_statute(doc_id, f"{citation}: {title}", body_text),
-            temporal=TemporalMetadata(effective_date=effective_date, is_current=True),
-            authority=AuthorityScore(tier="TIER_0", weight=1.00, official_source=True, provider_name="Washington State Legislature"),
-            source_url=f"{self.RCW_BASE_URL}?cite={section}",
-            cps_topics=["child_welfare", "dependency", "state_statute"]
-        )
-        doc.compute_hash()
-        return doc
-
-    def get_canonical_statutes(self) -> List[LegalDocument]:
-        """Returns synthetic offline fixture documents for offline test execution."""
-        docs = []
-        for section, default_title in WA_RCW_TARGET_SECTIONS:
-            text = self._get_fixture_text(section, default_title)
-            doc_id = f"WA-RCW-{section.replace('.', '_')}"
-            citation = f"RCW {section}"
-            doc = LegalDocument(
-                document_id=doc_id,
-                source_id="WA_RCW",
-                jurisdiction="US-WA",
-                level="state",
-                document_type="statute",
-                title=f"{citation} - {default_title}",
-                citation=citation,
-                full_text=text,
-                chunks=StatuteChunker.chunk_statute(doc_id, f"{citation}: {default_title}", text),
-                temporal=TemporalMetadata(effective_date=date(2021, 7, 1), is_current=True),
-                authority=AuthorityScore(tier="TIER_0", weight=1.00, official_source=True, provider_name="Washington State Legislature (Synthetic Fixture)"),
-                source_url=f"{self.RCW_BASE_URL}?cite={section}",
-                cps_topics=["child_welfare", "dependency", "state_statute"]
-            )
-            doc.compute_hash()
-            docs.append(doc)
-        return docs
-
-    def fetch_rcw_section(self, section: str, default_title: str) -> LegalDocument:
-        """Fetches a single RCW section from official legislature or cached store."""
-        url = f"{self.RCW_BASE_URL}?cite={section}"
-        citation = f"RCW {section}"
-        doc_id = f"WA-RCW-{section.replace('.', '_')}"
-
-        try:
-            html = self.fetch_url(url, use_cache=True)
-            parsed = self._extract_clean_text_from_html(html)
-            title = parsed["caption"] or default_title
-            body_text = parsed["text"] if len(parsed["text"]) > 100 else default_title
-            effective_date = parsed["effective_date"]
-        except Exception as e:
-            logger.info(f"Live fetch for {citation} fell back to offline fixture ({e})")
-            title = default_title
+    def parse_rcw_html(self, section: str, default_title: str, html_content: str) -> LegalDocument:
+        """Parses RCW HTML content into a standardized LegalDocument."""
+        parsed = self._extract_clean_text_from_html(html_content)
+        title = parsed["caption"] or default_title
+        body_text = parsed["text"]
+        if len(body_text) < 100:
             body_text = self._get_fixture_text(section, default_title)
-            effective_date = date(2021, 7, 1)
+        return self._build_rcw_document(
+            section=section,
+            title=title,
+            body_text=body_text,
+            effective_date=parsed["effective_date"]
+        )
 
+    def _build_rcw_document(self, section: str, title: str, body_text: str, effective_date: date) -> LegalDocument:
+        citation = f"RCW {section}"
+        doc_id = f"WA-RCW-{section.replace('.', '_')}"
         temporal = TemporalMetadata(
             effective_date=effective_date,
             is_current=True
@@ -184,30 +141,41 @@ class WashingtonLegConnector(BaseLegalConnector):
             chunks=chunks,
             temporal=temporal,
             authority=authority,
-            source_url=url,
+            source_url=f"{self.RCW_BASE_URL}?cite={section}",
             cps_topics=["child_welfare", "dependency", "state_statute", "washington_rcw"]
         )
         doc.compute_hash()
         return doc
 
-    def fetch_wac_section(self, section: str, default_title: str) -> LegalDocument:
-        """Fetches a single WAC administrative rule from official legislature."""
-        url = f"{self.WAC_BASE_URL}?cite={section}"
-        citation = f"WAC {section}"
-        doc_id = f"WA-WAC-{section.replace('-', '_').replace('.', '_')}"
+    def fetch_rcw_section(self, section: str, default_title: str) -> LegalDocument:
+        """Fetches a single RCW section from official legislature or cached store."""
+        url = f"{self.RCW_BASE_URL}?cite={section}"
 
         try:
             html = self.fetch_url(url, use_cache=True)
-            parsed = self._extract_clean_text_from_html(html)
-            title = parsed["caption"] or default_title
-            body_text = parsed["text"] if len(parsed["text"]) > 80 else default_title
-            effective_date = parsed["effective_date"]
+            return self.parse_rcw_html(section, default_title, html)
         except Exception as e:
-            logger.info(f"Live fetch for {citation} fell back to offline fixture ({e})")
-            title = default_title
-            body_text = default_title
-            effective_date = date(2021, 7, 1)
+            logger.info(f"Live fetch for RCW {section} fell back to offline fixture ({e})")
+            body_text = self._get_fixture_text(section, default_title)
+            return self._build_rcw_document(section, default_title, body_text, date(2021, 7, 1))
 
+    def parse_wac_html(self, section: str, default_title: str, html_content: str) -> LegalDocument:
+        """Parses WAC administrative rule HTML content into a standardized LegalDocument."""
+        parsed = self._extract_clean_text_from_html(html_content)
+        title = parsed["caption"] or default_title
+        body_text = parsed["text"]
+        if len(body_text) < 80:
+            body_text = self._get_fixture_text(section, default_title)
+        return self._build_wac_document(
+            section=section,
+            title=title,
+            body_text=body_text,
+            effective_date=parsed["effective_date"]
+        )
+
+    def _build_wac_document(self, section: str, title: str, body_text: str, effective_date: date) -> LegalDocument:
+        citation = f"WAC {section}"
+        doc_id = f"WA-WAC-{section.replace('-', '_').replace('.', '_')}"
         temporal = TemporalMetadata(
             effective_date=effective_date,
             is_current=True
@@ -218,7 +186,7 @@ class WashingtonLegConnector(BaseLegalConnector):
             official_source=True,
             provider_name="Washington State Legislature (WAC)"
         )
-        chunks = StatuteChunker.chunk_statute(
+        chunks = RegulationChunker.chunk_regulation(
             document_id=doc_id,
             title=f"{citation}: {title}",
             full_text=body_text
@@ -236,11 +204,32 @@ class WashingtonLegConnector(BaseLegalConnector):
             chunks=chunks,
             temporal=temporal,
             authority=authority,
-            source_url=url,
+            source_url=f"{self.WAC_BASE_URL}?cite={section}",
             cps_topics=["child_welfare", "dcyf_regulation", "wac"]
         )
         doc.compute_hash()
         return doc
+
+    def fetch_wac_section(self, section: str, default_title: str) -> LegalDocument:
+        """Fetches a single WAC administrative rule from official legislature or cached store."""
+        url = f"{self.WAC_BASE_URL}?cite={section}"
+
+        try:
+            html = self.fetch_url(url, use_cache=True)
+            return self.parse_wac_html(section, default_title, html)
+        except Exception as e:
+            logger.info(f"Live fetch for WAC {section} fell back to offline fixture ({e})")
+            body_text = self._get_fixture_text(section, default_title)
+            return self._build_wac_document(section, default_title, body_text, date(2021, 7, 1))
+
+    def get_canonical_statutes(self) -> List[LegalDocument]:
+        """Returns synthetic offline fixture documents for offline test execution."""
+        docs = []
+        for section, default_title in WA_RCW_TARGET_SECTIONS:
+            text = self._get_fixture_text(section, default_title)
+            doc = self._build_rcw_document(section, default_title, text, date(2021, 7, 1))
+            docs.append(doc)
+        return docs
 
     def _get_fixture_text(self, section: str, fallback_title: str) -> str:
         """Loads offline synthetic fixtures if available."""
@@ -271,3 +260,4 @@ class WashingtonLegConnector(BaseLegalConnector):
 
         logger.info(f"Washington Ingestion complete: {len(documents)} official documents parsed.")
         return documents
+

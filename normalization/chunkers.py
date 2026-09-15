@@ -212,3 +212,60 @@ class PolicyChunker(LegalChunker):
             ))
 
         return chunks
+
+
+class RegulationChunker(LegalChunker):
+    """Chunks administrative regulations (e.g., WAC) by rule and subsection hierarchy."""
+
+    SUBSECTION_REGEX = re.compile(r"(?:\n|^)\s*(\([0-9a-zA-Z]+\)|\d+\.)\s*")
+
+    @classmethod
+    def chunk_regulation(cls, document_id: str, title: str, full_text: str) -> List[LegalChunk]:
+        chunks = []
+        raw_subsections = cls.SUBSECTION_REGEX.split(full_text)
+
+        if len(raw_subsections) <= 1:
+            chunk = LegalChunk(
+                chunk_id=f"{document_id}_001",
+                document_id=document_id,
+                chunk_type="regulation_rule",
+                heading=title,
+                text=full_text.strip(),
+                tokens_estimate=cls.estimate_tokens(full_text),
+                hierarchy_path=[title],
+            )
+            return [chunk]
+
+        # Intro text before first subsection
+        intro_text = raw_subsections[0].strip()
+        idx = 1
+        if intro_text:
+            chunks.append(LegalChunk(
+                chunk_id=f"{document_id}_{idx:03d}",
+                document_id=document_id,
+                chunk_type="regulation_rule",
+                heading=f"{title} (Overview)",
+                text=intro_text,
+                tokens_estimate=cls.estimate_tokens(intro_text),
+                hierarchy_path=[title, "Overview"],
+            ))
+            idx += 1
+
+        for i in range(1, len(raw_subsections), 2):
+            label = raw_subsections[i].strip()
+            body = raw_subsections[i + 1].strip() if (i + 1) < len(raw_subsections) else ""
+            combined_text = f"{label} {body}".strip()
+            if combined_text:
+                chunks.append(LegalChunk(
+                    chunk_id=f"{document_id}_{idx:03d}",
+                    document_id=document_id,
+                    chunk_type="regulation_subsection",
+                    heading=f"{title} {label}",
+                    text=combined_text,
+                    tokens_estimate=cls.estimate_tokens(combined_text),
+                    hierarchy_path=[title, label],
+                ))
+                idx += 1
+
+        return chunks
+

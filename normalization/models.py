@@ -37,7 +37,19 @@ class Citation(BaseModel):
 class LegalChunk(BaseModel):
     chunk_id: str
     document_id: str
-    chunk_type: Literal["chapter", "section", "subsection", "holding", "reasoning", "syllabus", "policy_rule", "procedure", "form_field"]
+    chunk_type: Literal[
+        "chapter",
+        "section",
+        "subsection",
+        "holding",
+        "reasoning",
+        "syllabus",
+        "policy_rule",
+        "procedure",
+        "form_field",
+        "regulation_rule",
+        "regulation_subsection",
+    ]
     heading: Optional[str] = None
     text: str
     tokens_estimate: int = 0
