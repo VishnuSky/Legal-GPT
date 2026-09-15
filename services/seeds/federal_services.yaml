@@ -1,0 +1,75 @@
+# Official Federal Public Legal & Civil Services Registry
+# Sources: Verified official Federal Register, LSC, BIA, and CFPB directories
+
+services:
+  - service_id: "FED-SERV-LSC-DIRECTORY"
+    name: "Legal Services Corporation (LSC) National Grantee Directory"
+    jurisdiction:
+      country: "US"
+      state: "US"
+      county: null
+      tribe: null
+    matters:
+      - "FAMILY_CPS"
+      - "HOUSING"
+      - "CONSUMER_DEBT"
+      - "BENEFITS"
+      - "EMPLOYMENT"
+      - "DISABILITY"
+    service_type: "LEGAL_AID"
+    description: "Federally established single largest funder of civil legal aid for low-income Americans in the nation, funding 131 independent legal aid programs across all 50 states and territories."
+    contact:
+      phone: "202-295-1500"
+      website: "https://www.lsc.gov"
+      address: "3333 K Street NW, Third Floor, Washington, DC 20007"
+      intake_url: "https://www.lsc.gov/about-lsc/what-legal-aid/get-legal-aid"
+      email: "info@lsc.gov"
+      hours: "Monday - Friday 9:00 AM - 5:00 PM EST"
+    eligibility_summary: "Individuals and families with household income at or below 125% of the Federal Poverty Guidelines."
+    source_url: "https://www.lsc.gov"
+    is_official: true
+
+  - service_id: "FED-SERV-BIA-ICWA"
+    name: "Bureau of Indian Affairs (BIA) ICWA Designated Tribal Agents Directory"
+    jurisdiction:
+      country: "US"
+      state: "US"
+      county: null
+      tribe: null
+    matters:
+      - "FAMILY_CPS"
+    service_type: "TRIBAL_ICWA"
+    description: "Official annual Federal Register publication of designated tribal agents and addresses for receipt of ICWA notices (25 U.S.C. § 1912(a)) across all federally recognized tribes."
+    contact:
+      phone: "202-513-7640"
+      website: "https://www.bia.gov/bia/ois/dhs/icwa"
+      address: "1849 C Street NW, MS-4513-MIB, Washington, DC 20240"
+      intake_url: "https://www.bia.gov/bia/ois/dhs/icwa/tribal-leaders-directory"
+      email: "icwa@bia.gov"
+      hours: "Monday - Friday 8:00 AM - 4:30 PM EST"
+    eligibility_summary: "State courts, child welfare agencies, and families seeking mandatory ICWA notice contacts for federally recognized tribes."
+    source_url: "https://www.bia.gov/bia/ois/dhs/icwa"
+    is_official: true
+
+  - service_id: "FED-SERV-CFPB-CONSUMER"
+    name: "Consumer Financial Protection Bureau (CFPB) Help Center"
+    jurisdiction:
+      country: "US"
+      state: "US"
+      county: null
+      tribe: null
+    matters:
+      - "CONSUMER_DEBT"
+      - "HOUSING"
+    service_type: "AG_CONSUMER"
+    description: "Federal agency ensuring fair treatment by banks, lenders, and other financial institutions. Enforces Fair Debt Collection Practices Act (FDCPA) and consumer financial regulations."
+    contact:
+      phone: "1-855-411-2372"
+      website: "https://www.consumerfinance.gov"
+      address: "1700 G Street NW, Washington, DC 20552"
+      intake_url: "https://www.consumerfinance.gov/complaint/"
+      email: null
+      hours: "Monday - Friday 8:00 AM - 8:00 PM EST (180+ languages)"
+    eligibility_summary: "All U.S. consumers experiencing issues with debt collection, credit reporting, mortgages, and student loans."
+    source_url: "https://www.consumerfinance.gov"
+    is_official: true

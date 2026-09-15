@@ -85,6 +85,59 @@ class WashingtonLegConnector(BaseLegalConnector):
             "effective_date": effective_date
         }
 
+    def parse_rcw_html(self, section: str, title_name: str, html_text: str) -> LegalDocument:
+        """Parses raw HTML snippet into LegalDocument."""
+        parsed = self._extract_clean_text_from_html(html_text)
+        title = parsed["caption"] or title_name
+        body_text = parsed["text"] if len(parsed["text"]) > 0 else title_name
+        effective_date = parsed["effective_date"]
+        citation = f"RCW {section}"
+        doc_id = f"WA-RCW-{section.replace('.', '_')}"
+
+        doc = LegalDocument(
+            document_id=doc_id,
+            source_id="WA_RCW",
+            jurisdiction="US-WA",
+            level="state",
+            document_type="statute",
+            title=f"{citation} - {title}",
+            citation=citation,
+            full_text=body_text,
+            chunks=StatuteChunker.chunk_statute(doc_id, f"{citation}: {title}", body_text),
+            temporal=TemporalMetadata(effective_date=effective_date, is_current=True),
+            authority=AuthorityScore(tier="TIER_0", weight=1.00, official_source=True, provider_name="Washington State Legislature"),
+            source_url=f"{self.RCW_BASE_URL}?cite={section}",
+            cps_topics=["child_welfare", "dependency", "state_statute"]
+        )
+        doc.compute_hash()
+        return doc
+
+    def get_canonical_statutes(self) -> List[LegalDocument]:
+        """Returns synthetic offline fixture documents for offline test execution."""
+        docs = []
+        for section, default_title in WA_RCW_TARGET_SECTIONS:
+            text = self._get_fixture_text(section, default_title)
+            doc_id = f"WA-RCW-{section.replace('.', '_')}"
+            citation = f"RCW {section}"
+            doc = LegalDocument(
+                document_id=doc_id,
+                source_id="WA_RCW",
+                jurisdiction="US-WA",
+                level="state",
+                document_type="statute",
+                title=f"{citation} - {default_title}",
+                citation=citation,
+                full_text=text,
+                chunks=StatuteChunker.chunk_statute(doc_id, f"{citation}: {default_title}", text),
+                temporal=TemporalMetadata(effective_date=date(2021, 7, 1), is_current=True),
+                authority=AuthorityScore(tier="TIER_0", weight=1.00, official_source=True, provider_name="Washington State Legislature (Synthetic Fixture)"),
+                source_url=f"{self.RCW_BASE_URL}?cite={section}",
+                cps_topics=["child_welfare", "dependency", "state_statute"]
+            )
+            doc.compute_hash()
+            docs.append(doc)
+        return docs
+
     def fetch_rcw_section(self, section: str, default_title: str) -> LegalDocument:
         """Fetches a single RCW section from official legislature or cached store."""
         url = f"{self.RCW_BASE_URL}?cite={section}"

@@ -28,6 +28,34 @@ class LegalMCPHandler:
 
     TOOLS = [
         {
+            "name": "lookup_public_law",
+            "description": "Execute a jurisdiction-locked, temporal, citation-verified public legal research analysis.",
+            "inputSchema": {
+                "type": "object",
+                "properties": {
+                    "query": {"type": "string", "description": "Legal question or civil law topic"},
+                    "state": {"type": "string", "description": "2-letter state code e.g. WA, IL, OH, CA, TX, NY"},
+                    "county": {"type": "string", "description": "County or Judicial District"},
+                    "event_date": {"type": "string", "description": "Event date for temporal validity (YYYY-MM-DD)"},
+                    "mode": {"type": "string", "enum": ["standard", "self_represented", "investigator", "attorney", "court"], "default": "standard"}
+                },
+                "required": ["query"]
+            }
+        },
+        {
+            "name": "lookup_services",
+            "description": "Search verified official civil legal aid, court self-help centers, bar referrals, and public ombudsman directories.",
+            "inputSchema": {
+                "type": "object",
+                "properties": {
+                    "state": {"type": "string", "description": "State code e.g. WA, IL, OH"},
+                    "county": {"type": "string", "description": "County name e.g. Skagit, Cook, Cuyahoga"},
+                    "matter": {"type": "string", "description": "Civil matter taxonomy e.g. FAMILY_CPS, HOUSING, CONSUMER_DEBT, BENEFITS, EMPLOYMENT"},
+                    "service_type": {"type": "string", "description": "LEGAL_AID, COURT_SELF_HELP, BAR_REFERRAL, AG_CONSUMER, TRIBAL_ICWA, PUBLIC_CONTACT"}
+                }
+            }
+        },
+        {
             "name": "legal_query",
             "description": "Execute a jurisdiction-locked, temporal, citation-verified legal research analysis.",
             "inputSchema": {
@@ -190,7 +218,7 @@ class LegalMCPHandler:
 
     @classmethod
     def _execute_tool(cls, tool_name: str, args: Dict[str, Any]) -> str:
-        if tool_name == "legal_query":
+        if tool_name in ("lookup_public_law", "legal_query"):
             parsed_date = date.fromisoformat(args["event_date"]) if "event_date" in args and args["event_date"] else None
             resp = orchestrator.process_query(
                 query=args["query"],
@@ -200,6 +228,16 @@ class LegalMCPHandler:
                 persona_mode=args.get("mode", "standard")
             )
             return resp.render_markdown()
+
+        elif tool_name == "lookup_services":
+            from services.registry import default_service_registry
+            results = default_service_registry.query_services(
+                state=args.get("state"),
+                county=args.get("county"),
+                matter=args.get("matter"),
+                service_type=args.get("service_type")
+            )
+            return json.dumps([r.model_dump() for r in results], default=str, indent=2)
 
         elif tool_name == "citator_lookup":
             report = citator_graph.evaluate_citator_status(args["citation"])

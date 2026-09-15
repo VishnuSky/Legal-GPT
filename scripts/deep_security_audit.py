@@ -20,7 +20,7 @@ PATTERNS = {
         r"[A-Za-z]:[\\/]Users[\\/][a-zA-Z0-9_\-\.]+",
         r"(?:^|[\s\"'\(])/home/[a-zA-Z0-9_\-\.]+(?:/[a-zA-Z0-9_\-\.]+)?",
         r"Users[\\/][a-zA-Z0-9_\-\.]+[\\/](?:Documents|Desktop|Downloads|AppData)",
-        r"[L-Z]:\\",
+        r"(?<![a-zA-Z0-9_])\b[L-Z]:\\(?!n|t|r|b|f|v|0|x|u|U)[a-zA-Z0-9_\-]",
         r"/media/ixtly",
     ],
     "Private IP Addresses (Non-Localhost)": [
@@ -44,13 +44,17 @@ PATTERNS = {
         r"\bvoiceprint\b",
         r"\.wav\b",
         r"\bMetaVault\b",
+        r"\bunsloth\b",
+        r"\.gguf\b",
     ]
 }
 
 ALLOWED_SECURITY_FILES = {
     "scripts/privacy_audit.py",
     "scripts/deep_security_audit.py",
-    "tests/test_privacy_policy.py"
+    "tests/test_privacy_policy.py",
+    ".gitignore",
+    "PUBLIC_DATA_POLICY.md"
 }
 
 

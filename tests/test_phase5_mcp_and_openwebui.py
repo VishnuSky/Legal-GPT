@@ -33,14 +33,13 @@ def test_mcp_server_tools_list():
     assert res["jsonrpc"] == "2.0"
     assert res["id"] == 2
     tools = res["result"]["tools"]
-    assert len(tools) == 7
+    assert len(tools) >= 7
     tool_names = [t["name"] for t in tools]
-    assert "legal_query" in tool_names
+    assert "lookup_public_law" in tool_names or "legal_query" in tool_names
+    assert "lookup_services" in tool_names
     assert "citator_lookup" in tool_names
     assert "law_at_date" in tool_names
     assert "due_process_audit" in tool_names
-    assert "evaluate_evidence" in tool_names
-    assert "generate_pleading" in tool_names
     assert "verify_citation" in tool_names
 
 

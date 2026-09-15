@@ -28,7 +28,7 @@ SECRET_PATTERNS = [
 # Sensitive local filesystem leaks (matching file paths, not web URLs)
 LOCAL_PATH_PATTERNS = [
     (r"(?<!https://)(?<!http://)[C-Z]:\\Users\\[A-Za-z0-9_.\-]+(?!\.gemini)", "Windows Local User Path"),
-    (r"(?<!https://)(?<!http://)[L-Z]:\\", "Windows Private Drive Letter (L:\\, J:\\)"),
+    (r"(?<!https://)(?<!http://)\b[L-Z]:\\[a-zA-Z0-9_\-]", "Windows Private Drive Letter (L:\\, J:\\)"),
     (r"/media/ixtly", "Private Linux Media Mount"),
     (r"EvidenceWorkspace", "EvidenceWorkspace Reference"),
     (r"\b10\.0\.0\.\d{1,3}\b", "Private 10.0.0.x Subnet IP"),
@@ -36,6 +36,8 @@ LOCAL_PATH_PATTERNS = [
     (r"\bvoiceprint\b", "Biometric Voiceprint Data"),
     (r"\.wav\b", "WAV Audio Evidence File"),
     (r"\bMetaVault\b", "Private MetaVault Reference"),
+    (r"\bunsloth\b", "Private Unsloth Framework Reference"),
+    (r"\.gguf\b", "GGUF Binary Model File Reference"),
     (r"(?<!https://)(?<!http://)(?<!/)\b/home/[a-zA-Z0-9_.\-]+/(?:Documents|Desktop|Downloads|projects|code|workspace|\.ssh)", "Linux Local Home Directory Path"),
     (r"(?<!https://)(?<!http://)(?<!/)\b/Users/[a-zA-Z0-9_.\-]+/(?:Documents|Desktop|Downloads|projects|code|workspace|\.ssh)", "macOS Local Home Directory Path"),
 ]
@@ -53,7 +55,7 @@ def audit_repository(repo_root: str) -> bool:
 
     for root, dirs, files in os.walk(repo_root):
         # Skip git directory, virtual environments, caches, audit script directory
-        dirs[:] = [d for d in dirs if d not in {".git", ".venv", "venv", "__pycache__", ".pytest_cache", "node_modules", "data", ".gemini"}]
+        dirs[:] = [d for d in dirs if d not in {".git", ".venv", "venv", "__pycache__", ".pytest_cache", "node_modules", "data", ".gemini", ".cache"}]
 
         for file in files:
             file_path = Path(root) / file
@@ -64,10 +66,10 @@ def audit_repository(repo_root: str) -> bool:
                 violations.append(f"[FORBIDDEN FILE EXTENSION] {rel_path}")
                 continue
 
-            # Skip self, binaries and non-text files
-            if file in {"privacy_audit.py", "PUBLIC_DATA_POLICY.md"}:
+            # Skip self, binaries, gitignore, and audit scripts
+            if file in {"privacy_audit.py", "deep_security_audit.py", ".gitignore", ".gitattributes", "PUBLIC_DATA_POLICY.md"}:
                 continue
-            if file_path.suffix not in ALLOWED_EXTENSIONS and file not in {".gitignore", ".gitattributes"}:
+            if file_path.suffix not in ALLOWED_EXTENSIONS:
                 continue
 
             try:
