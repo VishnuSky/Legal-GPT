@@ -89,7 +89,7 @@ class WashingtonLegConnector(BaseLegalConnector):
         """Parses RCW HTML content into a standardized LegalDocument."""
         parsed = self._extract_clean_text_from_html(html_content)
         title = parsed["caption"] or default_title
-        body_text = parsed["text"] or default_title
+        body_text = parsed["text"] if len(parsed["text"]) > 100 else default_title
         citation = f"RCW {section}"
         doc_id = f"WA-RCW-{section.replace('.', '_')}"
         url = f"{self.RCW_BASE_URL}?cite={section}"
