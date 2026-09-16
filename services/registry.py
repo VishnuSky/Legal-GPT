@@ -35,17 +35,23 @@ class ServiceRegistry:
         for yaml_file in self.seeds_dir.glob("*.yaml"):
             try:
                 with open(yaml_file, "r", encoding="utf-8") as f:
-                    data = yaml.safe_load(f)
-                    if not data or "services" not in data:
+                    data = yaml.safe_load(f) or {}
+                    items = data.get("services") or data.get("records") or []
+                    if not items:
                         continue
 
-                    for item in data["services"]:
+                    for item in items:
                         matters = [CivilMatterType(m) for m in item.get("matters", []) if m in CivilMatterType.__members__]
                         s_type = ServiceType(item["service_type"])
                         juris_data = item.get("jurisdiction", {})
+                        raw_state = juris_data.get("state", "US")
+                        if raw_state and not raw_state.startswith("US-") and raw_state != "US":
+                            norm_state = f"US-{raw_state.upper()}"
+                        else:
+                            norm_state = raw_state or "US"
                         juris = ServiceJurisdiction(
                             country=juris_data.get("country", "US"),
-                            state=juris_data.get("state", "US"),
+                            state=norm_state,
                             county=juris_data.get("county"),
                             tribe=juris_data.get("tribe")
                         )
