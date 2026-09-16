@@ -4,7 +4,7 @@ import re
 import json
 import logging
 from pathlib import Path
-from typing import List, Dict, Any
+from typing import List, Dict, Any, Optional
 from datetime import date
 from ingestion.base import BaseLegalConnector
 from normalization.models import LegalDocument, TemporalMetadata, AuthorityScore
@@ -52,56 +52,46 @@ class WashingtonLegConnector(BaseLegalConnector):
 
     def _extract_clean_text_from_html(self, html_content: str) -> Dict[str, Any]:
         """Extracts the title/caption, text body, and legislative history from Washington Legislative HTML."""
-        # 1. Strip script and style tags completely
-        clean_html = re.sub(r'<script[^>]*>.*?</script>', '', html_content, flags=re.DOTALL | re.IGNORECASE)
-        clean_html = re.sub(r'<style[^>]*>.*?</style>', '', clean_html, flags=re.DOTALL | re.IGNORECASE)
+        # Find main content block
+        content_match = re.search(
+            r'<div id="ContentPlaceHolder1_divContent"[^>]*>(.*?)</div>\s*<div id="ContentPlaceHolder1_divBottomContent"',
+            html_content,
+            re.DOTALL,
+        )
+        main_html = content_match.group(1) if content_match else html_content
 
-        # 2. Extract caption / heading from lblTitle or header elements
-        caption = ""
-        caption_match = re.search(r'<span id="ContentPlaceHolder1_lblTitle"[^>]*>(.*?)</span>', clean_html, re.DOTALL | re.IGNORECASE)
-        if caption_match:
-            caption = re.sub(r'<[^>]+>', '', caption_match.group(1)).strip()
-        if not caption:
-            h_match = re.search(r'<h[1-4][^>]*>(.*?)</h[1-4]>', clean_html, re.DOTALL | re.IGNORECASE)
-            if h_match:
-                caption = re.sub(r'<[^>]+>', '', h_match.group(1)).strip()
+        # Extract caption / heading
+        caption_match = re.search(r'<span id="ContentPlaceHolder1_lblTitle"[^>]*>(.*?)</span>', html_content)
+        caption = re.sub(r'<[^>]+>', '', caption_match.group(1)).strip() if caption_match else ""
 
-        # 3. Find main content block if available
-        content_match = re.search(r'<div id="ContentPlaceHolder1_divContent"[^>]*>(.*?)</div>\s*<div id="ContentPlaceHolder1_divBottomContent"', clean_html, re.DOTALL | re.IGNORECASE)
-        if not content_match:
-            content_match = re.search(r'<div id="ContentPlaceHolder1_divContent"[^>]*>(.*?)</div>', clean_html, re.DOTALL | re.IGNORECASE)
-        if not content_match:
-            content_match = re.search(r'<div class="rcwcontent"[^>]*>(.*?)</div>', clean_html, re.DOTALL | re.IGNORECASE)
-
-        main_html = content_match.group(1) if content_match else clean_html
-
-        # 4. Extract legislative history note if present: [ 2021 c 211 § 9; ... ]
+        # Extract legislative history marker if present; do not infer an effective date from it.
         hist_match = re.search(r'\[\s*(\d{4})\s+c\s+\d+.*?\]', main_html)
-        effective_year = int(hist_match.group(1)) if hist_match else 2021
-        effective_date = date(effective_year, 7, 1)
+        history_year = int(hist_match.group(1)) if hist_match else None
 
-        # 5. Preserve subsection and paragraph linebreaks
-        text = re.sub(r'<br\s*/?>', '\n', main_html, flags=re.IGNORECASE)
-        text = re.sub(r'</?(?:p|div|li|tr|h[1-6])[^>]*>', '\n', text, flags=re.IGNORECASE)
-        text = re.sub(r'<[^>]+>', ' ', text)
-
-        # HTML entities
-        text = text.replace('&nbsp;', ' ').replace('&amp;', '&').replace('&quot;', '"').replace('&#39;', "'").replace('&lt;', '<').replace('&gt;', '>')
-        text = re.sub(r'[ \t]+', ' ', text)
-        text = re.sub(r'\n\s*\n+', '\n\n', text).strip()
+        # Clean tags
+        clean_text = re.sub(r'<script[^>]*>.*?</script>', '', main_html, flags=re.DOTALL | re.IGNORECASE)
+        clean_text = re.sub(r'<style[^>]*>.*?</style>', '', clean_text, flags=re.DOTALL | re.IGNORECASE)
+        clean_text = re.sub(r'<[^>]+>', '\n', clean_text)
+        clean_text = re.sub(r'&nbsp;', ' ', clean_text)
+        clean_text = re.sub(r'&amp;', '&', clean_text)
+        clean_text = re.sub(r'&quot;', '"', clean_text)
+        clean_text = re.sub(r'&#39;', "'", clean_text)
+        clean_text = re.sub(r'[ \t]+\n', '\n', clean_text)
+        clean_text = re.sub(r'\n\s*\n', '\n\n', clean_text).strip()
 
         return {
             "caption": caption,
-            "text": text,
-            "effective_date": effective_date
+            "text": clean_text,
+            "effective_date": None,
+            "history_year": history_year,
         }
 
     def parse_rcw_html(self, section: str, default_title: str, html_content: str) -> LegalDocument:
         """Parses RCW HTML content into a standardized LegalDocument."""
         parsed = self._extract_clean_text_from_html(html_content)
         title = parsed["caption"] or default_title
-        body_text = parsed["text"]
-        if len(body_text) < 100:
+        body_text = parsed["text"].strip()
+        if len(body_text) <= 40 or body_text == title:
             body_text = self._get_fixture_text(section, default_title)
         return self._build_rcw_document(
             section=section,
@@ -110,12 +100,12 @@ class WashingtonLegConnector(BaseLegalConnector):
             effective_date=parsed["effective_date"]
         )
 
-    def _build_rcw_document(self, section: str, title: str, body_text: str, effective_date: date) -> LegalDocument:
+    def _build_rcw_document(self, section: str, title: str, body_text: str, effective_date: Optional[date]) -> LegalDocument:
         citation = f"RCW {section}"
         doc_id = f"WA-RCW-{section.replace('.', '_')}"
         temporal = TemporalMetadata(
             effective_date=effective_date,
-            is_current=True
+            is_current=bool(effective_date)
         )
         authority = AuthorityScore(
             tier="TIER_0",
@@ -156,15 +146,19 @@ class WashingtonLegConnector(BaseLegalConnector):
             return self.parse_rcw_html(section, default_title, html)
         except Exception as e:
             logger.info(f"Live fetch for RCW {section} fell back to offline fixture ({e})")
-            body_text = self._get_fixture_text(section, default_title)
-            return self._build_rcw_document(section, default_title, body_text, date(2021, 7, 1))
+            return self._build_rcw_document(
+                section=section,
+                title=default_title,
+                body_text=self._get_fixture_text(section, default_title),
+                effective_date=None
+            )
 
     def parse_wac_html(self, section: str, default_title: str, html_content: str) -> LegalDocument:
         """Parses WAC administrative rule HTML content into a standardized LegalDocument."""
         parsed = self._extract_clean_text_from_html(html_content)
         title = parsed["caption"] or default_title
-        body_text = parsed["text"]
-        if len(body_text) < 80:
+        body_text = parsed["text"].strip()
+        if len(body_text) <= 40 or body_text == title:
             body_text = self._get_fixture_text(section, default_title)
         return self._build_wac_document(
             section=section,
@@ -173,12 +167,12 @@ class WashingtonLegConnector(BaseLegalConnector):
             effective_date=parsed["effective_date"]
         )
 
-    def _build_wac_document(self, section: str, title: str, body_text: str, effective_date: date) -> LegalDocument:
+    def _build_wac_document(self, section: str, title: str, body_text: str, effective_date: Optional[date]) -> LegalDocument:
         citation = f"WAC {section}"
         doc_id = f"WA-WAC-{section.replace('-', '_').replace('.', '_')}"
         temporal = TemporalMetadata(
             effective_date=effective_date,
-            is_current=True
+            is_current=bool(effective_date)
         )
         authority = AuthorityScore(
             tier="TIER_0",
@@ -219,8 +213,12 @@ class WashingtonLegConnector(BaseLegalConnector):
             return self.parse_wac_html(section, default_title, html)
         except Exception as e:
             logger.info(f"Live fetch for WAC {section} fell back to offline fixture ({e})")
-            body_text = self._get_fixture_text(section, default_title)
-            return self._build_wac_document(section, default_title, body_text, date(2021, 7, 1))
+            return self._build_wac_document(
+                section=section,
+                title=default_title,
+                body_text=self._get_fixture_text(section, default_title),
+                effective_date=None
+            )
 
     def get_canonical_statutes(self) -> List[LegalDocument]:
         """Returns synthetic offline fixture documents for offline test execution."""
@@ -230,6 +228,7 @@ class WashingtonLegConnector(BaseLegalConnector):
             doc = self._build_rcw_document(section, default_title, text, date(2021, 7, 1))
             docs.append(doc)
         return docs
+
 
     def _get_fixture_text(self, section: str, fallback_title: str) -> str:
         """Loads offline synthetic fixtures if available."""

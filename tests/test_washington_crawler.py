@@ -66,7 +66,7 @@ def test_washington_rcw_html_parsing():
     assert doc.jurisdiction == "US-WA"
     assert doc.authority.tier == "TIER_0"
     assert doc.authority.official_source is True
-    assert doc.temporal.effective_date == date(2021, 7, 1)
+    assert doc.temporal.effective_date is None
     assert len(doc.chunks) >= 2
     assert "var x = 123" not in doc.full_text
 
