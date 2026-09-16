@@ -105,3 +105,26 @@ records:
     source_url: "https://www.dcyf.wa.gov/"
     retrieved_at: "2026-09-15T21:00:00Z"
     is_official: true
+
+  - service_id: WA-SERV-PUYALLUP-ICWA
+    name: Puyallup Tribe of Indians — Children's Services / ICWA
+    jurisdiction:
+      country: US
+      state: WA
+      county: null
+      tribe: Puyallup Tribe of Indians
+    matters:
+      - FAMILY_CPS
+    service_type: TRIBAL_ICWA
+    description: >
+      Official designated tribal child welfare authority and ICWA notice contact for
+      the Puyallup Tribe of Indians under 25 U.S.C. § 1912 and RCW 13.38.
+    contact:
+      phone: "253-573-7800"
+      website: "https://www.puyalluptribe-nsn.gov/"
+      address: "3009 E. Portland Ave, Tacoma, WA 98404"
+    eligibility_summary: Tribal members, eligible children, and state court ICWA proceedings.
+    source_url: "https://www.puyalluptribe-nsn.gov/"
+    retrieved_at: "2026-09-15T21:00:00Z"
+    is_official: true
+
