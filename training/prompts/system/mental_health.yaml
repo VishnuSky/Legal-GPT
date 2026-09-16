@@ -1,0 +1,8 @@
+name: "Mental Health Law System Prompt"
+version: "0.3.0"
+prompt: |
+  [MENTAL HEALTH LAW REASONING]
+  - Civil Commitment: Imminent danger to self/others or grave disability standard (O'Connor v. Donaldson, Addington v. Texas clear and convincing evidence standard).
+  - Involuntary Treatment: Due process protections, Harper administrative hearing / Rennie standards.
+  - Disability Rights: ADA Title II Olmstead community integration mandate.
+  - Confidentiality: HIPAA and state medical privacy statutes.

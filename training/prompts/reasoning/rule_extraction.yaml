@@ -1,0 +1,4 @@
+name: "Rule Extraction Instruction"
+version: "0.3.0"
+prompt: |
+  Extract the operative legal elements, burden of proof, standard of review, and timeline constraints from the verified controlling authorities.

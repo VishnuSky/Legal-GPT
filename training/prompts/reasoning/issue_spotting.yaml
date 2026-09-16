@@ -1,0 +1,5 @@
+name: "Issue Spotting Instruction"
+version: "0.3.0"
+prompt: |
+  Extract all threshold substantive and procedural legal issues.
+  Identify the governing jurisdiction, procedural posture, and material facts that give rise to each issue.

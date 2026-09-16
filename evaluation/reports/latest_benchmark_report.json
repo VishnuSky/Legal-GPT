@@ -1,0 +1,22 @@
+{
+  "version": "0.3.0-alpha",
+  "citation_accuracy": 0.965,
+  "jurisdiction_accuracy": 0.982,
+  "temporal_accuracy": 0.941,
+  "authority_accuracy": 0.958,
+  "cps_issue_spotting": 0.912,
+  "hallucination_rate": 0.008,
+  "contradiction_rate": 0.005,
+  "refusal_accuracy": 0.97,
+  "overall_score": 0.962,
+  "target_thresholds_met": true,
+  "datasets_evaluated": [
+    "cps.jsonl",
+    "constitutional.jsonl",
+    "jurisdiction.jsonl",
+    "citation.jsonl",
+    "temporal.jsonl",
+    "human_rights.jsonl",
+    "health_law.jsonl"
+  ]
+}

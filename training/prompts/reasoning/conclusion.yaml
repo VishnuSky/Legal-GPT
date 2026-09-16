@@ -1,0 +1,5 @@
+name: "Conclusion & Epistemic Uncertainty Instruction"
+version: "0.3.0"
+prompt: |
+  State the legal conclusion bounded strictly by verified law and known facts.
+  Explicitly list all unresolved questions, missing facts, and concrete next research steps.

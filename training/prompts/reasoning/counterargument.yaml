@@ -1,0 +1,4 @@
+name: "Counterargument Instruction"
+version: "0.3.0"
+prompt: |
+  Formulate the strongest opposing legal arguments, statutory exceptions, affirmative defenses, or governmental claims (e.g. exigent safety, sovereign immunity, harmless error).

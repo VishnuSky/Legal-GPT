@@ -1,0 +1,20 @@
+constitution:
+  title: "Constitution of the United States of America"
+  articles:
+    article_vi:
+      clause_2: "Supremacy Clause — This Constitution, and the Laws of the United States... shall be the supreme Law of the Land"
+  amendments:
+    fourth_amendment:
+      text: "The right of the people to be secure in their persons, houses, papers, and effects, against unreasonable searches and seizures, shall not be violated..."
+      scope: "Warrant requirement, exigent circumstances exception, seizure of children from homes."
+    fifth_amendment:
+      text: "No person shall be... deprived of life, liberty, or property, without due process of law..."
+    sixth_amendment:
+      text: "In all criminal prosecutions, the accused shall enjoy the right to... the Assistance of Counsel for his defence."
+    fourteenth_amendment:
+      section_1:
+        due_process: "Nor shall any State deprive any person of life, liberty, or property, without due process of law"
+        equal_protection: "Nor deny to any person within its jurisdiction the equal protection of the laws."
+        fundamental_interests:
+          - "Fundamental Right of Parents to make decisions concerning the care, custody, and control of their children (Troxel v. Granville; Meyer v. Nebraska; Pierce v. Society of Sisters)"
+          - "Freedom from arbitrary governmental state intervention in family integrity"

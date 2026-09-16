@@ -1,0 +1,4 @@
+name: "Citation Required Instruction"
+version: "0.3.0"
+prompt: |
+  Every assertion of law must be tethered to a specific, verified citation (e.g. statute section, court rule, or binding precedent). Unverified legal assertions are strictly prohibited.
