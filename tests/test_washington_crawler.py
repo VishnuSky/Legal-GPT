@@ -67,6 +67,7 @@ def test_washington_rcw_html_parsing():
     assert doc.authority.tier == "TIER_0"
     assert doc.authority.official_source is True
     assert doc.temporal.effective_date is None
+    assert doc.temporal.is_current is False
     assert len(doc.chunks) >= 2
     assert "var x = 123" not in doc.full_text
 
@@ -103,6 +104,22 @@ def test_washington_wac_html_parsing():
     assert doc.chunks[1].chunk_type == "regulation_subsection"
 
 
+def test_washington_wac_title_only_fixture_fallback():
+    connector = WashingtonLegConnector()
+    html_sample = """
+    <html>
+      <body>
+        <span id="ContentPlaceHolder1_lblTitle">110-30-0010 - DCYF Authority and Purpose</span>
+        <div id="ContentPlaceHolder1_divContent">110-30-0010 - DCYF Authority and Purpose</div>
+      </body>
+    </html>
+    """
+    doc = connector.parse_wac_html("110-30-0010", "DCYF Authority", html_sample)
+    assert doc.citation == "WAC 110-30-0010"
+    assert len(doc.full_text) > 100
+    assert "(1)" in doc.full_text
+
+
 def test_washington_canonical_statutes_offline():
     connector = WashingtonLegConnector()
     docs = connector.get_canonical_statutes()
@@ -113,3 +130,5 @@ def test_washington_canonical_statutes_offline():
         assert len(doc.full_text) > 50
         assert doc.content_hash != ""
         assert len(doc.chunks) >= 1
+        assert doc.temporal.effective_date is None
+        assert doc.temporal.is_current is False

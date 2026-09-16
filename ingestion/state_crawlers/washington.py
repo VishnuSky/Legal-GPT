@@ -5,7 +5,6 @@ import json
 import logging
 from pathlib import Path
 from typing import List, Dict, Any, Optional
-from datetime import date
 from ingestion.base import BaseLegalConnector
 from normalization.models import LegalDocument, TemporalMetadata, AuthorityScore
 from normalization.chunkers import StatuteChunker, RegulationChunker
@@ -64,10 +63,6 @@ class WashingtonLegConnector(BaseLegalConnector):
         caption_match = re.search(r'<span id="ContentPlaceHolder1_lblTitle"[^>]*>(.*?)</span>', html_content)
         caption = re.sub(r'<[^>]+>', '', caption_match.group(1)).strip() if caption_match else ""
 
-        # Extract legislative history marker if present; do not infer an effective date from it.
-        hist_match = re.search(r'\[\s*(\d{4})\s+c\s+\d+.*?\]', main_html)
-        history_year = int(hist_match.group(1)) if hist_match else None
-
         # Clean tags
         clean_text = re.sub(r'<script[^>]*>.*?</script>', '', main_html, flags=re.DOTALL | re.IGNORECASE)
         clean_text = re.sub(r'<style[^>]*>.*?</style>', '', clean_text, flags=re.DOTALL | re.IGNORECASE)
@@ -83,7 +78,16 @@ class WashingtonLegConnector(BaseLegalConnector):
             "caption": caption,
             "text": clean_text,
             "effective_date": None,
-            "history_year": history_year,
+        }
+
+    @staticmethod
+    def _should_use_fixture_fallback(body_text: str, title: str, default_title: str) -> bool:
+        normalized_body = " ".join(body_text.split()).strip().lower()
+        normalized_title = " ".join(title.split()).strip().lower()
+        normalized_default_title = " ".join(default_title.split()).strip().lower()
+        return len(body_text) <= 40 or not normalized_body or normalized_body in {
+            normalized_title,
+            normalized_default_title,
         }
 
     def parse_rcw_html(self, section: str, default_title: str, html_content: str) -> LegalDocument:
@@ -91,7 +95,7 @@ class WashingtonLegConnector(BaseLegalConnector):
         parsed = self._extract_clean_text_from_html(html_content)
         title = parsed["caption"] or default_title
         body_text = parsed["text"].strip()
-        if len(body_text) <= 40 or body_text == title:
+        if self._should_use_fixture_fallback(body_text, title, default_title):
             body_text = self._get_fixture_text(section, default_title)
         return self._build_rcw_document(
             section=section,
@@ -158,7 +162,7 @@ class WashingtonLegConnector(BaseLegalConnector):
         parsed = self._extract_clean_text_from_html(html_content)
         title = parsed["caption"] or default_title
         body_text = parsed["text"].strip()
-        if len(body_text) <= 40 or body_text == title:
+        if self._should_use_fixture_fallback(body_text, title, default_title):
             body_text = self._get_fixture_text(section, default_title)
         return self._build_wac_document(
             section=section,
@@ -225,7 +229,7 @@ class WashingtonLegConnector(BaseLegalConnector):
         docs = []
         for section, default_title in WA_RCW_TARGET_SECTIONS:
             text = self._get_fixture_text(section, default_title)
-            doc = self._build_rcw_document(section, default_title, text, date(2021, 7, 1))
+            doc = self._build_rcw_document(section, default_title, text, None)
             docs.append(doc)
         return docs
 
@@ -259,4 +263,3 @@ class WashingtonLegConnector(BaseLegalConnector):
 
         logger.info(f"Washington Ingestion complete: {len(documents)} official documents parsed.")
         return documents
-
