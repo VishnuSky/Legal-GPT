@@ -65,8 +65,12 @@ def test_private_drive_pattern_matches_only_real_path_prefixes():
 def test_local_file_uri_reference_detection():
     positive_samples = [
         "- [`x`](file:///C:/Users/test/Documents/file.py)",
+        "file://C:/Windows/System32/",
+        "file:///var/tmp/report.txt",
         "<file://localhost/C:/Users/test/Documents/file.py>",
+        "file://localhost/etc/hosts",
         "file://server/share/path",
+        "file://server/share/",
         "file:///tmp/",
     ]
     negative_samples = [
