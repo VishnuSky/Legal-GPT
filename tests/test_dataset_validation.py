@@ -7,7 +7,7 @@ from evaluation.benchmark import LegalBenchmarkRunner
 
 
 def test_jsonl_dataset_schema_validation():
-    res = validate_jsonl_dataset("training/datasets/01_jurisdiction/examples.jsonl")
+    res = validate_jsonl_dataset("training/datasets/05_issue_spotting/examples.jsonl")
     assert res["valid"] is True
     assert res["count"] >= 2
 

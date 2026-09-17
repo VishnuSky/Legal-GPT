@@ -32,7 +32,8 @@ legal_gpt.db
 vectorstore/
 indexes/
 embeddings/
-models/
+models/*
+!models/manifests/
 
 # Private Directories & Data Firewalls
 data/private/
@@ -125,3 +126,6 @@ unsloth_runs/
 !data/public/
 !data/synthetic/
 !tests/data/synthetic/
+!training/datasets/**/*.jsonl
+!models/manifests/
+!models/manifests/**
