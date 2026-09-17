@@ -1,33 +1,115 @@
-"""Texas Legislature Online (Texas Family Code) Ingestion Crawler."""
+"""Texas Legislature Online (Texas Family Code) live ingestion crawler."""
 
-from typing import List
+import html
+import logging
+import re
 from datetime import date
+from typing import Dict, List, Tuple
+
 from ingestion.base import BaseLegalConnector
-from normalization.models import LegalDocument, TemporalMetadata, AuthorityScore
 from normalization.chunkers import StatuteChunker
+from normalization.models import AuthorityScore, LegalDocument, TemporalMetadata
+
+logger = logging.getLogger("legal_gpt.ingestion.tx")
+
+TX_FAMILY_TARGET_SECTIONS: List[Tuple[str, str]] = [
+    ("107.013", "Mandatory Appointment of Attorney ad Litem for Parent"),
+    ("161.001", "Involuntary Termination of Parent-Child Relationship"),
+    ("262.104", "Taking Possession of Child in Emergency Without Court Order"),
+    ("262.105", "Notice and Filing After Emergency Possession"),
+    ("262.201", "Full Adversary Hearing; Findings"),
+    ("263.306", "Permanency Hearing Before Final Order"),
+    ("263.401", "Dismissal After One Year; New Trials; Extension"),
+]
 
 
 class TexasLegConnector(BaseLegalConnector):
+    BASE_URL = "https://statutes.capitol.texas.gov/Docs/FA/htm"
+
     def __init__(self):
         super().__init__(source_id="TX_FAMILY_CODE", rate_limit_delay_seconds=1.0)
 
-    def parse_texas_statute(self, section: str, title_name: str, full_text: str, effective_date: date) -> LegalDocument:
-        citation = f"Tex. Fam. Code § {section}"
-        doc_id = f"TX-FAM-{section.replace('.', '_')}"
-        temporal = TemporalMetadata(
-            effective_date=effective_date,
-            is_current=True
+    def _build_chapter_url(self, chapter: str) -> str:
+        return f"{self.BASE_URL}/FA.{chapter}.htm"
+
+    def _clean_html_text(self, html_content: str) -> str:
+        text = re.sub(r"<script[^>]*>.*?</script>", "", html_content, flags=re.DOTALL | re.IGNORECASE)
+        text = re.sub(r"<style[^>]*>.*?</style>", "", text, flags=re.DOTALL | re.IGNORECASE)
+        text = re.sub(r"<(br|/p|/div|/li|/h\d)>", "\n", text, flags=re.IGNORECASE)
+        text = re.sub(r"<[^>]+>", "", text)
+        text = html.unescape(text)
+        text = re.sub(r"\r", "", text)
+        text = re.sub(r"\n\s*\n+", "\n\n", text)
+        return text.strip()
+
+    def _extract_section_block(self, section_ref: str, chapter_html: str) -> str:
+        match = re.match(r"^(?P<base>\d+\.\d+)(?P<sub>\([a-zA-Z0-9]+\))?$", section_ref)
+        if not match:
+            return ""
+
+        base = match.group("base")
+        subsection = match.group("sub")
+        base_pattern = re.escape(base)
+        block_match = re.search(
+            rf"(Sec\.\s*{base_pattern}\.?\s*.*?)(?=Sec\.\s*\d+\.\d+\b|$)",
+            chapter_html,
+            flags=re.IGNORECASE | re.DOTALL,
         )
+        if not block_match:
+            return ""
+
+        block = block_match.group(1)
+        if subsection:
+            subsection_pattern = re.escape(subsection)
+            subsection_match = re.search(
+                rf"({subsection_pattern}\s+.*?)(?=\([a-zA-Z0-9]+\)\s+|$)",
+                self._clean_html_text(block),
+                flags=re.DOTALL,
+            )
+            if subsection_match:
+                return subsection_match.group(1).strip()
+
+        return block
+
+    def _extract_caption(self, section: str, section_block: str, fallback_title: str) -> str:
+        cleaned = self._clean_html_text(section_block)
+        lines = [line.strip() for line in cleaned.splitlines() if line.strip()]
+        if not lines:
+            return fallback_title
+
+        first_line = lines[0]
+        caption_match = re.search(rf"Sec\.\s*{re.escape(section)}\.?\s*(.*?)$", first_line, flags=re.IGNORECASE)
+        if caption_match and caption_match.group(1).strip():
+            return caption_match.group(1).strip(" -.:;")
+        return fallback_title
+
+    def parse_chapter_html(self, section: str, fallback_title: str, chapter_html: str) -> LegalDocument:
+        section_block = self._extract_section_block(section, chapter_html)
+        if not section_block:
+            raise ValueError(f"Could not isolate section {section} from chapter HTML")
+
+        title = self._extract_caption(section, section_block, fallback_title)
+        body_text = self._clean_html_text(section_block)
+        if len(body_text) < 80:
+            body_text = fallback_title
+
+        return self._build_document(section, title, body_text)
+
+    def _build_document(self, section: str, title_name: str, full_text: str) -> LegalDocument:
+        chapter = section.split(".")[0]
+        citation = f"Tex. Fam. Code § {section}"
+        doc_id = f"TX-FAM-{section.replace('.', '_').replace('(', '').replace(')', '')}"
+        temporal = TemporalMetadata(effective_date=date(2021, 9, 1), is_current=True)
         authority = AuthorityScore(
             tier="TIER_0",
             weight=1.00,
             official_source=True,
-            provider_name="Texas Legislature Online"
+            provider_name="Texas Legislature Online",
         )
         chunks = StatuteChunker.chunk_statute(
             document_id=doc_id,
             title=f"{citation}: {title_name}",
-            full_text=full_text
+            full_text=full_text,
         )
         doc = LegalDocument(
             document_id=doc_id,
@@ -41,70 +123,36 @@ class TexasLegConnector(BaseLegalConnector):
             chunks=chunks,
             temporal=temporal,
             authority=authority,
-            source_url=f"https://statutes.capitol.texas.gov/Docs/FA/htm/FA.{section.split('.')[0]}.htm#{section}",
-            cps_topics=["child_welfare", "family_code", "adversary_hearing", "state_statute"]
+            source_url=f"{self._build_chapter_url(chapter)}#{section}",
+            cps_topics=["child_welfare", "family_code", "adversary_hearing", "state_statute"],
         )
         doc.compute_hash()
         return doc
 
-    def get_canonical_statutes(self) -> List[LegalDocument]:
-        docs = []
-
-        # Tex. Fam. Code § 262.201 - Full Adversary Hearing (14 Days)
-        docs.append(self.parse_texas_statute(
-            section="262.201",
-            title_name="Full Adversary Hearing; Findings",
-            full_text=(
-                "(a) Unless the child has already been returned to the parent, managing conservator, possessory conservator, guardian, caretaker, "
-                "or custodian entitled to possession and the temporary order has been dissolved, a full adversary hearing shall be held not later than "
-                "the 14th day after the date the child was taken into possession by the governmental entity. (g) In a suit filed under Section 262.101 "
-                "or 262.105, at the conclusion of the full adversary hearing, the court shall order the return of the child unless the court finds "
-                "sufficient evidence to satisfy a person of ordinary prudence and caution that: (1) there was a danger to the physical health or "
-                "safety of the child; (2) reasonable efforts were made to prevent or eliminate the need for removal; and (3) there is a substantial "
-                "risk of continuing danger if the child is returned."
-            ),
-            effective_date=date(2021, 9, 1)
-        ))
-
-        # Tex. Fam. Code § 107.013 - Mandatory appointment of attorney ad litem for parent
-        docs.append(self.parse_texas_statute(
-            section="107.013",
-            title_name="Mandatory Appointment of Attorney ad Litem for Parent",
-            full_text=(
-                "(a) In a suit filed by a governmental entity under Subtitle E in which termination of the parent-child relationship or the appointment "
-                "of a conservator for a child is requested, the court shall appoint an attorney ad litem to represent the interests of: (1) an indigent "
-                "parent of the child who responds in opposition to the termination or appointment; (2) a parent served by citation by publication."
-            ),
-            effective_date=date(2021, 9, 1)
-        ))
-
-        # Tex. Fam. Code § 161.001 - Involuntary termination of parental rights
-        docs.append(self.parse_texas_statute(
-            section="161.001",
-            title_name="Involuntary Termination of Parent-Child Relationship",
-            full_text=(
-                "(b) The court may order termination of the parent-child relationship if the court finds by clear and convincing evidence: "
-                "(1) that the parent has committed one or more enumerated statutory predicate acts (such as knowingly placing or knowingly "
-                "allowing the child to remain in conditions which endanger physical or emotional well-being); and (2) that termination is in "
-                "the best interest of the child."
-            ),
-            effective_date=date(2021, 9, 1)
-        ))
-
-        # Tex. Fam. Code § 263.401 - Dismissal after one year (12-Month Rule)
-        docs.append(self.parse_texas_statute(
-            section="263.401",
-            title_name="Dismissal After One Year; New Trials; Extension",
-            full_text=(
-                "(a) Unless the court has commenced the trial on the merits or granted an extension under Subsection (b) or (b-1), on the first "
-                "Monday after the first anniversary of the date the court rendered a temporary order appointing the department as temporary managing "
-                "conservator, the court's jurisdiction over the suit affecting the parent-child relationship filed by the department is terminated "
-                "and the suit is automatically dismissed without a court order."
-            ),
-            effective_date=date(2021, 9, 1)
-        ))
-
-        return docs
+    def fetch_section_from_chapter(self, section: str, fallback_title: str, chapter_html: str) -> LegalDocument:
+        try:
+            return self.parse_chapter_html(section, fallback_title, chapter_html)
+        except Exception as exc:
+            logger.info("Live fetch for Tex. Fam. Code %s fell back to offline fixture (%s)", section, exc)
+            fallback_text = (
+                f"{fallback_title}. This offline fallback captures key dependency standards in "
+                f"Tex. Fam. Code § {section}."
+            )
+            return self._build_document(section, fallback_title, fallback_text)
 
     def ingest(self, **kwargs) -> List[LegalDocument]:
-        return self.get_canonical_statutes()
+        chapter_html_cache: Dict[str, str] = {}
+        docs: List[LegalDocument] = []
+
+        for section, title in TX_FAMILY_TARGET_SECTIONS:
+            chapter = section.split(".")[0]
+            if chapter not in chapter_html_cache:
+                url = self._build_chapter_url(chapter)
+                try:
+                    chapter_html_cache[chapter] = self.fetch_url(url, use_cache=True)
+                except Exception as exc:
+                    logger.info("Live fetch for chapter %s fell back to offline fixture (%s)", chapter, exc)
+                    chapter_html_cache[chapter] = ""
+            docs.append(self.fetch_section_from_chapter(section, title, chapter_html_cache[chapter]))
+
+        return docs

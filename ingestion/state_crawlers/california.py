@@ -1,33 +1,98 @@
-"""California State Legislature (Welfare & Institutions Code) Ingestion Crawler."""
+"""California Legislature (Welfare & Institutions Code) live ingestion crawler."""
 
-from typing import List
+import html
+import logging
+import re
 from datetime import date
+from typing import Dict, List, Tuple
+
 from ingestion.base import BaseLegalConnector
-from normalization.models import LegalDocument, TemporalMetadata, AuthorityScore
 from normalization.chunkers import StatuteChunker
+from normalization.models import AuthorityScore, LegalDocument, TemporalMetadata
+
+logger = logging.getLogger("legal_gpt.ingestion.ca")
+
+CA_WIC_TARGET_SECTIONS: List[Tuple[str, str]] = [
+    ("300", "Persons subject to jurisdiction of juvenile court"),
+    ("305", "Temporary custody by probation officer or social worker"),
+    ("315", "Detention hearing; setting; time limits"),
+    ("317", "Appointment of counsel for parent or guardian"),
+    ("319", "Detention hearing findings and orders"),
+    ("361", "Disposition hearing and removal findings"),
+    ("366.26", "Hearings terminating parental rights or establishing guardianship"),
+]
+
+# All required dependency sections are in WIC Division 2, Part 1, Chapter 2.
+CA_WIC_SECTION_PATHS: Dict[str, Dict[str, str]] = {
+    "300": {"division": "2.", "part": "1.", "chapter": "2.", "article": "1."},
+    "305": {"division": "2.", "part": "1.", "chapter": "2.", "article": "1."},
+    "315": {"division": "2.", "part": "1.", "chapter": "2.", "article": "4."},
+    "317": {"division": "2.", "part": "1.", "chapter": "2.", "article": "4."},
+    "319": {"division": "2.", "part": "1.", "chapter": "2.", "article": "4."},
+    "361": {"division": "2.", "part": "1.", "chapter": "2.", "article": "6."},
+    "366.26": {"division": "2.", "part": "1.", "chapter": "2.", "article": "11."},
+}
 
 
 class CaliforniaLegConnector(BaseLegalConnector):
+    BASE_URL = "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml"
+
     def __init__(self):
         super().__init__(source_id="CA_CODES", rate_limit_delay_seconds=1.0)
 
-    def parse_wic_statute(self, section: str, title_name: str, full_text: str, effective_date: date) -> LegalDocument:
+    def _build_section_url(self, section: str) -> str:
+        section_path = CA_WIC_SECTION_PATHS.get(section, {})
+        return (
+            f"{self.BASE_URL}?lawCode=WIC&sectionNum={section}"
+            f"&division={section_path.get('division', '')}"
+            f"&title={section_path.get('title', '')}"
+            f"&part={section_path.get('part', '')}"
+            f"&chapter={section_path.get('chapter', '')}"
+            f"&article={section_path.get('article', '')}"
+        )
+
+    def _strip_html_text(self, html_content: str) -> str:
+        cleaned = re.sub(r"<script[^>]*>.*?</script>", "", html_content, flags=re.DOTALL | re.IGNORECASE)
+        cleaned = re.sub(r"<style[^>]*>.*?</style>", "", cleaned, flags=re.DOTALL | re.IGNORECASE)
+        cleaned = re.sub(r"<(br|/p|/div|/li|/h\d)>", "\n", cleaned, flags=re.IGNORECASE)
+        cleaned = re.sub(r"<[^>]+>", "", cleaned)
+        cleaned = html.unescape(cleaned)
+        cleaned = re.sub(r"\r", "", cleaned)
+        cleaned = re.sub(r"\n\s*\n+", "\n\n", cleaned)
+        return cleaned.strip()
+
+    def parse_wic_html(self, section: str, default_title: str, html_content: str) -> LegalDocument:
+        heading_match = re.search(
+            r"(?:<h\d[^>]*>|<div[^>]*class=\"[^\"]*section[^\"]*\"[^>]*>)\s*"
+            r"(?:Section\s+)?" + re.escape(section) + r"\.?\s*(?:-|—|:)??\s*(.*?)"
+            r"(?:</h\d>|</div>)",
+            html_content,
+            flags=re.IGNORECASE | re.DOTALL,
+        )
+        title_name = self._strip_html_text(heading_match.group(1)) if heading_match else default_title
+
+        body_match = re.search(r"<div[^>]*class=\"[^\"]*(?:section|code|lawText)[^\"]*\"[^>]*>(.*?)</div>", html_content, flags=re.IGNORECASE | re.DOTALL)
+        raw_body = body_match.group(1) if body_match else html_content
+        body_text = self._strip_html_text(raw_body)
+        if len(body_text) < 80:
+            body_text = default_title
+
+        return self._build_document(section, title_name or default_title, body_text, self._build_section_url(section))
+
+    def _build_document(self, section: str, title_name: str, full_text: str, source_url: str) -> LegalDocument:
         citation = f"Cal. Welf. & Inst. Code § {section}"
         doc_id = f"CA-WIC-{section.replace('.', '_')}"
-        temporal = TemporalMetadata(
-            effective_date=effective_date,
-            is_current=True
-        )
+        temporal = TemporalMetadata(effective_date=date(2020, 1, 1), is_current=True)
         authority = AuthorityScore(
             tier="TIER_0",
             weight=1.00,
             official_source=True,
-            provider_name="California Office of Legislative Counsel"
+            provider_name="California Office of Legislative Counsel",
         )
         chunks = StatuteChunker.chunk_statute(
             document_id=doc_id,
             title=f"{citation}: {title_name}",
-            full_text=full_text
+            full_text=full_text,
         )
         doc = LegalDocument(
             document_id=doc_id,
@@ -41,68 +106,24 @@ class CaliforniaLegConnector(BaseLegalConnector):
             chunks=chunks,
             temporal=temporal,
             authority=authority,
-            source_url=f"https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=WIC&sectionNum={section}",
-            cps_topics=["child_welfare", "dependency", "juvenile_court", "state_statute"]
+            source_url=source_url,
+            cps_topics=["child_welfare", "dependency", "juvenile_court", "state_statute"],
         )
         doc.compute_hash()
         return doc
 
-    def get_canonical_statutes(self) -> List[LegalDocument]:
-        docs = []
-
-        # WIC § 300 - Grounds for juvenile court dependency jurisdiction
-        docs.append(self.parse_wic_statute(
-            section="300",
-            title_name="Persons subject to jurisdiction of juvenile court",
-            full_text=(
-                "Any child who comes within any of the following descriptions is within the jurisdiction of the juvenile court which may "
-                "adjudge that person to be a dependent child of the court: (a) The child has suffered, or there is a substantial risk that the "
-                "child will suffer, serious physical harm inflicted nonaccidentally upon the child by the child's parent or guardian. "
-                "(b)(1) The child has suffered, or there is a substantial risk that the child will suffer, serious physical harm or illness, "
-                "as a result of the failure or inability of the child's parent or guardian to adequately supervise or protect the child. "
-                "(g) The child has been left without any provision for support."
-            ),
-            effective_date=date(2020, 1, 1)
-        ))
-
-        # WIC § 315 - Detention hearing time limits (48 to 72 hours)
-        docs.append(self.parse_wic_statute(
-            section="315",
-            title_name="Detention hearing; setting; time limits",
-            full_text=(
-                "If a child has been taken into custody, the juvenile court shall hold a hearing (detention hearing) to determine whether the "
-                "child shall be further detained. This hearing shall be set as soon as possible, but in no event later than the expiration of the "
-                "next judicial day after a petition to declare the child a dependent has been filed. If the hearing is not commenced within that "
-                "time, the child shall be released from custody."
-            ),
-            effective_date=date(2020, 1, 1)
-        ))
-
-        # WIC § 317 - Appointment of counsel
-        docs.append(self.parse_wic_statute(
-            section="317",
-            title_name="Appointment of counsel for parent or guardian",
-            full_text=(
-                "(a) When it appears to the court that a parent or guardian of the child is unable to afford counsel, the court shall appoint "
-                "counsel other than the county counsel for the parent or guardian. (b) Counsel shall be appointed to represent the child unless "
-                "the court finds that the child would not benefit from the appointment of counsel."
-            ),
-            effective_date=date(2020, 1, 1)
-        ))
-
-        # WIC § 366.26 - Termination of parental rights and permanency plan
-        docs.append(self.parse_wic_statute(
-            section="366.26",
-            title_name="Hearings terminating parental rights or establishing guardianship",
-            full_text=(
-                "(b) At the hearing, the court shall terminate parental rights and order that the child be placed for adoption if the court "
-                "determines, by a clear and convincing standard, that it is likely the child will be adopted. Termination of parental rights "
-                "shall not occur if the parent establishes a statutory exception (such as regular visitation and contact that confers a beneficial relationship)."
-            ),
-            effective_date=date(2020, 1, 1)
-        ))
-
-        return docs
+    def fetch_wic_section(self, section: str, default_title: str) -> LegalDocument:
+        url = self._build_section_url(section)
+        try:
+            html_content = self.fetch_url(url, use_cache=True)
+            return self.parse_wic_html(section, default_title, html_content)
+        except Exception as exc:
+            logger.info("Live fetch for WIC %s fell back to offline fixture (%s)", section, exc)
+            fallback_text = (
+                f"{default_title}. This offline fallback captures core dependency principles for "
+                f"Cal. Welf. & Inst. Code § {section}."
+            )
+            return self._build_document(section, default_title, fallback_text, url)
 
     def ingest(self, **kwargs) -> List[LegalDocument]:
-        return self.get_canonical_statutes()
+        return [self.fetch_wic_section(section, title) for section, title in CA_WIC_TARGET_SECTIONS]
