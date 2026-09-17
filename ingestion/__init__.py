@@ -7,6 +7,7 @@ from ingestion.state_crawlers.ohio import OhioLegConnector
 from ingestion.state_crawlers.california import CaliforniaLegConnector
 from ingestion.state_crawlers.texas import TexasLegConnector
 from ingestion.state_crawlers.new_york import NewYorkLegConnector
+from ingestion.state_crawlers.florida import FloridaLegConnector
 from ingestion.cps_policy_crawlers.wa_dcyf import WashingtonDCYFPolicyConnector
 from ingestion.cps_policy_crawlers.il_dcfs import IllinoisDCFSPolicyConnector
 from ingestion.cps_policy_crawlers.oh_odjfs import OhioODJFSPolicyConnector
@@ -25,6 +26,7 @@ __all__ = [
     "CaliforniaLegConnector",
     "TexasLegConnector",
     "NewYorkLegConnector",
+    "FloridaLegConnector",
     "WashingtonDCYFPolicyConnector",
     "IllinoisDCFSPolicyConnector",
     "OhioODJFSPolicyConnector",
