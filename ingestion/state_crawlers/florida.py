@@ -43,8 +43,8 @@ class FloridaLegConnector(BaseLegalConnector):
         )
 
     def _clean_html_text(self, html_content: str) -> str:
-        text = re.sub(r"<script[^>]*>.*?</script>", "", html_content, flags=re.DOTALL | re.IGNORECASE)
-        text = re.sub(r"<style[^>]*>.*?</style>", "", text, flags=re.DOTALL | re.IGNORECASE)
+        text = re.sub(r"<script[^>]*>.*?</script\\s*>", "", html_content, flags=re.DOTALL | re.IGNORECASE)
+        text = re.sub(r"<style[^>]*>.*?</style\\s*>", "", text, flags=re.DOTALL | re.IGNORECASE)
         text = re.sub(r"<(br|/p|/div|/li|/h\d)>", "\n", text, flags=re.IGNORECASE)
         text = re.sub(r"<[^>]+>", "", text)
         text = html.unescape(text)

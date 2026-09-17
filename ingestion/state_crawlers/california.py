@@ -52,8 +52,8 @@ class CaliforniaLegConnector(BaseLegalConnector):
         )
 
     def _strip_html_text(self, html_content: str) -> str:
-        cleaned = re.sub(r"<script[^>]*>.*?</script>", "", html_content, flags=re.DOTALL | re.IGNORECASE)
-        cleaned = re.sub(r"<style[^>]*>.*?</style>", "", cleaned, flags=re.DOTALL | re.IGNORECASE)
+        cleaned = re.sub(r"<script[^>]*>.*?</script\\s*>", "", html_content, flags=re.DOTALL | re.IGNORECASE)
+        cleaned = re.sub(r"<style[^>]*>.*?</style\\s*>", "", cleaned, flags=re.DOTALL | re.IGNORECASE)
         cleaned = re.sub(r"<(br|/p|/div|/li|/h\d)>", "\n", cleaned, flags=re.IGNORECASE)
         cleaned = re.sub(r"<[^>]+>", "", cleaned)
         cleaned = html.unescape(cleaned)
