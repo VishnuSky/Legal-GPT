@@ -54,7 +54,7 @@ ALLOWED_SECURITY_FILES = {
     "tests/test_privacy_policy.py"
 }
 LOCAL_FILE_URI_PATTERN = re.compile(
-    r"file://(?:/[a-z]:/|[a-z]:/|/)[^\s)>]+",
+    r"file://(?:/[a-z]:/|[a-z]:/|/|[^/\s)>]+/)[^\s)>]+",
     re.IGNORECASE,
 )
 
