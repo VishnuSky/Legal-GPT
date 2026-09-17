@@ -405,6 +405,34 @@ async def resolve_public_query_stream(request: PublicResolveRequest):
     return StreamingResponse(event_generator(), media_type="application/x-ndjson")
 
 
+class NavigatorRequest(BaseModel):
+    narrative: str = Field(..., description="User description of legal situation or problem")
+    state: Optional[str] = Field(None, description="State code e.g. WA, IL, OH, CA, TX, NY")
+    county: Optional[str] = Field(None, description="County name e.g. Skagit, Cook, Cuyahoga")
+    date: Optional[str] = Field(None, description="Key event date (YYYY-MM-DD)")
+
+
+@app.post("/api/v1/public/navigate")
+def handle_navigator(request: NavigatorRequest):
+    """Runs the 10-step Public Legal Navigator and returns the complete 16-section Legal Navigation Report."""
+    if not request.narrative.strip():
+        raise HTTPException(status_code=400, detail="Narrative cannot be empty.")
+    try:
+        from core.navigator import PublicLegalNavigator
+        report = PublicLegalNavigator.navigate(
+            narrative=request.narrative,
+            override_state=request.state,
+            override_county=request.county,
+            event_date=request.date
+        )
+        return {
+            "report": report.model_dump(),
+            "markdown": report.render_markdown()
+        }
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Legal Navigator execution error: {str(e)}")
+
+
 @app.get("/api/v1/public/services")
 def list_public_services(
     state: Optional[str] = Query(None, description="State code e.g. WA, IL, OH"),
@@ -431,4 +459,163 @@ def list_public_services(
         }
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Public services query error: {str(e)}")
+
+
+class ResearchPlanApiRequest(BaseModel):
+    query: str = Field(..., description="Legal question to generate 18-step research plan for")
+    state: Optional[str] = Field(None, description="State code e.g. WA, IL, OH, CA, TX, NY")
+    date_context: Optional[str] = Field(None, description="Date context e.g. 2023-05-15")
+    posture: Optional[str] = Field(None, description="Procedural posture")
+    is_tribal: Optional[bool] = Field(None, description="Whether ICWA or tribal matter applies")
+
+
+@app.post("/api/v1/research/plan")
+def create_research_plan_endpoint(req: ResearchPlanApiRequest):
+    """Generates an 18-step legal research plan prior to substantive answer generation."""
+    try:
+        from agents.research_planner_agent import LegalResearchPlannerAgent
+        from core.research.renderer import ResearchPlanRenderer
+        agent = LegalResearchPlannerAgent()
+        plan = agent.create_research_plan(
+            query=req.query,
+            state=req.state,
+            date_context=req.date_context,
+            posture=req.posture,
+            is_tribal=req.is_tribal
+        )
+        return {
+            "plan": plan.model_dump(),
+            "markdown": ResearchPlanRenderer.render_markdown(plan)
+        }
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Research planning error: {str(e)}")
+
+
+class LiteracyExplainRequest(BaseModel):
+    concept: str = Field(..., description="Legal concept name (e.g. 'Due Process')")
+    level: Optional[int] = Field(None, description="Optional single level 1-5")
+    jurisdiction: Optional[str] = Field("US", description="State or federal jurisdiction")
+    situation: Optional[str] = Field(None, description="Optional situational context")
+
+
+class LiteracyDrillDownRequest(BaseModel):
+    concept: str = Field(..., description="Legal concept name")
+    action: str = Field(..., description="SHOW_SOURCE, SHOW_STATUTE, SHOW_CASE, EXPLAIN_OPPOSING, SHOW_TEMPORAL_CHANGE")
+    jurisdiction: Optional[str] = Field("US", description="State or federal jurisdiction")
+    situation: Optional[str] = Field(None, description="Optional situational context")
+
+
+@app.post("/api/v1/literacy/explain")
+def explain_concept_endpoint(req: LiteracyExplainRequest):
+    """Explains a legal concept across 5 progressive levels without removing nuance."""
+    try:
+        from agents.literacy_agent import LegalLiteracyAgent
+        agent = LegalLiteracyAgent()
+        exploration = agent.explain(
+            concept=req.concept,
+            level=req.level,
+            jurisdiction=req.jurisdiction,
+            situation=req.situation
+        )
+        rendered = agent.explain_and_render(
+            concept=req.concept,
+            level=req.level,
+            jurisdiction=req.jurisdiction,
+            situation=req.situation
+        )
+        return {
+            "exploration": exploration.model_dump(),
+            "markdown": rendered
+        }
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Legal literacy explanation error: {str(e)}")
+
+
+@app.post("/api/v1/literacy/drill-down")
+def drill_down_endpoint(req: LiteracyDrillDownRequest):
+    """Executes one of the 5 on-demand drill-down requests for a legal concept."""
+    try:
+        from agents.literacy_agent import LegalLiteracyAgent
+        from core.literacy.models import DrillDownAction
+        agent = LegalLiteracyAgent()
+        norm_action = req.action.upper().replace("-", "_")
+        action_enum = DrillDownAction[norm_action]
+        result = agent.drill_down(
+            concept=req.concept,
+            action=action_enum,
+            jurisdiction=req.jurisdiction,
+            situation=req.situation
+        )
+        rendered = agent.drill_down_and_render(
+            concept=req.concept,
+            action=action_enum,
+            jurisdiction=req.jurisdiction,
+            situation=req.situation
+        )
+        return {
+            "result": result.model_dump(),
+            "markdown": rendered
+        }
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Legal literacy drill-down error: {str(e)}")
+
+
+class TraceConclusionRequest(BaseModel):
+    conclusion: str = Field(..., description="Substantive legal proposition to trace")
+    jurisdiction: Optional[str] = Field("US", description="Controlling jurisdiction code")
+
+
+class TraceInterrogateRequest(BaseModel):
+    conclusion: str = Field(..., description="Substantive legal proposition")
+    action: str = Field(..., description="WHY, SOURCE, WHEN, WHERE, WHAT_IF, WHAT_CHANGED, WHAT_DISAGREES, WHAT_IS_MISSING")
+    scenario: Optional[str] = Field(None, description="Factual scenario context for WHAT IF queries")
+    jurisdiction: Optional[str] = Field("US", description="Controlling jurisdiction code")
+
+
+@app.post("/api/v1/trace/conclusion")
+def trace_conclusion_endpoint(req: TraceConclusionRequest):
+    """Exposes 10-field auditable explanation trace for a legal conclusion without hidden CoT."""
+    try:
+        from agents.explanation_trace_agent import ExplanationTraceAgent
+        agent = ExplanationTraceAgent()
+        record = agent.trace_conclusion(req.conclusion, jurisdiction=req.jurisdiction)
+        rendered = agent.trace_and_render(req.conclusion, jurisdiction=req.jurisdiction)
+        return {
+            "record": record.model_dump(),
+            "markdown": rendered
+        }
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Explanation trace error: {str(e)}")
+
+
+@app.post("/api/v1/trace/interrogate")
+def interrogate_conclusion_endpoint(req: TraceInterrogateRequest):
+    """Interrogates a conclusion with one of the 8 queries without revealing hidden CoT."""
+    try:
+        from agents.explanation_trace_agent import ExplanationTraceAgent
+        from core.explanation_trace.models import InterrogativeTraceType
+        agent = ExplanationTraceAgent()
+        norm_action = req.action.upper().replace("-", "_")
+        trace_enum = InterrogativeTraceType[norm_action]
+        result = agent.interrogate(
+            conclusion=req.conclusion,
+            trace_type=trace_enum,
+            scenario_context=req.scenario,
+            jurisdiction=req.jurisdiction
+        )
+        rendered = agent.interrogate_and_render(
+            conclusion=req.conclusion,
+            trace_type=trace_enum,
+            scenario_context=req.scenario,
+            jurisdiction=req.jurisdiction
+        )
+        return {
+            "result": result.model_dump(),
+            "markdown": rendered
+        }
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Interrogative trace error: {str(e)}")
+
+
+
 

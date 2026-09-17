@@ -93,10 +93,10 @@
         "RCW 13.34.130"
       ],
       "citations_generated": [
+        "RCW 13.34.050",
         "RCW 13.34.065",
-        "RCW 13.34.130",
         "25 U.S.C. \u00a7 1915",
-        "RCW 13.34.050"
+        "RCW 13.34.130"
       ],
       "analysis_excerpt": "Based on controlling statutes for WA, child protective actions require documented emergency findings, immediate statutory notice to parents, and a mandatory court hearing with court-appointed counsel.\n\n### Procedural Remedy & Motion Guide: Affidavit ...",
       "ground_truth_summary": {
@@ -133,9 +133,9 @@
         "705 ILCS 405/2-21"
       ],
       "citations_generated": [
-        "705 ILCS 405/2-21",
         "705 ILCS 405/2-10",
-        "705 ILCS 405/2-6"
+        "705 ILCS 405/2-6",
+        "705 ILCS 405/2-21"
       ],
       "analysis_excerpt": "Based on controlling statutes for IL, child protective actions require documented emergency findings, immediate statutory notice to parents, and a mandatory court hearing with court-appointed counsel.\n\n### Relevant Authoritative Excerpts:\n> **In re A...",
       "ground_truth_summary": {
@@ -168,8 +168,8 @@
         "ORC \u00a7 2151.419"
       ],
       "citations_generated": [
-        "ORC \u00a7 2151.419",
         "ORC \u00a7 2151.31",
+        "ORC \u00a7 2151.419",
         "ORC \u00a7 2151.314"
       ],
       "analysis_excerpt": "Based on controlling statutes for OH, child protective actions require documented emergency findings, immediate statutory notice to parents, and a mandatory court hearing with court-appointed counsel.\n\n### Relevant Authoritative Excerpts:\n> **In re B...",
@@ -205,8 +205,8 @@
         "25 U.S.C. \u00a7 1911"
       ],
       "citations_generated": [
-        "25 U.S.C. \u00a7 1901",
-        "25 U.S.C. \u00a7 1911"
+        "25 U.S.C. \u00a7 1911",
+        "25 U.S.C. \u00a7 1901"
       ],
       "analysis_excerpt": "ICWA Standards Apply: Active efforts standard (Clear and Convincing Evidence with Qualified Expert Witness (25 U.S.C. \u00a7 1912(e))) is mandated under federal law. Notice must be served by registered mail (return receipt requested) to the designated tri...",
       "ground_truth_summary": {
@@ -271,9 +271,9 @@
         "RCW 13.34.060"
       ],
       "citations_generated": [
+        "RCW 13.34.050",
         "RCW 13.34.065",
-        "RCW 13.34.060",
-        "RCW 13.34.050"
+        "RCW 13.34.060"
       ],
       "analysis_excerpt": "Based on controlling statutes for WA, child protective actions require documented emergency findings, immediate statutory notice to parents, and a mandatory court hearing with court-appointed counsel.\n\n### Procedural Remedy & Motion Guide: Affidavit ...",
       "ground_truth_summary": {
@@ -333,8 +333,8 @@
         "25 U.S.C. \u00a7 1912"
       ],
       "citations_generated": [
-        "25 U.S.C. \u00a7 1912",
-        "42 U.S.C. \u00a7 5106a"
+        "42 U.S.C. \u00a7 5106a",
+        "25 U.S.C. \u00a7 1912"
       ],
       "analysis_excerpt": "Based on controlling statutes for US, child protective actions require documented emergency findings, immediate statutory notice to parents, and a mandatory court hearing with court-appointed counsel.\n\n### Relevant Authoritative Excerpts:\n> **42 U.S....",
       "ground_truth_summary": {

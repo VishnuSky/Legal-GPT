@@ -22,10 +22,10 @@ All **173 automated tests** pass with 0 errors and 0 failures. Both privacy and 
 ### 1. Improvement 1 — Final Review Agent: Structured Proposition Validator
 
 - **Source Files:**
-  - [`agents/final_review_agent.py`](file:///c:/Users/rolda/Documents/Legal%20GPT/agents/final_review_agent.py)
-  - [`agents/legal_orchestrator.py`](file:///c:/Users/rolda/Documents/Legal%20GPT/agents/legal_orchestrator.py)
-  - [`agents/__init__.py`](file:///c:/Users/rolda/Documents/Legal%20GPT/agents/__init__.py)
-  - [`tests/test_final_review_agent.py`](file:///c:/Users/rolda/Documents/Legal%20GPT/tests/test_final_review_agent.py)
+  - [`agents/final_review_agent.py`](agents/final_review_agent.py)
+  - [`agents/legal_orchestrator.py`](agents/legal_orchestrator.py)
+  - [`agents/__init__.py`](agents/__init__.py)
+  - [`tests/test_final_review_agent.py`](tests/test_final_review_agent.py)
 - **Problem Solved:**  
   The prior implementation relied on regex/string searches for disclaimers and basic citation tags, failing to verify epistemic classifications, hedging, or authority tiers.
 - **Architectural Enhancements:**
@@ -45,9 +45,9 @@ All **173 automated tests** pass with 0 errors and 0 failures. Both privacy and 
 ### 2. Improvement 2 — MCP Server & REST API Streaming Tool Responses
 
 - **Source Files:**
-  - [`api/mcp_server.py`](file:///c:/Users/rolda/Documents/Legal%20GPT/api/mcp_server.py)
-  - [`api/server.py`](file:///c:/Users/rolda/Documents/Legal%20GPT/api/server.py)
-  - [`tests/test_mcp_streaming.py`](file:///c:/Users/rolda/Documents/Legal%20GPT/tests/test_mcp_streaming.py)
+  - [`api/mcp_server.py`](api/mcp_server.py)
+  - [`api/server.py`](api/server.py)
+  - [`tests/test_mcp_streaming.py`](tests/test_mcp_streaming.py)
 - **Problem Solved:**  
   The MCP tools and REST API were strictly synchronous, forcing client interfaces and orchestrators to wait for end-to-end reasoning completion with no intermediate visibility.
 - **Architectural Enhancements:**
@@ -69,11 +69,11 @@ All **173 automated tests** pass with 0 errors and 0 failures. Both privacy and 
 ### 3. Improvement 3 — Training Dataset Builder: Concrete Seed Generation
 
 - **Source Files:**
-  - [`legal_gpt/training/dataset_builder.py`](file:///c:/Users/rolda/Documents/Legal%20GPT/legal_gpt/training/dataset_builder.py)
-  - [`training/schemas/dataset_schema.py`](file:///c:/Users/rolda/Documents/Legal%20GPT/training/schemas/dataset_schema.py)
-  - [`training/schemas/__init__.py`](file:///c:/Users/rolda/Documents/Legal%20GPT/training/schemas/__init__.py)
-  - [`legal_registry/cps/fl_cps.yaml`](file:///c:/Users/rolda/Documents/Legal%20GPT/legal_registry/cps/fl_cps.yaml)
-  - [`tests/test_dataset_builder.py`](file:///c:/Users/rolda/Documents/Legal%20GPT/tests/test_dataset_builder.py)
+  - [`legal_gpt/training/dataset_builder.py`](legal_gpt/training/dataset_builder.py)
+  - [`training/schemas/dataset_schema.py`](training/schemas/dataset_schema.py)
+  - [`training/schemas/__init__.py`](training/schemas/__init__.py)
+  - [`legal_registry/cps/fl_cps.yaml`](legal_registry/cps/fl_cps.yaml)
+  - [`tests/test_dataset_builder.py`](tests/test_dataset_builder.py)
   - `training/datasets/{05_issue_spotting,06_rule_extraction,13_parent_rights,17_due_process,19_search_seizure}/examples.jsonl`
 - **Problem Solved:**  
   The dataset builder previously contained only stubs and placeholders without generating validated, legally grounded examples for the 23 task families.

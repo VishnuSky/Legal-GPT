@@ -40,7 +40,8 @@ private_data/
 private/
 secrets/
 credentials/
-evidence/
+/evidence/
+!core/evidence/
 case_files/
 user_data/
 uploads/
