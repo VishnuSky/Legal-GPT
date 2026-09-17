@@ -1,0 +1,69 @@
+# Virginia State (VA) CPS / Child Welfare Legal Source Registry v1.0
+sources:
+  - source_id: CPS_VA_STAT_16_1
+    jurisdiction: US-VA
+    level: state
+    authority_tier: TIER_0
+    legal_domain: ["child_welfare", "statutes", "shelter_hearing", "dependency", "juvenile_court"]
+    cps_subdomain: state_statute
+    source_type: statute
+    title: "Code of Virginia Title 16.1 Chapter 11 (Juvenile and Domestic Relations District Courts)"
+    citation_format: "Va. Code § {section}"
+    publisher:
+      name: "Virginia General Assembly"
+      official: true
+      entity_type: legislature
+      contact_url: "https://virginiageneralassembly.gov/"
+    canonical_url: "https://law.lis.virginia.gov/vacode/title16.1/chapter11/"
+    key_statutory_sections:
+      - "Va. Code § 16.1-247" # Taking child into custody without court order
+      - "Va. Code § 16.1-251" # Emergency removal order
+      - "Va. Code § 16.1-252" # Preliminary removal order hearing (72-hour rule)
+      - "Va. Code § 16.1-266" # Appointment of counsel for indigent parents and child GAL
+      - "Va. Code § 16.1-278.2" # Disposition when child found abused or neglected
+      - "Va. Code § 16.1-281" # Foster care plan; reasonable efforts
+      - "Va. Code § 16.1-283" # Termination of residual parental rights
+    topics:
+      emergency_removal: true
+      shelter_care_hearing: true
+      dependency_petition: true
+      fact_finding_adjudication: true
+      disposition_placement: true
+      reasonable_efforts: true
+      permanency_planning: true
+      termination_parental_rights: true
+      parent_rights_counsel: true
+    standard_of_proof: "Preponderance of Evidence (Abuse/Neglect Hearing) / Clear and Convincing (TPR § 16.1-283)"
+    mandatory_timeframes_days:
+      shelter_hearing_hours: 72 # Preliminary removal hearing within 72 hours
+      petition_filing_hours: 72
+      adjudicatory_hearing_days: 30
+      disposition_hearing_days: 60
+      permanency_hearing_months: 12
+    acquisition_method: html_scrape
+    parser_name: virginia_statutes_parser
+    update_frequency: daily
+    cps_priority: 10
+    active: true
+    metadata:
+      emergency_removal:
+        citation: "Va. Code § 16.1-251 / § 16.1-247"
+        text_excerpt: "An emergency removal order may be issued ex parte upon finding that the child would be subjected to an imminent threat to life or health to the extent that severe or irremediable injury would be likely to result if returned to or left in custody of parents."
+      shelter_hearing_deadline_hours: 72
+      dependency_petition_deadline: "Petition alleging abuse or neglect must be filed prior to or contemporaneously with emergency removal order (Va. Code § 16.1-251(A))"
+      adjudicatory_hearing_deadline: "Shall be held within 30 days of the preliminary removal hearing (Va. Code § 16.1-252(G))"
+      reasonable_efforts_requirement:
+        citation: "Va. Code § 16.1-252(E) / § 16.1-281"
+        text_excerpt: "The court must determine whether reasonable efforts have been made by the local department to prevent or eliminate the need for removal from the home."
+      relative_placement_preference:
+        citation: "Va. Code § 16.1-278.2 / § 63.2-900"
+        text_excerpt: "Prior to placing child in foster care, local board shall consider placement with a fit and willing relative, including kinship foster care."
+      tpr_grounds:
+        citation: "Va. Code § 16.1-283"
+        text_excerpt: "Residual parental rights of a parent may be terminated upon proof by clear and convincing evidence that termination is in best interests of child and statutory grounds exist."
+      right_to_counsel:
+        citation: "Va. Code § 16.1-266"
+        text_excerpt: "Prior to the hearing, the court shall appoint a guardian ad litem for the child and counsel for the parent if the parent is indigent and does not knowingly waive representation."
+      icwa_inquiry_requirement:
+        citation: "Va. Code § 16.1-252 / 25 U.S.C. § 1912"
+        text_excerpt: "The court and department shall inquire into the tribal membership or eligibility of the child to determine applicability of the federal Indian Child Welfare Act."

@@ -617,5 +617,95 @@ def interrogate_conclusion_endpoint(req: TraceInterrogateRequest):
         raise HTTPException(status_code=500, detail=f"Interrogative trace error: {str(e)}")
 
 
+@app.post("/api/v1/public/deadlines")
+def calculate_deadlines_endpoint(req: dict):
+    """Calculates procedural deadlines from statutory authority without guessing."""
+    try:
+        from core.deadlines.engine import DeadlineEngine
+        from core.deadlines.renderer import DeadlineRenderer
+        from core.deadlines.models import DeadlineRequest
+
+        # Validate input
+        deadline_req = DeadlineRequest(**req)
+        engine = DeadlineEngine()
+        report = engine.compute_deadlines(
+            event_type=deadline_req.event_type,
+            event_date=deadline_req.event_date,
+            jurisdiction=deadline_req.jurisdiction,
+            county=deadline_req.county
+        )
+        rendered = DeadlineRenderer.render_markdown(report)
+        res = report.model_dump()
+        res["report"] = report.model_dump()
+        res["markdown"] = rendered
+        return res
+    except Exception as e:
+        raise HTTPException(status_code=400, detail=f"Deadline computation error: {str(e)}")
+
+
+@app.post("/api/v1/public/timeline")
+def construct_timeline_endpoint(req: dict):
+    """Constructs chronological case timeline and evaluates procedural sequences and gaps."""
+    try:
+        from core.timeline.models import TimelineRequest
+        from core.timeline.engine import TimelineEngine
+        from core.timeline.renderer import TimelineRenderer
+
+        timeline_req = TimelineRequest(**req)
+        engine = TimelineEngine()
+        report = engine.construct_timeline(timeline_req)
+        rendered = TimelineRenderer.render_markdown(report)
+        res = report.model_dump()
+        res["report"] = report.model_dump()
+        res["markdown"] = rendered
+        return res
+    except Exception as e:
+        raise HTTPException(status_code=400, detail=f"Timeline construction error: {str(e)}")
+
+
+@app.post("/api/v1/public/explain-document")
+def explain_document_endpoint(req: dict):
+    """Explains legal court documents and notices at multiple literacy levels."""
+    try:
+        from core.document_explainer.models import DocumentExplanationRequest
+        from core.document_explainer.engine import DocumentExplainerEngine
+        from core.document_explainer.renderer import DocumentExplainerRenderer
+
+        doc_req = DocumentExplanationRequest(**req)
+        engine = DocumentExplainerEngine()
+        report = engine.explain_document(doc_req)
+        rendered = DocumentExplainerRenderer.render_markdown(report)
+        res = report.model_dump()
+        res["report"] = report.model_dump()
+        res["markdown"] = rendered
+        return res
+    except Exception as e:
+        raise HTTPException(status_code=400, detail=f"Document explanation error: {str(e)}")
+
+
+@app.post("/api/v1/public/question-builder")
+def question_builder_endpoint(req: dict):
+    """Generates prioritized tactical questions and document checklists for court or agency meetings."""
+    try:
+        from core.question_builder.models import QuestionBuilderRequest
+        from core.question_builder.engine import QuestionBuilderEngine
+        from core.question_builder.renderer import QuestionBuilderRenderer
+
+        q_req = QuestionBuilderRequest(**req)
+        engine = QuestionBuilderEngine()
+        report = engine.build_questions(q_req)
+        rendered = QuestionBuilderRenderer.render_markdown(report)
+        res = report.model_dump()
+        res["report"] = report.model_dump()
+        res["markdown"] = rendered
+        return res
+    except Exception as e:
+        raise HTTPException(status_code=400, detail=f"Question builder error: {str(e)}")
+
+
+
+
+
+
 
 

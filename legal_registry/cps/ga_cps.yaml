@@ -1,0 +1,70 @@
+# Georgia State (GA) CPS / Child Welfare Legal Source Registry v1.0
+sources:
+  - source_id: CPS_GA_STAT_15_11
+    jurisdiction: US-GA
+    level: state
+    authority_tier: TIER_0
+    legal_domain: ["child_welfare", "statutes", "shelter_hearing", "dependency", "juvenile_code"]
+    cps_subdomain: state_statute
+    source_type: statute
+    title: "Official Code of Georgia Annotated (O.C.G.A.) Title 15 Chapter 11 (Juvenile Code: Dependency)"
+    citation_format: "O.C.G.A. § {section}"
+    publisher:
+      name: "Georgia General Assembly"
+      official: true
+      entity_type: legislature
+      contact_url: "https://www.legis.ga.gov/"
+    canonical_url: "https://www.lexisnexis.com/hottopics/gacode/"
+    key_statutory_sections:
+      - "O.C.G.A. § 15-11-133" # Taking a child into custody
+      - "O.C.G.A. § 15-11-135" # Placement of child taken into custody; relative priority
+      - "O.C.G.A. § 15-11-145" # Preliminary protective hearing within 72 hours
+      - "O.C.G.A. § 15-11-151" # Petition for dependency; filing within 5 days of preliminary hearing
+      - "O.C.G.A. § 15-11-181" # Adjudicatory hearing; within 30 days if detained, 60 days if not
+      - "O.C.G.A. § 15-11-103" # Right to legal representation for parents and children
+      - "O.C.G.A. § 15-11-202" # Reasonable efforts requirements
+      - "O.C.G.A. § 15-11-310" # Grounds for termination of parental rights
+    topics:
+      emergency_removal: true
+      shelter_care_hearing: true
+      dependency_petition: true
+      fact_finding_adjudication: true
+      disposition_placement: true
+      reasonable_efforts: true
+      permanency_planning: true
+      termination_parental_rights: true
+      parent_rights_counsel: true
+    standard_of_proof: "Clear and Convincing Evidence (Adjudication & TPR)"
+    mandatory_timeframes_days:
+      shelter_hearing_hours: 72
+      petition_filing_days: 5
+      adjudicatory_hearing_days: 30
+      disposition_hearing_days: 30
+      permanency_hearing_months: 12
+    acquisition_method: html_scrape
+    parser_name: georgia_statutes_parser
+    update_frequency: daily
+    cps_priority: 10
+    active: true
+    metadata:
+      emergency_removal:
+        citation: "O.C.G.A. § 15-11-133"
+        text_excerpt: "A child may be taken into temporary custody by a law enforcement officer or employee of the department if there are reasonable grounds to believe that the child is suffering from illness or injury or is in immediate danger from his or her surroundings and that removal is necessary."
+      shelter_hearing_deadline_hours: 72
+      dependency_petition_deadline: "Within 5 days after preliminary protective hearing if child is in custody (O.C.G.A. § 15-11-151)"
+      adjudicatory_hearing_deadline: "Within 30 days of petition filing if child in custody; within 60 days if not in custody (O.C.G.A. § 15-11-181)"
+      reasonable_efforts_requirement:
+        citation: "O.C.G.A. § 15-11-202"
+        text_excerpt: "DFCS must make reasonable efforts to preserve and reunify families prior to the placement of a child in foster care to prevent or eliminate the need for removing the child."
+      relative_placement_preference:
+        citation: "O.C.G.A. § 15-11-135 / § 15-11-211"
+        text_excerpt: "DFCS must give preference to an adult relative over a nonrelated foster parent, provided the relative meets all relevant child protection standards."
+      tpr_grounds:
+        citation: "O.C.G.A. § 15-11-310"
+        text_excerpt: "The court may terminate parental rights upon statutory grounds proved by clear and convincing evidence, including lack of parental care and inability to remedy causes of dependency."
+      right_to_counsel:
+        citation: "O.C.G.A. § 15-11-103"
+        text_excerpt: "A child and each parent or guardian are entitled to legal representation in all dependency proceedings. If a parent is indigent, the court shall appoint an attorney."
+      icwa_inquiry_requirement:
+        citation: "O.C.G.A. § 15-11-152 / 25 U.S.C. § 1912"
+        text_excerpt: "The petition and court inquiry must state whether the child subject to proceedings is an Indian child within the meaning of the Indian Child Welfare Act."

@@ -1,0 +1,69 @@
+# New Jersey State (NJ) CPS / Child Welfare Legal Source Registry v1.0
+sources:
+  - source_id: CPS_NJ_STAT_9_6
+    jurisdiction: US-NJ
+    level: state
+    authority_tier: TIER_0
+    legal_domain: ["child_welfare", "statutes", "shelter_hearing", "dcpp", "child_abuse_neglect"]
+    cps_subdomain: state_statute
+    source_type: statute
+    title: "New Jersey Statutes Annotated (N.J.S.A.) Title 9:6-8 & Title 30:4C (Child Abuse & Welfare)"
+    citation_format: "N.J.S.A. § {section}"
+    publisher:
+      name: "New Jersey State Legislature"
+      official: true
+      entity_type: legislature
+      contact_url: "https://www.njleg.state.nj.us/"
+    canonical_url: "https://lis.njleg.state.nj.us/nxt/gateway.dll?f=templates&fn=default.htm&vid=Publish:10.1048/Enu"
+    key_statutory_sections:
+      - "N.J.S.A. 9:6-8.29" # Emergency removal without court order (Dodd removal)
+      - "N.J.S.A. 9:6-8.30" # Action by division upon emergency removal; order to show cause within 2 court days
+      - "N.J.S.A. 9:6-8.31" # Preliminary hearing / order to show cause return
+      - "N.J.S.A. 9:6-8.43" # Notice of right to counsel; assignment of public defender
+      - "N.J.S.A. 9:6-8.47" # Fact-finding hearing
+      - "N.J.S.A. 30:4C-12.1" # Search for relatives for placement preference
+      - "N.J.S.A. 30:4C-15.1" # Termination of parental rights; best interests four-prong test
+    topics:
+      emergency_removal: true
+      shelter_care_hearing: true
+      dependency_petition: true
+      fact_finding_adjudication: true
+      disposition_placement: true
+      reasonable_efforts: true
+      permanency_planning: true
+      termination_parental_rights: true
+      parent_rights_counsel: true
+    standard_of_proof: "Preponderance of Evidence (Title 9 Fact-Finding) / Clear and Convincing (Title 30 TPR)"
+    mandatory_timeframes_days:
+      shelter_hearing_hours: 48 # Return on order to show cause within 2 court days (approx 48 hours)
+      petition_filing_hours: 48
+      adjudicatory_hearing_days: 60
+      disposition_hearing_days: 30
+      permanency_hearing_months: 12
+    acquisition_method: html_scrape
+    parser_name: new_jersey_statutes_parser
+    update_frequency: daily
+    cps_priority: 10
+    active: true
+    metadata:
+      emergency_removal:
+        citation: "N.J.S.A. 9:6-8.29"
+        text_excerpt: "The division or designated peace officer may remove a child from his place of residence without court order (Dodd removal) if the child is in such condition that his continuing in said place of residence presents an imminent danger to the child's life, safety, or health."
+      shelter_hearing_deadline_hours: 48 # Next court day / within 2 court days
+      dependency_petition_deadline: "Division must file verified complaint and apply for order to show cause within 2 court days following removal (N.J.S.A. 9:6-8.30(a))"
+      adjudicatory_hearing_deadline: "Fact-finding hearing shall be completed within 60 days of the filing of the complaint (Rule 5:12-4)"
+      reasonable_efforts_requirement:
+        citation: "N.J.S.A. 30:4C-15.1(a)(3) / N.J.S.A. 9:6-8.8"
+        text_excerpt: "DCPP must make reasonable efforts to provide services to help the parent correct the circumstances which led to the child's placement outside the home."
+      relative_placement_preference:
+        citation: "N.J.S.A. 30:4C-12.1"
+        text_excerpt: "DCPP must initiate search for adult relatives within 30 days of placement and assess each willing relative for placement priority."
+      tpr_grounds:
+        citation: "N.J.S.A. 30:4C-15.1"
+        text_excerpt: "DCPP must establish all four prongs of the best interests standard by clear and convincing evidence to terminate parental rights."
+      right_to_counsel:
+        citation: "N.J.S.A. 9:6-8.43 / N.J.S.A. 30:4C-15.4"
+        text_excerpt: "The court shall advise the parent of their right to be represented by counsel and if indigent, refer the parent to the Office of Parental Representation in the Office of the Public Defender."
+      icwa_inquiry_requirement:
+        citation: "N.J. Court Rule 5:12-1 / 25 U.S.C. § 1912"
+        text_excerpt: "The complaint must identify whether the child is of Native American descent and the court must conduct ICWA inquiry at the preliminary hearing."

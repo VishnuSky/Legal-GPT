@@ -83,7 +83,7 @@ class IntakeClassifier:
             stage = CPSStage.PERMANENCY_PLANNING
 
         # 5. ICWA & Interstate flags
-        is_tribal = any(w in lower_q for w in ["tribal", "tribe", "indian child", "native american", "icwa", "wicwa", "reservation"])
+        is_tribal = any(w in lower_q for w in ["tribal", "tribe", "indian child", "native american", "icwa", "wicwa", "reservation", "1912", "haaland", "brackeen", "25 u.s.c", "25 cfr", "25 c.f.r"])
         is_interstate = len(detected_states) > 1 or any(w in lower_q for w in ["another state", "moved to", "across state lines", "uccjea", "icpc"])
 
         needs_clarification = False

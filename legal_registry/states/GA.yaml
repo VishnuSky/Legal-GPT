@@ -1,0 +1,29 @@
+# Georgia State (GA) Legal Source Registry v1.0
+state_id: GA
+state_name: "Georgia"
+fips: "13"
+
+sources:
+  - source_id: GA_CODE
+    jurisdiction: US-GA
+    level: state
+    authority_tier: TIER_0
+    legal_domain: ["statutes", "general", "juvenile_code", "family_law"]
+    source_type: statute
+    title: "Official Code of Georgia Annotated (O.C.G.A.)"
+    citation_format: "O.C.G.A. § {section}"
+    publisher:
+      name: "Georgia General Assembly"
+      official: true
+      entity_type: legislature
+      contact_url: "https://www.legis.ga.gov/"
+    canonical_url: "https://www.legis.ga.gov/legislation/all"
+    temporal:
+      versioned: true
+      effective_dates_available: true
+      historical_versions_available: true
+    acquisition_method: html_scrape
+    parser_name: georgia_statutes_parser
+    update_frequency: daily
+    cps_priority: 10
+    active: true

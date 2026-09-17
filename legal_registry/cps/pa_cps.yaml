@@ -1,0 +1,70 @@
+# Pennsylvania State (PA) CPS / Child Welfare Legal Source Registry v1.0
+sources:
+  - source_id: CPS_PA_STAT_63
+    jurisdiction: US-PA
+    level: state
+    authority_tier: TIER_0
+    legal_domain: ["child_welfare", "statutes", "shelter_hearing", "dependency", "juvenile_act"]
+    cps_subdomain: state_statute
+    source_type: statute
+    title: "Pennsylvania Consolidated Statutes Title 42 Chapter 63 (Juvenile Act) & Title 23 Chapter 63 (CPSL)"
+    citation_format: "42 Pa. C.S. § {section} / 23 Pa. C.S. § {section}"
+    publisher:
+      name: "Pennsylvania General Assembly"
+      official: true
+      entity_type: legislature
+      contact_url: "https://www.legis.state.pa.us/"
+    canonical_url: "https://www.legis.state.pa.us/cfdocs/legis/LI/consCheck.cfm?txtType=HTM&ttl=42&div=0&chpt=63"
+    key_statutory_sections:
+      - "42 Pa. C.S. § 6324" # Taking into custody
+      - "23 Pa. C.S. § 6315" # Taking child into protective custody
+      - "42 Pa. C.S. § 6332" # Informal hearing within 72 hours of detention
+      - "42 Pa. C.S. § 6334" # Petition filing requirements
+      - "42 Pa. C.S. § 6335" # Release or hearing; adjudication within 10 days (if detained) or 30 days
+      - "42 Pa. C.S. § 6337" # Right to counsel for child and parents
+      - "42 Pa. C.S. § 6351" # Disposition of dependent child; reasonable efforts and kinship preference
+      - "23 Pa. C.S. § 2511" # Grounds for involuntary termination of parental rights
+    topics:
+      emergency_removal: true
+      shelter_care_hearing: true
+      dependency_petition: true
+      fact_finding_adjudication: true
+      disposition_placement: true
+      reasonable_efforts: true
+      permanency_planning: true
+      termination_parental_rights: true
+      parent_rights_counsel: true
+    standard_of_proof: "Clear and Convincing Evidence (Dependency & TPR)"
+    mandatory_timeframes_days:
+      shelter_hearing_hours: 72
+      petition_filing_hours: 48
+      adjudicatory_hearing_days: 10
+      disposition_hearing_days: 20
+      permanency_hearing_months: 6
+    acquisition_method: html_scrape
+    parser_name: pennsylvania_statutes_parser
+    update_frequency: daily
+    cps_priority: 10
+    active: true
+    metadata:
+      emergency_removal:
+        citation: "42 Pa. C.S. § 6324 / 23 Pa. C.S. § 6315"
+        text_excerpt: "A child may be taken into custody pursuant to the laws of arrest or by a law enforcement officer or authorized child welfare worker if there are reasonable grounds to believe that the child is suffering from illness or injury or is in imminent danger from his surroundings and removal is necessary."
+      shelter_hearing_deadline_hours: 72
+      dependency_petition_deadline: "Within 24 to 48 hours after child is taken into custody"
+      adjudicatory_hearing_deadline: "Within 10 days if child remains in detention; within 30 days if not detained (42 Pa. C.S. § 6335)"
+      reasonable_efforts_requirement:
+        citation: "42 Pa. C.S. § 6351(b)(2)"
+        text_excerpt: "The court must determine whether reasonable efforts were made prior to placement of the child to prevent or eliminate the need for removal from the home."
+      relative_placement_preference:
+        citation: "42 Pa. C.S. § 6351(a)(2.1)"
+        text_excerpt: "County agency must conduct diligent search for fit and willing relatives, including adult grandparents, to be considered for placement preference."
+      tpr_grounds:
+        citation: "23 Pa. C.S. § 2511"
+        text_excerpt: "The rights of a parent in regard to a child may be terminated after a petition filed on any of the specified statutory grounds, proved by clear and convincing evidence."
+      right_to_counsel:
+        citation: "42 Pa. C.S. § 6337"
+        text_excerpt: "Except as otherwise provided under this chapter a party is entitled to representation by legal counsel at all stages of any proceedings under this chapter and if he is without financial resources to employ counsel, to have the court provide counsel."
+      icwa_inquiry_requirement:
+        citation: "Pa. R.J.C.P. 1120 / 25 U.S.C. § 1912"
+        text_excerpt: "The court and county agency have an affirmative and continuing duty to inquire whether a child involved in a dependency proceeding is an Indian child."

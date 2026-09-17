@@ -1,0 +1,29 @@
+# New Jersey State (NJ) Legal Source Registry v1.0
+state_id: NJ
+state_name: "New Jersey"
+fips: "34"
+
+sources:
+  - source_id: NJ_STATUTES
+    jurisdiction: US-NJ
+    level: state
+    authority_tier: TIER_0
+    legal_domain: ["statutes", "general", "child_welfare", "juvenile"]
+    source_type: statute
+    title: "New Jersey Statutes Annotated (N.J.S.A.)"
+    citation_format: "N.J.S.A. § {section}"
+    publisher:
+      name: "New Jersey State Legislature"
+      official: true
+      entity_type: legislature
+      contact_url: "https://www.njleg.state.nj.us/"
+    canonical_url: "https://www.njleg.state.nj.us/statutes"
+    temporal:
+      versioned: true
+      effective_dates_available: true
+      historical_versions_available: true
+    acquisition_method: html_scrape
+    parser_name: new_jersey_statutes_parser
+    update_frequency: daily
+    cps_priority: 10
+    active: true

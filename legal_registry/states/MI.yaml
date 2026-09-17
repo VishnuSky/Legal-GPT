@@ -1,0 +1,29 @@
+# Michigan State (MI) Legal Source Registry v1.0
+state_id: MI
+state_name: "Michigan"
+fips: "26"
+
+sources:
+  - source_id: MI_MCL
+    jurisdiction: US-MI
+    level: state
+    authority_tier: TIER_0
+    legal_domain: ["statutes", "general", "probate_code", "juvenile_code"]
+    source_type: statute
+    title: "Michigan Compiled Laws (MCL)"
+    citation_format: "MCL {section}"
+    publisher:
+      name: "Michigan Legislature"
+      official: true
+      entity_type: legislature
+      contact_url: "https://www.legislature.mi.gov/"
+    canonical_url: "https://www.legislature.mi.gov/(S(1))/mileg.aspx?page=MCLIndex"
+    temporal:
+      versioned: true
+      effective_dates_available: true
+      historical_versions_available: true
+    acquisition_method: html_scrape
+    parser_name: michigan_statutes_parser
+    update_frequency: daily
+    cps_priority: 10
+    active: true

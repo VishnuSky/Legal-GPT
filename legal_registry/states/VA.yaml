@@ -1,0 +1,29 @@
+# Virginia State (VA) Legal Source Registry v1.0
+state_id: VA
+state_name: "Virginia"
+fips: "51"
+
+sources:
+  - source_id: VA_CODE
+    jurisdiction: US-VA
+    level: state
+    authority_tier: TIER_0
+    legal_domain: ["statutes", "general", "juvenile_courts", "child_welfare"]
+    source_type: statute
+    title: "Code of Virginia"
+    citation_format: "Va. Code § {section}"
+    publisher:
+      name: "Virginia General Assembly"
+      official: true
+      entity_type: legislature
+      contact_url: "https://virginiageneralassembly.gov/"
+    canonical_url: "https://law.lis.virginia.gov/vacode"
+    temporal:
+      versioned: true
+      effective_dates_available: true
+      historical_versions_available: true
+    acquisition_method: html_scrape
+    parser_name: virginia_statutes_parser
+    update_frequency: daily
+    cps_priority: 10
+    active: true

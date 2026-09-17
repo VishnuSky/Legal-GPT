@@ -1,0 +1,70 @@
+# North Carolina State (NC) CPS / Child Welfare Legal Source Registry v1.0
+sources:
+  - source_id: CPS_NC_STAT_7B
+    jurisdiction: US-NC
+    level: state
+    authority_tier: TIER_0
+    legal_domain: ["child_welfare", "statutes", "shelter_hearing", "dependency", "abuse_neglect"]
+    cps_subdomain: state_statute
+    source_type: statute
+    title: "North Carolina General Statutes (N.C.G.S.) Chapter 7B: Juvenile Code"
+    citation_format: "N.C.G.S. § {section}"
+    publisher:
+      name: "North Carolina General Assembly"
+      official: true
+      entity_type: legislature
+      contact_url: "https://www.ncleg.gov/"
+    canonical_url: "https://www.ncleg.gov/Laws/GeneralStatuteSections/Chapter7B"
+    key_statutory_sections:
+      - "N.C.G.S. § 7B-500" # Taking child into temporary custody without court order
+      - "N.C.G.S. § 7B-502" # Authority to issue custody order
+      - "N.C.G.S. § 7B-505" # Placement of juvenile in nonsecure custody; relative priority
+      - "N.C.G.S. § 7B-506" # Hearing on need for continued nonsecure custody (7-day rule)
+      - "N.C.G.S. § 7B-405" # Commencement of action; petition requirements
+      - "N.C.G.S. § 7B-602" # Parent's right to counsel; guardian ad litem appointment
+      - "N.C.G.S. § 7B-801" # Adjudicatory hearing; within 60 days of petition
+      - "N.C.G.S. § 7B-1111" # Grounds for terminating parental rights
+    topics:
+      emergency_removal: true
+      shelter_care_hearing: true
+      dependency_petition: true
+      fact_finding_adjudication: true
+      disposition_placement: true
+      reasonable_efforts: true
+      permanency_planning: true
+      termination_parental_rights: true
+      parent_rights_counsel: true
+    standard_of_proof: "Clear and Convincing Evidence (Adjudication & TPR)"
+    mandatory_timeframes_days:
+      shelter_hearing_hours: 168 # 7 calendar days for first nonsecure hearing
+      second_nonsecure_hearing_days: 7 # Within 7 business days thereafter
+      adjudicatory_hearing_days: 60
+      disposition_hearing_days: 30
+      permanency_hearing_months: 12
+    acquisition_method: html_scrape
+    parser_name: north_carolina_statutes_parser
+    update_frequency: daily
+    cps_priority: 10
+    active: true
+    metadata:
+      emergency_removal:
+        citation: "N.C.G.S. § 7B-500"
+        text_excerpt: "A temporary custody order or warrantless custody may be exercised by law enforcement or designated DSS worker if there are reasonable grounds to believe that the juvenile is abused, neglected, or dependent and would be injured or could not be taken into custody if not immediately seized."
+      shelter_hearing_deadline_hours: 168 # 7 calendar days
+      dependency_petition_deadline: "Filed simultaneously with or prior to issuance of nonsecure custody order (N.C.G.S. § 7B-405)"
+      adjudicatory_hearing_deadline: "Shall be held within 60 days of petition filing unless continued for good cause (N.C.G.S. § 7B-801(c))"
+      reasonable_efforts_requirement:
+        citation: "N.C.G.S. § 7B-507 / § 7B-903"
+        text_excerpt: "An order placing or continuing custody with county department must contain findings as to whether DSS made reasonable efforts to prevent or eliminate the need for placement."
+      relative_placement_preference:
+        citation: "N.C.G.S. § 7B-505(b) / § 7B-903(a1)"
+        text_excerpt: "The court shall first consider whether a relative of the juvenile is willing and able to provide proper care and placement in a safe home."
+      tpr_grounds:
+        citation: "N.C.G.S. § 7B-1111"
+        text_excerpt: "The court may terminate parental rights upon finding by clear, cogent, and convincing evidence that one or more statutory grounds exist."
+      right_to_counsel:
+        citation: "N.C.G.S. § 7B-602"
+        text_excerpt: "In cases where petition alleges abuse, neglect, or dependency, parents have the right to appointed counsel if indigent, unless counsel is voluntarily and knowingly waived."
+      icwa_inquiry_requirement:
+        citation: "N.C.G.S. § 7B-505.1 / 25 U.S.C. § 1912"
+        text_excerpt: "At each stage of the proceedings the court shall inquire as to whether the juvenile is or may be an Indian child under federal law."
