@@ -53,11 +53,11 @@ ALLOWED_SECURITY_FILES = {
     "scripts/deep_security_audit.py",
     "tests/test_privacy_policy.py"
 }
+LOCAL_FILE_URI_MARKDOWN_PATTERN = re.compile(r"\]\(file:///(?:[a-z]:/|/)[^)]*\)", re.IGNORECASE)
 
 
 def _is_local_file_uri_reference(line: str) -> bool:
-    normalized = line.strip().lower()
-    return "](file:///" in normalized and "users/" in normalized
+    return bool(LOCAL_FILE_URI_MARKDOWN_PATTERN.search(line))
 
 
 def audit_working_tree():
