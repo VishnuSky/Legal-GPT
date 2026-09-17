@@ -37,3 +37,12 @@ def test_benchmark_runner():
     assert report["citation_accuracy"] >= 0.90
     assert report["jurisdiction_accuracy"] >= 0.95
     assert report["target_thresholds_met"] is True
+
+
+def test_external_benchmark_runner():
+    from evaluation.external_benchmark import ExternalBenchmarkRunner
+    runner = ExternalBenchmarkRunner()
+    report = runner.run_benchmark()
+    assert report["total_cases"] == 10
+    assert report["accuracy_rate"] >= 0.85
+    assert report["failures"] == 0

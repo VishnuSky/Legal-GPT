@@ -1,6 +1,8 @@
 """FastAPI Local REST API for Legal-GPT and OpenWebUI Pipeline Integration."""
 
+import json
 from fastapi import FastAPI, HTTPException, Query
+from fastapi.responses import StreamingResponse
 from pydantic import BaseModel, Field
 from typing import Optional, List, Dict, Any, Literal
 from datetime import date
@@ -379,6 +381,28 @@ def resolve_public_query(request: PublicResolveRequest):
         )
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Public resolve error: {str(e)}")
+
+
+@app.post("/api/v1/public/resolve/stream")
+async def resolve_public_query_stream(request: PublicResolveRequest):
+    """Streaming Public Resolution: Streams 6 structured reasoning stages as JSON lines (application/x-ndjson)."""
+    if not request.question.strip():
+        raise HTTPException(status_code=400, detail="Question cannot be empty.")
+
+    from api.mcp_server import LegalMCPHandler
+
+    async def event_generator():
+        tool_args = {
+            "query": request.question,
+            "state": request.jurisdiction,
+            "county": request.county,
+            "event_date": request.eval_date.isoformat() if request.eval_date else None,
+            "mode": "standard"
+        }
+        async for chunk in LegalMCPHandler.execute_tool_stream("lookup_public_law", tool_args):
+            yield json.dumps(chunk) + "\n"
+
+    return StreamingResponse(event_generator(), media_type="application/x-ndjson")
 
 
 @app.get("/api/v1/public/services")

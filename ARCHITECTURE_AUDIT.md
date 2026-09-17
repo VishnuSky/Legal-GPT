@@ -80,3 +80,52 @@ The platform is now advancing to **Alpha 0.3.0**, implementing a **Two-Brain Arc
 - All code, datasets, and prompts comply strictly with `PUBLIC_DATA_POLICY.md` and `SECURITY.md`.
 - No private case files, credentials, local user paths, or audio recordings exist in the repository.
 - Deep security audits run continuously with zero violations.
+
+---
+
+## 5. Known Gaps, Incomplete Implementations, and Blockers
+
+While all 140 unit and integration tests are currently passing against symbolic mocks and synthetic fixtures, a rigorous architectural inspection reveals several key implementation gaps, ingestion boundaries, and pending tasks required for a production v1.0 / Alpha 0.3.1 rollout:
+
+### 5.1 Incomplete Implementations & Simulated Pipelines
+1. **SFT Training Loop Simulation (`training/train_sft.py`)**:
+   - The current `SFTTrainingPipeline.run_training_simulation()` validates curriculum stages, hyperparameter configurations, and schema compliance without executing real multi-GPU PyTorch backward passes.
+   - *Status*: Working simulation and schema verification. Real distributed LoRA training runs on private GPU infrastructure (`legal-gpt-private`) to prevent heavy weight caches and checkpoints from entering this public repository.
+2. **GGUF Export Pipeline Packaging (`training/export/gguf_pipeline.py`)**:
+   - Generates release manifests, quant specifications (`Q4_K_M`, `Q5_K_M`, `Q8_0`), and model cards.
+   - The actual `llama-quantize` C++ binary invocation must be executed in an environment with compiled llama.cpp tooling installed.
+3. **Local Inference Client Fallback (`legal_gpt/model/inference.py`)**:
+   - If an LM Studio or Ollama endpoint is unreachable at `http://localhost:1234/v1`, the client gracefully falls back to deterministic structured mock completions for offline testing.
+4. **Final Review Agent Coverage (`agents/final_review_agent.py`)**:
+   - Epistemic safety check currently performs heuristic string and regex matching for required disclaimers rather than an end-to-end NLI (Natural Language Inference) contradiction model.
+
+### 5.2 Ingestion & Crawler Limitations
+1. **State Crawler Coverage**:
+   - Live scrapers with caching and parsing are implemented for **Washington** (`ingestion/state_crawlers/washington.py`), **Illinois** (`ingestion/state_crawlers/illinois.py`), and **Ohio** (`ingestion/state_crawlers/ohio.py`).
+   - The remaining 47 states currently rely on curated seed statutes in `legal_registry/` rather than dynamic live web crawlers.
+2. **Third-Party API Rate Limits & Keys**:
+   - `CourtListenerConnector` and `GovInfoConnector` require valid API keys in `.env` for production volume synchronization; both operate in offline fixture fallback mode when keys are absent.
+   - The Washington crawler rate-limits requests to $\ge 1.0\text{s}$ per section, meaning a full 1,000-statute crawl takes approximately 18 minutes.
+
+### 5.3 Dataset Population & Size Limitations
+1. **Evaluation Datasets (`evaluation/datasets/*.jsonl`)**:
+   - The 7 benchmark evaluation datasets contain **16 curated seed records** (2–3 high-value benchmark pairs per domain) designed for schema validation, regression CI, and fast test execution.
+   - Expanding each dataset to 500+ real-world anonymized scenarios is planned for Alpha 0.3.1.
+2. **Training Datasets (`training/datasets/`)**:
+   - Task families 01–23 contain synthetic JSONL template samples. Full-scale SFT requires compiling 50,000+ synthetic multi-turn dialogues across the 4 curriculum stages prior to the final fine-tuning run.
+
+### 5.4 Architecture Inconsistencies & Unresolved Integration Points
+1. **MCP Streaming vs. Synchronous RPC**:
+   - `FastAPI` supports async streaming responses for token generation, but the current `LegalMCPHandler` (`api/mcp_server.py`) returns complete tool-call payloads synchronously. Streaming MCP protocol support is pending.
+2. **In-Memory Citator Graph Scale**:
+   - The Shepherd's-style relational citator (`core/citator.py`) operates in-memory and in SQLite for testing. Scaling to 10M+ national judicial citation edges requires a dedicated PostgreSQL graph or Neo4j backend in Brain 2.
+3. **External Scout Bot Webhook Bridge**:
+   - The public bridge API contract (`POST /api/v1/public/resolve`, `GET /api/v1/public/services`) and MCP tools (`lookup_public_law`, `lookup_services`) are operational in `api/public_api.py`. However, the live external Grok bot webhook dispatcher runs outside the public repository.
+
+### 5.5 Action Items & Roadmap for Alpha 0.3.1
+- [ ] Implement live scrapers for CA, TX, NY, and FL legislative portals.
+- [ ] Expand the 7 evaluation datasets from 16 seed records to 500+ curated scenarios per domain.
+- [ ] Add streaming tool response support to `api/mcp_server.py`.
+- [ ] Transition citator relational graph to persistent vector + relational backend for multi-million citation lookups.
+- [ ] Finalize the external Grok Scout Bot webhook integration using the documented `/api/v1/public/resolve` schema.
+

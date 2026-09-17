@@ -23,6 +23,7 @@ id_ed25519
 
 # Local Databases, SQLite & Stores
 *.db
+legal_gpt.db
 *.sqlite
 *.sqlite3
 *.db-journal

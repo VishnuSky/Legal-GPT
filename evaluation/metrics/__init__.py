@@ -1,4 +1,7 @@
-from evaluation.metrics.citation_accuracy import CitationAccuracyMetric
+from evaluation.metrics.citation_accuracy import (
+    CitationSchemaValidationMetric,
+    CitationAccuracyMetric,
+)
 from evaluation.metrics.jurisdiction_accuracy import (
     JurisdictionAccuracyMetric,
     TemporalAccuracyMetric,
@@ -8,6 +11,7 @@ from evaluation.metrics.jurisdiction_accuracy import (
 )
 
 __all__ = [
+    "CitationSchemaValidationMetric",
     "CitationAccuracyMetric",
     "JurisdictionAccuracyMetric",
     "TemporalAccuracyMetric",

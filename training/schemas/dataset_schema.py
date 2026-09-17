@@ -38,6 +38,23 @@ class LegalTrainingExample(BaseModel):
         return v.upper()
 
 
+class DatasetSchema:
+    """Schema validator for LegalTrainingExample instances or dict payloads."""
+
+    @classmethod
+    def validate(cls, example: Any) -> bool:
+        """Validates that a dictionary or model adheres strictly to LegalTrainingExample schema.
+
+        Returns True if valid; raises pydantic.ValidationError or ValueError if invalid.
+        """
+        if isinstance(example, LegalTrainingExample):
+            return True
+        if isinstance(example, dict):
+            LegalTrainingExample(**example)
+            return True
+        raise ValueError(f"Expected dict or LegalTrainingExample, got {type(example).__name__}")
+
+
 def validate_jsonl_dataset(file_path: str) -> Dict[str, Any]:
     """Validates that a JSONL dataset file strictly complies with the schema."""
     valid_count = 0
