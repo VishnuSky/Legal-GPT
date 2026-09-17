@@ -28,6 +28,36 @@ class LegalMCPHandler:
 
     TOOLS = [
         {
+            "name": "lookup_public_law",
+            "description": "Execute a jurisdiction-locked, temporal, citation-verified public legal research analysis.",
+            "inputSchema": {
+                "type": "object",
+                "properties": {
+                    "query": {"type": "string", "description": "Legal question or civil law topic"},
+                    "state": {"type": "string", "description": "2-letter state code e.g. WA, IL, OH, CA, TX, NY"},
+                    "county": {"type": "string", "description": "County or Judicial District"},
+                    "event_date": {"type": "string", "description": "Event date for temporal validity (YYYY-MM-DD)"},
+                    "mode": {"type": "string", "enum": ["standard", "self_represented", "investigator", "attorney", "court"], "default": "standard"},
+                    "stream": {"type": "boolean", "default": False, "description": "Stream structured reasoning chunks"}
+                },
+                "required": ["query"]
+            }
+        },
+        {
+            "name": "lookup_services",
+            "description": "Search verified official civil legal aid, court self-help centers, bar referrals, and public ombudsman directories.",
+            "inputSchema": {
+                "type": "object",
+                "properties": {
+                    "state": {"type": "string", "description": "State code e.g. WA, IL, OH"},
+                    "county": {"type": "string", "description": "County name e.g. Skagit, Cook, Cuyahoga"},
+                    "matter": {"type": "string", "description": "Civil matter taxonomy e.g. FAMILY_CPS, HOUSING, CONSUMER_DEBT, BENEFITS, EMPLOYMENT"},
+                    "service_type": {"type": "string", "description": "LEGAL_AID, COURT_SELF_HELP, BAR_REFERRAL, AG_CONSUMER, TRIBAL_ICWA, PUBLIC_CONTACT"},
+                    "stream": {"type": "boolean", "default": False, "description": "Stream structured service discovery chunks"}
+                }
+            }
+        },
+        {
             "name": "legal_query",
             "description": "Execute a jurisdiction-locked, temporal, citation-verified legal research analysis.",
             "inputSchema": {
@@ -185,12 +215,148 @@ class LegalMCPHandler:
             return {
                 "jsonrpc": "2.0",
                 "id": msg_id,
-                "error": {"code": -32601, "message": f"Method '{method}' not found"}
+                "error": {"code": -32601, "message": f"Method not found: {method}"}
             }
 
     @classmethod
+    async def execute_tool_stream(cls, tool_name: str, args: Dict[str, Any]):
+        """Async generator yielding structured reasoning stages as JSON chunks when stream=True."""
+        if tool_name in ("lookup_public_law", "legal_query"):
+            from legal_registry.loader import default_registry
+            raw_state = args.get("state") or ""
+            target_jurisdiction = raw_state.strip().upper() if raw_state else ""
+            if target_jurisdiction:
+                clean_code = target_jurisdiction.replace("US-", "")
+                if clean_code != "US" and clean_code not in default_registry.state_matrix:
+                    yield {
+                        "stage": "error",
+                        "error": f"Invalid jurisdiction: '{target_jurisdiction}' is not a recognized state code or federal jurisdiction.",
+                        "stage_failed": "jurisdiction_identified"
+                    }
+                    return
+
+            # Chunk 1: jurisdiction_identified
+            identified_juris = target_jurisdiction or "US-WA"
+            yield {"stage": "jurisdiction_identified", "jurisdiction": identified_juris}
+
+            parsed_date = date.fromisoformat(args["event_date"]) if "event_date" in args and args["event_date"] else None
+            resp = orchestrator.process_query(
+                query=args["query"],
+                override_state=args.get("state"),
+                override_county=args.get("county"),
+                event_date=parsed_date,
+                persona_mode=args.get("mode", "standard")
+            )
+
+            # Chunk 2: authorities_retrieved
+            auth_count = len(resp.controlling_authority)
+            yield {
+                "stage": "authorities_retrieved",
+                "count": auth_count
+            }
+
+            # Chunk 3: conflict_check
+            conflicts = []
+            if resp.conflicting_or_distinguishing_authority:
+                conflicts.append(resp.conflicting_or_distinguishing_authority)
+            yield {
+                "stage": "conflict_check",
+                "conflicts": conflicts
+            }
+
+            # Chunk 4: response_draft
+            yield {
+                "stage": "response_draft",
+                "partial_text": resp.short_answer
+            }
+
+            # Chunk 5: citation_verified
+            verified_flag = bool(all(r.verified for r in resp.verified_sources)) if resp.verified_sources else (len(resp.controlling_authority) > 0)
+            yield {
+                "stage": "citation_verified",
+                "verified": verified_flag
+            }
+
+            # Chunk 6: complete
+            yield {
+                "stage": "complete",
+                "response": {
+                    "jurisdiction": resp.jurisdiction,
+                    "legal_issues": resp.legal_issues,
+                    "short_answer": resp.short_answer,
+                    "controlling_authority": resp.controlling_authority,
+                    "analysis": resp.analysis,
+                    "confidence_level": resp.confidence_level,
+                    "markdown_output": resp.render_markdown(),
+                    "verified_sources": [s.model_dump() for s in resp.verified_sources]
+                }
+            }
+
+        elif tool_name == "lookup_services":
+            from legal_registry.loader import default_registry
+            from services.registry import default_service_registry
+            raw_state = args.get("state") or ""
+            target_jurisdiction = raw_state.strip().upper() if raw_state else ""
+            if target_jurisdiction:
+                clean_code = target_jurisdiction.replace("US-", "")
+                if clean_code != "US" and clean_code not in default_registry.state_matrix:
+                    yield {
+                        "stage": "error",
+                        "error": f"Invalid jurisdiction: '{target_jurisdiction}'",
+                        "stage_failed": "jurisdiction_identified"
+                    }
+                    return
+
+            yield {"stage": "jurisdiction_identified", "jurisdiction": target_jurisdiction or "ALL"}
+
+            results = default_service_registry.query_services(
+                state=args.get("state"),
+                county=args.get("county"),
+                matter=args.get("matter"),
+                service_type=args.get("service_type")
+            )
+            yield {
+                "stage": "authorities_retrieved",
+                "count": len(results)
+            }
+            yield {"stage": "conflict_check", "conflicts": []}
+            yield {
+                "stage": "response_draft",
+                "partial_text": f"Found {len(results)} verified civil services for {target_jurisdiction or 'all jurisdictions'}."
+            }
+            yield {"stage": "citation_verified", "verified": True}
+            yield {
+                "stage": "complete",
+                "response": {
+                    "count": len(results),
+                    "services": [r.model_dump() for r in results]
+                }
+            }
+        else:
+            content = cls._execute_tool(tool_name, args)
+            yield {"stage": "complete", "response": {"text": content}}
+
+    @classmethod
+    async def handle_request_stream(cls, req: Dict[str, Any]):
+        msg_id = req.get("id")
+        method = req.get("method")
+        params = req.get("params", {})
+
+        if method == "tools/call":
+            tool_name = params.get("name")
+            arguments = params.get("arguments", {})
+            async for chunk in cls.execute_tool_stream(tool_name, arguments):
+                yield {
+                    "jsonrpc": "2.0",
+                    "id": msg_id,
+                    "result": chunk
+                }
+        else:
+            yield cls.handle_request(req)
+
+    @classmethod
     def _execute_tool(cls, tool_name: str, args: Dict[str, Any]) -> str:
-        if tool_name == "legal_query":
+        if tool_name in ("lookup_public_law", "legal_query"):
             parsed_date = date.fromisoformat(args["event_date"]) if "event_date" in args and args["event_date"] else None
             resp = orchestrator.process_query(
                 query=args["query"],
@@ -200,6 +366,16 @@ class LegalMCPHandler:
                 persona_mode=args.get("mode", "standard")
             )
             return resp.render_markdown()
+
+        elif tool_name == "lookup_services":
+            from services.registry import default_service_registry
+            results = default_service_registry.query_services(
+                state=args.get("state"),
+                county=args.get("county"),
+                matter=args.get("matter"),
+                service_type=args.get("service_type")
+            )
+            return json.dumps([r.model_dump() for r in results], default=str, indent=2)
 
         elif tool_name == "citator_lookup":
             report = citator_graph.evaluate_citator_status(args["citation"])

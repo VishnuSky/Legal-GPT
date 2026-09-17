@@ -1,0 +1,152 @@
+# Official Ohio State Public Legal & Civil Services Registry
+# Sources: Verified official state court, legal aid (LSC), AG, and ODJFS public directories
+
+services:
+  - service_id: "OH-SERV-LEGAL-AID-CLE"
+    name: "The Legal Aid Society of Cleveland"
+    jurisdiction:
+      country: "US"
+      state: "US-OH"
+      county: "Cuyahoga"
+      tribe: null
+    matters:
+      - "FAMILY_CPS"
+      - "HOUSING"
+      - "CONSUMER_DEBT"
+      - "BENEFITS"
+      - "EMPLOYMENT"
+      - "EDUCATION"
+    service_type: "LEGAL_AID"
+    description: "Oldest legal aid society in Ohio, providing legal counsel and courtroom representation to low-income residents in Cuyahoga, Ashtabula, Geauga, Lake, and Lorain counties."
+    contact:
+      phone: "1-888-817-3777"
+      website: "https://lasclev.org"
+      address: "1223 West Sixth Street, Cleveland, OH 44113"
+      intake_url: "https://lasclev.org/get-help"
+      email: null
+      hours: "Monday - Friday 9:00 AM - 5:00 PM"
+    eligibility_summary: "Income under 200% Federal Poverty Guidelines residing in Northeast Ohio service counties."
+    source_url: "https://lasclev.org"
+    is_official: true
+
+  - service_id: "OH-SERV-OHIO-LEGAL-HELP"
+    name: "Ohio Legal Help"
+    jurisdiction:
+      country: "US"
+      state: "US-OH"
+      county: null
+      tribe: null
+    matters:
+      - "FAMILY_CPS"
+      - "HOUSING"
+      - "CONSUMER_DEBT"
+      - "BENEFITS"
+      - "EMPLOYMENT"
+      - "DISABILITY"
+      - "SMALL_CLAIMS"
+      - "PUBLIC_RECORDS"
+    service_type: "COURT_SELF_HELP"
+    description: "Supreme Court of Ohio endorsed statewide platform providing plain-language legal guidance, court-approved uniform domestic relations forms, and legal clinic locators."
+    contact:
+      phone: null
+      website: "https://www.ohiolegalhelp.org"
+      address: null
+      intake_url: "https://www.ohiolegalhelp.org"
+      email: null
+      hours: "Available online 24/7"
+    eligibility_summary: "Free public access to all Ohio residents and unrepresented litigants."
+    source_url: "https://www.ohiolegalhelp.org"
+    is_official: true
+
+  - service_id: "OH-SERV-CUYAHOGA-JUV-HELP"
+    name: "Cuyahoga County Juvenile Court Resource Center"
+    jurisdiction:
+      country: "US"
+      state: "US-OH"
+      county: "Cuyahoga"
+      tribe: null
+    matters:
+      - "FAMILY_CPS"
+    service_type: "COURT_SELF_HELP"
+    description: "Court-operated resource center assisting parents and custodians with local juvenile court procedures, custody forms, parenting time packets, and clerk filing requirements."
+    contact:
+      phone: "216-443-8400"
+      website: "https://juvenile.cuyahogacounty.us"
+      address: "9300 Quincy Ave., Cleveland, OH 44106"
+      intake_url: "https://juvenile.cuyahogacounty.us/en-US/Pro-Se-Forms.aspx"
+      email: null
+      hours: "Monday - Friday 8:30 AM - 4:30 PM"
+    eligibility_summary: "Parties appearing pro se before the Cuyahoga County Court of Common Pleas, Juvenile Division."
+    source_url: "https://juvenile.cuyahogacounty.us"
+    is_official: true
+
+  - service_id: "OH-SERV-ODJFS-OMBUDS"
+    name: "Ohio Department of Job and Family Services (ODJFS) Children and Families Ombudsman"
+    jurisdiction:
+      country: "US"
+      state: "US-OH"
+      county: null
+      tribe: null
+    matters:
+      - "FAMILY_CPS"
+      - "BENEFITS"
+    service_type: "PUBLIC_CONTACT"
+    description: "Independent state office that reviews complaints, investigates safety concerns, and assists families with problems relating to county Public Children Services Agencies (PCSA)."
+    contact:
+      phone: "1-877-644-6338"
+      website: "https://jfs.ohio.gov"
+      address: "30 E. Broad St., 32nd Floor, Columbus, OH 43215"
+      intake_url: "https://jfs.ohio.gov/foster-care-and-adoption/youth-in-care/ombuds-office"
+      email: "youth-ombuds@childrenandyouth.ohio.gov"
+      hours: "Monday - Friday 8:00 AM - 5:00 PM"
+    eligibility_summary: "Children, youth, parents, and caregivers involved with an Ohio county PCSA child welfare case."
+    source_url: "https://jfs.ohio.gov"
+    is_official: true
+
+  - service_id: "OH-SERV-AGO-CONSUMER"
+    name: "Ohio Attorney General Consumer Protection Section"
+    jurisdiction:
+      country: "US"
+      state: "US-OH"
+      county: null
+      tribe: null
+    matters:
+      - "CONSUMER_DEBT"
+      - "HOUSING"
+    service_type: "AG_CONSUMER"
+    description: "State enforcement agency enforcing the Ohio Consumer Sales Practices Act (CSPA) and investigating deceptive practices and unlawful auto/debt repossessions."
+    contact:
+      phone: "1-800-282-0515"
+      website: "https://www.ohioattorneygeneral.gov"
+      address: "30 E. Broad St., 14th Floor, Columbus, OH 43215"
+      intake_url: "https://www.ohioattorneygeneral.gov/Individuals-and-Families/Consumers/File-A-Complaint"
+      email: null
+      hours: "Monday - Friday 8:00 AM - 7:00 PM"
+    eligibility_summary: "All Ohio consumers who have engaged in consumer transactions with suppliers in Ohio."
+    source_url: "https://www.ohioattorneygeneral.gov"
+    is_official: true
+
+  - service_id: "OH-SERV-OSBA-REFERRAL"
+    name: "Ohio State Bar Association (OSBA) Legal Referral Program"
+    jurisdiction:
+      country: "US"
+      state: "US-OH"
+      county: null
+      tribe: null
+    matters:
+      - "FAMILY_CPS"
+      - "HOUSING"
+      - "EMPLOYMENT"
+      - "CONSUMER_DEBT"
+    service_type: "BAR_REFERRAL"
+    description: "Statewide directory and lawyer referral service providing public referrals to licensed, in-good-standing Ohio attorneys."
+    contact:
+      phone: "1-800-282-6556"
+      website: "https://www.ohiobar.org"
+      address: "1700 Lake Shore Drive, Columbus, OH 43204"
+      intake_url: "https://www.ohiobar.org/public-resources/lawyer-referral-service"
+      email: null
+      hours: "Monday - Friday 8:30 AM - 5:00 PM"
+    eligibility_summary: "Members of the public seeking private counsel or initial legal consultations in Ohio."
+    source_url: "https://www.ohiobar.org"
+    is_official: true

@@ -7,6 +7,10 @@ from ingestion.courtlistener import CourtListenerConnector
 from ingestion.state_crawlers.washington import WashingtonLegConnector
 from ingestion.state_crawlers.illinois import IllinoisLegConnector
 from ingestion.state_crawlers.ohio import OhioLegConnector
+from ingestion.state_crawlers.california import CaliforniaLegConnector
+from ingestion.state_crawlers.texas import TexasLegConnector
+from ingestion.state_crawlers.new_york import NewYorkLegConnector
+from ingestion.state_crawlers.florida import FloridaLegConnector
 from scripts.seed_database import build_seed_documents
 
 
@@ -70,6 +74,18 @@ def test_ingestion_connectors_initialization():
     doc = wa_leg.parse_rcw_html("13.34.050", "Court order to take child into custody", "<p>Test statutory content</p>")
     assert doc.citation == "RCW 13.34.050"
     assert doc.jurisdiction == "US-WA"
+
+    ca_leg = CaliforniaLegConnector()
+    assert ca_leg.source_id == "CA_CODES"
+
+    tx_leg = TexasLegConnector()
+    assert tx_leg.source_id == "TX_FAMILY_CODE"
+
+    ny_leg = NewYorkLegConnector()
+    assert ny_leg.source_id == "NY_FCA"
+
+    fl_leg = FloridaLegConnector()
+    assert fl_leg.source_id == "FL_STATUTES"
 
 
 def test_seed_documents_integrity():

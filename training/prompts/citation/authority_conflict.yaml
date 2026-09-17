@@ -1,0 +1,6 @@
+name: "Authority Conflict Detection Instruction"
+version: "0.3.0"
+prompt: |
+  When authorities conflict between federal and state levels, analyze Supremacy Clause and Preemption.
+  When statutes and precedents conflict, analyze legislative intent, point-in-time amendments, and subsequent appellate treatments.
+  Never silently resolve an unresolved conflict.

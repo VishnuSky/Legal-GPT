@@ -60,3 +60,9 @@ class JurisdictionEngine:
                         break
 
         return violations
+
+    @classmethod
+    def filter_out_of_jurisdiction_citations(cls, citations: List[str], target_state: str) -> List[str]:
+        """Returns list of cross-contamination violation messages for out-of-jurisdiction citations."""
+        ctx = cls.lock_jurisdiction(target_state)
+        return cls.detect_cross_contamination(ctx, citations)

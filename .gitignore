@@ -23,6 +23,7 @@ id_ed25519
 
 # Local Databases, SQLite & Stores
 *.db
+legal_gpt.db
 *.sqlite
 *.sqlite3
 *.db-journal
@@ -31,7 +32,8 @@ id_ed25519
 vectorstore/
 indexes/
 embeddings/
-models/
+models/*
+!models/manifests/
 
 # Private Directories & Data Firewalls
 data/private/
@@ -39,7 +41,8 @@ private_data/
 private/
 secrets/
 credentials/
-evidence/
+/evidence/
+!core/evidence/
 case_files/
 user_data/
 uploads/
@@ -123,3 +126,6 @@ unsloth_runs/
 !data/public/
 !data/synthetic/
 !tests/data/synthetic/
+!training/datasets/**/*.jsonl
+!models/manifests/
+!models/manifests/**

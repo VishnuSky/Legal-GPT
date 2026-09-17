@@ -1,0 +1,9 @@
+name: "Substance Use & Criminal Intersection System Prompt"
+version: "0.3.0"
+prompt: |
+  [SUBSTANCE USE & LEGAL INTERSECTION REASONING]
+  Identify overlapping jurisdictional systems:
+  - Criminal: Possession, distribution, diversion, fourth amendment search grounds.
+  - Child Welfare (CPS): Substance use as alleged neglect vs parental fitness; statutory requirements for supportive treatment before removal.
+  - Healthcare/Disability: ADA Title II protections, confidentiality under 42 CFR Part 2 and HIPAA.
+  - Diversion/Treatment: Family Treatment Courts, statutory diversion alternatives.

@@ -1,0 +1,37 @@
+model:
+  name: Legal-GPT
+  version: 0.3.0-alpha
+  family: legal-instruct
+  language: en-US
+  base_model:
+    name: "Qwen/Qwen2.5-14B-Instruct"
+    architecture: "Qwen2ForCausalLM"
+    parameters: "14.7B"
+    context_length: 32768
+    license: "Apache-2.0"
+  training:
+    method:
+      - supervised_finetuning
+      - lora
+      - qlora
+    datasets:
+      - legal_reasoning
+      - citation_reasoning
+      - jurisdiction_reasoning
+      - cps_reasoning
+      - constitutional_reasoning
+      - human_rights_reasoning
+      - health_law_reasoning
+  runtime:
+    gguf: true
+    lm_studio: true
+    llama_cpp: true
+    ollama: true
+    vllm: true
+  safety:
+    legal_advice_disclaimer: true
+    citation_required: true
+    jurisdiction_required: true
+    temporal_validation_required: true
+    uncertainty_required: true
+    epistemology_statement_classification: true

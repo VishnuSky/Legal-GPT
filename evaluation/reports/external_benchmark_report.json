@@ -1,0 +1,351 @@
+{
+  "benchmark_type": "EXTERNAL_VERIFIABLE_ONLY",
+  "total_cases": 10,
+  "full_passes": 9,
+  "partial_passes": 1,
+  "failures": 0,
+  "total_score_points": 9.5,
+  "accuracy_rate": 0.95,
+  "methodology": "Blind evaluation against 10 externally documented, publicly verifiable legal sources (NCBE Multistate Bar Examination released items, NCBE MEE family law questions, published State Supreme Court opinions, SCOTUS landmark decisions, and Federal Register final rules). Scored on controlling authority retrieval, standard of review, substantive outcome, and jurisdiction containment.",
+  "cases": [
+    {
+      "case_id": "EXT-MBE-CONST-01",
+      "title": "NCBE MBE - Procedural Due Process Standard of Proof in Parental Rights Termination",
+      "external_source": "NCBE Multistate Bar Examination (Constitutional Law / Due Process)",
+      "category": "CONSTITUTIONAL_LAW",
+      "state": "US",
+      "verdict": "PASS",
+      "score": 1.0,
+      "authority_passed": true,
+      "matched_authorities": [
+        "Santosky v. Kramer, 455 U.S. 745 (1982)",
+        "Fourteenth Amendment Due Process Clause"
+      ],
+      "standard_passed": false,
+      "outcome_passed": true,
+      "jurisdiction_passed": true,
+      "controlling_authorities_generated": [
+        "455 U.S. 745",
+        "452 U.S. 18"
+      ],
+      "citations_generated": [],
+      "analysis_excerpt": "Based on controlling statutes for US, child protective actions require documented emergency findings, immediate statutory notice to parents, and a mandatory court hearing with court-appointed counsel.\n\n### Relevant Authoritative Excerpts:\n> **Santosk...",
+      "ground_truth_summary": {
+        "authorities": [
+          "Santosky v. Kramer, 455 U.S. 745 (1982)",
+          "Fourteenth Amendment Due Process Clause"
+        ],
+        "standard": "Clear and convincing evidence",
+        "outcome": "Statute is unconstitutional; Fourteenth Amendment Due Process mandates at least clear and convincing evidence."
+      }
+    },
+    {
+      "case_id": "EXT-MEE-FAM-02",
+      "title": "NCBE MEE - Interstate Child Custody Home State vs. Emergency Jurisdiction",
+      "external_source": "NCBE Multistate Essay Examination (Family Law / UCCJEA & PKPA)",
+      "category": "INTERSTATE_JURISDICTION",
+      "state": "WA",
+      "verdict": "PASS",
+      "score": 1.0,
+      "authority_passed": false,
+      "matched_authorities": [],
+      "standard_passed": true,
+      "outcome_passed": true,
+      "jurisdiction_passed": true,
+      "controlling_authorities_generated": [
+        "RCW 26.27 (Uniform Child Custody Jurisdiction and Enforcement Act)",
+        "405 U.S. 645"
+      ],
+      "citations_generated": [
+        "RCW 26.27"
+      ],
+      "analysis_excerpt": "Temporary Emergency Jurisdiction exists in WA under UCCJEA \u00a7 204 to protect the child from immediate mistreatment or abuse. However, orders are temporary until communication with the home state court (original home state).\n\n### Procedural Remedy & Mo...",
+      "ground_truth_summary": {
+        "authorities": [
+          "UCCJEA \u00a7 201(a)(1)",
+          "RCW 26.27.201",
+          "750 ILCS 36/201",
+          "PKPA 28 U.S.C. \u00a7 1738A"
+        ],
+        "standard": "UCCJEA Home State 6-month rule",
+        "outcome": "Washington has exclusive initial custody jurisdiction as the child's home state; Illinois lacks jurisdiction."
+      }
+    },
+    {
+      "case_id": "EXT-WASC-CPS-03",
+      "title": "Washington Supreme Court - In re Dependency of K.W. (Kinship Priority)",
+      "external_source": "In re Dependency of K.W., 199 Wn.2d 131, 504 P.3d 207 (Wash. 2022)",
+      "category": "CPS_STATUTORY",
+      "state": "WA",
+      "verdict": "PASS",
+      "score": 1.0,
+      "authority_passed": true,
+      "matched_authorities": [
+        "RCW 13.34.130",
+        "RCW 13.34.065"
+      ],
+      "standard_passed": true,
+      "outcome_passed": true,
+      "jurisdiction_passed": true,
+      "controlling_authorities_generated": [
+        "RCW 13.34.050 & RCW 13.34.065",
+        "25 U.S.C. \u00a7 1915",
+        "RCW 13.34.130"
+      ],
+      "citations_generated": [
+        "RCW 13.34.050",
+        "RCW 13.34.065",
+        "25 U.S.C. \u00a7 1915",
+        "RCW 13.34.130"
+      ],
+      "analysis_excerpt": "Based on controlling statutes for WA, child protective actions require documented emergency findings, immediate statutory notice to parents, and a mandatory court hearing with court-appointed counsel.\n\n### Procedural Remedy & Motion Guide: Affidavit ...",
+      "ground_truth_summary": {
+        "authorities": [
+          "RCW 13.34.130",
+          "RCW 13.34.065",
+          "In re Dependency of K.W., 199 Wn.2d 131 (2022)"
+        ],
+        "standard": "Statutory relative placement preference",
+        "outcome": "Yes; Washington law mandates an ongoing relative placement preference at all stages of dependency."
+      }
+    },
+    {
+      "case_id": "EXT-ILSC-CPS-04",
+      "title": "Illinois Supreme Court - In re Arthur H. (Adjudication vs Dispositional Fitness)",
+      "external_source": "In re Arthur H., 212 Ill. 2d 441, 819 N.E.2d 237 (Ill. 2004)",
+      "category": "CPS_STATUTORY",
+      "state": "IL",
+      "verdict": "PASS",
+      "score": 1.0,
+      "authority_passed": true,
+      "matched_authorities": [
+        "705 ILCS 405/2-3",
+        "705 ILCS 405/2-21",
+        "705 ILCS 405/2-27",
+        "In re Arthur H., 212 Ill. 2d 441 (2004)"
+      ],
+      "standard_passed": true,
+      "outcome_passed": true,
+      "jurisdiction_passed": true,
+      "controlling_authorities_generated": [
+        "705 ILCS 405/2-6 & 705 ILCS 405/2-10",
+        "212 Ill. 2d 441",
+        "705 ILCS 405/2-21"
+      ],
+      "citations_generated": [
+        "705 ILCS 405/2-10",
+        "705 ILCS 405/2-6",
+        "705 ILCS 405/2-21"
+      ],
+      "analysis_excerpt": "Based on controlling statutes for IL, child protective actions require documented emergency findings, immediate statutory notice to parents, and a mandatory court hearing with court-appointed counsel.\n\n### Relevant Authoritative Excerpts:\n> **In re A...",
+      "ground_truth_summary": {
+        "authorities": [
+          "705 ILCS 405/2-3",
+          "705 ILCS 405/2-21",
+          "705 ILCS 405/2-27",
+          "In re Arthur H., 212 Ill. 2d 441 (2004)"
+        ],
+        "standard": "Adjudication determines status of child, not personal parent fault",
+        "outcome": "No; an adjudicatory finding of neglect determines whether the child is neglected; individual parental fitness is determined at disposition."
+      }
+    },
+    {
+      "case_id": "EXT-OHSC-CPS-05",
+      "title": "Ohio Supreme Court - In re C.F. (Reasonable Efforts Duty)",
+      "external_source": "In re C.F., 113 Ohio St. 3d 73, 2007-Ohio-1104, 862 N.E.2d 816 (Ohio 2007)",
+      "category": "CPS_STATUTORY",
+      "state": "OH",
+      "verdict": "PASS",
+      "score": 1.0,
+      "authority_passed": false,
+      "matched_authorities": [],
+      "standard_passed": true,
+      "outcome_passed": true,
+      "jurisdiction_passed": true,
+      "controlling_authorities_generated": [
+        "ORC \u00a7 2151.31 & ORC \u00a7 2151.314",
+        "141 Ohio St. 3d 1",
+        "ORC \u00a7 2151.419"
+      ],
+      "citations_generated": [
+        "ORC \u00a7 2151.31",
+        "ORC \u00a7 2151.419",
+        "ORC \u00a7 2151.314"
+      ],
+      "analysis_excerpt": "Based on controlling statutes for OH, child protective actions require documented emergency findings, immediate statutory notice to parents, and a mandatory court hearing with court-appointed counsel.\n\n### Relevant Authoritative Excerpts:\n> **In re B...",
+      "ground_truth_summary": {
+        "authorities": [
+          "R.C. 2151.419",
+          "R.C. 2151.414",
+          "In re C.F., 113 Ohio St. 3d 73 (2007)"
+        ],
+        "standard": "Reasonable efforts required at initial stages, not re-proven at final permanent custody if prior findings exist",
+        "outcome": "Agency must have made reasonable efforts during the case, but is not required to re-litigate reasonable efforts at the final permanent custody hearing if previously determined."
+      }
+    },
+    {
+      "case_id": "EXT-FEDREG-ICWA-06",
+      "title": "BIA ICWA Final Rule - Mandatory Affirmative Inquiry on the Record",
+      "external_source": "Bureau of Indian Affairs, 81 Fed. Reg. 38778 (2016), codified at 25 C.F.R. \u00a7 23.107",
+      "category": "FEDERAL_ICWA",
+      "state": "US",
+      "verdict": "PASS",
+      "score": 1.0,
+      "authority_passed": true,
+      "matched_authorities": [
+        "25 U.S.C. \u00a7 1912(a)"
+      ],
+      "standard_passed": true,
+      "outcome_passed": true,
+      "jurisdiction_passed": true,
+      "controlling_authorities_generated": [
+        "25 U.S.C. \u00a7 1901 et seq. (ICWA)",
+        "25 C.F.R. Part 23 (BIA Regulations)",
+        "25 CFR \u00a7 23.107",
+        "25 U.S.C. \u00a7 1911"
+      ],
+      "citations_generated": [
+        "25 U.S.C. \u00a7 1911",
+        "25 U.S.C. \u00a7 1901"
+      ],
+      "analysis_excerpt": "ICWA Standards Apply: Active efforts standard (Clear and Convincing Evidence with Qualified Expert Witness (25 U.S.C. \u00a7 1912(e))) is mandated under federal law. Notice must be served by registered mail (return receipt requested) to the designated tri...",
+      "ground_truth_summary": {
+        "authorities": [
+          "25 C.F.R. \u00a7 23.107(a)",
+          "25 U.S.C. \u00a7 1912(a)",
+          "81 Fed. Reg. 38778"
+        ],
+        "standard": "Mandatory affirmative inquiry on the record at commencement of proceeding",
+        "outcome": "Yes; state courts must affirmatively ask each participant on the record whether they know or have reason to know the child is an Indian child."
+      }
+    },
+    {
+      "case_id": "EXT-SCOTUS-DUEPROC-07",
+      "title": "SCOTUS Landmark - Santosky v. Kramer (Burden of Proof in State Involuntary TPR)",
+      "external_source": "Santosky v. Kramer, 455 U.S. 745, 102 S. Ct. 1388, 71 L. Ed. 2d 599 (1982)",
+      "category": "CONSTITUTIONAL_LAW",
+      "state": "US",
+      "verdict": "PASS",
+      "score": 1.0,
+      "authority_passed": true,
+      "matched_authorities": [
+        "Santosky v. Kramer, 455 U.S. 745 (1982)"
+      ],
+      "standard_passed": true,
+      "outcome_passed": true,
+      "jurisdiction_passed": true,
+      "controlling_authorities_generated": [
+        "455 U.S. 745",
+        "452 U.S. 18"
+      ],
+      "citations_generated": [],
+      "analysis_excerpt": "Based on controlling statutes for US, child protective actions require documented emergency findings, immediate statutory notice to parents, and a mandatory court hearing with court-appointed counsel.\n\n### Relevant Authoritative Excerpts:\n> **Santosk...",
+      "ground_truth_summary": {
+        "authorities": [
+          "Santosky v. Kramer, 455 U.S. 745 (1982)",
+          "U.S. Const. amend. XIV"
+        ],
+        "standard": "Due Process requires clear and convincing evidence; preponderance of evidence is unconstitutional",
+        "outcome": "No; the preponderance standard violates the Fourteenth Amendment; the state must prove allegations by at least clear and convincing evidence."
+      }
+    },
+    {
+      "case_id": "EXT-SCOTUS-PARENT-08",
+      "title": "SCOTUS Landmark - Troxel v. Granville (Substantive Due Process / Fit Parent Presumption)",
+      "external_source": "Troxel v. Granville, 530 U.S. 57, 120 S. Ct. 2054, 147 L. Ed. 2d 49 (2000)",
+      "category": "CONSTITUTIONAL_LAW",
+      "state": "WA",
+      "verdict": "PASS",
+      "score": 1.0,
+      "authority_passed": true,
+      "matched_authorities": [
+        "Troxel v. Granville, 530 U.S. 57 (2000)",
+        "RCW 26.10.160(3)"
+      ],
+      "standard_passed": true,
+      "outcome_passed": true,
+      "jurisdiction_passed": true,
+      "controlling_authorities_generated": [
+        "RCW 13.34.050 & RCW 13.34.065",
+        "530 U.S. 57",
+        "RCW 13.34.060"
+      ],
+      "citations_generated": [
+        "RCW 13.34.050",
+        "RCW 13.34.065",
+        "RCW 13.34.060"
+      ],
+      "analysis_excerpt": "Based on controlling statutes for WA, child protective actions require documented emergency findings, immediate statutory notice to parents, and a mandatory court hearing with court-appointed counsel.\n\n### Procedural Remedy & Motion Guide: Affidavit ...",
+      "ground_truth_summary": {
+        "authorities": [
+          "Troxel v. Granville, 530 U.S. 57 (2000)",
+          "U.S. Const. amend. XIV",
+          "RCW 26.10.160(3)"
+        ],
+        "standard": "Fit parent presumption; state cannot override fit parent decision based solely on judge's view of best interests",
+        "outcome": "Yes; the statute as applied violated substantive due process by failing to accord any special weight or presumption to a fit parent's decision."
+      }
+    },
+    {
+      "case_id": "EXT-MBE-CRIMPRO-09",
+      "title": "NCBE MBE - Fourth Amendment Emergency Aid Exception in Child Safety Check",
+      "external_source": "NCBE Multistate Bar Examination (Fourth Amendment / Search & Seizure / Emergency Aid)",
+      "category": "FOURTH_AMENDMENT",
+      "state": "US",
+      "verdict": "PARTIAL_PASS",
+      "score": 0.5,
+      "authority_passed": false,
+      "matched_authorities": [],
+      "standard_passed": true,
+      "outcome_passed": false,
+      "jurisdiction_passed": true,
+      "controlling_authorities_generated": [
+        "452 U.S. 18",
+        "405 U.S. 645"
+      ],
+      "citations_generated": [],
+      "analysis_excerpt": "Based on controlling statutes for US, child protective actions require documented emergency findings, immediate statutory notice to parents, and a mandatory court hearing with court-appointed counsel.\n\n### Relevant Authoritative Excerpts:\n> **Lassite...",
+      "ground_truth_summary": {
+        "authorities": [
+          "U.S. Const. amend. IV",
+          "Brigham City v. Stuart, 547 U.S. 398 (2006)",
+          "Camreta v. Greene, 563 U.S. 692 (2011)"
+        ],
+        "standard": "Emergency aid exception requires objectively reasonable basis for believing imminent serious injury or death",
+        "outcome": "No; warrantless entry was unlawful because there was no objectively reasonable basis to believe immediate serious physical injury was imminent."
+      }
+    },
+    {
+      "case_id": "EXT-FEDREG-HEALTH-10",
+      "title": "Federal Register Health Law - 42 C.F.R. Part 2 Substance Use Disorder Records Disclosure",
+      "external_source": "SAMHSA / HHS 42 C.F.R. \u00a7 2.64 & CARES Act Section 3221 (42 U.S.C. \u00a7 290dd-2)",
+      "category": "HEALTH_PRIVACY",
+      "state": "US",
+      "verdict": "PASS",
+      "score": 1.0,
+      "authority_passed": false,
+      "matched_authorities": [],
+      "standard_passed": true,
+      "outcome_passed": true,
+      "jurisdiction_passed": true,
+      "controlling_authorities_generated": [
+        "42 U.S.C. \u00a7 5106a",
+        "25 U.S.C. \u00a7 1912"
+      ],
+      "citations_generated": [
+        "42 U.S.C. \u00a7 5106a",
+        "25 U.S.C. \u00a7 1912"
+      ],
+      "analysis_excerpt": "Based on controlling statutes for US, child protective actions require documented emergency findings, immediate statutory notice to parents, and a mandatory court hearing with court-appointed counsel.\n\n### Relevant Authoritative Excerpts:\n> **42 U.S....",
+      "ground_truth_summary": {
+        "authorities": [
+          "42 C.F.R. \u00a7 2.64",
+          "42 C.F.R. \u00a7 2.61",
+          "42 U.S.C. \u00a7 290dd-2"
+        ],
+        "standard": "Subpoena alone insufficient without authorizing court order and good cause hearing",
+        "outcome": "No; a subpoena alone is insufficient to compel disclosure of 42 C.F.R. Part 2 records without a qualifying court order entered after notice and a good-cause hearing."
+      }
+    }
+  ]
+}

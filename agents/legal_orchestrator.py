@@ -300,4 +300,25 @@ class LegalGPTOrchestrator:
             rendered = PersonaRenderer.render_court_review(base_response, session_id=audit_entry.session_id)
             base_response.analysis = rendered
 
+        # Step 10: Final Review Agent Safety Gating (Zero-Hallucination & Proposition Check)
+        from agents.final_review_agent import FinalReviewAgent
+        review_result = FinalReviewAgent.review_response(
+            jurisdiction=target_state,
+            citations=citations_to_verify,
+            response_text=base_response.render_markdown(),
+            allow_unverified=False
+        )
+        if not review_result.passed:
+            base_response.confidence_level = "Uncertain"
+            base_response.short_answer = (
+                "[UNVERIFIED/ABSTAIN] Legal-GPT cannot provide an authoritative answer because safety verification failed: "
+                + "; ".join(review_result.failures)
+            )
+            base_response.analysis = (
+                "### Safety Verification Gate Interception\n"
+                "The generated response was intercepted by the Final Review Agent due to rule violations:\n"
+                + "\n".join(f"- {f}" for f in review_result.failures)
+                + "\n\nPlease clarify the jurisdiction, legal claims, or citations to proceed."
+            )
+
         return base_response

@@ -70,7 +70,7 @@ def audit_working_tree():
     violations = []
 
     for root, dirs, files in os.walk(ROOT_DIR):
-        dirs[:] = [d for d in dirs if d not in {".git", ".pytest_cache", "__pycache__", "venv", ".venv"}]
+        dirs[:] = [d for d in dirs if d not in {".git", ".pytest_cache", "__pycache__", "venv", ".venv", ".cache"}]
         for file in files:
             rel_path = os.path.relpath(os.path.join(root, file), ROOT_DIR).replace("\\", "/")
             if rel_path in ALLOWED_SECURITY_FILES:

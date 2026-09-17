@@ -346,6 +346,24 @@ def verify_citation(citation: str = typer.Argument(..., help="Legal citation to 
 
 
 @app.command()
+def navigate(
+    situation: str = typer.Argument(..., help="User description of legal situation or problem"),
+    state: Optional[str] = typer.Option(None, "--state", "-s", help="State code e.g. WA, IL, OH, CA, TX, NY"),
+    county: Optional[str] = typer.Option(None, "--county", "-c", help="County name e.g. Skagit, Cook, Cuyahoga"),
+    event_date: Optional[str] = typer.Option(None, "--date", "-d", help="Key event date (YYYY-MM-DD)")
+):
+    """Run the 10-step Public Legal Navigator to produce a comprehensive 16-section Legal Navigation Report."""
+    from core.navigator import PublicLegalNavigator
+    report = PublicLegalNavigator.navigate(
+        narrative=situation,
+        override_state=state,
+        override_county=county,
+        event_date=event_date
+    )
+    console.print("\n" + report.render_markdown() + "\n")
+
+
+@app.command()
 def mcp():
     """Start the Model Context Protocol (MCP) JSON-RPC 2.0 stdio server for LM Studio & OpenWebUI."""
     from api.mcp_server import run_stdio_server
@@ -392,5 +410,100 @@ def benchmark(
         console.print("\n[bold green]✅ All benchmark scenarios passed with 100% precision & jurisdiction integrity![/bold green]\n")
 
 
+@app.command()
+def plan_research(
+    question: str = typer.Argument(..., help="Legal question to generate an 18-step research plan for"),
+    state: Optional[str] = typer.Option(None, "--state", "-s", help="Jurisdiction state code e.g. WA, IL, OH, CA, TX, NY"),
+    date_context: Optional[str] = typer.Option(None, "--date", "-d", help="Temporal date context e.g. 2023-05-15"),
+    posture: Optional[str] = typer.Option(None, "--posture", "-p", help="Procedural posture e.g. Emergency Removal, Adjudication, Appeal"),
+    tribal: Optional[bool] = typer.Option(None, "--tribal/--no-tribal", help="Whether Indian Child Welfare Act / Tribal jurisdiction applies")
+):
+    """Generate an 18-step legal research plan prior to drafting a substantive answer."""
+    from agents.research_planner_agent import LegalResearchPlannerAgent
+    agent = LegalResearchPlannerAgent()
+    rendered = agent.plan_and_render(
+        query=question,
+        state=state,
+        date_context=date_context,
+        posture=posture,
+        is_tribal=tribal
+    )
+    console.print("\n" + rendered + "\n")
+
+
+@app.command()
+def explain(
+    concept: str = typer.Argument(..., help="Legal concept to explain (e.g. 'Due Process', 'Warrant Requirement')"),
+    level: Optional[int] = typer.Option(None, "--level", "-l", help="Literacy level: 1 (Plain English), 2 (Practical), 3 (Terminology), 4 (Authority), 5 (Advanced)"),
+    state: Optional[str] = typer.Option("US", "--state", "-s", help="Jurisdiction state code e.g. WA, IL, CA"),
+    situation: Optional[str] = typer.Option(None, "--situation", help="Factual or personal context to tailor practical explanation")
+):
+    """Explain a legal concept across 5 progressive literacy levels without losing nuance."""
+    from agents.literacy_agent import LegalLiteracyAgent
+    agent = LegalLiteracyAgent()
+    rendered = agent.explain_and_render(
+        concept=concept,
+        level=level,
+        jurisdiction=state,
+        situation=situation
+    )
+    console.print("\n" + rendered + "\n")
+
+
+@app.command()
+def drill_down(
+    concept: str = typer.Argument(..., help="Legal concept to drill down into"),
+    action: str = typer.Option("show_source", "--action", "-a", help="Drill down action: show_source, show_statute, show_case, explain_opposing, show_temporal_change"),
+    state: Optional[str] = typer.Option("US", "--state", "-s", help="Jurisdiction state code")
+):
+    """Perform an on-demand drill-down on a legal concept (source, statute, case, opposing view, temporal evolution)."""
+    from agents.literacy_agent import LegalLiteracyAgent
+    from core.literacy.models import DrillDownAction
+    agent = LegalLiteracyAgent()
+    norm_action = action.upper().replace("-", "_")
+    action_enum = DrillDownAction[norm_action] if norm_action in DrillDownAction.__members__ else DrillDownAction.SHOW_SOURCE
+    rendered = agent.drill_down_and_render(
+        concept=concept,
+        action=action_enum,
+        jurisdiction=state
+    )
+    console.print("\n" + rendered + "\n")
+
+
+@app.command()
+def trace(
+    conclusion: str = typer.Argument(..., help="Substantive legal conclusion to trace provenance for"),
+    state: Optional[str] = typer.Option("US", "--state", "-s", help="Jurisdiction state code e.g. WA, IL, CA")
+):
+    """Expose 10-field auditable explanation trace for any legal conclusion without hidden CoT."""
+    from agents.explanation_trace_agent import ExplanationTraceAgent
+    agent = ExplanationTraceAgent()
+    rendered = agent.trace_and_render(conclusion, jurisdiction=state)
+    console.print("\n" + rendered + "\n")
+
+
+@app.command()
+def interrogate(
+    conclusion: str = typer.Argument(..., help="Legal conclusion to interrogate"),
+    action: str = typer.Option("why", "--action", "-a", help="Interrogative action: why, source, when, where, what_if, what_changed, what_disagrees, what_is_missing"),
+    scenario: Optional[str] = typer.Option(None, "--scenario", help="Factual scenario for WHAT IF queries"),
+    state: Optional[str] = typer.Option("US", "--state", "-s", help="Jurisdiction state code")
+):
+    """Interrogate a legal conclusion (WHY?, SOURCE?, WHEN?, WHERE?, WHAT IF?, WHAT CHANGED?, WHAT DISAGREES?, WHAT IS MISSING?)."""
+    from agents.explanation_trace_agent import ExplanationTraceAgent
+    from core.explanation_trace.models import InterrogativeTraceType
+    agent = ExplanationTraceAgent()
+    norm_action = action.upper().replace("-", "_")
+    trace_enum = InterrogativeTraceType[norm_action] if norm_action in InterrogativeTraceType.__members__ else InterrogativeTraceType.WHY
+    rendered = agent.interrogate_and_render(
+        conclusion=conclusion,
+        trace_type=trace_enum,
+        scenario_context=scenario,
+        jurisdiction=state
+    )
+    console.print("\n" + rendered + "\n")
+
+
 if __name__ == "__main__":
     app()
+

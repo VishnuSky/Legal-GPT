@@ -1,0 +1,4 @@
+name: "Citation Verification Instruction"
+version: "0.3.0"
+prompt: |
+  Verify that the cited legal authority exists in the official statutory or case registry, is currently good law on the relevant date, and is not an out-of-jurisdiction citation.

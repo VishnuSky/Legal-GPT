@@ -1,6 +1,8 @@
 """FastAPI Local REST API for Legal-GPT and OpenWebUI Pipeline Integration."""
 
+import json
 from fastapi import FastAPI, HTTPException, Query
+from fastapi.responses import StreamingResponse
 from pydantic import BaseModel, Field
 from typing import Optional, List, Dict, Any, Literal
 from datetime import date
@@ -253,3 +255,367 @@ def run_benchmark_endpoint(
         return report.model_dump()
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Benchmark execution error: {str(e)}")
+
+
+# ============================================================
+# PUBLIC LAW SCOUT BRIDGE & CIVIL SERVICES CONTRACT
+# ============================================================
+
+class PublicResolveRequest(BaseModel):
+    question: str = Field(..., description="Legal question or public legal research inquiry")
+    jurisdiction: str = Field(..., description="Target jurisdiction state code e.g. WA, IL, OH, US")
+    county: Optional[str] = Field(None, description="County name e.g. Skagit, Cook, Cuyahoga")
+    eval_date: Optional[date] = Field(None, alias="date", description="Event or evaluation date for point-in-time check (YYYY-MM-DD)")
+    matter: Optional[str] = Field(None, description="Civil matter taxonomy e.g. FAMILY_CPS, HOUSING, CONSUMER_DEBT")
+
+    model_config = {"populate_by_name": True}
+
+
+class ProcedureOption(BaseModel):
+    title: str
+    governing_statute_or_rule: str
+    deadline: Optional[str] = None
+    filing_steps: List[str] = Field(default_factory=list)
+    required_forms: List[str] = Field(default_factory=list)
+    service_requirements: Optional[str] = None
+
+
+class PublicResolveResponse(BaseModel):
+    jurisdiction_lock: str
+    matter: str
+    controlling_sources: List[str]
+    verified_citations: List[Dict[str, Any]]
+    procedure_options: List[ProcedureOption]
+    service_hits: List[Dict[str, Any]]
+    abstention_state: Literal["ANSWERED", "ABSTAIN", "PARTIAL"]
+    abstention_reason: Optional[str] = None
+    short_answer: str
+    analysis: str
+    disclaimer: str
+
+
+@app.post("/api/v1/public/resolve", response_model=PublicResolveResponse)
+def resolve_public_query(request: PublicResolveRequest):
+    """Public Resolution Engine: Evaluates civil legal queries with strict jurisdiction locking, citation verification, procedural guidance, and official service directory routing."""
+    if not request.question.strip():
+        raise HTTPException(status_code=400, detail="Question cannot be empty.")
+
+    try:
+        # 1. Orchestrate legal resolution
+        resp = orchestrator.process_query(
+            query=request.question,
+            override_state=request.jurisdiction,
+            override_county=request.county,
+            event_date=request.eval_date,
+            persona_mode="standard"
+        )
+
+        # 2. Extract verified sources
+        verified_sources = [s.model_dump() for s in resp.verified_sources]
+        controlling_auth = resp.controlling_authority
+
+        # 3. Determine abstention state
+        abstention_state: Literal["ANSWERED", "ABSTAIN", "PARTIAL"] = "ANSWERED"
+        abstention_reason = None
+        if not controlling_auth or (len(verified_sources) == 0 and "ABSTAIN" in resp.analysis):
+            abstention_state = "ABSTAIN"
+            abstention_reason = "No controlling primary statutory, regulatory, or precedent authority verified for the requested jurisdiction."
+
+        # 4. Query matching public services
+        from services.registry import default_service_registry
+        services = default_service_registry.query_services(
+            state=request.jurisdiction,
+            county=request.county,
+            matter=request.matter
+        )
+        service_hits = [s.model_dump() for s in services]
+
+        # 5. Build procedural options
+        procedure_options: List[ProcedureOption] = []
+        if "shelter care" in request.question.lower() or "removal" in request.question.lower():
+            if request.jurisdiction.upper() in ("WA", "US-WA"):
+                procedure_options.append(ProcedureOption(
+                    title="Affidavit for Rehearing of Shelter Care Order & Motion for Immediate Return",
+                    governing_statute_or_rule="RCW 13.34.065(1)(b) & JuCR 2.4",
+                    deadline="Within 72 hours of filing parent affidavit",
+                    filing_steps=[
+                        "Obtain court-approved Form WPF JU 02.0200 (Motion and Declaration for Rehearing)",
+                        "Attach Parent Affidavit establishing lack of notice or new evidence",
+                        "File with County Superior Court Clerk Juvenile Division",
+                        "Serve DCYF Assistant Attorney General and Child's Counsel within 24 hours"
+                    ],
+                    required_forms=["Form WPF JU 02.0200", "Proposed In-Home Safety Plan"],
+                    service_requirements="Personal service on AAG and Child CASA/Attorney within 24 hours"
+                ))
+
+        # Default general court procedure option if none specific
+        if not procedure_options and controlling_auth:
+            procedure_options.append(ProcedureOption(
+                title="Pro Se Civil Court Appearance / Response",
+                governing_statute_or_rule=controlling_auth[0],
+                deadline="Check local summons / notice for appearance deadline",
+                filing_steps=[
+                    "Consult official court self-help center or facilitator",
+                    "Complete state-approved standardized pattern forms",
+                    "File original pleadings with the Clerk of Court",
+                    "Serve copies on all parties in compliance with local civil/juvenile rules"
+                ],
+                required_forms=["Standard Notice of Appearance / Answer"],
+                service_requirements="Formal service of process per state civil procedure rules"
+            ))
+
+        matter_label = request.matter or "GENERAL_CIVIL"
+
+        return PublicResolveResponse(
+            jurisdiction_lock=resp.jurisdiction,
+            matter=matter_label,
+            controlling_sources=controlling_auth,
+            verified_citations=verified_sources,
+            procedure_options=procedure_options,
+            service_hits=service_hits,
+            abstention_state=abstention_state,
+            abstention_reason=abstention_reason,
+            short_answer=resp.short_answer,
+            analysis=resp.analysis,
+            disclaimer=resp.disclaimer
+        )
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Public resolve error: {str(e)}")
+
+
+@app.post("/api/v1/public/resolve/stream")
+async def resolve_public_query_stream(request: PublicResolveRequest):
+    """Streaming Public Resolution: Streams 6 structured reasoning stages as JSON lines (application/x-ndjson)."""
+    if not request.question.strip():
+        raise HTTPException(status_code=400, detail="Question cannot be empty.")
+
+    from api.mcp_server import LegalMCPHandler
+
+    async def event_generator():
+        tool_args = {
+            "query": request.question,
+            "state": request.jurisdiction,
+            "county": request.county,
+            "event_date": request.eval_date.isoformat() if request.eval_date else None,
+            "mode": "standard"
+        }
+        async for chunk in LegalMCPHandler.execute_tool_stream("lookup_public_law", tool_args):
+            yield json.dumps(chunk) + "\n"
+
+    return StreamingResponse(event_generator(), media_type="application/x-ndjson")
+
+
+class NavigatorRequest(BaseModel):
+    narrative: str = Field(..., description="User description of legal situation or problem")
+    state: Optional[str] = Field(None, description="State code e.g. WA, IL, OH, CA, TX, NY")
+    county: Optional[str] = Field(None, description="County name e.g. Skagit, Cook, Cuyahoga")
+    date: Optional[str] = Field(None, description="Key event date (YYYY-MM-DD)")
+
+
+@app.post("/api/v1/public/navigate")
+def handle_navigator(request: NavigatorRequest):
+    """Runs the 10-step Public Legal Navigator and returns the complete 16-section Legal Navigation Report."""
+    if not request.narrative.strip():
+        raise HTTPException(status_code=400, detail="Narrative cannot be empty.")
+    try:
+        from core.navigator import PublicLegalNavigator
+        report = PublicLegalNavigator.navigate(
+            narrative=request.narrative,
+            override_state=request.state,
+            override_county=request.county,
+            event_date=request.date
+        )
+        return {
+            "report": report.model_dump(),
+            "markdown": report.render_markdown()
+        }
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Legal Navigator execution error: {str(e)}")
+
+
+@app.get("/api/v1/public/services")
+def list_public_services(
+    state: Optional[str] = Query(None, description="State code e.g. WA, IL, OH"),
+    county: Optional[str] = Query(None, description="County name e.g. Skagit, Cook, Cuyahoga"),
+    matter: Optional[str] = Query(None, description="Matter taxonomy: FAMILY_CPS, HOUSING, CONSUMER_DEBT, etc."),
+    service_type: Optional[str] = Query(None, description="Service type: LEGAL_AID, COURT_SELF_HELP, BAR_REFERRAL, AG_CONSUMER, TRIBAL_ICWA, PUBLIC_CONTACT")
+):
+    """Returns verified official civil legal aid, court self-help, and public support service records."""
+    try:
+        from services.registry import default_service_registry
+        results = default_service_registry.query_services(
+            state=state,
+            county=county,
+            matter=matter,
+            service_type=service_type
+        )
+        return {
+            "count": len(results),
+            "jurisdiction_state": state,
+            "jurisdiction_county": county,
+            "matter": matter,
+            "service_type": service_type,
+            "services": [r.model_dump() for r in results]
+        }
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Public services query error: {str(e)}")
+
+
+class ResearchPlanApiRequest(BaseModel):
+    query: str = Field(..., description="Legal question to generate 18-step research plan for")
+    state: Optional[str] = Field(None, description="State code e.g. WA, IL, OH, CA, TX, NY")
+    date_context: Optional[str] = Field(None, description="Date context e.g. 2023-05-15")
+    posture: Optional[str] = Field(None, description="Procedural posture")
+    is_tribal: Optional[bool] = Field(None, description="Whether ICWA or tribal matter applies")
+
+
+@app.post("/api/v1/research/plan")
+def create_research_plan_endpoint(req: ResearchPlanApiRequest):
+    """Generates an 18-step legal research plan prior to substantive answer generation."""
+    try:
+        from agents.research_planner_agent import LegalResearchPlannerAgent
+        from core.research.renderer import ResearchPlanRenderer
+        agent = LegalResearchPlannerAgent()
+        plan = agent.create_research_plan(
+            query=req.query,
+            state=req.state,
+            date_context=req.date_context,
+            posture=req.posture,
+            is_tribal=req.is_tribal
+        )
+        return {
+            "plan": plan.model_dump(),
+            "markdown": ResearchPlanRenderer.render_markdown(plan)
+        }
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Research planning error: {str(e)}")
+
+
+class LiteracyExplainRequest(BaseModel):
+    concept: str = Field(..., description="Legal concept name (e.g. 'Due Process')")
+    level: Optional[int] = Field(None, description="Optional single level 1-5")
+    jurisdiction: Optional[str] = Field("US", description="State or federal jurisdiction")
+    situation: Optional[str] = Field(None, description="Optional situational context")
+
+
+class LiteracyDrillDownRequest(BaseModel):
+    concept: str = Field(..., description="Legal concept name")
+    action: str = Field(..., description="SHOW_SOURCE, SHOW_STATUTE, SHOW_CASE, EXPLAIN_OPPOSING, SHOW_TEMPORAL_CHANGE")
+    jurisdiction: Optional[str] = Field("US", description="State or federal jurisdiction")
+    situation: Optional[str] = Field(None, description="Optional situational context")
+
+
+@app.post("/api/v1/literacy/explain")
+def explain_concept_endpoint(req: LiteracyExplainRequest):
+    """Explains a legal concept across 5 progressive levels without removing nuance."""
+    try:
+        from agents.literacy_agent import LegalLiteracyAgent
+        agent = LegalLiteracyAgent()
+        exploration = agent.explain(
+            concept=req.concept,
+            level=req.level,
+            jurisdiction=req.jurisdiction,
+            situation=req.situation
+        )
+        rendered = agent.explain_and_render(
+            concept=req.concept,
+            level=req.level,
+            jurisdiction=req.jurisdiction,
+            situation=req.situation
+        )
+        return {
+            "exploration": exploration.model_dump(),
+            "markdown": rendered
+        }
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Legal literacy explanation error: {str(e)}")
+
+
+@app.post("/api/v1/literacy/drill-down")
+def drill_down_endpoint(req: LiteracyDrillDownRequest):
+    """Executes one of the 5 on-demand drill-down requests for a legal concept."""
+    try:
+        from agents.literacy_agent import LegalLiteracyAgent
+        from core.literacy.models import DrillDownAction
+        agent = LegalLiteracyAgent()
+        norm_action = req.action.upper().replace("-", "_")
+        action_enum = DrillDownAction[norm_action]
+        result = agent.drill_down(
+            concept=req.concept,
+            action=action_enum,
+            jurisdiction=req.jurisdiction,
+            situation=req.situation
+        )
+        rendered = agent.drill_down_and_render(
+            concept=req.concept,
+            action=action_enum,
+            jurisdiction=req.jurisdiction,
+            situation=req.situation
+        )
+        return {
+            "result": result.model_dump(),
+            "markdown": rendered
+        }
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Legal literacy drill-down error: {str(e)}")
+
+
+class TraceConclusionRequest(BaseModel):
+    conclusion: str = Field(..., description="Substantive legal proposition to trace")
+    jurisdiction: Optional[str] = Field("US", description="Controlling jurisdiction code")
+
+
+class TraceInterrogateRequest(BaseModel):
+    conclusion: str = Field(..., description="Substantive legal proposition")
+    action: str = Field(..., description="WHY, SOURCE, WHEN, WHERE, WHAT_IF, WHAT_CHANGED, WHAT_DISAGREES, WHAT_IS_MISSING")
+    scenario: Optional[str] = Field(None, description="Factual scenario context for WHAT IF queries")
+    jurisdiction: Optional[str] = Field("US", description="Controlling jurisdiction code")
+
+
+@app.post("/api/v1/trace/conclusion")
+def trace_conclusion_endpoint(req: TraceConclusionRequest):
+    """Exposes 10-field auditable explanation trace for a legal conclusion without hidden CoT."""
+    try:
+        from agents.explanation_trace_agent import ExplanationTraceAgent
+        agent = ExplanationTraceAgent()
+        record = agent.trace_conclusion(req.conclusion, jurisdiction=req.jurisdiction)
+        rendered = agent.trace_and_render(req.conclusion, jurisdiction=req.jurisdiction)
+        return {
+            "record": record.model_dump(),
+            "markdown": rendered
+        }
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Explanation trace error: {str(e)}")
+
+
+@app.post("/api/v1/trace/interrogate")
+def interrogate_conclusion_endpoint(req: TraceInterrogateRequest):
+    """Interrogates a conclusion with one of the 8 queries without revealing hidden CoT."""
+    try:
+        from agents.explanation_trace_agent import ExplanationTraceAgent
+        from core.explanation_trace.models import InterrogativeTraceType
+        agent = ExplanationTraceAgent()
+        norm_action = req.action.upper().replace("-", "_")
+        trace_enum = InterrogativeTraceType[norm_action]
+        result = agent.interrogate(
+            conclusion=req.conclusion,
+            trace_type=trace_enum,
+            scenario_context=req.scenario,
+            jurisdiction=req.jurisdiction
+        )
+        rendered = agent.interrogate_and_render(
+            conclusion=req.conclusion,
+            trace_type=trace_enum,
+            scenario_context=req.scenario,
+            jurisdiction=req.jurisdiction
+        )
+        return {
+            "result": result.model_dump(),
+            "markdown": rendered
+        }
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Interrogative trace error: {str(e)}")
+
+
+
+

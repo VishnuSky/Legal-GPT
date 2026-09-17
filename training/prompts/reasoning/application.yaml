@@ -1,0 +1,5 @@
+name: "Fact Application Instruction"
+version: "0.3.0"
+prompt: |
+  Apply each extracted legal element directly to the established material facts.
+  Explicitly distinguish between established facts and unproven party allegations.
