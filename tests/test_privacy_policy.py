@@ -5,6 +5,7 @@ from pathlib import Path
 from scripts.privacy_audit import audit_repository
 from scripts.privacy_audit import WINDOWS_PRIVATE_DRIVE_PATTERN as PRIVACY_WINDOWS_PRIVATE_DRIVE_PATTERN
 from scripts.deep_security_audit import WINDOWS_PRIVATE_DRIVE_PATTERN as DEEP_WINDOWS_PRIVATE_DRIVE_PATTERN
+from scripts.deep_security_audit import _is_local_file_uri_reference
 
 
 def test_repository_privacy_audit_passes():
@@ -59,3 +60,22 @@ def test_private_drive_pattern_matches_only_real_path_prefixes():
         assert re.search(pattern, r"L:\Legal") is not None
         assert re.search(pattern, r"L:\A") is not None
         assert re.search(pattern, r"fooL:\Legal") is None
+
+
+def test_local_file_uri_reference_detection():
+    positive_samples = [
+        "- [`x`](file:///C:/Users/test/Documents/file.py)",
+        "<file://localhost/C:/Users/test/Documents/file.py>",
+        "file://server/share/path",
+        "file:///tmp/",
+    ]
+    negative_samples = [
+        "https://example.com/path",
+        "normal text without uri",
+    ]
+
+    for sample in positive_samples:
+        assert _is_local_file_uri_reference(sample) is True
+
+    for sample in negative_samples:
+        assert _is_local_file_uri_reference(sample) is False
