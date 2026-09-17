@@ -1,0 +1,29 @@
+# North Carolina State (NC) Legal Source Registry v1.0
+state_id: NC
+state_name: "North Carolina"
+fips: "37"
+
+sources:
+  - source_id: NC_STATUTES
+    jurisdiction: US-NC
+    level: state
+    authority_tier: TIER_0
+    legal_domain: ["statutes", "general", "juvenile_code", "abuse_neglect"]
+    source_type: statute
+    title: "North Carolina General Statutes (N.C.G.S.)"
+    citation_format: "N.C.G.S. § {section}"
+    publisher:
+      name: "North Carolina General Assembly"
+      official: true
+      entity_type: legislature
+      contact_url: "https://www.ncleg.gov/"
+    canonical_url: "https://www.ncleg.gov/Laws/GeneralStatutes"
+    temporal:
+      versioned: true
+      effective_dates_available: true
+      historical_versions_available: true
+    acquisition_method: html_scrape
+    parser_name: north_carolina_statutes_parser
+    update_frequency: daily
+    cps_priority: 10
+    active: true

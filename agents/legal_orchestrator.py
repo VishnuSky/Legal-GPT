@@ -151,6 +151,34 @@ class LegalGPTOrchestrator:
             controlling_auth.extend(interstate_eval.statutory_citations)
             analysis_parts.append(interstate_eval.analysis)
 
+        # Federal Constitutional & Statutory Matching
+        if "troxel" in lower_q or "santosky" in lower_q:
+            controlling_auth.extend(["Troxel v. Granville, 530 U.S. 57 (2000)", "Santosky v. Kramer, 455 U.S. 745 (1982)"])
+            legal_issues.append("Fourteenth Amendment Substantive Due Process / Fundamental Parental Liberty")
+        if "lassiter" in lower_q:
+            controlling_auth.append("Lassiter v. Department of Social Services, 452 U.S. 18 (1981)")
+            legal_issues.append("Fourteenth Amendment Due Process Right to Appointed Counsel")
+        if "671(a)(15)" in lower_q or "title iv-e" in lower_q or ("reasonable efforts" in lower_q and target_state == "US"):
+            controlling_auth.append("42 U.S.C. § 671(a)(15)")
+            legal_issues.append("Title IV-E Mandatory Reasonable Efforts Requirement")
+        if "haaland" in lower_q or "brackeen" in lower_q:
+            controlling_auth.append("Haaland v. Brackeen, 599 U.S. 255 (2023)")
+            legal_issues.append("Indian Child Welfare Act Constitutional Validity")
+        if "1912(a)" in lower_q:
+            controlling_auth.extend(["25 U.S.C. § 1912(a)", "25 C.F.R. § 23.11"])
+            legal_issues.append("ICWA Mandatory Registered Mail Notice")
+        if "1912(d)" in lower_q:
+            controlling_auth.extend(["25 U.S.C. § 1912(d)", "25 C.F.R. § 23.2"])
+            legal_issues.append("ICWA Heightened Active Efforts Standard")
+        if "1912(e)" in lower_q:
+            controlling_auth.append("25 U.S.C. § 1912(e)")
+            legal_issues.append("ICWA Qualified Expert Witness (QEW) Standard")
+
+        # Also extract any citations directly from the query
+        query_citations = CitationVerifier.extract_citations(query)
+        if query_citations:
+            controlling_auth.extend(query_citations)
+
         # Fallback authorities if general
         if not controlling_auth:
             if target_state == "WA":
@@ -171,6 +199,9 @@ class LegalGPTOrchestrator:
             elif target_state == "NY":
                 controlling_auth.append("N.Y. Fam. Ct. Act § 1024 & § 1028")
                 legal_issues.append("New York Family Court Act Article 10")
+            elif target_state == "US":
+                controlling_auth.extend(["U.S. Const. amend. XIV", "25 U.S.C. § 1912", "42 U.S.C. § 671"])
+                legal_issues.append("Federal Constitutional & Statutory Child Welfare Standards")
 
         if not analysis_parts:
             analysis_parts.append(
@@ -256,7 +287,10 @@ class LegalGPTOrchestrator:
         if contamination_errors:
             analysis_parts.append("\n[WARNING: Potential Cross-Jurisdiction Conflicts Detected]: " + " ".join(contamination_errors))
 
-        jurisdiction_desc = f"{target_state} (State)" + (f" / {target_county} County" if target_county else "")
+        if target_state == "US":
+            jurisdiction_desc = "US (Federal)"
+        else:
+            jurisdiction_desc = f"{target_state} (State)" + (f" / {target_county} County" if target_county else "")
         if jurisdiction_unspecified:
             jurisdiction_desc += " [Unspecified - Default Reference]"
 

@@ -1,0 +1,69 @@
+# Michigan State (MI) CPS / Child Welfare Legal Source Registry v1.0
+sources:
+  - source_id: CPS_MI_MCL_712A
+    jurisdiction: US-MI
+    level: state
+    authority_tier: TIER_0
+    legal_domain: ["child_welfare", "statutes", "shelter_hearing", "dependency", "juvenile_division"]
+    cps_subdomain: state_statute
+    source_type: statute
+    title: "Michigan Compiled Laws (MCL) Chapter 712A (Probate Code: Juvenile Division) & MCR Subchapter 3.900"
+    citation_format: "MCL {section} / MCR {rule}"
+    publisher:
+      name: "Michigan Legislature"
+      official: true
+      entity_type: legislature
+      contact_url: "https://www.legislature.mi.gov/"
+    canonical_url: "https://www.legislature.mi.gov/(S(x))/mileg.aspx?page=getobject&objectname=mcl-chap712A"
+    key_statutory_sections:
+      - "MCL 712A.14" # Taking child into custody without court order
+      - "MCL 712A.14a" # Temporary placement; relative placement preference
+      - "MCL 712A.13a" # Definitions; emergency removal and preliminary hearing
+      - "MCR 3.965" # Preliminary hearing within 24 hours
+      - "MCL 712A.17c" # Right to court-appointed attorney for respondent parents
+      - "MCR 3.972" # Adjudication trial; within 63 days of placement
+      - "MCL 712A.18f" # Case service plan; reasonable efforts
+      - "MCL 712A.19b" # Termination of parental rights grounds; clear and convincing standard
+    topics:
+      emergency_removal: true
+      shelter_care_hearing: true
+      dependency_petition: true
+      fact_finding_adjudication: true
+      disposition_placement: true
+      reasonable_efforts: true
+      permanency_planning: true
+      termination_parental_rights: true
+      parent_rights_counsel: true
+    standard_of_proof: "Preponderance of Evidence (Adjudication Trial) / Clear and Convincing (TPR)"
+    mandatory_timeframes_days:
+      shelter_hearing_hours: 24 # Preliminary hearing within 24 hours excluding Sundays & holidays
+      adjudicatory_hearing_days: 63
+      disposition_hearing_days: 35
+      permanency_hearing_months: 12
+    acquisition_method: html_scrape
+    parser_name: michigan_statutes_parser
+    update_frequency: daily
+    cps_priority: 10
+    active: true
+    metadata:
+      emergency_removal:
+        citation: "MCL 712A.14"
+        text_excerpt: "Any local police officer, county sheriff or state trooper may take a child into custody without a court order if the officer has reasonable cause to believe that the child's conditions or surroundings are such as to endanger his health, morals, or welfare."
+      shelter_hearing_deadline_hours: 24 # 24 hours excluding Sundays and holidays
+      dependency_petition_deadline: "Petition must be authorized or filed at the preliminary hearing within 24 hours (MCR 3.965(A)(1))"
+      adjudicatory_hearing_deadline: "Trial must commence within 63 days after the child is placed in out-of-home care (MCR 3.972(A))"
+      reasonable_efforts_requirement:
+        citation: "MCL 712A.18f / MCL 712A.19a"
+        text_excerpt: "Before the court orders placement outside the home, the supervising agency must demonstrate that reasonable efforts were made to prevent removal and maintain the child in the home."
+      relative_placement_preference:
+        citation: "MCL 712A.13a(9) / MCL 722.954a"
+        text_excerpt: "Within 30 days after removal, the agency must identify, locate, and notify all adult grandparents and adult relatives, giving them priority placement consideration."
+      tpr_grounds:
+        citation: "MCL 712A.19b(3)"
+        text_excerpt: "The court may terminate parental rights to a child if the court finds by clear and convincing evidence that 1 or more statutory grounds have been established."
+      right_to_counsel:
+        citation: "MCL 712A.17c / MCR 3.915"
+        text_excerpt: "The respondent parent has the right to be represented by an attorney at each stage of the proceedings. If the respondent parent is indigent, the court shall appoint an attorney."
+      icwa_inquiry_requirement:
+        citation: "MCL 712B.1 et seq. (MIFPA) / 25 U.S.C. § 1912"
+        text_excerpt: "Under the Michigan Indian Family Preservation Act, the court must inquire at the initial hearing whether the child or either parent is a member of an Indian tribe."

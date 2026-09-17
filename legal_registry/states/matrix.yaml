@@ -106,7 +106,7 @@ states:
     child_welfare_agency: "Florida Department of Children and Families (DCF)"
     child_welfare_url: "https://www.myflfamilies.com/services/child-family/child-welfare"
     authority_tier: "TIER_0"
-    deep_implementation: false
+    deep_implementation: true
 
   GA:
     name: "Georgia"
@@ -118,7 +118,7 @@ states:
     child_welfare_agency: "Georgia Division of Family & Children Services (DFCS)"
     child_welfare_url: "https://dfcs.georgia.gov/child-protective-services"
     authority_tier: "TIER_0"
-    deep_implementation: false
+    deep_implementation: true
 
   HI:
     name: "Hawaii"
@@ -262,7 +262,7 @@ states:
     child_welfare_agency: "Michigan Children's Services Agency (MDHHS)"
     child_welfare_url: "https://www.michigan.gov/mdhhs/adult-child-serv/childrens-services"
     authority_tier: "TIER_0"
-    deep_implementation: false
+    deep_implementation: true
 
   MN:
     name: "Minnesota"
@@ -358,7 +358,7 @@ states:
     child_welfare_agency: "New Jersey Division of Child Protection and Permanency (DCP&P)"
     child_welfare_url: "https://www.nj.gov/dcf/about/divisions/dcpp/"
     authority_tier: "TIER_0"
-    deep_implementation: false
+    deep_implementation: true
 
   NM:
     name: "New Mexico"
@@ -382,7 +382,7 @@ states:
     child_welfare_agency: "New York State Office of Children and Family Services (OCFS)"
     child_welfare_url: "https://ocfs.ny.gov/main/cps/"
     authority_tier: "TIER_0"
-    deep_implementation: false
+    deep_implementation: true
 
   NC:
     name: "North Carolina"
@@ -394,7 +394,7 @@ states:
     child_welfare_agency: "North Carolina Division of Social Services (NCDHHS)"
     child_welfare_url: "https://www.ncdhhs.gov/divisions/social-services/child-welfare-services"
     authority_tier: "TIER_0"
-    deep_implementation: false
+    deep_implementation: true
 
   ND:
     name: "North Dakota"
@@ -454,7 +454,7 @@ states:
     child_welfare_agency: "Pennsylvania Office of Children, Youth, and Families (OCYF)"
     child_welfare_url: "https://www.dhs.pa.gov/Services/Children/Pages/default.aspx"
     authority_tier: "TIER_0"
-    deep_implementation: false
+    deep_implementation: true
 
   RI:
     name: "Rhode Island"
@@ -550,7 +550,7 @@ states:
     child_welfare_agency: "Virginia Department of Social Services (VDSS) - Child Protective Services"
     child_welfare_url: "https://www.dss.virginia.gov/family/cps/index.cgi"
     authority_tier: "TIER_0"
-    deep_implementation: false
+    deep_implementation: true
 
   WA:
     name: "Washington"
