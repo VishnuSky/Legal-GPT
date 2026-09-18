@@ -10,6 +10,23 @@ from training.schemas.dataset_schema import (
     DatasetInputPayload,
     ExpectedBehaviorPayload,
 )
+from training.seeds_data import (
+    SEEDS_02_TEMPORAL_LAW,
+    SEEDS_03_AUTHORITY_RANKING,
+    SEEDS_04_CITATION_VERIFICATION,
+    SEEDS_07_FACT_APPLICATION,
+    SEEDS_08_COUNTERARGUMENT,
+    SEEDS_09_UNCERTAINTY,
+    SEEDS_14_HUMAN_RIGHTS,
+    SEEDS_15_DRUG_POLICY,
+    SEEDS_16_MENTAL_HEALTH,
+    SEEDS_17_DUE_PROCESS_EXPANSION,
+    SEEDS_18_EQUAL_PROTECTION,
+    SEEDS_20_FAMILY_INTEGRITY,
+    SEEDS_21_ADMINISTRATIVE_LAW,
+    SEEDS_22_CIVIL_RIGHTS,
+    SEEDS_23_PROCEDURAL_RIGHTS,
+)
 
 
 class DatasetRecord(BaseModel):
@@ -962,6 +979,7 @@ class DatasetBuilder:
             "dataset_version": "0.3.0"
         }
     ]
+    _SEEDS_17_DUE_PROCESS = _SEEDS_17_DUE_PROCESS + SEEDS_17_DUE_PROCESS_EXPANSION
 
     # Priority Task Family 19: Search & Seizure
     _SEEDS_19_SEARCH_SEIZURE = [
@@ -1198,11 +1216,25 @@ class DatasetBuilder:
     ]
 
     PRIORITY_SEEDS_MAP = {
+        "02_temporal_law": SEEDS_02_TEMPORAL_LAW,
+        "03_authority_ranking": SEEDS_03_AUTHORITY_RANKING,
+        "04_citation_verification": SEEDS_04_CITATION_VERIFICATION,
         "05_issue_spotting": _SEEDS_05_ISSUE_SPOTTING,
         "06_rule_extraction": _SEEDS_06_RULE_EXTRACTION,
+        "07_fact_application": SEEDS_07_FACT_APPLICATION,
+        "08_counterargument": SEEDS_08_COUNTERARGUMENT,
+        "09_uncertainty": SEEDS_09_UNCERTAINTY,
         "13_parent_rights": _SEEDS_13_PARENT_RIGHTS,
+        "14_human_rights": SEEDS_14_HUMAN_RIGHTS,
+        "15_drug_policy": SEEDS_15_DRUG_POLICY,
+        "16_mental_health": SEEDS_16_MENTAL_HEALTH,
         "17_due_process": _SEEDS_17_DUE_PROCESS,
+        "18_equal_protection": SEEDS_18_EQUAL_PROTECTION,
         "19_search_seizure": _SEEDS_19_SEARCH_SEIZURE,
+        "20_family_integrity": SEEDS_20_FAMILY_INTEGRITY,
+        "21_administrative_law": SEEDS_21_ADMINISTRATIVE_LAW,
+        "22_civil_rights": SEEDS_22_CIVIL_RIGHTS,
+        "23_procedural_rights": SEEDS_23_PROCEDURAL_RIGHTS,
     }
 
     @classmethod
@@ -1256,8 +1288,13 @@ class DatasetBuilder:
         return examples
 
     @classmethod
-    def write_seeds_to_disk(cls, task_family: str, count: int = 10, target_dir: Optional[Path] = None) -> Path:
+    def write_seeds_to_disk(cls, task_family: str, count: Optional[int] = None, target_dir: Optional[Path] = None) -> Path:
         """Generates seed records and writes them to training/datasets/{task_family}/examples.jsonl."""
+        if count is None:
+            if task_family in cls.PRIORITY_SEEDS_MAP:
+                count = len(cls.PRIORITY_SEEDS_MAP[task_family])
+            else:
+                count = 10
         seeds = cls.generate_seeds(task_family, count)
         if target_dir is None:
             # Default to repo root training/datasets/
@@ -1302,3 +1339,24 @@ class DatasetBuilder:
             authority_level=authority_level,
             dataset_version="0.3.0"
         )
+
+
+def main():
+    import argparse
+    parser = argparse.ArgumentParser(description="Legal-GPT Dataset Builder")
+    parser.add_argument("--target", default="all", help="Target task family or 'all' to build all registered seeds")
+    parser.add_argument("--count", type=int, default=None, help="Count of examples per family")
+    args = parser.parse_args()
+
+    if args.target == "all":
+        targets = list(DatasetBuilder.PRIORITY_SEEDS_MAP.keys())
+    else:
+        targets = [args.target]
+
+    for family in targets:
+        out_file = DatasetBuilder.write_seeds_to_disk(family, count=args.count)
+        print(f"Wrote seed dataset for {family} -> {out_file}")
+
+
+if __name__ == "__main__":
+    main()
