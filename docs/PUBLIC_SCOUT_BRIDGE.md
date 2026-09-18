@@ -131,6 +131,63 @@ Queries verified official institutional support directories across states and co
 GET /api/v1/public/services?state=WA&county=Skagit&matter=FAMILY_CPS
 ```
 
+### E. Progressive Legal Literacy (`POST /api/v1/public/explain-concept`)
+Explains complex legal concepts across five progressive literacy levels (Plain English, Practical, Terminology, Primary Authority, Advanced Analysis) with verification-gated authority and five on-demand drill-down actions (`SHOW_SOURCE`, `SHOW_STATUTE`, `SHOW_CASE`, `EXPLAIN_OPPOSING`, `SHOW_TEMPORAL_CHANGE`).
+
+#### Request Schema
+```json
+{
+  "concept": "due_process",
+  "state": "WA",
+  "level": 1,
+  "situation": "CPS emergency removal investigation",
+  "drill_down": "SHOW_STATUTE"
+}
+```
+
+#### Response Schema
+```json
+{
+  "concept": "Due Process of Law",
+  "jurisdiction": "WA",
+  "disclaimer": "Legal information only. Not legal advice. Not a lawyer.",
+  "requested_level_text": "The basic idea is that government officials cannot simply take away your freedom, your children, or your property on their own whim...",
+  "available_levels": [1, 2, 3, 4, 5],
+  "verification_status": "VERIFIED",
+  "citations": [
+    "U.S. Const. amend. XIV, § 1",
+    "Mathews v. Eldridge, 424 U.S. 319 (1976)",
+    "Santosky v. Kramer, 455 U.S. 745 (1982)",
+    "Wash. Const. art. I, § 3",
+    "RCW 13.34.065"
+  ],
+  "drill_down_actions": [
+    "SHOW_SOURCE",
+    "SHOW_STATUTE",
+    "SHOW_CASE",
+    "EXPLAIN_OPPOSING",
+    "SHOW_TEMPORAL_CHANGE"
+  ],
+  "abstention_reason": null,
+  "drill_down_result": {
+    "action": "SHOW_STATUTE",
+    "title": "Controlling Statutory Frameworks Governing Due Process Timelines",
+    "content": "Under Washington law, RCW 13.34.065 requires a shelter care hearing within 72 hours of emergency custody excluding weekends and holidays...",
+    "citations": ["RCW 13.34.065", "42 U.S.C. § 671"],
+    "official_sources": [
+      "https://app.leg.wa.gov/rcw/default.aspx?cite=13.34.065",
+      "https://uscode.house.gov/"
+    ]
+  }
+}
+```
+
+#### CLI Equivalent
+```bash
+legal-gpt explain-concept --concept due_process --state WA --level 1
+legal-gpt explain-concept --concept emergency_removal --state WA --drill-down SHOW_STATUTE --json
+```
+
 ---
 
 ## 3. Civil Matter Taxonomy

@@ -1,0 +1,92 @@
+id: reasonable_efforts
+canonical_name: "Reasonable Efforts Requirement (Federal ASFA and Washington State Analog)"
+aliases:
+  - "reasonable efforts"
+  - "asfa reasonable efforts"
+  - "reasonable efforts to prevent removal"
+  - "reunification services"
+  - "state reasonable efforts"
+jurisdiction: "US"
+retrieved_date: "2026-09-18"
+level_1_plain_english: >-
+  In standard child welfare cases, state caseworkers cannot simply remove children and place them in foster care
+  without trying to help the family first. The law requires the state agency to make 'reasonable efforts'—meaning they
+  must offer real assistance, support services, and treatment programs to help the family resolve safety problems
+  so the child can stay at home, or return home safely as soon as possible.
+level_2_practical: >-
+  In practical terms for your situation: At every single dependency court hearing (the 72-hour shelter hearing, 6-month reviews,
+  and permanency hearings), the judge must ask what specific services the agency offered you. If DCYF failed to provide
+  housing referrals, drug evaluations, mental health counseling, or visitation, your attorney can argue that the agency
+  failed to make reasonable efforts, which can stop termination proceedings or lead to court-ordered services.
+level_3_terminology: >-
+  The 'reasonable efforts' doctrine operates at two distinct legal levels:
+  1. Federal Statutory Mandate (Adoption and Safe Families Act / Title IV-E): 42 U.S.C. § 671(a)(15) requires states to make
+  reasonable efforts to prevent removal and to finalize a permanent plan (reunification or adoption) as a condition of federal foster care funding.
+  2. Washington State Statutory Analog: RCW 13.34.065(5) and RCW 13.34.136 require DCYF to provide all reasonable services capable
+  of correcting parental deficiencies, while RCW 13.34.180(1)(d) makes proof of reasonable efforts a mandatory statutory element
+  at termination of parental rights.
+level_4_primary_authority:
+  - citation: "42 U.S.C. § 671"
+    source_type: "STATUTE"
+    official_portal_url: "https://uscode.house.gov/view.xhtml?path=/prelim@title42/chapter7/subchapter4/partE&edition=prelim"
+    key_holding_or_text: "Mandates that reasonable efforts shall be made to preserve and reunify families, prior to the placement of a child in foster care, to prevent or eliminate the need for removing the child from the home."
+    jurisdiction: "US"
+    is_binding: true
+    verification_status: "VERIFIED"
+  - citation: "RCW 13.34.065"
+    source_type: "STATUTE"
+    official_portal_url: "https://app.leg.wa.gov/rcw/default.aspx?cite=13.34.065"
+    key_holding_or_text: "Requires the court to make an express finding whether reasonable efforts were made by the department to prevent or eliminate the need for removal of the child from the home."
+    jurisdiction: "WA"
+    is_binding: true
+    verification_status: "VERIFIED"
+  - citation: "RCW 13.34.136"
+    source_type: "STATUTE"
+    official_portal_url: "https://app.leg.wa.gov/rcw/default.aspx?cite=13.34.136"
+    key_holding_or_text: "Requires the permanency plan to specify what services were offered to the parents to facilitate reunification."
+    jurisdiction: "WA"
+    is_binding: true
+    verification_status: "VERIFIED"
+  - citation: "RCW 13.34.180"
+    source_type: "STATUTE"
+    official_portal_url: "https://app.leg.wa.gov/rcw/default.aspx?cite=13.34.180"
+    key_holding_or_text: "Requires DCYF to prove that all services reasonably available and capable of correcting parental deficiencies were expressly and understandably offered or provided."
+    jurisdiction: "WA"
+    is_binding: true
+    verification_status: "VERIFIED"
+level_5_advanced_analysis: >-
+  Appellate scrutiny under RCW 13.34.180(1)(d) establishes that the State's duty to provide reasonable services is affirmative and rigorous.
+  Services must be tailored to the parent's specific individual needs, including mental health accommodations under the ADA,
+  language interpreter services, and transportation assistance. If DCYF merely offers a generic service plan without addressing
+  underlying cognitive limitations or housing instability, appellate courts reverse termination decrees for failure to satisfy
+  the statutory reasonable efforts prerequisite.
+drill_downs:
+  SHOW_SOURCE:
+    title: "Official Statutory Sources for Reasonable Efforts"
+    content: "Federal Title IV-E: 42 U.S.C. § 671(a)(15) (uscode.house.gov); Washington Juvenile Court Act: RCW 13.34.065, RCW 13.34.136, RCW 13.34.180 (app.leg.wa.gov)."
+    citations: ["42 U.S.C. § 671", "RCW 13.34.065", "RCW 13.34.136", "RCW 13.34.180"]
+    official_sources: ["https://uscode.house.gov/", "https://app.leg.wa.gov/rcw/default.aspx?cite=13.34.065"]
+  SHOW_STATUTE:
+    title: "Washington Reasonable Efforts Provisions"
+    content: "RCW 13.34.065(5) establishes initial shelter hearing findings. RCW 13.34.180(1)(d) establishes mandatory termination prerequisites."
+    citations: ["RCW 13.34.065", "RCW 13.34.180"]
+    official_sources: ["https://app.leg.wa.gov/rcw/default.aspx?cite=13.34.065", "https://app.leg.wa.gov/rcw/default.aspx?cite=13.34.180"]
+  SHOW_CASE:
+    title: "Washington Precedent on Individualized Services"
+    content: "Washington appellate courts hold that services must be tailored to the parent's actual disabilities and financial realities; cookie-cutter referrals do not constitute reasonable efforts."
+    citations: ["RCW 13.34.180"]
+    official_sources: ["https://app.leg.wa.gov/rcw/default.aspx?cite=13.34.180"]
+  EXPLAIN_OPPOSING:
+    title: "Opposing Interpretation: Aggravated Circumstances Exception"
+    content: "Agency argument: Under 42 U.S.C. § 671(a)(15)(D) and state analogs, reasonable efforts are not required if the court finds the parent subjected the child to aggravated circumstances (e.g. torture, chronic severe sexual abuse, or prior involuntary termination to siblings)."
+    citations: ["42 U.S.C. § 671(a)(15)(D)"]
+    official_sources: ["https://uscode.house.gov/"]
+  SHOW_TEMPORAL_CHANGE:
+    title: "Adoption and Safe Families Act (ASFA 1997) Transformation"
+    content: "Enacted in 1997, ASFA established the dual timeline: requiring reasonable efforts to reunify while simultaneously mandating permanency planning within 12 months to prevent foster care drift."
+    citations: ["42 U.S.C. § 671", "Pub. L. 105-89 (1997)"]
+    official_sources: ["https://uscode.house.gov/"]
+related_concepts:
+  - "active_efforts"
+  - "shelter_care_hearing"
+  - "permanency_planning"

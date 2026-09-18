@@ -1,0 +1,94 @@
+id: probable_cause_vs_preponderance
+canonical_name: "Standards of Proof: Probable Cause vs. Preponderance of the Evidence"
+aliases:
+  - "probable cause vs preponderance"
+  - "burden of proof"
+  - "standard of proof"
+  - "preponderance"
+  - "probable cause"
+jurisdiction: "US"
+retrieved_date: "2026-09-18"
+level_1_plain_english: >-
+  The law does not require the exact same amount of certainty at every stage of a court case.
+  Initial emergency actions only require 'probable cause'—meaning specific, believable facts suggesting immediate danger.
+  However, to formally decide a dependency case at trial, the state must meet a higher standard called 'preponderance of the evidence,'
+  meaning the facts must show it is more likely true than not (more than 50% likely).
+level_2_practical: >-
+  In practical procedural terms (educational description only; not applied to any specific case):
+  At the initial emergency removal and shelter stage, the judge only looks for reasonable grounds or probable cause.
+  However, when the case reaches the formal trial (the fact-finding hearing), the state cannot rely on hunches or unverified reports;
+  it must present sworn evidence proving allegations by a preponderance of the evidence. If the state later seeks termination
+  of parental rights, the standard escalates to the constitutional 'clear, cogent, and convincing' evidence threshold.
+level_3_terminology: >-
+  Jurisprudence categorizes burdens of proof into distinct evidentiary tiers:
+  1. Probable Cause / Reasonable Cause: A reasonable ground for belief of guilt or danger, supported by less than prima facie proof
+  but more than mere suspicion (Beck v. Ohio). Governs emergency warrants and shelter care intake under RCW 13.34.050.
+  2. Preponderance of the Evidence: Evidence that produces the stronger impression, has the greater weight, and is more convincing
+  as to its truth when compared with the evidence offered in opposition (Addington v. Texas). Governs Washington fact-finding under RCW 13.34.110.
+  3. Clear and Convincing Evidence: A heightened standard required by Santosky v. Kramer for permanent parental termination under RCW 13.34.190.
+level_4_primary_authority:
+  - citation: "Addington v. Texas, 441 U.S. 418 (1979)"
+    source_type: "CASELAW"
+    official_portal_url: "https://www.supremecourt.gov/"
+    key_holding_or_text: "Analyzed the three standards of proof (preponderance, clear and convincing, reasonable doubt), holding that the function of a standard of proof is to allocate the risk of error between litigants."
+    jurisdiction: "US"
+    is_binding: true
+    verification_status: "VERIFIED"
+  - citation: "Santosky v. Kramer, 455 U.S. 745 (1982)"
+    source_type: "CASELAW"
+    official_portal_url: "https://www.supremecourt.gov/"
+    key_holding_or_text: "Held that the fair preponderance standard is constitutionally inadequate in parental termination proceedings, requiring clear and convincing proof."
+    jurisdiction: "US"
+    is_binding: true
+    verification_status: "VERIFIED"
+  - citation: "RCW 13.34.110"
+    source_type: "STATUTE"
+    official_portal_url: "https://app.leg.wa.gov/rcw/default.aspx?cite=13.34.110"
+    key_holding_or_text: "Codifies that the petitioner in a Washington dependency fact-finding hearing must prove the allegations of the petition by a preponderance of the evidence."
+    jurisdiction: "WA"
+    is_binding: true
+    verification_status: "VERIFIED"
+  - citation: "RCW 13.34.190"
+    source_type: "STATUTE"
+    official_portal_url: "https://app.leg.wa.gov/rcw/default.aspx?cite=13.34.190"
+    key_holding_or_text: "Requires that allegations supporting termination of parental rights be established by clear, cogent, and convincing evidence."
+    jurisdiction: "WA"
+    is_binding: true
+    verification_status: "VERIFIED"
+level_5_advanced_analysis: >-
+  The constitutional jurisprudence of evidentiary thresholds, established in Addington and Santosky, operates to allocate
+  the societal risk of judicial error. In Santosky, the Supreme Court held that using the preponderance standard in severance actions
+  violates Fourteenth Amendment due process because an erroneous termination irrevocably destroys the sacred parent-child relationship,
+  whereas an erroneous refusal to terminate leaves the child in foster care with future opportunities for state intervention.
+  Under the Indian Child Welfare Act (25 U.S.C. § 1912(f)), Congress raised the standard even higher: parental termination requires proof
+  beyond a reasonable doubt supported by testimony of qualified expert witnesses.
+drill_downs:
+  SHOW_SOURCE:
+    title: "Official Sources for Evidentiary Standards"
+    content: "United States Supreme Court Opinions: Addington v. Texas, 441 U.S. 418; Santosky v. Kramer, 455 U.S. 745 (supremecourt.gov); Washington Revised Code: RCW 13.34.110 & RCW 13.34.190 (app.leg.wa.gov)."
+    citations: ["Addington v. Texas, 441 U.S. 418 (1979)", "Santosky v. Kramer, 455 U.S. 745 (1982)", "RCW 13.34.110"]
+    official_sources: ["https://www.supremecourt.gov/", "https://app.leg.wa.gov/rcw/default.aspx?cite=13.34.110"]
+  SHOW_STATUTE:
+    title: "Washington Statutory Proof Standards"
+    content: "RCW 13.34.110 explicitly establishes the preponderance of evidence standard for dependency fact-finding trials, while RCW 13.34.190 mandates clear, cogent, and convincing evidence for termination."
+    citations: ["RCW 13.34.110", "RCW 13.34.190"]
+    official_sources: ["https://app.leg.wa.gov/rcw/default.aspx?cite=13.34.110", "https://app.leg.wa.gov/rcw/default.aspx?cite=13.34.190"]
+  SHOW_CASE:
+    title: "Leading Precedent on Evidentiary Allocation: Addington v. Texas"
+    content: "Addington held that the standard of proof reflects society's judgment about how the risk of error should be distributed between the private individual and the state."
+    citations: ["Addington v. Texas, 441 U.S. 418 (1979)"]
+    official_sources: ["https://www.supremecourt.gov/"]
+  EXPLAIN_OPPOSING:
+    title: "Opposing Interpretation: Preliminary Child Protection Flexibility"
+    content: "State agency argument: Society owes children an emergency protective shield. Therefore, at preliminary shelter care stages, requiring higher trial-level proof would endanger vulnerable youth before full investigation can occur."
+    citations: ["Addington v. Texas, 441 U.S. 418 (1979)"]
+    official_sources: ["https://www.supremecourt.gov/"]
+  SHOW_TEMPORAL_CHANGE:
+    title: "Evolution of Proof Standards in Parental Rights"
+    content: "Before Santosky (1982), many states permitted termination of parental rights on a simple 51% preponderance standard. Santosky established a nationwide constitutional floor of clear and convincing evidence."
+    citations: ["Santosky v. Kramer, 455 U.S. 745 (1982)"]
+    official_sources: ["https://www.supremecourt.gov/"]
+related_concepts:
+  - "due_process"
+  - "shelter_care_hearing"
+  - "active_efforts"

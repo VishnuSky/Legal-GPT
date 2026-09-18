@@ -1,0 +1,81 @@
+id: opportunity_to_be_heard
+canonical_name: "Right to an Opportunity to Be Heard"
+aliases:
+  - "opportunity to be heard"
+  - "right to be heard"
+  - "meaningful hearing"
+  - "adversary hearing"
+jurisdiction: "US"
+retrieved_date: "2026-09-18"
+level_1_plain_english: >-
+  The opportunity to be heard means that a judge cannot decide your case based solely on what government workers say behind closed doors.
+  You have the fundamental right to come to court, tell your side of what happened, present your own documents and witnesses,
+  and challenge the claims and evidence presented against you.
+level_2_practical: >-
+  In practical terms for your situation: At any court hearing (including a 72-hour shelter care hearing or 75-day fact-finding trial),
+  you or your attorney have the right to speak, testify under oath, submit evidence (like drug tests, housing leases, or medical records),
+  and cross-examine the caseworker or investigators who wrote reports about you. A judge cannot cut off your defense without allowing you
+  to present your evidence.
+level_3_terminology: >-
+  Procedural due process guarantees an opportunity to be heard "at a meaningful time and in a meaningful manner" under Armstrong v. Manzo.
+  In Washington child welfare jurisprudence, RCW 13.34.090 codifies the statutory right of parents to be heard, to present evidence,
+  and to examine witnesses on all matters within the court's jurisdiction. An ex parte order that deprives a parent of custody without
+  a prompt subsequent evidentiary hearing violates this core constitutional guarantee.
+level_4_primary_authority:
+  - citation: "Armstrong v. Manzo, 380 U.S. 545 (1965)"
+    source_type: "CASELAW"
+    official_portal_url: "https://www.supremecourt.gov/"
+    key_holding_or_text: "A fundamental requirement of due process is the opportunity to be heard at a meaningful time and in a meaningful manner."
+    jurisdiction: "US"
+    is_binding: true
+    verification_status: "VERIFIED"
+  - citation: "RCW 13.34.090"
+    source_type: "STATUTE"
+    official_portal_url: "https://app.leg.wa.gov/rcw/default.aspx?cite=13.34.090"
+    key_holding_or_text: "Guarantees the right of parents, guardians, or legal custodians to be heard, to present evidence material to the proceedings, and to examine witnesses."
+    jurisdiction: "WA"
+    is_binding: true
+    verification_status: "VERIFIED"
+  - citation: "Wash. Const. art. I, § 3"
+    source_type: "CONSTITUTION"
+    official_portal_url: "https://leg.wa.gov/CodeReviser/Pages/constitution.aspx"
+    key_holding_or_text: "Provides that no person shall be deprived of life, liberty, or property without due process of law."
+    jurisdiction: "WA"
+    is_binding: true
+    verification_status: "VERIFIED"
+level_5_advanced_analysis: >-
+  Constitutional litigation focuses on whether the hearing provided was truly "meaningful" or merely perfunctory.
+  Courts hold that an opportunity to be heard requires an impartial judicial officer, the right to confront adverse witnesses
+  under the rules of evidence, and findings of fact supported by a verified evidentiary record. When a trial court restricts
+  parental testimony or denies a continuance to secure crucial rebuttal evidence, appellate review applies a de novo due process standard,
+  reversing orders where procedural restrictions created a substantial risk of erroneous deprivation under Mathews v. Eldridge.
+drill_downs:
+  SHOW_SOURCE:
+    title: "Primary Sources for Right to Be Heard"
+    content: "United States Supreme Court: Armstrong v. Manzo, 380 U.S. 545 (supremecourt.gov); Washington Revised Code: RCW 13.34.090 (app.leg.wa.gov)."
+    citations: ["Armstrong v. Manzo, 380 U.S. 545 (1965)", "RCW 13.34.090"]
+    official_sources: ["https://www.supremecourt.gov/", "https://app.leg.wa.gov/rcw/default.aspx?cite=13.34.090"]
+  SHOW_STATUTE:
+    title: "Washington Statute Guaranteeing Right to Present Evidence"
+    content: "RCW 13.34.090(1) guarantees that parents have the right to be heard, present evidence, and cross-examine witnesses at all stages."
+    citations: ["RCW 13.34.090"]
+    official_sources: ["https://app.leg.wa.gov/rcw/default.aspx?cite=13.34.090"]
+  SHOW_CASE:
+    title: "Controlling Precedent: Armstrong v. Manzo, 380 U.S. 545 (1965)"
+    content: "Holding: Post-hoc hearing did not cure failure to provide notice and hearing prior to entry of an adoption decree terminating parental rights."
+    citations: ["Armstrong v. Manzo, 380 U.S. 545 (1965)"]
+    official_sources: ["https://www.supremecourt.gov/"]
+  EXPLAIN_OPPOSING:
+    title: "Opposing Interpretation: Judicial Economy & Preliminary Offers of Proof"
+    content: "Court/Agency argument: Judges possess inherent courtroom management discretion to limit cumulative testimony and require formal offers of proof before allowing extensive witness examination, particularly at expedited preliminary hearings."
+    citations: ["Mathews v. Eldridge, 424 U.S. 319 (1976)"]
+    official_sources: ["https://www.supremecourt.gov/"]
+  SHOW_TEMPORAL_CHANGE:
+    title: "Evolution from Administrative Discretion to Adversary Hearings"
+    content: "Modern dependency practice shifted from informal judicial conferences to rigorous adversarial hearings governed by civil evidence rules, culminating in Washington's mandatory evidentiary standards under RCW 13.34.090."
+    citations: ["RCW 13.34.090", "Wash. Laws 2021, ch. 211"]
+    official_sources: ["https://leg.wa.gov/CodeReviser"]
+related_concepts:
+  - "due_process"
+  - "notice"
+  - "right_to_counsel_dependency"

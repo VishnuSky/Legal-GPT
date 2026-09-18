@@ -17,6 +17,17 @@ from core.document_explainer.models import (
 class DocumentExplainerEngine:
     """Explains legal notices, petitions, orders, and summons grounded in primary law."""
 
+    DOC_TYPE_CONCEPTS: Dict[str, List[str]] = {
+        DocumentType.SUMMONS_AND_COMPLAINT.value: ["notice", "due_process", "opportunity_to_be_heard"],
+        DocumentType.DEPENDENCY_PETITION.value: ["due_process", "right_to_counsel_dependency", "probable_cause_vs_preponderance"],
+        DocumentType.TEMPORARY_CUSTODY_ORDER.value: ["emergency_removal", "shelter_care_hearing", "reasonable_efforts"],
+        DocumentType.NOTICE_OF_INVESTIGATION.value: ["notice", "due_process"],
+        DocumentType.SUBPOENA.value: ["due_process", "opportunity_to_be_heard"],
+        DocumentType.MOTION_TO_TERMINATE_PARENTAL_RIGHTS.value: ["due_process", "right_to_counsel_dependency", "permanency_planning"],
+        DocumentType.PROTECTIVE_ORDER.value: ["due_process", "notice", "opportunity_to_be_heard"],
+        DocumentType.UNKNOWN.value: ["due_process"]
+    }
+
     def __init__(self, registry: Optional[RegistryLoader] = None):
         self.registry = registry or default_registry
 
@@ -134,6 +145,7 @@ class DocumentExplainerEngine:
                 rights=rights,
                 consequences_of_inaction=consequences,
                 recommended_actions=actions,
+                related_concept_ids=self.DOC_TYPE_CONCEPTS.get(doc_type, ["due_process"]),
                 verification_status="VERIFIED"
             )
 
@@ -225,6 +237,7 @@ class DocumentExplainerEngine:
                 rights=rights,
                 consequences_of_inaction=consequences,
                 recommended_actions=actions,
+                related_concept_ids=self.DOC_TYPE_CONCEPTS.get(doc_type, ["due_process"]),
                 verification_status="VERIFIED"
             )
 
@@ -293,6 +306,7 @@ class DocumentExplainerEngine:
                 rights=rights,
                 consequences_of_inaction=consequences,
                 recommended_actions=actions,
+                related_concept_ids=self.DOC_TYPE_CONCEPTS.get(doc_type, ["due_process"]),
                 verification_status="VERIFIED"
             )
 
@@ -362,6 +376,7 @@ class DocumentExplainerEngine:
                 rights=rights,
                 consequences_of_inaction=consequences,
                 recommended_actions=actions,
+                related_concept_ids=self.DOC_TYPE_CONCEPTS.get(doc_type, ["due_process"]),
                 verification_status="VERIFIED"
             )
 
@@ -386,5 +401,6 @@ class DocumentExplainerEngine:
                     ActionItem(step="Inspect Case Caption", priority="IMPORTANT", description="Identify the court, case number, and parties listed at the top."),
                     ActionItem(step="Seek Legal Aid Guidance", priority="URGENT", description="Present document to an attorney or legal aid self-help center for direct review.")
                 ],
+                related_concept_ids=["due_process"],
                 verification_status="UNKNOWN_AUTHORITY_GAP"
             )

@@ -632,6 +632,58 @@ def questions(
         console.print("\n" + rendered + "\n")
 
 
+@app.command("explain-concept")
+def explain_concept_cli(
+    concept: str = typer.Option(..., "--concept", "-c", help="Legal concept e.g. due_process, emergency_removal, shelter_care_hearing"),
+    state: Optional[str] = typer.Option(None, "--state", "-s", help="Jurisdiction state code e.g. WA, IL, OH"),
+    level: int = typer.Option(1, "--level", "-l", help="Literacy level: 1 (Plain English), 2 (Practical), 3 (Terminology), 4 (Primary Authority), 5 (Advanced Analysis)"),
+    drill_down: Optional[str] = typer.Option(None, "--drill-down", "-d", help="Drill down query: SHOW_SOURCE, SHOW_STATUTE, SHOW_CASE, EXPLAIN_OPPOSING, SHOW_TEMPORAL_CHANGE"),
+    json_output: bool = typer.Option(False, "--json", help="Output machine-readable JSON")
+):
+    """Explain a legal concept across 5 literacy levels with on-demand drill-downs and verification-gated authority."""
+    from core.literacy.engine import LegalLiteracyEngine
+    from core.literacy.models import DrillDownAction
+    from core.literacy.renderer import LiteracyRenderer
+
+    exploration = LegalLiteracyEngine.explain(
+        concept=concept,
+        jurisdiction=state
+    )
+
+    dd_res = None
+    if drill_down:
+        try:
+            dd_action = DrillDownAction(drill_down.upper().strip())
+            dd_res = LegalLiteracyEngine.drill_down(
+                concept=concept,
+                action=dd_action,
+                jurisdiction=state
+            )
+        except Exception as e:
+            console.print(f"[bold red]Drill down error:[/bold red] {e}")
+            raise typer.Exit(code=1)
+
+    if json_output:
+        out = exploration.model_dump()
+        if dd_res:
+            out["drill_down_result"] = dd_res.model_dump()
+        print(json.dumps(out, indent=2, default=str))
+    else:
+        if dd_res:
+            console.print(f"\n[bold cyan]=== DRILL DOWN: {dd_res.title} ===[/bold cyan]")
+            console.print(dd_res.content)
+            if dd_res.citations:
+                console.print(f"\n[bold yellow]Citations:[/bold yellow] {', '.join(dd_res.citations)}")
+            if dd_res.official_sources:
+                console.print(f"[bold green]Official Sources:[/bold green] {', '.join(dd_res.official_sources)}")
+            console.print(f"\n[dim]{exploration.disclaimer}[/dim]\n")
+        else:
+            rendered = LiteracyRenderer.render_exploration(exploration, requested_level=level)
+            console.print("\n" + rendered + "\n")
+            console.print(f"[dim]{exploration.disclaimer}[/dim]\n")
+
+
 if __name__ == "__main__":
     app()
+
 

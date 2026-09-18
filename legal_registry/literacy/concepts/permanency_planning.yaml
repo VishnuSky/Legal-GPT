@@ -1,0 +1,83 @@
+id: permanency_planning
+canonical_name: "Permanency Planning and Concurrent Case Goals"
+aliases:
+  - "permanency planning"
+  - "permanency hearing"
+  - "concurrent planning"
+  - "asfa 15 of 22"
+  - "12 month hearing"
+jurisdiction: "US"
+retrieved_date: "2026-09-18"
+level_1_plain_english: >-
+  Permanency planning is the court process designed to prevent children from being stuck in temporary foster care indefinitely.
+  The law establishes a strict calendar: by a certain deadline (usually within 12 months), the court must make a firm decision
+  about the child's permanent home—either returning home to parents, living permanently with relatives, or pursuing adoption.
+level_2_practical: >-
+  In practical terms for your situation: While you are working on your service plan to get your children back,
+  DCYF will run 'concurrent planning'—meaning they work on a backup plan (such as placement with an aunt or foster parent)
+  at the exact same time. Every 6 months there is a review hearing, and by month 12 there is a mandatory 'Permanency Planning Hearing.'
+  If the child has been in out-of-home care for 15 of the past 22 months, federal law pressures the agency to file for termination
+  unless a good cause exception applies.
+level_3_terminology: >-
+  Under Title IV-E and ASFA (42 U.S.C. § 675(5)(C)), a permanency hearing must occur no later than 12 months after the child enters
+  foster care to determine the permanency plan: return home, adoption, legal guardianship, or placement with a fit and willing relative.
+  In Washington, RCW 13.34.136 and RCW 13.34.145 codify permanency requirements, mandating that the primary goal must remain
+  reunification unless the court enters findings that reasonable efforts have failed.
+level_4_primary_authority:
+  - citation: "42 U.S.C. § 675"
+    source_type: "STATUTE"
+    official_portal_url: "https://uscode.house.gov/view.xhtml?path=/prelim@title42/chapter7/subchapter4/partE&edition=prelim"
+    key_holding_or_text: "Defines case review systems, mandating permanency planning hearings within 12 months and requiring termination petitions when a child has been in foster care for 15 of the most recent 22 months."
+    jurisdiction: "US"
+    is_binding: true
+    verification_status: "VERIFIED"
+  - citation: "RCW 13.34.136"
+    source_type: "STATUTE"
+    official_portal_url: "https://app.leg.wa.gov/rcw/default.aspx?cite=13.34.136"
+    key_holding_or_text: "Requires the permanency plan to identify primary and concurrent goals, services to be provided, and steps toward achieving a permanent home."
+    jurisdiction: "WA"
+    is_binding: true
+    verification_status: "VERIFIED"
+  - citation: "RCW 13.34.145"
+    source_type: "STATUTE"
+    official_portal_url: "https://app.leg.wa.gov/rcw/default.aspx?cite=13.34.145"
+    key_holding_or_text: "Mandates an initial permanency planning hearing within 12 months of removal and specifies court inquiries into reunification progress and barrier removal."
+    jurisdiction: "WA"
+    is_binding: true
+    verification_status: "VERIFIED"
+level_5_advanced_analysis: >-
+  The core structural tension in permanency planning involves the collision between federal ASFA fiscal timelines
+  and constitutional parental rights under Santosky and Troxel. While 42 U.S.C. § 675(5)(E) creates a presumption of filing
+  for termination at 15 of 22 months, Washington law (RCW 13.34.145) recognizes explicit 'good cause' exceptions:
+  (a) the child is placed with a relative; (b) the department has not provided necessary services; or (c) compelling reasons
+  exist showing termination is not in the child's best interests. Skillful defense counsel uses agency service delays to block TPR filings.
+drill_downs:
+  SHOW_SOURCE:
+    title: "Official Sources for Permanency Planning Rules"
+    content: "United States Code Title 42: 42 U.S.C. § 675 (uscode.house.gov); Washington Revised Code: RCW 13.34.136 & RCW 13.34.145 (app.leg.wa.gov)."
+    citations: ["42 U.S.C. § 675", "RCW 13.34.136", "RCW 13.34.145"]
+    official_sources: ["https://uscode.house.gov/", "https://app.leg.wa.gov/rcw/default.aspx?cite=13.34.136"]
+  SHOW_STATUTE:
+    title: "Controlling Permanency Statutes"
+    content: "RCW 13.34.145 details the 12-month hearing procedures, while 42 U.S.C. § 675(5)(C) establishes federal funding benchmarks."
+    citations: ["RCW 13.34.145", "42 U.S.C. § 675"]
+    official_sources: ["https://app.leg.wa.gov/rcw/default.aspx?cite=13.34.145", "https://uscode.house.gov/"]
+  SHOW_CASE:
+    title: "Appellate Interpretation of Compelling Reasons"
+    content: "Courts hold that the 15/22 month timeline is not automatic; trial courts must rigorously evaluate whether DCYF failed to provide services before changing permanency goals."
+    citations: ["RCW 13.34.145"]
+    official_sources: ["https://app.leg.wa.gov/rcw/default.aspx?cite=13.34.145"]
+  EXPLAIN_OPPOSING:
+    title: "Opposing Interpretation: Childhood Sense of Time & Foster Drift"
+    content: "Child advocate / Guardian ad Litem argument: Psychological literature emphasizes a young child's sense of time, arguing that parental rehabilitation timelines must yield to the child's urgent need for permanent attachment and stability."
+    citations: ["42 U.S.C. § 675"]
+    official_sources: ["https://uscode.house.gov/"]
+  SHOW_TEMPORAL_CHANGE:
+    title: "ASFA 1997 Landmark Shift"
+    content: "ASFA (1997) replaced the 1980 foster care framework, introducing mandatory 12-month permanency hearings and the 15/22-month rule to end long-term unplaced foster drift."
+    citations: ["Pub. L. 105-89", "42 U.S.C. § 675"]
+    official_sources: ["https://uscode.house.gov/"]
+related_concepts:
+  - "reasonable_efforts"
+  - "shelter_care_hearing"
+  - "due_process"

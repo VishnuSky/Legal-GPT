@@ -1,0 +1,89 @@
+id: emergency_removal
+canonical_name: "Emergency Removal and Protective Custody"
+aliases:
+  - "emergency removal"
+  - "protective custody"
+  - "warrantless removal"
+  - "exigent removal"
+  - "taking child into custody"
+jurisdiction: "US"
+retrieved_date: "2026-09-18"
+level_1_plain_english: >-
+  Caseworkers and police cannot simply take a child away from their parents without a judge's written permission (a court order or warrant),
+  unless there is an immediate, severe physical emergency happening right then that would cause serious injury before anyone could contact a judge.
+level_2_practical: >-
+  In practical terms for your situation: If law enforcement or CPS removes your child without a prior court order,
+  they must document exact facts proving that the child was in imminent danger of serious physical harm.
+  They cannot remove a child merely because of poverty, messy housing, or past allegations. Furthermore, once a child is removed,
+  the state must file a petition and hold an emergency court hearing within 72 hours (excluding weekends and holidays).
+level_3_terminology: >-
+  Under the Fourth Amendment, removing a child from parental custody constitutes a constitutional seizure.
+  Warrantless removals are presumptively unconstitutional under Wallis v. Spencer (9th Cir.) unless the state proves
+  the narrow exigent circumstances exception: reasonable cause to believe the child is in imminent danger of serious bodily injury
+  and that the intrusion is reasonably necessary to avert that injury. In Washington, RCW 13.34.050 requires a judicial order,
+  while RCW 26.44.050 and RCW 13.34.055 restrict warrantless law enforcement custody to situations of imminent harm.
+level_4_primary_authority:
+  - citation: "U.S. Const. amend. IV"
+    source_type: "CONSTITUTION"
+    official_portal_url: "https://www.govinfo.gov/content/pkg/GPO-CONAN-2017/pdf/GPO-CONAN-2017.pdf"
+    key_holding_or_text: "The right of the people to be secure in their persons, houses, papers, and effects, against unreasonable searches and seizures, shall not be violated."
+    jurisdiction: "US"
+    is_binding: true
+    verification_status: "VERIFIED"
+  - citation: "Wallis v. Spencer, 202 F.3d 1126 (9th Cir. 2000)"
+    source_type: "CASELAW"
+    official_portal_url: "https://www.ca9.uscourts.gov/"
+    key_holding_or_text: "Officials may not remove children from parental custody without a court order unless they have information establishing reasonable cause to believe the child is in imminent danger of serious bodily injury."
+    jurisdiction: "US"
+    is_binding: true
+    verification_status: "VERIFIED"
+  - citation: "RCW 13.34.050"
+    source_type: "STATUTE"
+    official_portal_url: "https://app.leg.wa.gov/rcw/default.aspx?cite=13.34.050"
+    key_holding_or_text: "Authorizes the court to enter an order directing that a child be taken into custody only upon a verified petition demonstrating reasonable grounds to believe removal is necessary."
+    jurisdiction: "WA"
+    is_binding: true
+    verification_status: "VERIFIED"
+  - citation: "RCW 26.44.050"
+    source_type: "STATUTE"
+    official_portal_url: "https://app.leg.wa.gov/rcw/default.aspx?cite=26.44.050"
+    key_holding_or_text: "Authorizes law enforcement officers to take a child into custody without a court order only when the officer has reasonable cause to believe custody is necessary to prevent imminent physical damage."
+    jurisdiction: "WA"
+    is_binding: true
+    verification_status: "VERIFIED"
+level_5_advanced_analysis: >-
+  Advanced civil rights litigation under 42 U.S.C. § 1983 centers on qualified immunity and the definition of 'imminent danger'.
+  The Ninth Circuit (*Wallis*, *Ram v. Rubin*, *Kirkpatrick v. County of Washoe*) strictly holds that caseworkers who remove children
+  without attempting to obtain a telephonic warrant when time permits are not entitled to qualified immunity.
+  State statutory reforms (e.g. Washington's 2021 Keeping Families Together Act) heightened the removal standard,
+  clarifying that substance use or poverty without a demonstrable causal nexus to imminent physical harm cannot support removal.
+drill_downs:
+  SHOW_SOURCE:
+    title: "Official Primary Authorities for Emergency Removal"
+    content: "United States Constitution, Fourth Amendment (govinfo.gov); Ninth Circuit Opinion: Wallis v. Spencer, 202 F.3d 1126 (ca9.uscourts.gov); Washington Revised Code: RCW 13.34.050 & RCW 26.44.050 (app.leg.wa.gov)."
+    citations: ["U.S. Const. amend. IV", "Wallis v. Spencer, 202 F.3d 1126 (9th Cir. 2000)", "RCW 13.34.050"]
+    official_sources: ["https://www.govinfo.gov/", "https://www.ca9.uscourts.gov/", "https://app.leg.wa.gov/rcw/default.aspx?cite=13.34.050"]
+  SHOW_STATUTE:
+    title: "Washington Emergency Custody Statutes"
+    content: "RCW 13.34.050 governs judicial pickup orders. RCW 26.44.050 governs warrantless police custody based on imminent physical damage."
+    citations: ["RCW 13.34.050", "RCW 26.44.050"]
+    official_sources: ["https://app.leg.wa.gov/rcw/default.aspx?cite=13.34.050", "https://app.leg.wa.gov/rcw/default.aspx?cite=26.44.050"]
+  SHOW_CASE:
+    title: "Controlling Precedent: Wallis v. Spencer, 202 F.3d 1126 (9th Cir. 2000)"
+    content: "Holding: The Fourth Amendment protects children and parents from warrantless seizures. Exigency requires specific evidence of imminent bodily harm."
+    citations: ["Wallis v. Spencer, 202 F.3d 1126 (9th Cir. 2000)"]
+    official_sources: ["https://www.ca9.uscourts.gov/"]
+  EXPLAIN_OPPOSING:
+    title: "Opposing Interpretation: Immediate Protective Discretion"
+    content: "State agency argument: In fast-moving domestic disturbance investigations, caseworkers must make instantaneous triage decisions. The State argues that imposing strict pre-removal warrant hurdles jeopardizes child lives in marginal domestic cases."
+    citations: ["Roska ex rel. Roska v. Peterson, 328 F.3d 1230 (10th Cir. 2003)"]
+    official_sources: ["https://www.ca10.uscourts.gov/"]
+  SHOW_TEMPORAL_CHANGE:
+    title: "Statutory Reform of Emergency Removal Standards (2021)"
+    content: "Wash. Laws 2021, ch. 211 explicitly restricted emergency removals, eliminating subjective allegations of 'improper care' and establishing an objective requirement of imminent physical harm."
+    citations: ["Wash. Laws 2021, ch. 211", "RCW 13.34.050 (Amended 2021)"]
+    official_sources: ["https://leg.wa.gov/CodeReviser"]
+related_concepts:
+  - "due_process"
+  - "shelter_care_hearing"
+  - "reasonable_efforts"

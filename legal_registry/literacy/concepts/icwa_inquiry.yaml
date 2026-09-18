@@ -1,0 +1,90 @@
+id: icwa_inquiry
+canonical_name: "ICWA Duty of Inquiry and Tribal Notice"
+aliases:
+  - "icwa inquiry"
+  - "icwa"
+  - "indian child welfare act inquiry"
+  - "tribal inquiry"
+  - "wicwa inquiry"
+jurisdiction: "US"
+retrieved_date: "2026-09-18"
+level_1_plain_english: >-
+  If a child involved in a custody or dependency case has any Native American or Alaska Native family background,
+  the judge and caseworkers are legally required to ask about it immediately and investigate. They must contact
+  the relevant Native American Tribe so the Tribe can participate in the case and protect the child's heritage.
+level_2_practical: >-
+  In practical terms for your situation: At your very first court appearance and in every court questionnaire,
+  the judge and caseworker will ask: "Do you or the other parent have any Native American ancestry or tribal affiliation?"
+  If you believe you may have tribal heritage (even if you are not yet formally enrolled), state the names of the tribes,
+  grandparents, or bands. Under the law, the state must pause certain proceedings and send formal legal notice by registered mail
+  to the Tribe's designated ICWA agent.
+level_3_terminology: >-
+  Under federal ICWA regulations (25 C.F.R. § 23.107) and Washington's WICWA (RCW 13.38.070), state courts and child welfare agencies
+  bear an "affirmative and continuing duty" to inquire whether a child is or may be an "Indian child" (defined under 25 U.S.C. § 1903(4)
+  as an unmarried person under eighteen who is either a member of an Indian tribe or is eligible for membership and the biological child of a member).
+  If there is "reason to know" the child is an Indian child, the court must treat the child as an Indian child pending tribal verification.
+level_4_primary_authority:
+  - citation: "25 U.S.C. § 1912"
+    source_type: "STATUTE"
+    official_portal_url: "https://uscode.house.gov/view.xhtml?path=/prelim@title25/chapter21&edition=prelim"
+    key_holding_or_text: "Requires that in any involuntary proceeding in a State court, the party seeking foster care placement of, or termination of parental rights to, an Indian child shall notify the parent or Indian custodian and the Indian child's tribe."
+    jurisdiction: "US"
+    is_binding: true
+    verification_status: "VERIFIED"
+  - citation: "25 C.F.R. § 23.107"
+    source_type: "REGULATION"
+    official_portal_url: "https://www.ecfr.gov/current/title-25/chapter-I/subchapter-D/part-23/subpart-I/section-23.107"
+    key_holding_or_text: "Establishes that state courts must ask each participant in an emergency or child-custody proceeding whether the participant knows or has reason to know that the child is an Indian child."
+    jurisdiction: "US"
+    is_binding: true
+    verification_status: "VERIFIED"
+  - citation: "RCW 13.38.070"
+    source_type: "STATUTE"
+    official_portal_url: "https://app.leg.wa.gov/rcw/default.aspx?cite=13.38.070"
+    key_holding_or_text: "Codifies Washington's state-law duty of inquiry requiring DCYF and the court to seek to determine whether a child is an Indian child in every dependency petition."
+    jurisdiction: "WA"
+    is_binding: true
+    verification_status: "VERIFIED"
+  - citation: "Haaland v. Brackeen, 599 U.S. 255 (2023)"
+    source_type: "CASELAW"
+    official_portal_url: "https://www.supremecourt.gov/"
+    key_holding_or_text: "Upheld the constitutionality of the Indian Child Welfare Act against Tenth Amendment anticommandeering, Article I commerce clause, and equal protection challenges."
+    jurisdiction: "US"
+    is_binding: true
+    verification_status: "VERIFIED"
+level_5_advanced_analysis: >-
+  The jurisdictional threshold under ICWA is strictly enforced on appellate review.
+  In Haaland v. Brackeen (2023), the Supreme Court rejected constitutional challenges to ICWA's structure, affirming tribal sovereignty
+  over child welfare. Under state appellate jurisprudence, a failure by DCYF or the trial court to conduct a thorough, documented initial
+  and continuing inquiry—or failure to send registered mail notice to all identified tribes—constitutes reversible error.
+  Orders entered without proper inquiry are voidable on petition by the parent, Indian custodian, or the Tribe under 25 U.S.C. § 1914.
+drill_downs:
+  SHOW_SOURCE:
+    title: "Official Primary Legal Authorities for ICWA Inquiry"
+    content: "United States Code Title 25: 25 U.S.C. § 1912 (uscode.house.gov); Code of Federal Regulations: 25 C.F.R. § 23.107 (ecfr.gov); Washington Revised Code: RCW 13.38.070 (app.leg.wa.gov); Supreme Court Opinion: Haaland v. Brackeen, 599 U.S. 255 (supremecourt.gov)."
+    citations: ["25 U.S.C. § 1912", "25 C.F.R. § 23.107", "RCW 13.38.070", "Haaland v. Brackeen, 599 U.S. 255 (2023)"]
+    official_sources: ["https://uscode.house.gov/", "https://www.ecfr.gov/", "https://app.leg.wa.gov/rcw/default.aspx?cite=13.38.070", "https://www.supremecourt.gov/"]
+  SHOW_STATUTE:
+    title: "Controlling ICWA & WICWA Inquiry Enactments"
+    content: "25 C.F.R. § 23.107 mandates continuous inquiry at every hearing. RCW 13.38.070 establishes Washington state compliance standards."
+    citations: ["25 C.F.R. § 23.107", "RCW 13.38.070"]
+    official_sources: ["https://www.ecfr.gov/", "https://app.leg.wa.gov/rcw/default.aspx?cite=13.38.070"]
+  SHOW_CASE:
+    title: "Supreme Court Confirmation of ICWA: Haaland v. Brackeen"
+    content: "Haaland affirmed that Congress possessed broad constitutional authority to protect Indian children and preserve tribal existence through ICWA."
+    citations: ["Haaland v. Brackeen, 599 U.S. 255 (2023)"]
+    official_sources: ["https://www.supremecourt.gov/"]
+  EXPLAIN_OPPOSING:
+    title: "Opposing Interpretation: Burdensome Delay & Substantial Compliance"
+    content: "Agency argument: State child welfare agencies occasionally argue that failure to send formal registered mail should be treated as harmless error where maternal ancestors were only vaguely rumored to have indigenous ties without specific tribal enrollment."
+    citations: ["25 C.F.R. § 23.107"]
+    official_sources: ["https://www.ecfr.gov/"]
+  SHOW_TEMPORAL_CHANGE:
+    title: "Codification History of ICWA Inquiry Rules"
+    content: "In 2016, the Bureau of Indian Affairs (BIA) promulgated binding federal regulations (25 C.F.R. part 23) replacing older non-binding guidelines and establishing the mandatory 'affirmative and continuing duty' of inquiry."
+    citations: ["81 Fed. Reg. 38778 (2016)", "25 C.F.R. § 23.107"]
+    official_sources: ["https://www.govinfo.gov"]
+related_concepts:
+  - "active_efforts"
+  - "notice"
+  - "due_process"

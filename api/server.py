@@ -703,6 +703,80 @@ def question_builder_endpoint(req: dict):
         raise HTTPException(status_code=400, detail=f"Question builder error: {str(e)}")
 
 
+@app.post("/api/v1/public/explain-concept")
+def public_explain_concept_endpoint(req: dict):
+    """Public API endpoint for progressive multi-level legal concept explanations with verification-gated authority."""
+    try:
+        from core.literacy.engine import LegalLiteracyEngine
+        from core.literacy.models import LiteracyLevel, DrillDownAction
+        from core.literacy.renderer import LiteracyRenderer
+
+        concept = req.get("concept", "")
+        if not concept or not concept.strip():
+            raise HTTPException(status_code=400, detail="Concept parameter is required.")
+
+        state = req.get("state") or req.get("jurisdiction")
+        level_int = int(req.get("level", 1))
+        situation = req.get("situation")
+        drill_down = req.get("drill_down")
+
+        exploration = LegalLiteracyEngine.explain(
+            concept=concept,
+            jurisdiction=state,
+            situation=situation
+        )
+
+        level_map = {
+            1: exploration.level_1_plain_english,
+            2: exploration.level_2_practical,
+            3: exploration.level_3_terminology,
+            4: "\n\n".join([f"- **{a.citation}** ({a.jurisdiction}): {a.key_holding_or_text} [Official Portal]({a.official_portal_url})" for a in exploration.level_4_primary_authority]) if exploration.level_4_primary_authority else "No verified primary authorities packed for this concept.",
+            5: exploration.level_5_advanced_analysis,
+        }
+
+        requested_text = level_map.get(level_int, exploration.level_1_plain_english)
+        citations = [a.citation for a in exploration.level_4_primary_authority if a.verification_status != "UNVERIFIED"]
+
+        drill_down_res = None
+        if drill_down:
+            try:
+                action_enum = DrillDownAction(drill_down.upper().strip())
+                dd_obj = LegalLiteracyEngine.drill_down(
+                    concept=concept,
+                    action=action_enum,
+                    jurisdiction=state,
+                    situation=situation
+                )
+                drill_down_res = dd_obj.model_dump()
+            except Exception as dd_err:
+                drill_down_res = {"error": str(dd_err)}
+
+        rendered_md = LiteracyRenderer.render_exploration(
+            exploration,
+            requested_level=level_int if not drill_down else None
+        )
+
+        return {
+            "concept": exploration.concept_name,
+            "jurisdiction": exploration.jurisdiction,
+            "disclaimer": exploration.disclaimer,
+            "requested_level_text": requested_text,
+            "available_levels": [1, 2, 3, 4, 5],
+            "verification_status": exploration.verification_status,
+            "citations": citations,
+            "drill_down_actions": ["SHOW_SOURCE", "SHOW_STATUTE", "SHOW_CASE", "EXPLAIN_OPPOSING", "SHOW_TEMPORAL_CHANGE"],
+            "abstention_reason": exploration.abstention_reason,
+            "drill_down_result": drill_down_res,
+            "markdown": rendered_md,
+            "exploration": exploration.model_dump()
+        }
+    except HTTPException:
+        raise
+    except Exception as e:
+        raise HTTPException(status_code=400, detail=f"Concept explanation error: {str(e)}")
+
+
+
 
 
 

@@ -1,0 +1,91 @@
+id: appeal_or_revision_dependency
+canonical_name: "Appellate Review and Motion for Revision in Dependency"
+aliases:
+  - "appeal or revision dependency"
+  - "motion for revision"
+  - "dependency appeal"
+  - "commissioner revision"
+  - "appeal dependency order"
+jurisdiction: "WA"
+retrieved_date: "2026-09-18"
+level_1_plain_english: >-
+  If a court decision in your dependency case was legally wrong or unfair, you do not have to just accept it.
+  You have the right to challenge that decision. If a court commissioner made the ruling, you can quickly ask a superior court judge
+  to review it (called a Motion for Revision). If a judge entered a final order, you can appeal to the state Court of Appeals.
+level_2_practical: >-
+  In practical terms for your situation: In Washington juvenile courts, many hearings are run by court commissioners rather than elected judges.
+  If a commissioner enters an order (like keeping a child in foster care or approving a bad service plan), you have a strict deadline of
+  10 calendar days under RCW 2.24.050 to file a Motion for Revision. If you miss that 10-day window, the order becomes final.
+  For final dependency disposition orders or termination decrees, you have 30 days under court rules (RAP 5.2) to file a notice of appeal.
+level_3_terminology: >-
+  Post-hearing challenge mechanisms in Washington juvenile practice operate through two distinct procedural vehicles:
+  1. Motion for Revision (RCW 2.24.050 / Wash. Const. art. IV, § 23): Requires a superior court judge to review the commissioner's ruling
+  de novo based on the evidentiary record created before the commissioner.
+  2. Direct Appeal as of Right (RAP 2.2(a)(5)): Disposition orders in dependency and orders terminating parental rights are appealable
+  as a matter of right to the Washington Court of Appeals within 30 days (RAP 5.2). Under M.L.B. v. S.L.J. (519 U.S. 102),
+  indigent parents cannot be denied appellate review due to inability to pay transcript preparation fees.
+level_4_primary_authority:
+  - citation: "RCW 2.24.050"
+    source_type: "STATUTE"
+    official_portal_url: "https://app.leg.wa.gov/rcw/default.aspx?cite=2.24.050"
+    key_holding_or_text: "Mandates that all acts and proceedings of court commissioners are subject to revision by the superior court upon motion filed within ten days from the entry of the order."
+    jurisdiction: "WA"
+    is_binding: true
+    verification_status: "VERIFIED"
+  - citation: "RAP 2.2"
+    source_type: "COURT_RULE"
+    official_portal_url: "https://www.courts.wa.gov/court_rules/?fa=court_rules.display&group=app&set=RAP&ruleid=apprap02.02"
+    key_holding_or_text: "Designates the juvenile court disposition order in a dependency proceeding and an order terminating parental rights as appealable decisions as a matter of right."
+    jurisdiction: "WA"
+    is_binding: true
+    verification_status: "VERIFIED"
+  - citation: "RAP 5.2"
+    source_type: "COURT_RULE"
+    official_portal_url: "https://www.courts.wa.gov/court_rules/?fa=court_rules.display&group=app&set=RAP&ruleid=apprap05.02"
+    key_holding_or_text: "Establishes that a notice of appeal must be filed within 30 days after the entry of the decision of the trial court which the party filing the notice wants reviewed."
+    jurisdiction: "WA"
+    is_binding: true
+    verification_status: "VERIFIED"
+  - citation: "M.L.B. v. S.L.J., 519 U.S. 102 (1996)"
+    source_type: "CASELAW"
+    official_portal_url: "https://www.supremecourt.gov/"
+    key_holding_or_text: "Held that Fourteenth Amendment due process and equal protection prohibit states from conditioning an indigent parent's appeal of parental termination on prepayment of record fees."
+    jurisdiction: "US"
+    is_binding: true
+    verification_status: "VERIFIED"
+level_5_advanced_analysis: >-
+  The standard of review differs substantially between revision and appellate review.
+  On revision under RCW 2.24.050, the superior court judge conducts a complete de novo review of the commissioner's record,
+  affording no deference to the commissioner's factual determinations or legal conclusions. In contrast, when the Court of Appeals
+  reviews a trial judge's dependency disposition or termination decree, factual findings are reviewed under the deferential
+  'substantial evidence' standard, while statutory interpretations and constitutional due process claims are reviewed de novo.
+drill_downs:
+  SHOW_SOURCE:
+    title: "Official Sources for Revision and Appeal"
+    content: "Washington Revised Code: RCW 2.24.050 (app.leg.wa.gov); Washington Rules of Appellate Procedure: RAP 2.2 & RAP 5.2 (courts.wa.gov); Supreme Court Opinion: M.L.B. v. S.L.J., 519 U.S. 102 (supremecourt.gov)."
+    citations: ["RCW 2.24.050", "RAP 2.2", "RAP 5.2", "M.L.B. v. S.L.J., 519 U.S. 102 (1996)"]
+    official_sources: ["https://app.leg.wa.gov/rcw/default.aspx?cite=2.24.050", "https://www.courts.wa.gov/court_rules/", "https://www.supremecourt.gov/"]
+  SHOW_STATUTE:
+    title: "Statutory 10-Day Revision Deadline"
+    content: "RCW 2.24.050 strictly establishes that a motion for revision must be filed within 10 days of the commissioner's order entry."
+    citations: ["RCW 2.24.050"]
+    official_sources: ["https://app.leg.wa.gov/rcw/default.aspx?cite=2.24.050"]
+  SHOW_CASE:
+    title: "Supreme Court Protection for Indigent Appellants: M.L.B. v. S.L.J."
+    content: "M.L.B. established that access to judicial review in family severance proceedings is of such paramount constitutional stature that indigent parents cannot be blocked by fees."
+    citations: ["M.L.B. v. S.L.J., 519 U.S. 102 (1996)"]
+    official_sources: ["https://www.supremecourt.gov/"]
+  EXPLAIN_OPPOSING:
+    title: "Opposing Interpretation: Interlocutory Order Non-Appealability"
+    content: "State agency argument: Orders entered at temporary shelter hearings or 6-month review hearings are interlocutory and cannot be directly appealed under RAP 2.2; parents must seek discretionary review under RAP 2.3, which requires demonstrating obvious or probable judicial error."
+    citations: ["RAP 2.2", "RAP 2.3"]
+    official_sources: ["https://www.courts.wa.gov/court_rules/"]
+  SHOW_TEMPORAL_CHANGE:
+    title: "Historical Evolution of Parental Appeal Rights"
+    content: "Historical development: Following M.L.B. v. S.L.J. (1996), Washington reformed appellate court rules to ensure state funding for indigent parent transcripts and appellate representation in all dependency appeals."
+    citations: ["M.L.B. v. S.L.J., 519 U.S. 102 (1996)", "RAP 15.2"]
+    official_sources: ["https://www.courts.wa.gov/court_rules/"]
+related_concepts:
+  - "due_process"
+  - "right_to_counsel_dependency"
+  - "opportunity_to_be_heard"

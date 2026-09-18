@@ -34,6 +34,7 @@ class LegalNavigationReport(BaseModel):
     conflicting_or_uncertain_authority: List[str] = Field(default_factory=list)
     available_public_resources: ResourceDiscoveryResult
     questions_for_qualified_counsel: List[str] = Field(default_factory=list)
+    related_literacy_concepts: List[str] = Field(default_factory=list)
     verification_status: Dict[str, Any] = Field(default_factory=dict)
 
     def render_markdown(self) -> str:
@@ -165,6 +166,25 @@ class PublicLegalNavigator:
         # Build Unknowns combining factual unknowns with jurisdictional prompts
         all_unknowns = list(juris_result.clarification_questions) + list(fact_result.unknowns)
 
+        # Map narrative and procedural context to verified literacy concepts
+        rel_concepts = []
+        n_lower = narrative.lower()
+        if any(k in n_lower for k in ["removal", "emergency", "warrant", "custody"]):
+            rel_concepts.append("emergency_removal")
+        if any(k in n_lower for k in ["shelter", "detention", "hearing", "72"]):
+            rel_concepts.append("shelter_care_hearing")
+        if any(k in n_lower for k in ["counsel", "lawyer", "attorney", "public defender"]):
+            rel_concepts.append("right_to_counsel_dependency")
+        if any(k in n_lower for k in ["notice", "summons", "petition", "served"]):
+            rel_concepts.append("notice")
+            rel_concepts.append("opportunity_to_be_heard")
+        if any(k in n_lower for k in ["icwa", "tribal", "indian", "native"]):
+            rel_concepts.append("icwa_inquiry")
+            rel_concepts.append("active_efforts")
+        if not rel_concepts:
+            rel_concepts.append("due_process")
+        rel_concepts = list(dict.fromkeys(rel_concepts))
+
         return LegalNavigationReport(
             what_i_understand=what_i_understand,
             facts_provided=[f.text for f in fact_result.facts],
@@ -181,6 +201,7 @@ class PublicLegalNavigator:
             conflicting_or_uncertain_authority=uncertain_authority,
             available_public_resources=resources,
             questions_for_qualified_counsel=counsel_questions,
+            related_literacy_concepts=rel_concepts,
             verification_status=verification_status
         )
 

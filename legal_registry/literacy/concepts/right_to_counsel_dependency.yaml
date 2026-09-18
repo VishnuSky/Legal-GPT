@@ -1,0 +1,83 @@
+id: right_to_counsel_dependency
+canonical_name: "Right to Appointed Counsel in Child Dependency Proceedings"
+aliases:
+  - "right to counsel dependency"
+  - "right to counsel"
+  - "appointed counsel"
+  - "parent attorney"
+  - "public defender dependency"
+jurisdiction: "US"
+retrieved_date: "2026-09-18"
+level_1_plain_english: >-
+  If the state or child welfare agency files a court case against you regarding your children, you have the right to be
+  represented by a lawyer. If you cannot afford to pay for an attorney, the court must appoint a lawyer to represent you
+  at public expense at all stages of the case.
+level_2_practical: >-
+  In practical terms for your situation: At your very first court appearance (such as the 72-hour shelter care hearing),
+  inform the judge immediately that you want an attorney. The court will screen your income and appoint a parent representation
+  attorney. Your attorney will review the agency's petition, speak with you confidentially, demand discovery evidence,
+  cross-examine caseworkers, and advocate for relative placement or return of your child.
+level_3_terminology: >-
+  Under federal constitutional law, Lassiter v. Department of Social Services held that Fourteenth Amendment due process
+  does not establish an absolute constitutional right to appointed counsel in all parental rights proceedings, but requires
+  a case-by-case assessment under the Mathews balancing factors. However, Washington State provides heightened statutory
+  protections: RCW 13.34.090(2) and RCW 13.34.092 establish an absolute categorical right to appointed counsel for indigent parents
+  at all critical stages of dependency and termination proceedings.
+level_4_primary_authority:
+  - citation: "Lassiter v. Department of Social Services, 452 U.S. 18 (1981)"
+    source_type: "CASELAW"
+    official_portal_url: "https://www.supremecourt.gov/"
+    key_holding_or_text: "Fourteenth Amendment due process does not universally mandate appointed counsel in every parental rights termination, but leaves appointment to trial court discretion evaluated under Mathews factors."
+    jurisdiction: "US"
+    is_binding: true
+    verification_status: "VERIFIED"
+  - citation: "RCW 13.34.090"
+    source_type: "STATUTE"
+    official_portal_url: "https://app.leg.wa.gov/rcw/default.aspx?cite=13.34.090"
+    key_holding_or_text: "At all stages of a proceeding in which a child is alleged to be dependent, the child's parent, guardian, or legal custodian has the right to be represented by counsel, and if indigent, to have counsel appointed."
+    jurisdiction: "WA"
+    is_binding: true
+    verification_status: "VERIFIED"
+  - citation: "RCW 13.34.092"
+    source_type: "STATUTE"
+    official_portal_url: "https://app.leg.wa.gov/rcw/default.aspx?cite=13.34.092"
+    key_holding_or_text: "Establishes Office of Public Defense parent representation program standards ensuring qualified, caseload-controlled defense counsel."
+    jurisdiction: "WA"
+    is_binding: true
+    verification_status: "VERIFIED"
+level_5_advanced_analysis: >-
+  A major doctrinal divide separates the federal constitutional floor from progressive state statutory mandates.
+  While Lassiter remains controlling federal precedent, almost all states have enacted statutes providing categorical counsel.
+  In Washington, indigent parents have an enforceable statutory right to effective assistance of counsel. When an attorney
+  fails to investigate relative placement options, contest unproven allegations, or timely file for revision under RCW 2.24.050,
+  parents can establish statutory ineffective assistance of counsel warranting reversal of dependency or termination decrees.
+drill_downs:
+  SHOW_SOURCE:
+    title: "Official Legal Sources for Right to Counsel in Dependency"
+    content: "United States Supreme Court: Lassiter, 452 U.S. 18 (supremecourt.gov); Washington Revised Code: RCW 13.34.090 & RCW 13.34.092 (app.leg.wa.gov)."
+    citations: ["Lassiter v. Department of Social Services, 452 U.S. 18 (1981)", "RCW 13.34.090"]
+    official_sources: ["https://www.supremecourt.gov/", "https://app.leg.wa.gov/rcw/default.aspx?cite=13.34.090"]
+  SHOW_STATUTE:
+    title: "Washington Statutory Mandate for Appointed Counsel"
+    content: "RCW 13.34.090(2) strictly requires the court to appoint counsel for indigent parents immediately upon the filing of a dependency petition."
+    citations: ["RCW 13.34.090", "RCW 13.34.092"]
+    official_sources: ["https://app.leg.wa.gov/rcw/default.aspx?cite=13.34.090", "https://app.leg.wa.gov/rcw/default.aspx?cite=13.34.092"]
+  SHOW_CASE:
+    title: "Leading Precedent: Lassiter v. Department of Social Services"
+    content: "Lassiter evaluated due process claims against the presumption that an indigent litigant has a right to appointed counsel only when personal physical liberty is at stake."
+    citations: ["Lassiter v. Department of Social Services, 452 U.S. 18 (1981)"]
+    official_sources: ["https://www.supremecourt.gov/"]
+  EXPLAIN_OPPOSING:
+    title: "Opposing Interpretation: Purely Civil Characterization & Fiscal Limits"
+    content: "Fiscal conservative/administrative argument: Child dependency proceedings are civil rather than criminal matters designed to protect children rather than punish parents, meaning constitutional Sixth Amendment protections do not apply and legislative funding controls appointment scope."
+    citations: ["Lassiter v. Department of Social Services, 452 U.S. 18 (1981)"]
+    official_sources: ["https://www.supremecourt.gov/"]
+  SHOW_TEMPORAL_CHANGE:
+    title: "Expansion of Parental Representation Programs"
+    content: "Following Washington's pilot programs in the early 2000s, RCW 13.34.092 established statewide Office of Public Defense oversight, drastically reducing racial disproportionality and shortening foster care stays."
+    citations: ["RCW 13.34.092", "Wash. Laws 2018, ch. 21"]
+    official_sources: ["https://leg.wa.gov/CodeReviser"]
+related_concepts:
+  - "due_process"
+  - "opportunity_to_be_heard"
+  - "shelter_care_hearing"

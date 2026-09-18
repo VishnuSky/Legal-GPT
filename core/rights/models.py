@@ -63,6 +63,7 @@ class RightDefinition(BaseModel):
     counterarguments: List[str] = Field(default_factory=list)
     core_holding: str = ""
     conflicting_procedures: List[str] = Field(default_factory=list)
+    literacy_concept_id: Optional[str] = None
 
 
 class PotentialRightEvaluation(BaseModel):
@@ -88,6 +89,7 @@ class PotentialRightEvaluation(BaseModel):
     facts_implicated: List[str] = Field(default_factory=list)
     exceptions_triggered: List[str] = Field(default_factory=list)
     applicability_rationale: str
+    literacy_concept_id: Optional[str] = None
 
 
 class RightsDiscoveryInput(BaseModel):
