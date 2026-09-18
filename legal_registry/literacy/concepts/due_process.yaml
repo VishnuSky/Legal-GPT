@@ -1,0 +1,102 @@
+id: due_process
+canonical_name: "Due Process of Law"
+aliases:
+  - "due process"
+  - "procedural due process"
+  - "substantive due process"
+  - "mathews balancing"
+jurisdiction: "US"
+retrieved_date: "2026-09-18"
+level_1_plain_english: >-
+  The basic idea is that government officials cannot simply take away your freedom, your children,
+  or your property on their own whim. Before they take an action that deeply harms your life, they must follow
+  fair, required rules and procedures—such as giving you clear written notice beforehand and allowing you to speak
+  and defend yourself in front of a neutral decision-maker.
+level_2_practical: >-
+  In practical terms for your situation: If an agency (like CPS, law enforcement, or a licensing board) investigates
+  or intervenes in your family, they cannot hold secret proceedings or change your rights without giving you advance notice.
+  You are entitled to know exactly what allegations are made against you, to inspect the evidence they claim to have,
+  to have a lawyer present, to present your own witnesses, and to have a formal hearing before an independent judge
+  within strict statutory deadlines (such as 72 hours in Washington emergency child welfare matters).
+level_3_terminology: >-
+  Due Process divides into two distinct constitutional doctrines:
+  1. Procedural Due Process: Governs the fairness of the decision-making process. Under the three-factor balancing
+  test of Mathews v. Eldridge, courts weigh: (a) the private interest affected; (b) the risk of an erroneous deprivation
+  through current procedures and the probable value of additional procedural safeguards; and (c) the government's interest,
+  including administrative and fiscal burdens.
+  2. Substantive Due Process: Protects fundamental liberty interests that are deeply rooted in the nation's history
+  and tradition (such as parental care and custody under Troxel v. Granville) that the government cannot infringe upon
+  regardless of procedure, unless the infringement survives strict judicial scrutiny.
+level_4_primary_authority:
+  - citation: "U.S. Const. amend. XIV, § 1"
+    source_type: "CONSTITUTION"
+    official_portal_url: "https://www.govinfo.gov/content/pkg/GPO-CONAN-2017/pdf/GPO-CONAN-2017.pdf"
+    key_holding_or_text: "No State shall make or enforce any law which shall abridge the privileges or immunities of citizens of the United States; nor shall any State deprive any person of life, liberty, or property, without due process of law."
+    jurisdiction: "US"
+    is_binding: true
+    verification_status: "VERIFIED"
+  - citation: "Mathews v. Eldridge, 424 U.S. 319 (1976)"
+    source_type: "CASELAW"
+    official_portal_url: "https://www.supremecourt.gov/"
+    key_holding_or_text: "Identified the three-part balancing test determining the constitutional adequacy of administrative and pre-deprivation procedural protections."
+    jurisdiction: "US"
+    is_binding: true
+    verification_status: "VERIFIED"
+  - citation: "Santosky v. Kramer, 455 U.S. 745 (1982)"
+    source_type: "CASELAW"
+    official_portal_url: "https://www.supremecourt.gov/"
+    key_holding_or_text: "Before a State may sever completely and irrevocably the rights of parents in their natural child, due process requires that the State support its allegations by at least clear and convincing evidence."
+    jurisdiction: "US"
+    is_binding: true
+    verification_status: "VERIFIED"
+  - citation: "Wash. Const. art. I, § 3"
+    source_type: "CONSTITUTION"
+    official_portal_url: "https://leg.wa.gov/CodeReviser/Pages/constitution.aspx"
+    key_holding_or_text: "No person shall be deprived of life, liberty, or property, without due process of law."
+    jurisdiction: "WA"
+    is_binding: true
+    verification_status: "VERIFIED"
+  - citation: "RCW 13.34.065"
+    source_type: "STATUTE"
+    official_portal_url: "https://app.leg.wa.gov/rcw/default.aspx?cite=13.34.065"
+    key_holding_or_text: "Requires a mandatory court shelter care hearing within 72 hours of emergency custody, excluding weekends and holidays, with notice and appointed counsel."
+    jurisdiction: "WA"
+    is_binding: true
+    verification_status: "VERIFIED"
+level_5_advanced_analysis: >-
+  Advanced constitutional tension centers on the interplay between the emergency doctrine (exigent circumstances)
+  and the fundamental liberty interest in family integrity under Troxel v. Granville and Santosky v. Kramer.
+  While government agencies invoke administrative discretion and child safety under parens patriae as paramount sovereign interests,
+  federal circuits (e.g., 9th Cir. Wallis v. Spencer; 2nd Cir. Nicholson v. Scoppetta) rigorously restrict post-hoc
+  rationalizations of emergency warrantless entries. When the government asserts that pre-deprivation hearings are impractical,
+  due process mandates an immediate, robust post-deprivation adversary hearing with appointed counsel and clear evidentiary standards.
+drill_downs:
+  SHOW_SOURCE:
+    title: "Official Primary Sources for Due Process"
+    content: "United States Constitution, Fourteenth Amendment, § 1 (Accessible at www.govinfo.gov); Washington State Constitution, Article I, § 3 (Accessible at leg.wa.gov)."
+    citations: ["U.S. Const. amend. XIV, § 1", "Wash. Const. art. I, § 3"]
+    official_sources: ["https://www.govinfo.gov", "https://leg.wa.gov"]
+  SHOW_STATUTE:
+    title: "Controlling Statutory Frameworks Governing Due Process Timelines"
+    content: "Under Washington law, RCW 13.34.065 requires a shelter care hearing within 72 hours of emergency custody excluding weekends and holidays. Under federal Title IV-E, 42 U.S.C. § 671 requires judicial determinations of reasonable efforts."
+    citations: ["RCW 13.34.065", "42 U.S.C. § 671"]
+    official_sources: ["https://app.leg.wa.gov/rcw/default.aspx?cite=13.34.065", "https://uscode.house.gov/"]
+  SHOW_CASE:
+    title: "Controlling Precedent: Santosky v. Kramer, 455 U.S. 745 (1982)"
+    content: "Santosky v. Kramer, 455 U.S. 745 (1982) holding: Due process requires that the State prove allegations by at least clear and convincing evidence before completely severing parental rights."
+    citations: ["Santosky v. Kramer, 455 U.S. 745 (1982)"]
+    official_sources: ["https://www.supremecourt.gov/"]
+  EXPLAIN_OPPOSING:
+    title: "Opposing Interpretation: The State's Parens Patriae & Public Safety Interest"
+    content: "Government argument: Under parens patriae and DeShaney v. Winnebago County, the State asserts an urgent child safety interest in immediately intervening to prevent catastrophic injury to children, justifying emergency protective custody prior to formal notice."
+    citations: ["DeShaney v. Winnebago County Dept. of Social Services, 489 U.S. 189 (1989)"]
+    official_sources: ["https://www.supremecourt.gov/"]
+  SHOW_TEMPORAL_CHANGE:
+    title: "Historical Evolution of Due Process Standards"
+    content: "Historical evolution: Prior to Mathews v. Eldridge (1976) and Santosky v. Kramer (1982), juvenile courts operated under informal administrative discretion. The Keeping Families Together Act (Wash. Laws 2021, ch. 211) amended RCW 13.34.065 to heighten the removal standard from imminent danger to imminent physical harm."
+    citations: ["Wash. Laws 2021, ch. 211", "RCW 13.34.065 (Amended 2021)"]
+    official_sources: ["https://leg.wa.gov/CodeReviser"]
+related_concepts:
+  - "notice"
+  - "opportunity_to_be_heard"
+  - "shelter_care_hearing"

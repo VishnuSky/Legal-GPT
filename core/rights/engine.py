@@ -137,7 +137,8 @@ class RightsDiscoveryEngine:
                 epistemic_distinction=epistemic,
                 facts_implicated=[],
                 exceptions_triggered=[],
-                applicability_rationale=f"Jurisdiction mismatch: Statute is enacted in {right.jurisdiction}, but target jurisdiction is {norm_jurisdiction}."
+                applicability_rationale=f"Jurisdiction mismatch: Statute is enacted in {right.jurisdiction}, but target jurisdiction is {norm_jurisdiction}.",
+                literacy_concept_id=right.literacy_concept_id
             )
 
         # 2. TEMPORAL CHECK
@@ -167,7 +168,8 @@ class RightsDiscoveryEngine:
                 epistemic_distinction=epistemic,
                 facts_implicated=[],
                 exceptions_triggered=[],
-                applicability_rationale=temp_res.reason
+                applicability_rationale=temp_res.reason,
+                literacy_concept_id=right.literacy_concept_id
             )
 
         # 3. PROCEDURAL CONTEXT MATCH
@@ -234,7 +236,8 @@ class RightsDiscoveryEngine:
             epistemic_distinction=epistemic,
             facts_implicated=facts_implicated,
             exceptions_triggered=exceptions_triggered,
-            applicability_rationale=rationale
+            applicability_rationale=rationale,
+            literacy_concept_id=right.literacy_concept_id
         )
 
     @classmethod

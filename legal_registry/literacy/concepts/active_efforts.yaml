@@ -1,0 +1,90 @@
+id: active_efforts
+canonical_name: "ICWA Active Efforts Requirement"
+aliases:
+  - "active efforts"
+  - "icwa active efforts"
+  - "active efforts requirement"
+  - "active vs reasonable efforts"
+jurisdiction: "US"
+retrieved_date: "2026-09-18"
+level_1_plain_english: >-
+  Under federal and state law protecting Native American families, caseworkers cannot merely hand parents a list of phone numbers
+  and leave them to fix their problems alone. Caseworkers are legally required to provide 'active efforts'—meaning they must
+  personally assist the family, work side-by-side with them and their Tribe, help arrange transportation and appointments,
+  and provide culturally meaningful services to keep the family safely together.
+level_2_practical: >-
+  In practical terms for your situation: If your child qualifies under ICWA/WICWA, the agency must actively help you navigate
+  housing programs, substance treatment, and parenting services. Passive referrals ('call this number') violate active efforts.
+  Before a court can place your child in foster care or terminate parental rights, the agency must prove to the judge that it made
+  affirmative, active, thorough, and culturally competent efforts in direct consultation with your Tribe.
+level_3_terminology: >-
+  Codified in 25 U.S.C. § 1912(d) and 25 C.F.R. § 23.2, 'active efforts' are affirmative, active, thorough, and timely efforts
+  intended primarily to maintain or reunite an Indian child with the family. This standard is distinctly higher than the standard
+  state-law 'reasonable efforts' requirement under ASFA. In Washington, RCW 13.38.040(1) and RCW 13.38.130 explicitly require
+  active efforts to be provided in partnership with the Indian child's tribe, involving tribal elders and cultural resources.
+level_4_primary_authority:
+  - citation: "25 U.S.C. § 1912"
+    source_type: "STATUTE"
+    official_portal_url: "https://uscode.house.gov/view.xhtml?path=/prelim@title25/chapter21&edition=prelim"
+    key_holding_or_text: "Any party seeking foster care placement of or termination of parental rights to an Indian child shall satisfy the court that active efforts have been made to provide remedial services and rehabilitative programs and that these efforts have proved unsuccessful."
+    jurisdiction: "US"
+    is_binding: true
+    verification_status: "VERIFIED"
+  - citation: "25 C.F.R. § 23.2"
+    source_type: "REGULATION"
+    official_portal_url: "https://www.ecfr.gov/current/title-25/chapter-I/subchapter-D/part-23/subpart-A/section-23.2"
+    key_holding_or_text: "Defines active efforts as affirmative, active, thorough, and timely efforts, providing eleven illustrative examples of mandatory agency assistance."
+    jurisdiction: "US"
+    is_binding: true
+    verification_status: "VERIFIED"
+  - citation: "RCW 13.38.040"
+    source_type: "STATUTE"
+    official_portal_url: "https://app.leg.wa.gov/rcw/default.aspx?cite=13.38.040"
+    key_holding_or_text: "Statutorily defines active efforts under Washington law, mandating documented partnership with the child's tribe and culturally appropriate services."
+    jurisdiction: "WA"
+    is_binding: true
+    verification_status: "VERIFIED"
+  - citation: "RCW 13.38.130"
+    source_type: "STATUTE"
+    official_portal_url: "https://app.leg.wa.gov/rcw/default.aspx?cite=13.38.130"
+    key_holding_or_text: "Prohibits foster placement or termination without clear, cogent, and convincing proof that active efforts were provided and proved unsuccessful."
+    jurisdiction: "WA"
+    is_binding: true
+    verification_status: "VERIFIED"
+level_5_advanced_analysis: >-
+  The doctrinal distinction between 'active efforts' and 'reasonable efforts' is a frequent subject of appellate review.
+  State appellate decisions hold that while 'reasonable efforts' may be satisfied by providing referrals or case plans,
+  'active efforts' requires the caseworker to affirmatively assist the parent in overcoming barriers—such as driving the parent
+  to appointments, helping complete intake paperwork, and adapting service requirements to tribal cultural norms.
+  A finding of active efforts must be supported by clear, cogent, and convincing evidence for foster placement under 25 U.S.C. § 1912(d),
+  and beyond a reasonable doubt for parental termination under § 1912(f).
+drill_downs:
+  SHOW_SOURCE:
+    title: "Official Primary Legal Authorities for Active Efforts"
+    content: "United States Code: 25 U.S.C. § 1912(d) (uscode.house.gov); Code of Federal Regulations: 25 C.F.R. § 23.2 (ecfr.gov); Washington Revised Code: RCW 13.38.040 & RCW 13.38.130 (app.leg.wa.gov)."
+    citations: ["25 U.S.C. § 1912", "25 C.F.R. § 23.2", "RCW 13.38.040", "RCW 13.38.130"]
+    official_sources: ["https://uscode.house.gov/", "https://www.ecfr.gov/", "https://app.leg.wa.gov/rcw/default.aspx?cite=13.38.040"]
+  SHOW_STATUTE:
+    title: "Federal and Washington Active Efforts Mandates"
+    content: "25 C.F.R. § 23.2 itemizes 11 required active efforts examples. RCW 13.38.040(1) codifies Washington state-level enforceable standards."
+    citations: ["25 C.F.R. § 23.2", "RCW 13.38.040"]
+    official_sources: ["https://www.ecfr.gov/", "https://app.leg.wa.gov/rcw/default.aspx?cite=13.38.040"]
+  SHOW_CASE:
+    title: "Caselaw Distinguishing Active Efforts from Passive Referrals"
+    content: "Appellate courts hold that merely developing a case plan and expecting the parent to execute it independently constitutes passive, not active, efforts."
+    citations: ["25 C.F.R. § 23.2"]
+    official_sources: ["https://www.ecfr.gov/"]
+  EXPLAIN_OPPOSING:
+    title: "Opposing Interpretation: Futility & Parent Non-Cooperation"
+    content: "Agency argument: Child welfare departments argue that when a parent repeatedly refuses contact, evades caseworkers, or explicitly rejects tribal services, active efforts should be excused under a judicial doctrine of futility."
+    citations: ["25 C.F.R. § 23.2"]
+    official_sources: ["https://www.ecfr.gov/"]
+  SHOW_TEMPORAL_CHANGE:
+    title: "2016 BIA Regulation Clarification of Active Efforts"
+    content: "Prior to the 2016 federal regulations, state courts frequently blurred active and reasonable efforts. The 2016 BIA rule (25 C.F.R. § 23.2) explicitly codified that active efforts must be significantly more rigorous than Title IV-E reasonable efforts."
+    citations: ["81 Fed. Reg. 38778 (2016)", "25 C.F.R. § 23.2"]
+    official_sources: ["https://www.govinfo.gov"]
+related_concepts:
+  - "icwa_inquiry"
+  - "reasonable_efforts"
+  - "due_process"

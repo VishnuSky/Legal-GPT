@@ -253,8 +253,33 @@ CANONICAL_CONCEPTS: Dict[str, Dict[str, Any]] = {
 }
 
 
+import yaml
+from pathlib import Path
+
+_YAML_CONCEPTS_DIR = Path(__file__).resolve().parent.parent.parent / "legal_registry" / "literacy" / "concepts"
+
+
 class LegalConceptRegistry:
     """Registry providing canonical and dynamically generated 5-level concept breakdowns."""
+
+    _yaml_cache: Dict[str, Dict[str, Any]] = {}
+
+    @classmethod
+    def _load_yaml_concepts(cls) -> Dict[str, Dict[str, Any]]:
+        """Loads all concept YAML files from legal_registry/literacy/concepts/."""
+        if not _YAML_CONCEPTS_DIR.exists():
+            return {}
+        
+        concepts = {}
+        for yaml_file in _YAML_CONCEPTS_DIR.glob("*.yaml"):
+            try:
+                with open(yaml_file, "r", encoding="utf-8") as f:
+                    data = yaml.safe_load(f)
+                    if data and isinstance(data, dict) and "id" in data:
+                        concepts[data["id"].strip().lower()] = data
+            except Exception:
+                continue
+        return concepts
 
     @classmethod
     def get_concept(
@@ -263,115 +288,189 @@ class LegalConceptRegistry:
         jurisdiction: Optional[str] = None,
         situation: Optional[str] = None
     ) -> LegalConceptExploration:
-        """Looks up a canonical concept or dynamically synthesizes a 5-level exploration."""
+        """Looks up a canonical or YAML concept, or returns an abstention exploration for unknown concepts."""
         q_norm = concept_query.strip().lower()
 
-        # Check canonical registry
-        matched_key = None
-        for key, data in CANONICAL_CONCEPTS.items():
-            if q_norm == key or any(alias in q_norm for alias in data.get("aliases", [])):
-                matched_key = key
+        # Check YAML concepts first
+        yaml_concepts = cls._load_yaml_concepts()
+        matched_data = None
+        for key, data in yaml_concepts.items():
+            aliases = [a.lower() for a in data.get("aliases", [])]
+            canonical_lower = data.get("canonical_name", "").lower()
+            if q_norm == key or q_norm == canonical_lower or any(alias == q_norm or alias in q_norm for alias in aliases):
+                matched_data = data
                 break
 
-        if matched_key:
-            data = CANONICAL_CONCEPTS[matched_key]
-            jurisdiction_str = jurisdiction or "US"
-            return LegalConceptExploration(
-                concept_name=data["canonical_name"],
-                jurisdiction=jurisdiction_str,
-                situational_context=situation,
-                level_1_plain_english=data["level_1"],
-                level_2_practical=data["level_2"],
-                level_3_terminology=data["level_3"],
-                level_4_primary_authority=data["level_4"],
-                level_5_advanced_analysis=data["level_5"],
-                drill_downs=data["drill_downs"]
+        # Check in-memory canonical registry if not in YAML
+        if not matched_data:
+            for key, data in CANONICAL_CONCEPTS.items():
+                if q_norm == key or any(alias == q_norm or alias in q_norm for alias in data.get("aliases", [])):
+                    matched_data = data
+                    break
+
+        # Effective jurisdiction: Missing jurisdiction -> JURISDICTION_UNKNOWN
+        jurisdiction_str = jurisdiction if (jurisdiction and jurisdiction.strip()) else "JURISDICTION_UNKNOWN"
+
+        if matched_data:
+            # Parse Level 4 authorities and enforce strict jurisdiction lock
+            authorities: List[PrimaryAuthorityReference] = []
+            raw_authorities = matched_data.get("level_4_primary_authority") or matched_data.get("level_4") or []
+            
+            for item in raw_authorities:
+                if isinstance(item, PrimaryAuthorityReference):
+                    auth = item.model_copy()
+                else:
+                    auth = PrimaryAuthorityReference(**item)
+                
+                auth_j = (auth.jurisdiction or "").upper().replace("US-", "")
+                req_j = jurisdiction_str.upper().replace("US-", "")
+                
+                if req_j == "JURISDICTION_UNKNOWN":
+                    # When jurisdiction is unknown, federal authority applies generally; state authority cannot bind
+                    if auth_j in ("US", "FED"):
+                        auth.is_binding = True
+                    else:
+                        auth.is_binding = False
+                elif auth_j == req_j:
+                    auth.is_binding = True
+                elif auth_j in ("US", "FED"):
+                    # Federal constitutional / statutory authority binds nationwide
+                    auth.is_binding = True
+                else:
+                    # Foreign state authority (e.g. IL cite in WA query) is NEVER binding
+                    auth.is_binding = False
+                
+                authorities.append(auth)
+
+            # Determine concept verification status
+            has_matching_state = any(
+                a.verification_status == "VERIFIED" and (a.jurisdiction or "").upper().replace("US-", "") == jurisdiction_str.upper().replace("US-", "")
+                for a in authorities
+            )
+            has_matching_fed = any(
+                a.verification_status == "VERIFIED" and (a.jurisdiction or "").upper().replace("US-", "") in ("US", "FED")
+                for a in authorities
             )
 
-        # Dynamic synthesis for any other legal concept
-        return cls._synthesize_concept(concept_query, jurisdiction, situation)
+            if jurisdiction_str == "JURISDICTION_UNKNOWN":
+                v_status = "PARTIAL" if (has_matching_fed or has_matching_state) else "ABSTAIN"
+                abstention_reason = "Jurisdiction not specified. General federal and persuasive state references provided; state-specific statutory deadlines vary."
+            elif has_matching_state:
+                v_status = "VERIFIED"
+                abstention_reason = None
+            elif has_matching_fed:
+                v_status = "PARTIAL"
+                abstention_reason = f"Verified federal authority available; state-specific statutory overlay for {jurisdiction_str} is not packed."
+            else:
+                v_status = "PARTIAL" if authorities else "ABSTAIN"
+                abstention_reason = f"No verified primary authority available for jurisdiction {jurisdiction_str}."
+
+            # Parse drill-downs
+            drill_downs: Dict[DrillDownAction, DrillDownResult] = {}
+            raw_dd = matched_data.get("drill_downs", {})
+            for action_key, dd_data in raw_dd.items():
+                act = DrillDownAction(action_key) if not isinstance(action_key, DrillDownAction) else action_key
+                if isinstance(dd_data, DrillDownResult):
+                    drill_downs[act] = dd_data
+                else:
+                    drill_downs[act] = DrillDownResult(
+                        action=act,
+                        title=dd_data.get("title", f"{act.value}: {matched_data.get('canonical_name')}"),
+                        content=dd_data.get("content", ""),
+                        citations=dd_data.get("citations", []),
+                        official_sources=dd_data.get("official_sources", [])
+                    )
+
+            return LegalConceptExploration(
+                concept_name=matched_data.get("canonical_name", concept_query.title()),
+                jurisdiction=jurisdiction_str,
+                situational_context=situation,
+                level_1_plain_english=matched_data.get("level_1_plain_english") or matched_data.get("level_1", ""),
+                level_2_practical=matched_data.get("level_2_practical") or matched_data.get("level_2", ""),
+                level_3_terminology=matched_data.get("level_3_terminology") or matched_data.get("level_3", ""),
+                level_4_primary_authority=authorities,
+                level_5_advanced_analysis=matched_data.get("level_5_advanced_analysis") or matched_data.get("level_5", ""),
+                drill_downs=drill_downs,
+                verification_status=v_status,
+                abstention_reason=abstention_reason,
+                related_concepts=matched_data.get("related_concepts", []),
+                disclaimer="Legal information only. Not legal advice. Not a lawyer."
+            )
+
+        # Dynamic synthesis for unknown / unlisted concept (strictly abstaining on Level 4)
+        return cls._synthesize_concept(concept_query, jurisdiction_str, situation)
 
     @classmethod
     def _synthesize_concept(
         cls,
         concept_query: str,
-        jurisdiction: Optional[str] = None,
+        jurisdiction: str,
         situation: Optional[str] = None
     ) -> LegalConceptExploration:
-        """Dynamically builds a 5-level exploration and 5 drill-downs for arbitrary concepts."""
-        j_str = jurisdiction or "US"
+        """Dynamically builds a 5-level exploration for unverified concepts adhering to abstention principles."""
+        j_str = jurisdiction if jurisdiction else "JURISDICTION_UNKNOWN"
         c_title = concept_query.strip().title()
 
         l1 = (
-            f"At its most basic level, '{c_title}' is a legal rule designed to ensure fairness, predictability, "
-            "and accountability when the law interacts with individuals. It means decisions cannot be made arbitrarily, "
-            "and specific established legal tests must be met before legal consequences attach."
+            f"At its most basic level, '{c_title}' is an unverified legal concept in this system. "
+            "General legal principles require fairness, procedural regularity, and clear statutory authorization "
+            "before government agencies or courts may alter individual rights."
         )
 
         l2 = (
-            f"In practical terms for your situation ({situation or 'your case'}): '{c_title}' means that the opposing party "
-            "or the government must satisfy concrete evidentiary thresholds. You have the right to request proof, "
-            "verify that all necessary steps were followed, and challenge claims that do not conform to governing law."
+            f"In practical terms for your situation ({situation or 'your case'}): Legal-GPT has not verified primary "
+            f"statutory or case authority for '{c_title}' in {j_str}. Because of this authority gap, we abstain from "
+            "providing specific procedural guidance. Consult a licensed attorney or official legal aid organization."
         )
 
         l3 = (
-            f"In formal legal doctrine, '{c_title}' involves specific legal elements, burdens of proof, and standards of review. "
-            f"It requires distinguishing between questions of law (reviewed de novo) and questions of fact (reviewed under clear error "
-            f"or abuse of discretion standards), governed by constitutional provisions and statutory frameworks in {j_str}."
+            f"In formal legal doctrine, '{c_title}' would require specific statutory elements, evidentiary burdens of proof, "
+            f"and standards of appellate review under {j_str} law. No verified doctrinal rules are currently packed."
         )
 
-        l4 = [
-            PrimaryAuthorityReference(
-                citation=f"Controlling {j_str} Statutory & Constitutional Provisions regarding {c_title}",
-                source_type="STATUTE",
-                official_portal_url="https://www.govinfo.gov / Official State Legislative Code",
-                key_holding_or_text=f"Statutory elements and codification of standards governing {c_title} in {j_str}.",
-                jurisdiction=j_str,
-                is_binding=True
-            )
-        ]
+        # Zero hallucination: Never synthesize fake or placeholder Level 4 authority
+        l4: List[PrimaryAuthorityReference] = []
 
         l5 = (
-            f"Advanced legal analysis of '{c_title}' explores competing judicial interpretations, doctrinal evolutions, "
-            "and potential jurisdictional splits. Courts continually balance individual rights against legitimate state regulatory "
-            "interests, requiring scrutiny of precedent, legislative history, and statutory construction rules."
+            f"Advanced legal analysis of '{c_title}' is withheld under the project's zero-guessing principle "
+            "because no primary authorities have been verified in the legal registry."
         )
 
         drill_downs = {
             DrillDownAction.SHOW_SOURCE: DrillDownResult(
                 action=DrillDownAction.SHOW_SOURCE,
                 title=f"Primary Legal Sources for {c_title}",
-                content=f"Primary constitutional, statutory, and official slip opinion sources for {c_title} in {j_str}.",
-                citations=[f"Controlling {j_str} Authority"],
-                official_sources=["https://www.govinfo.gov"]
+                content=f"No verified primary sources are available for '{c_title}' in {j_str}.",
+                citations=[],
+                official_sources=[]
             ),
             DrillDownAction.SHOW_STATUTE: DrillDownResult(
                 action=DrillDownAction.SHOW_STATUTE,
                 title=f"Controlling Statutory Framework for {c_title}",
-                content=f"Primary state and federal statutory enactments codifying {c_title}.",
-                citations=[f"{j_str} Statutory Code"],
-                official_sources=["https://uscode.house.gov"]
+                content=f"No verified statutory codifications are available for '{c_title}' in {j_str}.",
+                citations=[],
+                official_sources=[]
             ),
             DrillDownAction.SHOW_CASE: DrillDownResult(
                 action=DrillDownAction.SHOW_CASE,
                 title=f"Controlling Precedent for {c_title}",
-                content=f"Binding appellate and Supreme Court jurisprudence establishing elements and standards for {c_title}.",
-                citations=[f"Key Precedents in {j_str}"],
-                official_sources=["https://www.supremecourt.gov"]
+                content=f"No verified caselaw precedents are available for '{c_title}' in {j_str}.",
+                citations=[],
+                official_sources=[]
             ),
             DrillDownAction.EXPLAIN_OPPOSING: DrillDownResult(
                 action=DrillDownAction.EXPLAIN_OPPOSING,
                 title=f"Opposing Interpretation for {c_title}",
-                content=f"The government or opposing litigant's competing theoretical framework and doctrinal counterarguments regarding {c_title}.",
-                citations=["Opposing Legal Theories"],
+                content=f"Opposing theories cannot be evaluated without verified primary authority for '{c_title}'.",
+                citations=[],
                 official_sources=[]
             ),
             DrillDownAction.SHOW_TEMPORAL_CHANGE: DrillDownResult(
                 action=DrillDownAction.SHOW_TEMPORAL_CHANGE,
                 title=f"Historical Evolution & Temporal Changes in {c_title}",
-                content=f"Legislative amendments, judicial abrogations, and evolving legal standards for {c_title} over time.",
-                citations=["Historical Enactments"],
-                official_sources=["Official Legislative History Archives"]
+                content=f"No temporal legislative history is tracked for '{c_title}'.",
+                citations=[],
+                official_sources=[]
             )
         }
 
@@ -384,5 +483,9 @@ class LegalConceptRegistry:
             level_3_terminology=l3,
             level_4_primary_authority=l4,
             level_5_advanced_analysis=l5,
-            drill_downs=drill_downs
+            drill_downs=drill_downs,
+            verification_status="ABSTAIN",
+            abstention_reason=f"No verified primary authority packed for concept '{concept_query}'.",
+            related_concepts=[],
+            disclaimer="Legal information only. Not legal advice. Not a lawyer."
         )

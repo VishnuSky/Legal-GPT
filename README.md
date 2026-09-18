@@ -1,15 +1,15 @@
 # Legal-GPT ⚖️
 
 [![Python 3.10+](https://img.shields.io/badge/python-3.10+-blue.svg)](https://www.python.org/downloads/)
-[![Tests](https://img.shields.io/badge/tests-266%2F266%20passing-brightgreen.svg)](https://github.com/VishnuSky/Legal-GPT)
+[![Tests](https://img.shields.io/badge/tests-300%2F300%20passing-brightgreen.svg)](https://github.com/VishnuSky/Legal-GPT)
 [![Benchmark](https://img.shields.io/badge/benchmark-9.5%2F10%20(95%25)-brightgreen.svg)](https://github.com/VishnuSky/Legal-GPT)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![Version: Alpha 0.3.1](https://img.shields.io/badge/version-Alpha%200.3.1-blue.svg)](https://github.com/VishnuSky/Legal-GPT)
 [![MCP Server](https://img.shields.io/badge/MCP-JSON--RPC%202.0-blueviolet.svg)](https://github.com/VishnuSky/Legal-GPT)
 
-> **An open-weight legal LLM and verified primary-law reasoning engine designed to help ordinary people, self-represented litigants, advocates, and attorneys navigate complex legal systems with zero hallucination.**
+> **An open-weight legal LLM and verified primary-law reasoning engine designed to help ordinary people, self-represented litigants, advocates, and attorneys navigate complex legal systems through verification-gated, authority-grounded assistance.**
 
-Legal-GPT combines local open-weight language models with a deterministic, citation-verified legal knowledge graph. Substantive law is **never statically baked into base model weights**; instead, procedural rules, statutory deadlines, and controlling precedents are dynamically retrieved, cross-checked, and verified from authoritative government sources.
+Legal-GPT combines local open-weight language models with a deterministic, citation-verified legal knowledge graph. Substantive authoritative legal text is retrieved dynamically from verified repositories; the neural model serves as a reasoning and language engine, while procedural rules, statutory deadlines, and controlling precedents are strictly cross-checked against primary government sources.
 
 🔗 **Live Public Scout:** Chat with the [Public Law Scout Grok Bot](https://x.ai/bot/4p9YXeUcvV7TeiErQvdIj) for real-time legal orientation and service referrals.
 
@@ -41,7 +41,7 @@ Legal-GPT enforces strict architectural separation between neural generation and
 │                      BRAIN 2: STATUTORY & CITATOR REGISTRY                       │
 │      (Deterministic Primary Law Knowledge Graph & Government Registries)         │
 │                                                                                  │
-│  • Primary state & federal statutes           • Real-time Shepard's-style Citator│
+│  • Primary state & federal statutes           • Citator-style authority treatment│
 │  • Official court procedural rules            • Court-day & holiday arithmetic   │
 │  • Multi-state CPS statutory matrices         • Point-in-time statutory history  │
 └──────────────────────────────────────────────────────────────────────────────────┘
@@ -52,9 +52,9 @@ Legal-GPT enforces strict architectural separation between neural generation and
 
 ---
 
-## 🧰 The Public Legal Toolbox (28 Capabilities)
+## 🧰 The Public Legal Toolbox (30 Capabilities)
 
-Legal-GPT provides 28 specialized, public-data-safe modules for legal literacy, procedural guidance, and court navigation:
+Legal-GPT provides 30 specialized, public-data-safe modules for legal literacy, procedural guidance, and court navigation:
 
 1. 🔎 **Legal Research:** Deep research planning across federal and state primary authorities.
 2. 📚 **Explain This Law:** Plain-English statutory analysis preserving legal nuance.
@@ -112,7 +112,7 @@ Legal-GPT features comprehensive statutory coverage across Federal law and the 1
 
 ---
 
-## 🌐 Public REST API (8 Endpoints)
+## 🌐 Public REST API (9 Endpoints)
 
 Legal-GPT serves an auditable, public-data-safe REST API mounted under `/api/v1/public/`.
 
@@ -202,6 +202,17 @@ curl -X POST http://localhost:8000/api/v1/public/question-builder \
   }'
 ```
 
+### 9. Progressive Legal Literacy
+```bash
+curl -X POST http://localhost:8000/api/v1/public/explain-concept \
+  -H "Content-Type: application/json" \
+  -d '{
+    "concept": "due_process",
+    "jurisdiction": "WA",
+    "level": 1
+  }'
+```
+
 ---
 
 ## 💻 Interactive CLI Quickstart
@@ -219,7 +230,10 @@ legal-gpt explain-doc --type shelter_care_order --state WA --level 1
 # 4. Generate prioritized tactical questions (Rights -> Deadlines -> Procedure -> Evidence)
 legal-gpt questions --situation cps_removal --audience attorney --state WA
 
-# 5. Output raw JSON for machine integration
+# 5. Explain a legal concept across progressive literacy levels
+legal-gpt explain-concept --concept due_process --level 1 --state WA
+
+# 6. Output raw JSON for machine integration
 legal-gpt deadline --state FL --event emergency_removal --date 2026-09-17 --json
 ```
 
@@ -261,9 +275,9 @@ Legal-GPT connects directly to local inference backends such as **LM Studio**, *
 
 Legal-GPT is evaluated across an automated 50-scenario adversarial benchmark covering Federal, State (WA, IL, OH, CA, TX, NY, FL), ICWA, UCCJEA, Due Process, and Temporal validity challenges:
 
-- **Accuracy Score:** **9.5 / 10 (95%+)**
-- **Test Suite Pass Rate:** **100%** (266 / 266 unit and integration tests passing)
-- **Zero Hallucination:** 100% of tested statutory citations match verified `legal_registry` entries.
+- **Benchmark Accuracy Score:** **9.5 / 10 (95%+)** across 50 synthetic adversarial evaluation scenarios
+- **Test Suite Pass Rate:** **100%** (300 / 300 unit and integration tests passing)
+- **Citation Grounding:** 100% of tested statutory citations match verified `legal_registry` entries.
 - **Authority Isolation:** 100% pass on quarantine firewall tests preventing unverified claims from altering primary law.
 
 To run the automated benchmark locally:

@@ -61,6 +61,7 @@ class DocumentExplanationReport(BaseModel):
     rights: List[RightItem] = Field(default_factory=list)
     consequences_of_inaction: List[str] = Field(default_factory=list)
     recommended_actions: List[ActionItem] = Field(default_factory=list)
+    related_concept_ids: List[str] = Field(default_factory=list)
     disclaimer: str = (
         "LEGAL INFORMATION ONLY — NOT LEGAL ADVICE: This document breakdown is generated for informational and "
         "legal literacy purposes only. It does not constitute legal advice and does not establish an attorney-client relationship. "

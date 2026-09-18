@@ -1,0 +1,82 @@
+id: notice
+canonical_name: "Legal Notice and Service of Process"
+aliases:
+  - "notice"
+  - "legal notice"
+  - "summons"
+  - "service of process"
+  - "adequate notice"
+jurisdiction: "US"
+retrieved_date: "2026-09-18"
+level_1_plain_english: >-
+  Notice means the government or an opposing party cannot take legal action against you in secret.
+  They must officially inform you in writing about what they claim you did wrong, what legal orders they are asking
+  a judge to make, and exactly when and where you need to appear in court to defend yourself.
+level_2_practical: >-
+  In practical terms for your situation: You should receive official court papers—such as a Summons, Dependency Petition,
+  or Notice of Hearing. These documents must list the specific factual allegations (not just vague conclusions),
+  the date and time of your court appearance, and your right to an attorney. If the state takes custody of a child,
+  caseworkers must make reasonable, immediate efforts to notify parents by telephone, in person, or by written delivery.
+level_3_terminology: >-
+  Under constitutional due process, the controlling standard for notice derives from Mullane v. Central Hanover Bank & Trust Co.:
+  notice must be "reasonably calculated, under all the circumstances, to apprise interested parties of the pendency of the action
+  and afford them an opportunity to present their objections." In child dependency law, notice encompasses personal service of summons,
+  statutory notice of emergency shelter hearings (RCW 13.34.060), and mandatory ICWA tribal notice (25 U.S.C. § 1912(a)).
+level_4_primary_authority:
+  - citation: "Mullane v. Central Hanover Bank & Trust Co., 339 U.S. 306 (1950)"
+    source_type: "CASELAW"
+    official_portal_url: "https://www.supremecourt.gov/"
+    key_holding_or_text: "Due process requires notice reasonably calculated, under all the circumstances, to apprise interested parties of the pendency of the action and afford them an opportunity to present their objections."
+    jurisdiction: "US"
+    is_binding: true
+    verification_status: "VERIFIED"
+  - citation: "RCW 13.34.070"
+    source_type: "STATUTE"
+    official_portal_url: "https://app.leg.wa.gov/rcw/default.aspx?cite=13.34.070"
+    key_holding_or_text: "Requires issuance of summons and personal service upon parents, guardians, or legal custodians with verified petition attached."
+    jurisdiction: "WA"
+    is_binding: true
+    verification_status: "VERIFIED"
+  - citation: "RCW 13.34.060"
+    source_type: "STATUTE"
+    official_portal_url: "https://app.leg.wa.gov/rcw/default.aspx?cite=13.34.060"
+    key_holding_or_text: "Mandates that reasonable efforts be made to inform parents immediately upon emergency custody taking and provide written notice of the shelter care hearing."
+    jurisdiction: "WA"
+    is_binding: true
+    verification_status: "VERIFIED"
+level_5_advanced_analysis: >-
+  Doctrinal tensions in notice jurisprudence involve the adequacy of constructive service (service by publication or certified mail)
+  when parents are unhoused, transient, or incarcerated. While Mullane permits substitute service when personal service is impossible
+  despite diligent inquiry, appellate courts strictly scrutinize state declarations of diligent search before permitting default judgments.
+  In Indian Child Welfare Act proceedings, 25 U.S.C. § 1912(a) establishes a heightened jurisdictional requirement: registered mail notice
+  to tribes with return receipt requested is an absolute prerequisite to judicial jurisdiction.
+drill_downs:
+  SHOW_SOURCE:
+    title: "Official Sources for Legal Notice Requirements"
+    content: "Supreme Court Opinions: Mullane v. Central Hanover Bank, 339 U.S. 306 (supremecourt.gov); Washington Revised Code: RCW 13.34.060 & RCW 13.34.070 (app.leg.wa.gov)."
+    citations: ["Mullane v. Central Hanover Bank & Trust Co., 339 U.S. 306 (1950)", "RCW 13.34.070"]
+    official_sources: ["https://www.supremecourt.gov/", "https://app.leg.wa.gov/rcw/default.aspx?cite=13.34.070"]
+  SHOW_STATUTE:
+    title: "Controlling Washington Notice Statutes"
+    content: "RCW 13.34.060 governs emergency shelter care notice. RCW 13.34.070 governs dependency summons and service of process."
+    citations: ["RCW 13.34.060", "RCW 13.34.070"]
+    official_sources: ["https://app.leg.wa.gov/rcw/default.aspx?cite=13.34.060", "https://app.leg.wa.gov/rcw/default.aspx?cite=13.34.070"]
+  SHOW_CASE:
+    title: "Controlling Precedent: Mullane v. Central Hanover Bank & Trust Co."
+    content: "Mullane established that process which is a mere gesture is not due process. The means employed must be such as one desirous of actually informing the absentee might reasonably adopt."
+    citations: ["Mullane v. Central Hanover Bank & Trust Co., 339 U.S. 306 (1950)"]
+    official_sources: ["https://www.supremecourt.gov/"]
+  EXPLAIN_OPPOSING:
+    title: "Opposing Interpretation: Exigent Notice Truncation & Harmless Error"
+    content: "Agency argument: When children face imminent physical danger, formal written notice may be truncated prior to emergency taking. The agency contends that technical notice defects are harmless if actual notice is achieved prior to the formal adversary hearing."
+    citations: ["In re Gault, 387 U.S. 1 (1967)"]
+    official_sources: ["https://www.supremecourt.gov/"]
+  SHOW_TEMPORAL_CHANGE:
+    title: "Legislative Evolution of Dependency Notice Requirements"
+    content: "The Washington 2021 Keeping Families Together Act heightened notice duties under RCW 13.34.060, requiring caseworkers to specifically document all attempts to notify parents and relative kin immediately upon removal."
+    citations: ["Wash. Laws 2021, ch. 211", "RCW 13.34.060 (Amended 2021)"]
+    official_sources: ["https://leg.wa.gov/CodeReviser"]
+related_concepts:
+  - "due_process"
+  - "opportunity_to_be_heard"
+  - "shelter_care_hearing"

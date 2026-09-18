@@ -1,0 +1,91 @@
+id: shelter_care_hearing
+canonical_name: "Shelter Care Hearing (Initial Detention Hearing)"
+aliases:
+  - "shelter care hearing"
+  - "shelter care"
+  - "shelter hearing"
+  - "detention hearing"
+  - "72 hour hearing"
+jurisdiction: "WA"
+retrieved_date: "2026-09-18"
+level_1_plain_english: >-
+  A shelter care hearing is the emergency court hearing that must take place immediately after child welfare workers
+  take a child into state custody. At this hearing, an independent judge decides whether the state had a legal right
+  to remove the child, whether the child can immediately return home, or whether the child should be placed temporarily with relatives.
+level_2_practical: >-
+  In practical terms for your situation: In Washington State, this hearing must occur within 72 hours of removal
+  (excluding Saturdays, Sundays, and legal holidays). You will meet your appointed attorney right before the hearing.
+  Bring names and contact information of willing grandmothers, aunts, uncles, or adult family members who can take the children
+  instead of foster care. The judge will also order visitation (family time) and decide what services the agency must provide.
+level_3_terminology: >-
+  Governed by RCW 13.34.065, the shelter care hearing serves as the initial adversary judicial review of state custody.
+  To maintain custody, the Department of Children, Youth, and Families (DCYF) must establish reasonable cause to believe that:
+  (a) the child has no parent able to provide adequate care, or (b) release would present a serious threat of substantial harm.
+  Under RCW 13.34.065(5), the court must make an explicit finding as to whether the department made reasonable efforts to prevent
+  removal and whether placement with an available relative or suitable person is possible.
+level_4_primary_authority:
+  - citation: "RCW 13.34.065"
+    source_type: "STATUTE"
+    official_portal_url: "https://app.leg.wa.gov/rcw/default.aspx?cite=13.34.065"
+    key_holding_or_text: "Mandates that the court hold a shelter care hearing within seventy-two hours of emergency custody, excluding Saturdays, Sundays, and holidays, to determine release or continued shelter care."
+    jurisdiction: "WA"
+    is_binding: true
+    verification_status: "VERIFIED"
+  - citation: "RCW 13.34.060"
+    source_type: "STATUTE"
+    official_portal_url: "https://app.leg.wa.gov/rcw/default.aspx?cite=13.34.060"
+    key_holding_or_text: "Establishes mandatory notice requirements and informs parents of their right to counsel at the shelter care hearing."
+    jurisdiction: "WA"
+    is_binding: true
+    verification_status: "VERIFIED"
+  - citation: "Gerstein v. Pugh, 420 U.S. 103 (1975)"
+    source_type: "CASELAW"
+    official_portal_url: "https://www.supremecourt.gov/"
+    key_holding_or_text: "Established Fourth Amendment requirement for a prompt judicial determination of probable cause as a prerequisite to extended restraint of liberty following a warrantless seizure."
+    jurisdiction: "US"
+    is_binding: true
+    verification_status: "VERIFIED"
+  - citation: "42 U.S.C. § 671(a)(15)"
+    source_type: "STATUTE"
+    official_portal_url: "https://uscode.house.gov/view.xhtml?path=/prelim@title42/chapter7/subchapter4/partE&edition=prelim"
+    key_holding_or_text: "Requires state foster care plans to provide that reasonable efforts shall be made to prevent or eliminate the need for removing the child from the child's home."
+    jurisdiction: "US"
+    is_binding: true
+    verification_status: "VERIFIED"
+level_5_advanced_analysis: >-
+  The procedural boundary at the shelter care hearing involves evidentiary standards and relative placement mandates.
+  Because of the expedited 72-hour timeframe, traditional hearsay rules are relaxed under juvenile court rules (JuCR 2.4),
+  allowing the court to consider caseworker social files and declarations. However, RCW 13.34.065(5) was amended in 2021
+  to establish an explicit kinship preference: the court must place the child with a willing, qualified relative or suitable person
+  unless placement would jeopardize the child's safety, shifting the burden to DCYF to justify licensed stranger foster care.
+drill_downs:
+  SHOW_SOURCE:
+    title: "Official Sources for Washington Shelter Care Hearings"
+    content: "Washington Revised Code: RCW 13.34.065 (app.leg.wa.gov); Federal Title IV-E: 42 U.S.C. § 671 (uscode.house.gov)."
+    citations: ["RCW 13.34.065", "42 U.S.C. § 671(a)(15)"]
+    official_sources: ["https://app.leg.wa.gov/rcw/default.aspx?cite=13.34.065", "https://uscode.house.gov/"]
+  SHOW_STATUTE:
+    title: "RCW 13.34.065 Statutory Shelter Care Standards"
+    content: "RCW 13.34.065 details the 72-hour deadline, mandatory appointment of counsel, notice requirements, relative placement priority, and 30-day shelter care rehearing options."
+    citations: ["RCW 13.34.065"]
+    official_sources: ["https://app.leg.wa.gov/rcw/default.aspx?cite=13.34.065"]
+  SHOW_CASE:
+    title: "Constitutional Baseline: Gerstein v. Pugh"
+    content: "Gerstein established that whenever the executive branch seizes a person without a warrant, due process and the Fourth Amendment mandate prompt judicial evaluation by a neutral magistrate."
+    citations: ["Gerstein v. Pugh, 420 U.S. 103 (1975)"]
+    official_sources: ["https://www.supremecourt.gov/"]
+  EXPLAIN_OPPOSING:
+    title: "Opposing Interpretation: Preliminary Evidentiary Lower Threshold"
+    content: "Agency argument: The 72-hour shelter hearing is preliminary, not an adjudication of parental unfitness. The State contends that custody may be retained on probable cause or reasonable cause grounds pending formal discovery."
+    citations: ["RCW 13.34.065"]
+    official_sources: ["https://app.leg.wa.gov/rcw/default.aspx?cite=13.34.065"]
+  SHOW_TEMPORAL_CHANGE:
+    title: "Washington Shelter Care Statutory Amendments"
+    content: "The 2021 Keeping Families Together Act (Wash. Laws 2021, ch. 211) transformed shelter hearings by strictly prohibiting removals based solely on substance use or lack of housing."
+    citations: ["Wash. Laws 2021, ch. 211", "RCW 13.34.065 (Amended 2021)"]
+    official_sources: ["https://leg.wa.gov/CodeReviser"]
+related_concepts:
+  - "emergency_removal"
+  - "due_process"
+  - "right_to_counsel_dependency"
+  - "reasonable_efforts"

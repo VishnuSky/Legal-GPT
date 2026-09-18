@@ -23,14 +23,25 @@ class DrillDownAction(str, Enum):
     SHOW_TEMPORAL_CHANGE = "SHOW_TEMPORAL_CHANGE" # "Show me what changed over time."
 
 
+class VerificationStatus(str, Enum):
+    """Authority verification state."""
+    VERIFIED = "VERIFIED"
+    PARTIAL = "PARTIAL"
+    UNVERIFIED = "UNVERIFIED"
+    ABSTAIN = "ABSTAIN"
+
+
 class PrimaryAuthorityReference(BaseModel):
     """Structured primary legal authority reference."""
     citation: str
-    source_type: str = Field(..., description="CONSTITUTION, STATUTE, REGULATION, CASELAW, POLICY")
+    source_type: str = Field(..., description="CONSTITUTION, STATUTE, REGULATION, CASELAW, COURT_RULE, POLICY")
     official_portal_url: str
     key_holding_or_text: str
     jurisdiction: str
     is_binding: bool = True
+    verification_status: str = Field(default="VERIFIED", description="VERIFIED | UNVERIFIED | ABSTAIN")
+    effective_date: Optional[str] = Field(default=None, description="ISO date or null")
+    pinpoint: Optional[str] = Field(default=None, description="Pinpoint citation or null")
 
 
 class DrillDownResult(BaseModel):
@@ -57,3 +68,12 @@ class LegalConceptExploration(BaseModel):
 
     # The 5 pre-computed or dynamically queried drill-downs
     drill_downs: Dict[DrillDownAction, DrillDownResult] = Field(default_factory=dict)
+
+    # Verification, provenance, and ethical safety fields
+    verification_status: str = Field(default="VERIFIED", description="VERIFIED | PARTIAL | UNVERIFIED | ABSTAIN")
+    abstention_reason: Optional[str] = Field(default=None, description="Reason for abstention or partial coverage")
+    related_concepts: List[str] = Field(default_factory=list, description="Related concept IDs or names")
+    disclaimer: str = Field(
+        default="Legal information only. Not legal advice. Not a lawyer.",
+        description="Mandatory legal disclaimer"
+    )
