@@ -30,6 +30,8 @@ class DocumentExplainerEngine:
         """Determines the document type from explicit type or text keywords."""
         if req.document_type:
             clean = req.document_type.upper().replace(" ", "_").strip()
+            if clean in ("SHELTER_CARE_ORDER", "SHELTER_ORDER", "REMOVAL_ORDER", "DETENTION_ORDER"):
+                return DocumentType.TEMPORARY_CUSTODY_ORDER.value
             for member in DocumentType:
                 if member.value == clean or member.name == clean:
                     return member.value

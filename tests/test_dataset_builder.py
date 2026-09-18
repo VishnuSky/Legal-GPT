@@ -7,11 +7,25 @@ from training.schemas.dataset_schema import DatasetSchema, LegalTrainingExample
 from legal_registry.loader import default_registry
 
 PRIORITY_FAMILIES = [
+    "02_temporal_law",
+    "03_authority_ranking",
+    "04_citation_verification",
     "05_issue_spotting",
     "06_rule_extraction",
+    "07_fact_application",
+    "08_counterargument",
+    "09_uncertainty",
     "13_parent_rights",
+    "14_human_rights",
+    "15_drug_policy",
+    "16_mental_health",
     "17_due_process",
+    "18_equal_protection",
     "19_search_seizure",
+    "20_family_integrity",
+    "21_administrative_law",
+    "22_civil_rights",
+    "23_procedural_rights",
 ]
 
 

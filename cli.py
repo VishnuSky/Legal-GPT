@@ -504,6 +504,134 @@ def interrogate(
     console.print("\n" + rendered + "\n")
 
 
+@app.command()
+def deadline(
+    state: str = typer.Option("WA", "--state", "-s", help="State jurisdiction code e.g. WA, IL, FL, CA"),
+    event: str = typer.Option("emergency_removal", "--event", "-e", help="Triggering legal event e.g. emergency_removal, petition_filed"),
+    date_str: str = typer.Option(..., "--date", "-d", help="Triggering event date in YYYY-MM-DD format"),
+    county: Optional[str] = typer.Option(None, "--county", "-c", help="County or judicial district"),
+    json_output: bool = typer.Option(False, "--json", help="Output machine-readable JSON")
+):
+    """Compute procedural deadlines strictly derived from primary statutory authority."""
+    from core.deadlines.engine import DeadlineEngine
+    from core.deadlines.renderer import DeadlineRenderer
+
+    engine = DeadlineEngine()
+    report = engine.compute_deadlines(
+        event_type=event,
+        event_date=date_str,
+        jurisdiction=state,
+        county=county
+    )
+    if json_output:
+        print(report.model_dump_json(indent=2))
+    else:
+        rendered = DeadlineRenderer.render_markdown(report)
+        console.print("\n" + rendered + "\n")
+
+
+@app.command()
+def timeline(
+    file: str = typer.Option(..., "--file", "-f", help="Path to JSON file containing case events"),
+    state: Optional[str] = typer.Option("US", "--state", "-s", help="Default jurisdiction code"),
+    case_type: Optional[str] = typer.Option("cps_dependency", "--case-type", help="Case type: cps_dependency, criminal, civil, general"),
+    json_output: bool = typer.Option(False, "--json", help="Output machine-readable JSON")
+):
+    """Construct chronological case timeline, validate procedural milestones, and detect UCCJEA shifts."""
+    from core.timeline.models import TimelineRequest, TimelineEvent
+    from core.timeline.engine import TimelineEngine
+    from core.timeline.renderer import TimelineRenderer
+
+    if not os.path.exists(file):
+        console.print(f"[bold red]Error:[/bold red] File '{file}' does not exist.")
+        raise typer.Exit(code=1)
+
+    try:
+        with open(file, "r", encoding="utf-8") as f:
+            data = json.load(f)
+    except Exception as e:
+        console.print(f"[bold red]Error reading JSON:[/bold red] {e}")
+        raise typer.Exit(code=1)
+
+    raw_events = data.get("events", data) if isinstance(data, dict) else data
+    if not isinstance(raw_events, list):
+        console.print("[bold red]Error:[/bold red] JSON file must contain a list of events or an object with an 'events' list.")
+        raise typer.Exit(code=1)
+
+    events = [TimelineEvent(**ev) for ev in raw_events]
+    req = TimelineRequest(
+        events=events,
+        default_jurisdiction=state,
+        case_type=case_type
+    )
+    engine = TimelineEngine()
+    report = engine.construct_timeline(req)
+
+    if json_output:
+        print(report.model_dump_json(indent=2))
+    else:
+        rendered = TimelineRenderer.render_markdown(report)
+        console.print("\n" + rendered + "\n")
+
+
+@app.command("explain-doc")
+def explain_doc(
+    doc_type: Optional[str] = typer.Option(None, "--type", "-t", help="Document type e.g. shelter_care_order, summons_and_complaint, dependency_petition"),
+    text: Optional[str] = typer.Option(None, "--text", help="Document text excerpt"),
+    state: Optional[str] = typer.Option("US", "--state", "-s", help="Jurisdiction state code"),
+    level: int = typer.Option(1, "--level", "-l", help="Literacy level: 1 (Plain English), 2 (Practical), 3 (Legal Terminology)"),
+    json_output: bool = typer.Option(False, "--json", help="Output machine-readable JSON")
+):
+    """Explain a legal document, summons, petition, or order across multiple literacy levels with UPL disclaimer."""
+    from core.document_explainer.models import DocumentExplanationRequest
+    from core.document_explainer.engine import DocumentExplainerEngine
+    from core.document_explainer.renderer import DocumentExplainerRenderer
+
+    req = DocumentExplanationRequest(
+        document_type=doc_type,
+        document_text=text,
+        jurisdiction=state,
+        literacy_level=level
+    )
+    engine = DocumentExplainerEngine()
+    report = engine.explain_document(req)
+
+    if json_output:
+        print(report.model_dump_json(indent=2))
+    else:
+        rendered = DocumentExplainerRenderer.render_markdown(report)
+        console.print("\n" + rendered + "\n")
+
+
+@app.command()
+def questions(
+    situation: str = typer.Option("cps_removal", "--situation", help="Legal situation e.g. cps_removal, emergency_removal, shelter_hearing, service_plan"),
+    audience: str = typer.Option("attorney", "--audience", "-a", help="Target recipient: attorney, caseworker, court, all"),
+    state: Optional[str] = typer.Option("US", "--state", "-s", help="Jurisdiction state code"),
+    role: Optional[str] = typer.Option("parent", "--role", "-r", help="User role: parent, self_represented, advocate"),
+    json_output: bool = typer.Option(False, "--json", help="Output machine-readable JSON")
+):
+    """Generate prioritized tactical questions (Rights -> Deadlines -> Procedure -> Evidence) and document checklists."""
+    from core.question_builder.models import QuestionBuilderRequest
+    from core.question_builder.engine import QuestionBuilderEngine
+    from core.question_builder.renderer import QuestionBuilderRenderer
+
+    req = QuestionBuilderRequest(
+        situation=situation,
+        target_recipient=audience,
+        jurisdiction=state,
+        user_role=role
+    )
+    engine = QuestionBuilderEngine()
+    report = engine.build_questions(req)
+
+    if json_output:
+        print(report.model_dump_json(indent=2))
+    else:
+        rendered = QuestionBuilderRenderer.render_markdown(report)
+        console.print("\n" + rendered + "\n")
+
+
 if __name__ == "__main__":
     app()
 
