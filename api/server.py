@@ -776,10 +776,7 @@ def public_explain_concept_endpoint(req: dict):
         raise HTTPException(status_code=400, detail=f"Concept explanation error: {str(e)}")
 
 
-
-
-
-
-
-
+# Mount Public xAI/Grok MCP Endpoints (/mcp/v1/tools, /mcp/v1/tools/call)
+from api.mcp_public import router as mcp_router
+app.include_router(mcp_router)
 
