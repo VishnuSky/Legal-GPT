@@ -1,0 +1,24 @@
+version: "3.8"
+
+services:
+  legal-gpt:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: legal-gpt-server
+    ports:
+      - "8000:8000"
+    environment:
+      - PORT=8000
+      - HOST=0.0.0.0
+      - LOCAL_LLM_URL=${LOCAL_LLM_URL:-http://host.docker.internal:1234/v1}
+      - LOCAL_LLM_MODEL=${LOCAL_LLM_MODEL:-local-model}
+    volumes:
+      # Mount legal_registry so statutory updates do not require image rebuilds
+      - ./legal_registry:/app/legal_registry:ro
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
