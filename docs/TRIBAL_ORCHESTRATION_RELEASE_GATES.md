@@ -77,7 +77,7 @@ The following categories are explicitly identified as missing or requiring human
 
 1. **Repository Privacy Audit** (`scripts/privacy_audit.py` & `tests/test_privacy_policy.py`):
    - **Result**: `[PASS] PRIVACY AUDIT PASSED: Repository is 100% clean and public-safe.`
-   - Verified zero hardcoded API keys, zero local drive paths (`C:\Users\...`), zero private IPs, and no private case artifacts.
+   - Verified zero hardcoded API keys, zero local drive paths (for example, local user-home paths), zero private IPs, and no private case artifacts.
 2. **Deep Security & Isolation Audit** (`scripts/deep_security_audit.py`):
    - **Result**: `[PASS] Zero local profile paths, private IPs, credentials, or private project references in working tree or commit history.`
    - No tracked SQLite databases (`*.db`, `*.sqlite`), log files, or `.env` files.
