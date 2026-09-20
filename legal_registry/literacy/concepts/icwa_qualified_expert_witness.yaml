@@ -1,0 +1,127 @@
+id: icwa_qualified_expert_witness
+canonical_name: Qualified Expert Witness (QEW) Requirement under ICWA
+aliases:
+- qualified expert witness
+- qew icwa
+- 25 usc 1912 e
+- 25 usc 1912 f
+- 25 cfr 23 122
+jurisdiction: FED
+retrieved_date: '2026-09-19'
+level_1_plain_english: Before a judge can place a Native child into foster care or
+  permanently sever parental ties, the law requires testimony from a Qualified Expert
+  Witness who truly understands tribal child-rearing customs. A standard social worker
+  is not enough; the expert must explain whether the child faces serious physical
+  or emotional harm within their specific cultural community.
+level_2_practical: In state court, CPS cannot rely solely on its own caseworkers or
+  standard psychologists to justify removal of an Indian child. The state must produce
+  a QEW—often designated by the child's tribe—who testifies under oath regarding tribal
+  cultural standards. If the state fails to produce a qualified QEW, any foster care
+  order or termination is legally invalid under federal law.
+level_3_terminology: Under 25 U.S.C. §§ 1912(e) and 1912(f), foster care placement
+  requires clear and convincing evidence, and termination of parental rights requires
+  evidence beyond a reasonable doubt, 'including testimony of qualified expert witnesses,
+  that the continued custody of the child by the parent or Indian custodian is likely
+  to result in serious emotional or physical damage to the child.' Under 25 C.F.R.
+  § 23.122, the QEW must possess expertise in the prevailing social and cultural standards
+  of the child's tribe.
+level_4_primary_authority:
+- citation: 25 U.S.C. § 1912(e)
+  source_type: STATUTE
+  official_portal_url: https://uscode.house.gov/view.xhtml?req=granuleid:USC-prelim-title25-section1912&num=0&edition=prelim
+  key_holding_or_text: No foster care placement may be ordered in such proceeding
+    in the absence of a determination, supported by clear and convincing evidence,
+    including testimony of qualified expert witnesses, that the continued custody
+    of the child by the parent or Indian custodian is likely to result in serious
+    emotional or physical damage to the child.
+  jurisdiction: US
+  is_binding: true
+  verification_status: VERIFIED
+- citation: 25 U.S.C. § 1912(f)
+  source_type: STATUTE
+  official_portal_url: https://uscode.house.gov/view.xhtml?req=granuleid:USC-prelim-title25-section1912&num=0&edition=prelim
+  key_holding_or_text: No termination of parental rights may be ordered... in the
+    absence of a determination, supported by evidence beyond a reasonable doubt, including
+    testimony of qualified expert witnesses, that the continued custody of the child...
+    is likely to result in serious emotional or physical damage.
+  jurisdiction: US
+  is_binding: true
+  verification_status: VERIFIED
+- citation: 25 C.F.R. § 23.122
+  source_type: REGULATION
+  official_portal_url: https://www.ecfr.gov/current/title-25/chapter-I/subchapter-D/part-23/subpart-C/section-23.122
+  key_holding_or_text: The qualified expert witness must be qualified to testify regarding
+    whether the child's continued custody is likely to result in serious emotional
+    or physical damage. The social worker regularly assigned to the Indian child may
+    not serve as a qualified expert witness.
+  jurisdiction: US
+  is_binding: true
+  verification_status: VERIFIED
+level_5_advanced_analysis: 'Domestic U.S. law vs. International Norms:
+
+  - Domestic Law: Federal regulations explicitly prohibit assigned state caseworkers
+  from serving as their own QEWs (25 C.F.R. § 23.122(c)) to prevent self-serving,
+  culturally biased assessments. However, some state trial courts still improperly
+  attempt to qualify generic child psychologists who lack specific knowledge of tribal
+  family structures.
+
+  - UNDRIP (International Norm — non-binding in U.S. domestic proceedings): Article
+  14 affirms the right of Indigenous families to establish and control their educational
+  and child care systems in a manner appropriate to their cultural methods of teaching
+  and learning.
+
+  - Alignment & Divergence: The QEW requirement is an explicit domestic safeguard
+  against cultural bias, aligning with international protections against ethnocentric
+  state deprivations of family integrity.
+
+  - Competing Positions: State agencies often argue that certified mental health professionals
+  should qualify regardless of tribal familiarity. Tribal nations argue that without
+  specific immersion in the child''s tribal customs, outside experts cannot distinguish
+  cultural child-rearing practices from psychological neglect.'
+drill_downs:
+  SHOW_SOURCE:
+    title: Statutory QEW Requirements
+    content: 25 U.S.C. §§ 1912(e) and 1912(f) mandate QEW testimony for foster care
+      and parental termination.
+    citations:
+    - 25 U.S.C. § 1912(e)
+    - 25 U.S.C. § 1912(f)
+    official_sources:
+    - https://uscode.house.gov/
+  SHOW_STATUTE:
+    title: Federal Regulations on QEW Disqualification of State Social Workers
+    content: 25 C.F.R. § 23.122(c) explicitly bars regularly assigned state social
+      workers from testifying as the QEW.
+    citations:
+    - 25 C.F.R. § 23.122
+    official_sources:
+    - https://www.ecfr.gov/
+  SHOW_CASE:
+    title: State Appellate Precedent Disqualifying Generic Experts
+    content: Appellate courts routinely reverse terminations where the purported QEW
+      lacked knowledge of tribal child-rearing customs.
+    citations:
+    - In re Dependency of J.M.W., 438 P.3d 170 (Wash. Ct. App. 2019)
+    official_sources:
+    - https://scholar.google.com/
+  EXPLAIN_OPPOSING:
+    title: State Shortage of Tribal Experts Claim
+    content: State agencies argue that a scarcity of tribal QEWs delays permanency,
+      whereas tribes emphasize that agencies must coordinate with tribal governments
+      early in proceedings.
+    citations:
+    - 25 C.F.R. § 23.122
+    official_sources:
+    - https://www.ecfr.gov/
+  SHOW_TEMPORAL_CHANGE:
+    title: Transition from State Discretion to Uniform Federal Standards
+    content: Before the 2016 BIA regulations, state courts varied widely in qualifying
+      non-Native professionals; the 2016 rules created strict national cultural qualifications.
+    citations:
+    - 25 C.F.R. § 23.122
+    official_sources:
+    - https://www.ecfr.gov/
+related_concepts:
+- icwa_active_efforts
+- tribal_court_jurisdiction_icwa
+- due_process

@@ -1,0 +1,28 @@
+region: Southeast
+treaties:
+- name: Treaty of New Echota (1835)
+  statutory_citation: 7 Stat. 478
+  signatories:
+  - United States
+  - Cherokee Nation (Treaty Party faction)
+  ratified_date: May 23, 1836
+  official_source_url: https://www.loc.gov/law/help/statutes-at-large/24th-congress/session-1/c24s1ch39.pdf
+  historical_note: Signed by an unauthorized minority faction (the Treaty Party, led
+    by Major Ridge and Elias Boudinot); Principal Chief John Ross and the National
+    Council gathered over 15,000 Cherokee signatures protesting the document. The
+    U.S. Senate ratified the treaty by a single vote, which the federal government
+    used to enforce the forced military expulsion known as the Trail of Tears (1838-1839).
+    National Park Service and DOI historical records document thousands of deaths
+    along the route.
+- name: Treaty with the Creeks (1832 & 1866)
+  statutory_citation: 7 Stat. 366 (1832); 14 Stat. 785 (1866)
+  signatories:
+  - United States
+  - Muscogee (Creek) Nation
+  controlling_caselaw:
+  - citation: McGirt v. Oklahoma, 591 U.S. 894 (2020)
+    holding: Treaty promises securing the Creek Nation's perpetual reservation were
+      never disestablished by Congress. Unlawful encroachment by settlers and state
+      non-recognition cannot substitute for statutory abrogation.
+    official_url: https://supreme.justia.com/cases/federal/us/591/894/
+verification_status: VERIFIED

@@ -1,0 +1,124 @@
+id: indian_country_jurisdiction
+canonical_name: Indian Country Criminal and Civil Jurisdiction
+aliases:
+- indian country
+- 18 usc 1151
+- major crimes act
+- mcgirt
+- tribal jurisdiction
+jurisdiction: FED
+retrieved_date: '2026-09-19'
+level_1_plain_english: The law defines 'Indian Country' as all land inside an Indian
+  reservation, dependent Indian communities, and individual Indian allotments. Inside
+  Indian Country, special rules determine whether the tribal court, federal court,
+  or state court has the authority to handle crimes, lawsuits, and family disputes.
+level_2_practical: If an incident occurs on reservation land, jurisdiction depends
+  on whether the parties are Indian or non-Indian, and whether the crime is a major
+  felony. Under the landmark McGirt v. Oklahoma ruling, if a reservation was never
+  disestablished by Congress, it remains Indian Country even if non-Indians live there
+  or state officials believed otherwise for decades.
+level_3_terminology: 'Indian Country is defined by federal statute under 18 U.S.C.
+  § 1151 as: (a) all land within the limits of any Indian reservation; (b) all dependent
+  Indian communities; and (c) all Indian allotments. Criminal jurisdiction is allocated
+  under the Major Crimes Act (18 U.S.C. § 1153, exclusive federal jurisdiction over
+  enumerated felonies by Indians), the General Crimes Act (18 U.S.C. § 1152), and
+  inherent tribal jurisdiction. Civil regulatory and adjudicatory jurisdiction is
+  governed by the Montana v. United States (450 U.S. 544) framework.'
+level_4_primary_authority:
+- citation: 18 U.S.C. § 1151
+  source_type: STATUTE
+  official_portal_url: https://uscode.house.gov/view.xhtml?req=granuleid:USC-prelim-title18-section1151&num=0&edition=prelim
+  key_holding_or_text: Except as otherwise provided... the term 'Indian country'...
+    means (a) all land within the limits of any Indian reservation under the jurisdiction
+    of the United States Government... (b) all dependent Indian communities... and
+    (c) all Indian allotments.
+  jurisdiction: US
+  is_binding: true
+  verification_status: VERIFIED
+- citation: McGirt v. Oklahoma, 591 U.S. 894 (2020)
+  source_type: CASELAW
+  official_portal_url: https://supreme.justia.com/cases/federal/us/591/894/
+  key_holding_or_text: Only Congress can divest a reservation of its land and diminish
+    its boundaries. Once a reservation is established, it remains Indian country until
+    Congress explicitly says otherwise.
+  jurisdiction: US
+  is_binding: true
+  verification_status: VERIFIED
+- citation: Montana v. United States, 450 U.S. 544 (1981)
+  source_type: CASELAW
+  official_portal_url: https://supreme.justia.com/cases/federal/us/450/544/
+  key_holding_or_text: The inherent sovereign powers of an Indian tribe do not extend
+    to the activities of nonmembers of the tribe, except where nonmembers enter consensual
+    relationships with the tribe or its members, or where conduct threatens the political
+    integrity, economic security, or health or welfare of the tribe.
+  jurisdiction: US
+  is_binding: true
+  verification_status: VERIFIED
+level_5_advanced_analysis: 'Domestic U.S. law vs. International Norms:
+
+  - Domestic Law: Under Oliphant v. Suquamish Indian Tribe (435 U.S. 191), the Supreme
+  Court ruled that tribes lost inherent criminal jurisdiction over non-Indians. Congress
+  has partially restored jurisdiction over non-Indian domestic abusers via the Violence
+  Against Women Act (VAWA, 25 U.S.C. § 1304), but broad criminal jurisdiction over
+  non-Indians remains federally restricted.
+
+  - UNDRIP (International Norm — non-binding in U.S. domestic proceedings): Article
+  34 affirms that Indigenous peoples have the right to promote, develop and maintain
+  their institutional structures and their distinctive juridical customs and legal
+  systems.
+
+  - Alignment & Divergence: U.S. law acknowledges full civil and criminal authority
+  over tribal members, but divides jurisdiction based on the race/political status
+  of the parties, creating jurisdictional gaps that diverge from international territorial
+  models.
+
+  - Competing Positions: State prosecutors argue that state jurisdiction over non-Indians
+  is necessary for public safety. Tribal governments contend that full territorial
+  jurisdiction over all persons within reservation borders is essential to eliminate
+  law enforcement voids.'
+drill_downs:
+  SHOW_SOURCE:
+    title: Statutory Definition of Indian Country
+    content: 18 U.S.C. § 1151 establishes the comprehensive three-part definition
+      of Indian Country for federal and tribal jurisdiction.
+    citations:
+    - 18 U.S.C. § 1151
+    official_sources:
+    - https://uscode.house.gov/
+  SHOW_STATUTE:
+    title: Major Crimes Act Authority
+    content: 18 U.S.C. § 1153 confers federal jurisdiction over felony offenses committed
+      by Indians in Indian Country.
+    citations:
+    - 18 U.S.C. § 1153
+    official_sources:
+    - https://uscode.house.gov/
+  SHOW_CASE:
+    title: 'Controlling Precedent: McGirt v. Oklahoma, 591 U.S. 894 (2020)'
+    content: Reaffirms that statutory reservation boundaries persist regardless of
+      state historical practice absent explicit congressional disestablishment.
+    citations:
+    - McGirt v. Oklahoma, 591 U.S. 894 (2020)
+    official_sources:
+    - https://supreme.justia.com/cases/federal/us/591/894/
+  EXPLAIN_OPPOSING:
+    title: State Concurrent Jurisdiction Claim
+    content: In Oklahoma v. Castro-Huerta (2022), the Supreme Court held that states
+      have concurrent jurisdiction over crimes committed by non-Indians against Indians
+      in Indian Country.
+    citations:
+    - Oklahoma v. Castro-Huerta, 597 U.S. 629 (2022)
+    official_sources:
+    - https://supreme.justia.com/cases/federal/us/597/629/
+  SHOW_TEMPORAL_CHANGE:
+    title: VAWA Reauthorizations Restoring Tribal Criminal Authority
+    content: Congress enacted special tribal criminal jurisdiction in the 2013 and
+      2022 reauthorizations of the Violence Against Women Act (25 U.S.C. § 1304).
+    citations:
+    - 25 U.S.C. § 1304
+    official_sources:
+    - https://uscode.house.gov/
+related_concepts:
+- tribal_sovereignty
+- treaty_rights
+- tribal_court_jurisdiction_icwa

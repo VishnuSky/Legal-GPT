@@ -1,0 +1,18 @@
+total_federally_recognized: 574 tribal entities (as of 88 Fed. Reg. 2112, Jan 12,
+  2023)
+official_list_url: https://www.federalregister.gov/documents/2023/01/12/2023-00504/indian-entities-recognized-by-and-eligible-to-receive-services-from-the-united-states-bureau-of
+bia_url: https://www.bia.gov/service/tribal-leaders-directory
+recognition_types:
+- type: federally_recognized
+  definition: Tribal nations possessing a formal government-to-government relationship
+    with the United States, eligible for federal programs and sovereign immunity.
+- type: state_recognized
+  definition: Tribes recognized under specific state statutory processes but not by
+    the BIA; do not possess federal sovereign status or federal Indian Country jurisdiction.
+- type: unrecognized
+  definition: Indigenous communities seeking federal recognition through 25 C.F.R.
+    Part 83 administrative petition or congressional legislation.
+verification_note: This directory links to official BIA and Federal Register sources.
+  Tribal membership and citizenship are determined by each tribe's own laws and constitutions,
+  not by Legal-GPT or the federal government.
+verification_status: VERIFIED

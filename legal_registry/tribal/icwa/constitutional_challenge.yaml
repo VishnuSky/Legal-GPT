@@ -1,0 +1,22 @@
+case_name: Haaland v. Brackeen
+citation: 599 U.S. 255 (2023)
+docket: No. 21-376
+decided: June 15, 2023
+court_composition: Opinion of the Court by Justice Barrett, joined by Roberts, Sotomayor,
+  Kagan, Gorsuch, Kavanaugh, and Jackson (7-2 on main issues; Gorsuch and Kavanaugh
+  concurring; Thomas and Alito dissenting)
+official_url: https://supreme.justia.com/cases/federal/us/599/255/
+core_holdings:
+- issue: Article I Plenary Power
+  holding: Congress acted within its broad Article I power over Indian affairs in
+    enacting ICWA, which encompasses child welfare proceedings affecting Indian children.
+- issue: Tenth Amendment Anti-Commandeering
+  holding: ICWA's requirements for state courts and agencies do not violate the Tenth
+    Amendment anti-commandeering doctrine because they apply to both private and state
+    actors under valid federal preemption.
+- issue: Equal Protection Classification
+  holding: The Supreme Court dismissed the Equal Protection claims regarding placement
+    preferences on standing grounds, leaving intact the foundational doctrine of Morton
+    v. Mancari, 417 U.S. 535 (1974), which classifies Indian status as political rather
+    than racial.
+verification_status: VERIFIED

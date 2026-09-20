@@ -1,0 +1,43 @@
+doctrine: limits_on_state_jurisdiction_in_indian_country
+description: State laws generally have no force within Indian Country unless Congress
+  has expressly consented to state jurisdiction or where state jurisdiction would
+  not infringe on the right of reservation Indians to make their own laws and be ruled
+  by them.
+primary_statutory_framework:
+- citation: Public Law 83-280 (18 U.S.C. § 1162; 28 U.S.C. § 1360)
+  title: Public Law 280 (Mandatory & Optional PL-280 States)
+  official_url: https://uscode.house.gov/view.xhtml?req=granuleid:USC-prelim-title18-section1162&num=0&edition=prelim
+  summary: Enacted in 1953, PL-280 granted six mandatory states (California, Minnesota,
+    Nebraska, Oregon, Wisconsin, and Alaska upon statehood) broad criminal and limited
+    civil adjudicatory jurisdiction over Indian Country, without tribal consent. The
+    Indian Civil Rights Act of 1968 subsequently amended PL-280 to require tribal
+    consent for any future assumptions of state jurisdiction.
+primary_authorities:
+- citation: Williams v. Lee, 358 U.S. 217 (1959)
+  holding: Absent governing Acts of Congress, the question has always been whether
+    the state action infringed on the right of reservation Indians to make their own
+    laws and be ruled by them.
+  official_url: https://supreme.justia.com/cases/federal/us/358/217/
+  significance: Formulated the definitive 'infringement test' barring state court
+    jurisdiction over on-reservation civil disputes
+- citation: McClanahan v. Arizona State Tax Commission, 411 U.S. 164 (1973)
+  holding: By imposing the tax in question on this reservation Indian, the State has
+    interfered with matters which the relevant treaty and statutes leave to the exclusive
+    jurisdiction of the Navajo Tribe and the Federal Government.
+  official_url: https://supreme.justia.com/cases/federal/us/411/164/
+  significance: Established federal preemption as the primary doctrinal basis for
+    excluding state jurisdiction and taxation in Indian Country
+- citation: Bryan v. Itasca County, 426 U.S. 373 (1976)
+  holding: Section 4 of Public Law 280 granted states civil adjudicatory jurisdiction
+    over private civil litigation in court, not general civil regulatory or taxing
+    authority over Indian tribes and reservations.
+  official_url: https://supreme.justia.com/cases/federal/us/426/373/
+  significance: Clarified that PL-280 did not grant states regulatory authority over
+    tribal lands or activities
+- citation: Oklahoma v. Castro-Huerta, 597 U.S. 629 (2022)
+  holding: The Federal Government and the State have concurrent jurisdiction to prosecute
+    crimes committed by non-Indians against Indians in Indian country.
+  official_url: https://supreme.justia.com/cases/federal/us/597/629/
+  significance: Narrowed exclusive federal jurisdiction and recognized concurrent
+    state jurisdiction over non-Indian offenders in Indian Country
+verification_status: VERIFIED

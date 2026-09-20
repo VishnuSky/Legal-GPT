@@ -1,0 +1,34 @@
+region: Pacific Northwest
+notes: Federally recognized tribal nations across Washington, Oregon, and Idaho with
+  direct relevance to Legal-GPT child welfare coverage.
+nations:
+- name: Tulalip Tribes of Washington
+  official_website: https://www.tulaliptribes-nsn.gov/
+  governing_treaty: Treaty of Point Elliott (1855), 12 Stat. 927
+  jurisdiction_notes: Possesses tribal court with comprehensive civil, juvenile dependency,
+    and criminal jurisdiction.
+  court_website: https://www.tulaliptribes-nsn.gov/Government/Departments/TribalCourt
+  icwa_contact_role: Tulalip Child and Family Services
+- name: Lummi Nation (Lummi Tribe of the Lummi Reservation)
+  official_website: https://www.lummi-nsn.gov/
+  governing_treaty: Treaty of Point Elliott (1855), 12 Stat. 927
+  jurisdiction_notes: Operates Lummi Tribal Court; extensive fisheries management
+    and child welfare programs.
+  court_website: https://www.lummi-nsn.gov/Website.php?PageID=67
+- name: Puyallup Tribe of the Puyallup Reservation
+  official_website: https://www.puyalluptribe-nsn.gov/
+  governing_treaty: Treaty of Medicine Creek (1854), 10 Stat. 1132
+  jurisdiction_notes: Puyallup Land Claims Settlement Act of 1989 (25 U.S.C. § 1773);
+    active tribal court.
+  court_website: https://www.puyalluptribe-nsn.gov/court/
+- name: Suquamish Indian Tribe of the Port Madison Reservation
+  official_website: https://suquamish.nsn.us/
+  governing_treaty: Treaty of Point Elliott (1855), 12 Stat. 927
+  jurisdiction_notes: Tribal court exercising civil, juvenile, and criminal jurisdiction;
+    Oliphant v. Suquamish Indian Tribe, 435 U.S. 191 (1978).
+- name: Confederated Tribes and Bands of the Yakama Nation
+  official_website: http://www.yakamanation-nsn.gov/
+  governing_treaty: Treaty with the Yakama (1855), 12 Stat. 951
+  jurisdiction_notes: Extensive reservation land base; retroceded PL-280 state jurisdiction
+    in Washington.
+verification_status: VERIFIED

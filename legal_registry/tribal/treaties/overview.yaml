@@ -1,0 +1,27 @@
+legal_basis:
+- 'U.S. Const. art. VI, cl. 2 (Supremacy Clause: all Treaties made shall be the supreme
+  Law of the Land)'
+- 'Treaty status: 25 U.S.C. § 71 (1871 Act ending future treaty-making, explicitly
+  providing that existing treaties remain in full legal force)'
+total_ratified_treaties: approximately 374 ratified treaties (1778 to 1868)
+official_source: https://www.loc.gov/collections/native-american-constitutions-and-legal-materials/
+treaties_database: https://uscode.house.gov/treaties/
+key_principle: Treaties are contracts between sovereign nations. Under the Indian
+  canons of construction, treaties must be interpreted as the Indians would have understood
+  them, ambiguities must be resolved in favor of the Indian signatory, and Congress's
+  intent to abrogate a treaty right must be clear, express, and specific.
+canon_of_construction_authority:
+- citation: Minnesota v. Mille Lacs Band of Chippewa Indians, 526 U.S. 172 (1999)
+  holding: Treaty rights are not extinguished by statehood; treaty language must be
+    interpreted as the Indians understood it.
+  official_url: https://supreme.justia.com/cases/federal/us/526/172/
+- citation: Montana v. Blackfeet Tribe of Indians, 471 U.S. 759 (1985)
+  holding: Statutes and treaties passed for the benefit of dependent Indian tribes
+    are to be liberally construed, resolving ambiguities in favor of the Indians.
+  official_url: https://supreme.justia.com/cases/federal/us/471/759/
+- citation: Jones v. Meehan, 175 U.S. 1 (1899)
+  holding: A treaty between the United States and an Indian tribe must be construed
+    not according to the technical meaning of its words to learned lawyers, but in
+    the sense in which they would naturally be understood by the Indians.
+  official_url: https://supreme.justia.com/cases/federal/us/175/1/
+verification_status: VERIFIED

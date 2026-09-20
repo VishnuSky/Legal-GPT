@@ -1,0 +1,121 @@
+id: treaty_rights
+canonical_name: Indian Treaty Rights and the Supremacy Clause
+aliases:
+- treaty rights
+- indian treaties
+- canons of construction
+- supremacy clause treaties
+- boldt decision
+jurisdiction: FED
+retrieved_date: '2026-09-19'
+level_1_plain_english: Treaties between Indian tribes and the United States are formal
+  international contracts between sovereign nations. Under the U.S. Constitution,
+  treaties are the 'supreme Law of the Land'. When tribes signed treaties ceding land,
+  they did not receive rights from the United States; instead, they reserved and kept
+  their own preexisting rights to hunt, fish, gather, and govern themselves.
+level_2_practical: If your tribe holds treaty rights (such as fishing rights in the
+  Pacific Northwest or hunting rights in the Great Plains), those rights protect you
+  from state licensing requirements, season limits, or state interference in traditional
+  areas. State game wardens or agencies cannot override valid federal treaty guarantees.
+level_3_terminology: 'Under the Supremacy Clause (U.S. Const. art. VI, cl. 2), treaties
+  occupy the highest tier of domestic legal authority. The reserved rights doctrine
+  (United States v. Winans, 198 U.S. 371) establishes that treaties are not a grant
+  of rights to the Indians, but a grant of rights from them, with a reservation of
+  those not granted. Treaty interpretation is governed by the Indian canons of construction:
+  treaties must be construed as the Indians understood them, with ambiguities resolved
+  in favor of the tribe (Minnesota v. Mille Lacs Band, 526 U.S. 172).'
+level_4_primary_authority:
+- citation: U.S. Const. art. VI, cl. 2
+  source_type: CONSTITUTION
+  official_portal_url: https://www.govinfo.gov/content/pkg/GPO-CONAN-2017/pdf/GPO-CONAN-2017.pdf
+  key_holding_or_text: This Constitution, and the Laws of the United States... and
+    all Treaties made, or which shall be made, under the Authority of the United States,
+    shall be the supreme Law of the Land; and the Judges in every State shall be bound
+    thereby.
+  jurisdiction: US
+  is_binding: true
+  verification_status: VERIFIED
+- citation: Minnesota v. Mille Lacs Band of Chippewa Indians, 526 U.S. 172 (1999)
+  source_type: CASELAW
+  official_portal_url: https://supreme.justia.com/cases/federal/us/526/172/
+  key_holding_or_text: Congress may abrogate Indian treaty rights, but it must clearly
+    express its intent to do so... Treaty rights are not impliedly extinguished upon
+    state admission into the Union.
+  jurisdiction: US
+  is_binding: true
+  verification_status: VERIFIED
+- citation: United States v. Winans, 198 U.S. 371 (1905)
+  source_type: CASELAW
+  official_portal_url: https://supreme.justia.com/cases/federal/us/198/371/
+  key_holding_or_text: The treaty was not a grant of rights to the Indians, but a
+    grant of rights from them — a reservation of those not granted.
+  jurisdiction: US
+  is_binding: true
+  verification_status: VERIFIED
+level_5_advanced_analysis: 'Domestic U.S. law vs. International Norms:
+
+  - Domestic Law: Under the ''last-in-time'' rule and the plenary power doctrine (Lone
+  Wolf v. Hitchcock), Congress possesses the domestic legal authority to abrogate
+  Indian treaties via subsequent statute, provided congressional intent is clear.
+
+  - UNDRIP (International Norm — non-binding in U.S. domestic proceedings): Article
+  37 affirms that Indigenous peoples have the right to the recognition, observance,
+  and enforcement of treaties concluded with States, and that States shall honor and
+  respect such treaties without unilateral abrogation.
+
+  - Alignment & Divergence: U.S. law strictly enforces treaty rights against state
+  governments, but diverges from international norms by allowing the federal legislature
+  to unilaterally extinguish treaty obligations without tribal consent or bilateral
+  negotiation.
+
+  - Competing Positions: The Federal Government asserts that plenary power over treaties
+  is an essential incident of national sovereignty. Tribal nations argue that treaties
+  are permanent international pacts whose unilateral abrogation violates fundamental
+  principles of international law and the federal trust duty.'
+drill_downs:
+  SHOW_SOURCE:
+    title: Constitutional Supremacy of Treaties
+    content: U.S. Constitution, Article VI, Clause 2 mandates that all treaties are
+      the supreme law of the land.
+    citations:
+    - U.S. Const. art. VI, cl. 2
+    official_sources:
+    - https://www.govinfo.gov
+  SHOW_STATUTE:
+    title: Continuation of Existing Treaties
+    content: 25 U.S.C. § 71 ended future treaty-making in 1871 while expressly preserving
+      the validity and force of all preexisting treaties.
+    citations:
+    - 25 U.S.C. § 71
+    official_sources:
+    - https://uscode.house.gov/
+  SHOW_CASE:
+    title: 'Controlling Precedent: Minnesota v. Mille Lacs Band, 526 U.S. 172 (1999)'
+    content: Affirming that treaty rights survive statehood and require explicit,
+      clear congressional abrogation.
+    citations:
+    - Minnesota v. Mille Lacs Band of Chippewa Indians, 526 U.S. 172 (1999)
+    official_sources:
+    - https://supreme.justia.com/cases/federal/us/526/172/
+  EXPLAIN_OPPOSING:
+    title: State Equal Footing Doctrine Arguments
+    content: States historically argued that the equal footing doctrine terminated
+      off-reservation treaty rights upon statehood, an argument rejected in Mille
+      Lacs Band.
+    citations:
+    - Minnesota v. Mille Lacs Band of Chippewa Indians, 526 U.S. 172 (1999)
+    official_sources:
+    - https://supreme.justia.com/cases/federal/us/526/172/
+  SHOW_TEMPORAL_CHANGE:
+    title: Judicial Enforcement of Usufructuary Rights
+    content: From the Boldt Decision (1974) to Mille Lacs Band (1999) and Herrera
+      v. Wyoming (2019), federal courts have consistently reaffirmed hunting and fishing
+      treaty covenants.
+    citations:
+    - Herrera v. Wyoming, 139 S. Ct. 1686 (2019)
+    official_sources:
+    - https://supreme.justia.com/cases/federal/us/587/17-532/
+related_concepts:
+- tribal_sovereignty
+- indian_country_jurisdiction
+- land_rights_and_trust_responsibility

@@ -1,0 +1,23 @@
+statute: Indian Child Welfare Act of 1978 (ICWA)
+citation: 25 U.S.C. §§ 1901-1963
+historical_context:
+  pre_icwa_separation_rates: Congressional oversight hearings documented that 25%
+    to 35% of all American Indian and Alaska Native children were being removed from
+    their families by state child welfare agencies and private adoption entities.
+    Approximately 85% of removed Native children were placed in non-Native foster
+    and adoptive homes.
+  congressional_findings:
+  - citation: 25 U.S.C. § 1901(4)
+    text: Congress found that an alarmingly high percentage of Indian families are
+      broken up by the removal, often unwarranted, of their children from them by
+      nontribal public and private agencies and that an alarmingly high percentage
+      of such children are placed in non-Indian foster and adoptive homes and institutions.
+  - citation: 25 U.S.C. § 1901(3)
+    text: There is no resource that is more vital to the continued existence and integrity
+      of Indian tribes than their children.
+  legislative_record:
+    source_report: Senate Report No. 95-597 (1977); House Report No. 95-1386 (1978)
+    key_finding: State welfare workers and state court judges frequently failed to
+      recognize the cultural norms of extended family child-rearing in tribal communities,
+      conflating socio-economic poverty with legal neglect.
+verification_status: VERIFIED

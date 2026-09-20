@@ -1,0 +1,17 @@
+region: Great Lakes
+nations:
+- name: Mille Lacs Band of Ojibwe
+  official_website: https://millelacsband.com/
+  governing_treaty: Treaty of 1837, 7 Stat. 536
+  jurisdiction_notes: Affirmed usufructuary hunting and fishing rights in Minnesota
+    v. Mille Lacs Band, 526 U.S. 172 (1999); active tribal court.
+  court_website: https://millelacsband.com/government/judicial-branch
+- name: Menominee Indian Tribe of Wisconsin
+  official_website: https://www.menominee-nsn.gov/
+  jurisdiction_notes: Subject of federal termination in 1954; restored by Menominee
+    Restoration Act of 1973 (87 Stat. 770); operates Supreme Court and Lower Court.
+  court_website: https://www.menominee-nsn.gov/GovernmentPages/TribalCourts.aspx
+- name: Oneida Nation of Wisconsin
+  official_website: https://oneida-nsn.gov/
+  jurisdiction_notes: Oneida Judiciary operating trial and appellate courts.
+verification_status: VERIFIED

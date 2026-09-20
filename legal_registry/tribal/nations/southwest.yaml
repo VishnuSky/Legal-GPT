@@ -1,0 +1,22 @@
+region: Southwest
+nations:
+- name: Navajo Nation (Diné)
+  official_website: https://www.navajo-nsn.gov/
+  governing_treaty: Navajo Treaty of 1868, 15 Stat. 667
+  jurisdiction_notes: Largest reservation land base in U.S. (spanning AZ, NM, UT);
+    extensive judicial branch incorporating Diné Fundamental Law.
+  court_website: https://courts.navajo-nsn.gov/
+- name: Hopi Tribe of Arizona
+  official_website: https://www.hopi-nsn.gov/
+  jurisdiction_notes: Tribal court system in Keams Canyon, AZ; jurisdiction over ancestral
+    Hopi reservation lands.
+  court_website: https://www.hopi-nsn.gov/tribal-services/tribal-court/
+- name: Pueblo of Zuni
+  official_website: https://www.ashiwi.org/
+  governing_treaty: Treaty of Guadalupe Hidalgo (1848); Pueblo federal protections
+  jurisdiction_notes: Operates Zuni Tribal Court; rich customary legal framework.
+- name: San Carlos Apache Tribe
+  official_website: https://www.sancarlosapache.com/
+  jurisdiction_notes: Tribal court in San Carlos, AZ; natural resource and child welfare
+    jurisdiction.
+verification_status: VERIFIED
