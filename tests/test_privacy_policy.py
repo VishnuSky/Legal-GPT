@@ -5,6 +5,7 @@ from pathlib import Path
 from scripts.privacy_audit import audit_repository
 from scripts.privacy_audit import WINDOWS_PRIVATE_DRIVE_PATTERN as PRIVACY_WINDOWS_PRIVATE_DRIVE_PATTERN
 from scripts.deep_security_audit import WINDOWS_PRIVATE_DRIVE_PATTERN as DEEP_WINDOWS_PRIVATE_DRIVE_PATTERN
+from scripts.deep_security_audit import _is_documented_media_mount_pattern_reference
 from scripts.deep_security_audit import _is_local_file_uri_reference
 
 
@@ -83,3 +84,17 @@ def test_local_file_uri_reference_detection():
 
     for sample in negative_samples:
         assert _is_local_file_uri_reference(sample) is False
+
+
+def test_documented_media_mount_pattern_reference_detection():
+    media_mount = "/" + "media/ixtly"
+    positive_sample = f"+- Documented `{media_mount}` pattern with `# scan pattern, not a live mount`."
+    negative_samples = [
+        media_mount,
+        "Documented private Linux media-mount scan pattern with no literal path",
+    ]
+
+    assert _is_documented_media_mount_pattern_reference(positive_sample) is True
+
+    for sample in negative_samples:
+        assert _is_documented_media_mount_pattern_reference(sample) is False
