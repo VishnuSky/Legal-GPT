@@ -41,7 +41,7 @@ Legal-GPT enforces strict architectural separation between neural generation and
                                          │  Bi-directional Verification
                                          ▼
 ┌──────────────────────────────────────────────────────────────────────────────────┐
-│                    ZERO-HALLUCINATION VERIFICATION FIREWALL                      │
+│                              VERIFICATION FIREWALL                               │
 │  • Citation extraction & regex validation     • Point-in-time temporal diffs     │
 │  • Cross-jurisdiction contamination guard    • Authority tier ranking (T0-T13)   │
 └────────────────────────────────────────┬─────────────────────────────────────────┘

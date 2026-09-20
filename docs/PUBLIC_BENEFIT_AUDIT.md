@@ -8,7 +8,7 @@
 
 ## Executive Summary: The Public Infrastructure Thesis
 
-Legal-GPT was conceived not merely as a conversational AI or legal chatbot, but as an **open-weight, zero-hallucination public legal intelligence infrastructure**. 
+Legal-GPT was conceived not merely as a conversational AI or legal chatbot, but as an **open-weight, verification-gated public legal intelligence infrastructure**. 
 
 For an ordinary person—a parent whose child has been removed by child protective services, a tenant served with a notice to vacate, a consumer facing abusive debt collection, or a self-represented litigant navigating state court procedure—the legal system presents an asymmetric wall of complexity, procedural traps, confusing jargon, strict unyielding deadlines, and severe power imbalances. Most individuals cannot afford private legal representation, and legal aid programs are forced to turn away over 70% of eligible applicants due to catastrophic resource constraints.
 
