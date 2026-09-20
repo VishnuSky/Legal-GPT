@@ -13,13 +13,13 @@
 ### File URI Replacements
 - **Exact Count of `file://` URI Replacements Made:** **24**
 - **Files Where Replacements Were Found:**
-  - `ALPHA_LITERACY_V1_REPORT.md` (24 occurrences of `file:///c:/Users/rolda/Documents/Legal%20GPT/...` scrubbed and converted to repo-relative paths)
+  - `ALPHA_LITERACY_V1_REPORT.md` (24 occurrences of local Windows file URIs scrubbed and converted to repo-relative paths)
 - **Repo-Wide Scan Verification:** Zero occurrences of `file:///` or local Windows profile paths remain across all documentation and source files.
 
 ### Automated Scanner Upgrade (`scripts/privacy_audit.py`)
 - **Confirmation of Detection:** `scripts/privacy_audit.py` now includes pattern `r"file:///[A-Za-z]:/[Uu]sers/[A-Za-z0-9_.\-]+"` alongside `C:\Users\`.
 - Verified that any future file URI leakage matching local user home directories will be blocked at the CI gate.
-- Documented `/media/ixtly` pattern with `# scan pattern, not a live mount`.
+- Documented private Linux media-mount scan pattern with `# scan pattern, not a live mount`.
 
 ---
 
