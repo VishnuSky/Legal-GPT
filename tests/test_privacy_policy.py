@@ -95,6 +95,7 @@ def test_documented_media_mount_pattern_reference_detection():
     negative_samples = [
         media_mount,
         "Documented private Linux media-mount scan pattern with no literal path",
+        f"Real live mount at {media_mount}",
     ]
 
     for sample in positive_samples:
