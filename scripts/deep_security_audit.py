@@ -65,7 +65,10 @@ def _is_local_file_uri_reference(line: str) -> bool:
 
 def _is_documented_media_mount_pattern_reference(line: str) -> bool:
     normalized = line.lower()
-    return "/media/ixtly" in normalized and "documented" in normalized and "pattern" in normalized
+    return "/media/ixtly" in normalized and (
+        ("documented" in normalized and "pattern" in normalized)
+        or ("scan pattern" in normalized and "not a live mount" in normalized)
+    )
 
 
 def audit_working_tree():

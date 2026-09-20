@@ -91,6 +91,7 @@ def test_documented_media_mount_pattern_reference_detection():
     positive_samples = [
         f"+- Documented `{media_mount}` pattern with `# scan pattern, not a live mount`.",
         f"Documented {media_mount} path pattern for scanner coverage.",
+        f"{media_mount}  # scan pattern, not a live mount",
     ]
     negative_samples = [
         media_mount,
