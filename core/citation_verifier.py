@@ -28,6 +28,10 @@ class CitationVerifier:
     STATE_CONST_PATTERN = re.compile(r"\b(Wash\.|WA|Ill\.|IL|Cal\.|CA|Tex\.|TX)\s*Const\.\s*(?:art\.|article)?\s*([IVXLCDM\d]+)?(?:\s*,\s*§\s*(\d+))?", re.IGNORECASE)
     COURT_RULES_PATTERN = re.compile(r"\b(?:(WA\s+)?(JuCR|RAP|CR)|(Ill\.\s+S\.\s*Ct\.\s*R\.|IL\s+Rule))\s*(\d+(?:\.\d+)?(?:\([a-zA-Z0-9]+\))*)?", re.IGNORECASE)
     CASE_PATTERN = re.compile(r"([A-Z][a-zA-Z\.\s\',]+(?:\s+v\.\s+|\s+in\s+re\s+)[A-Z][a-zA-Z\.\s\',]+),\s*(\d+)\s+([A-Za-z\.\d\s]+?)\s+(\d+)(?:\s*\(([A-Za-z0-9\.\s]+)?(\d{4})\))?", re.IGNORECASE)
+    NNC_PATTERN = re.compile(r"\b(\d+)\s+N\.N\.C\.\s*§?\s*(\d+[a-z]*(?:\.[a-z0-9]+)*)\b", re.IGNORECASE)
+    PTC_PATTERN = re.compile(r"\bPTC\s+(\d+(?:\.\d+)*)\b", re.IGNORECASE)
+    CNCA_PATTERN = re.compile(r"\b(\d+)\s+C\.N\.C\.A\.\s*§?\s*(\d+[a-z]*(?:\.[a-z0-9]+)*)\b", re.IGNORECASE)
+    STAT_PATTERN = re.compile(r"\b(\d+)\s+Stat\.\s*(\d+)\b", re.IGNORECASE)
 
     # Known statutory titles/chapters in CPS & Family law
     VALID_RCW_TITLES = {"13", "26", "74", "10", "4", "2", "9", "9A"}
@@ -149,6 +153,104 @@ class CitationVerifier:
             "publisher": "Supreme Court of the United States",
             "jurisdiction": "US",
             "url": "https://www.supremecourt.gov/"
+        },
+        "worcester v. georgia": {
+            "citation": "Worcester v. Georgia, 31 U.S. 515 (1832)",
+            "tier": "TIER_1",
+            "publisher": "Supreme Court of the United States",
+            "jurisdiction": "US",
+            "url": "https://supreme.justia.com/cases/federal/us/31/515/"
+        },
+        "cherokee nation v. georgia": {
+            "citation": "Cherokee Nation v. Georgia, 30 U.S. 1 (1831)",
+            "tier": "TIER_1",
+            "publisher": "Supreme Court of the United States",
+            "jurisdiction": "US",
+            "url": "https://supreme.justia.com/cases/federal/us/30/1/"
+        },
+        "johnson v. m'intosh": {
+            "citation": "Johnson v. M'Intosh, 21 U.S. 543 (1823)",
+            "tier": "TIER_1",
+            "publisher": "Supreme Court of the United States",
+            "jurisdiction": "US",
+            "url": "https://supreme.justia.com/cases/federal/us/21/543/"
+        },
+        "united states v. washington": {
+            "citation": "United States v. Washington, 384 F. Supp. 312 (W.D. Wash. 1974)",
+            "tier": "TIER_2",
+            "publisher": "U.S. District Court for the Western District of Washington",
+            "jurisdiction": "US-FED",
+            "url": "https://law.justia.com/cases/federal/district-courts/FSupp/384/312/1370845/"
+        },
+        "mcgirt v. oklahoma": {
+            "citation": "McGirt v. Oklahoma, 591 U.S. 894 (2020)",
+            "tier": "TIER_1",
+            "publisher": "Supreme Court of the United States",
+            "jurisdiction": "US",
+            "url": "https://www.supremecourt.gov/"
+        },
+        "oklahoma v. castro-huerta": {
+            "citation": "Oklahoma v. Castro-Huerta, 597 U.S. 629 (2022)",
+            "tier": "TIER_1",
+            "publisher": "Supreme Court of the United States",
+            "jurisdiction": "US",
+            "url": "https://www.supremecourt.gov/"
+        },
+        "united states v. sioux nation of indians": {
+            "citation": "United States v. Sioux Nation of Indians, 448 U.S. 371 (1980)",
+            "tier": "TIER_1",
+            "publisher": "Supreme Court of the United States",
+            "jurisdiction": "US",
+            "url": "https://supreme.justia.com/cases/federal/us/448/371/"
+        },
+        "mississippi band of choctaw indians v. holyfield": {
+            "citation": "Mississippi Band of Choctaw Indians v. Holyfield, 490 U.S. 30 (1989)",
+            "tier": "TIER_1",
+            "publisher": "Supreme Court of the United States",
+            "jurisdiction": "US",
+            "url": "https://supreme.justia.com/cases/federal/us/490/30/"
+        },
+        "morton v. mancari": {
+            "citation": "Morton v. Mancari, 417 U.S. 535 (1974)",
+            "tier": "TIER_1",
+            "publisher": "Supreme Court of the United States",
+            "jurisdiction": "US",
+            "url": "https://supreme.justia.com/cases/federal/us/417/535/"
+        },
+        "williams v. lee": {
+            "citation": "Williams v. Lee, 358 U.S. 217 (1959)",
+            "tier": "TIER_1",
+            "publisher": "Supreme Court of the United States",
+            "jurisdiction": "US",
+            "url": "https://supreme.justia.com/cases/federal/us/358/217/"
+        },
+        "bryan v. itasca county": {
+            "citation": "Bryan v. Itasca County, 426 U.S. 373 (1976)",
+            "tier": "TIER_1",
+            "publisher": "Supreme Court of the United States",
+            "jurisdiction": "US",
+            "url": "https://supreme.justia.com/cases/federal/us/426/373/"
+        },
+        "lone wolf v. hitchcock": {
+            "citation": "Lone Wolf v. Hitchcock, 187 U.S. 553 (1903)",
+            "tier": "TIER_1",
+            "publisher": "Supreme Court of the United States",
+            "jurisdiction": "US",
+            "url": "https://supreme.justia.com/cases/federal/us/187/553/"
+        },
+        "united states v. kagama": {
+            "citation": "United States v. Kagama, 118 U.S. 375 (1886)",
+            "tier": "TIER_1",
+            "publisher": "Supreme Court of the United States",
+            "jurisdiction": "US",
+            "url": "https://supreme.justia.com/cases/federal/us/118/375/"
+        },
+        "winters v. united states": {
+            "citation": "Winters v. United States, 207 U.S. 564 (1908)",
+            "tier": "TIER_1",
+            "publisher": "Supreme Court of the United States",
+            "jurisdiction": "US",
+            "url": "https://supreme.justia.com/cases/federal/us/207/564/"
         }
     }
 
@@ -169,6 +271,14 @@ class CitationVerifier:
             citations.append(f"{m[0]} U.S.C. § {m[1]}")
         for m in cls.CFR_PATTERN.findall(text):
             citations.append(f"{m[0]} C.F.R. § {m[1]}")
+        for m in cls.NNC_PATTERN.findall(text):
+            citations.append(f"{m[0]} N.N.C. § {m[1]}")
+        for m in cls.PTC_PATTERN.findall(text):
+            citations.append(f"PTC {m}")
+        for m in cls.CNCA_PATTERN.findall(text):
+            citations.append(f"{m[0]} C.N.C.A. § {m[1]}")
+        for m in cls.STAT_PATTERN.findall(text):
+            citations.append(f"{m[0]} Stat. {m[1]}")
         return list(dict.fromkeys(citations))  # deduplicate preserving order
 
     @classmethod
@@ -423,6 +533,119 @@ class CitationVerifier:
                     publisher_name="Official Court Reporter",
                     jurisdiction="US" if tier == "TIER_1" else "US-FED",
                     source_url="https://www.supremecourt.gov/" if tier == "TIER_1" else None,
+                )
+
+        # 8. Sovereign Tribal Codes
+        if "N.N.C." in upper_cite or "NNC" in upper_cite:
+            match_nnc = cls.NNC_PATTERN.search(cite)
+            if match_nnc:
+                title, sec = match_nnc.group(1), match_nnc.group(2)
+                norm_cite = f"{title} N.N.C. § {sec}"
+                if title in ("9", "1", "2"):
+                    return CitationVerificationRecord(
+                        raw_citation=raw_citation,
+                        normalized_citation=norm_cite,
+                        verified=True,
+                        authority_tier="TIER_0",
+                        publisher_name="Navajo Nation Council & Office of Legislative Services",
+                        jurisdiction="TRIBAL-NAVAJO",
+                        source_url="https://www.nnols.org/navajo-nation-code/",
+                    )
+                return CitationVerificationRecord(
+                    raw_citation=raw_citation,
+                    normalized_citation=norm_cite,
+                    verified=False,
+                    authority_tier="TIER_5",
+                    publisher_name="UNVERIFIED",
+                    jurisdiction="TRIBAL-NAVAJO",
+                    rejection_reason=f"Title '{title}' not found in official Navajo Nation Code children/government titles. Missing from official tribal law registry."
+                )
+
+        if "PTC" in upper_cite:
+            match_ptc = cls.PTC_PATTERN.search(cite)
+            if match_ptc:
+                sec = match_ptc.group(1)
+                norm_cite = f"PTC {sec}"
+                if sec.startswith("7."):
+                    return CitationVerificationRecord(
+                        raw_citation=raw_citation,
+                        normalized_citation=norm_cite,
+                        verified=True,
+                        authority_tier="TIER_0",
+                        publisher_name="Puyallup Tribal Council",
+                        jurisdiction="TRIBAL-PUYALLUP",
+                        source_url="https://www.codepublishing.com/WA/PuyallupTribe/",
+                    )
+                return CitationVerificationRecord(
+                    raw_citation=raw_citation,
+                    normalized_citation=norm_cite,
+                    verified=False,
+                    authority_tier="TIER_5",
+                    publisher_name="UNVERIFIED",
+                    jurisdiction="TRIBAL-PUYALLUP",
+                    rejection_reason=f"Section '{sec}' not found in official Puyallup Children's Code. Missing from official tribal law registry."
+                )
+
+        if "C.N.C.A." in upper_cite or "CNCA" in upper_cite:
+            match_cnca = cls.CNCA_PATTERN.search(cite)
+            if match_cnca:
+                title, sec = match_cnca.group(1), match_cnca.group(2)
+                norm_cite = f"{title} C.N.C.A. § {sec}"
+                if title in ("10", "12"):
+                    return CitationVerificationRecord(
+                        raw_citation=raw_citation,
+                        normalized_citation=norm_cite,
+                        verified=True,
+                        authority_tier="TIER_0",
+                        publisher_name="Cherokee Nation Tribal Council",
+                        jurisdiction="TRIBAL-CHEROKEE",
+                        source_url="https://attorneygeneral.cherokee.org/laws-and-code/",
+                    )
+                return CitationVerificationRecord(
+                    raw_citation=raw_citation,
+                    normalized_citation=norm_cite,
+                    verified=False,
+                    authority_tier="TIER_5",
+                    publisher_name="UNVERIFIED",
+                    jurisdiction="TRIBAL-CHEROKEE",
+                    rejection_reason=f"Title '{title}' not found in official Cherokee Children's Code. Missing from official tribal law registry."
+                )
+
+        # 9. Ratified Treaties & Historical Statutes at Large
+        if "STAT." in upper_cite or "STAT " in upper_cite:
+            match_stat = cls.STAT_PATTERN.search(cite)
+            if match_stat:
+                vol, page = match_stat.group(1), match_stat.group(2)
+                norm_cite = f"{vol} Stat. {page}"
+                verified_treaties = {
+                    "10 Stat. 1132": "Treaty of Medicine Creek (1854)",
+                    "12 Stat. 927": "Treaty of Point Elliott (1855)",
+                    "11 Stat. 749": "Treaty of Fort Laramie (1851)",
+                    "15 Stat. 635": "Treaty of Fort Laramie (1868)",
+                    "7 Stat. 478": "Treaty of New Echota (1835)",
+                    "4 Stat. 411": "Indian Removal Act (1830)",
+                    "9 Stat. 922": "Treaty of Guadalupe Hidalgo (1848)",
+                    "15 Stat. 667": "Navajo Treaty of 1868",
+                    "3 Stat. 516": "Indian Civilization Act of 1819"
+                }
+                if norm_cite in verified_treaties:
+                    return CitationVerificationRecord(
+                        raw_citation=raw_citation,
+                        normalized_citation=norm_cite,
+                        verified=True,
+                        authority_tier="TIER_0",
+                        publisher_name=f"United States Statutes at Large [{verified_treaties[norm_cite]}]",
+                        jurisdiction="US-TREATY",
+                        source_url="https://www.loc.gov/collections/native-american-constitutions-and-legal-materials/",
+                    )
+                return CitationVerificationRecord(
+                    raw_citation=raw_citation,
+                    normalized_citation=norm_cite,
+                    verified=False,
+                    authority_tier="TIER_5",
+                    publisher_name="UNVERIFIED",
+                    jurisdiction="US-HISTORIC",
+                    rejection_reason=f"Statutes at Large citation '{norm_cite}' not registered in verified treaties or federal statutes."
                 )
 
         # Rejection for fabricated / unknown citations
