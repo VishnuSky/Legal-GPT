@@ -22,7 +22,7 @@ PATTERNS = {
         r"(?:^|[\s\"'\(])/home/[a-zA-Z0-9_\-\.]+(?:/[a-zA-Z0-9_\-\.]+)?",
         r"Users[\\/][a-zA-Z0-9_\-\.]+[\\/](?:Documents|Desktop|Downloads|AppData)",
         WINDOWS_PRIVATE_DRIVE_PATTERN,
-        r"/media/ixtly",
+        r"/media/ixtly",  # scan pattern, not a live mount
     ],
     "Private IP Addresses (Non-Localhost)": [
         r"\b192\.168\.\d{1,3}\.\d{1,3}\b",
