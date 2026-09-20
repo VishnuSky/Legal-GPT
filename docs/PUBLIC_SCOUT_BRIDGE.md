@@ -16,7 +16,7 @@ The **Legal-GPT Public Bridge** provides an authoritative, verification-gated st
 ┌─────────────────────────────────────────────────────────────┐
 │                   Legal-GPT Public Core                     │
 │  - Strict Jurisdiction Locking (50 States + Federal)        │
-│  - Anti-Hallucination Citation Verification (Tier 0 / 1)    │
+│  - Citation Verification (Tier 0 / 1)                       │
 │  - Point-in-Time Statutory Graph (LAW_AT_DATE)              │
 │  - Official Civil Services Registry (WA, IL, OH, Federal)   │
 │  - Explicit Abstention Protocol                             │
