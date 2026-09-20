@@ -49,7 +49,7 @@ The following categories are explicitly identified as missing or requiring human
 |---|---|---|---|---|---|
 | **xAI Grok** | `GrokProvider` (`core/orchestration/provider.py`) | HTTPS REST (`/chat/completions`) | `XAI_API_KEY` present & `LOCAL_ONLY=False` | Priority 1 for Concept & Case Analysis | `SafeHandoffContract.validate_model_output` |
 | **Local Fleet AI** | `LocalLLMProvider` (`core/orchestration/provider.py`) | HTTP REST (`http://localhost:1234/v1`) | Active local server (LM Studio, Ollama, vLLM) | Priority 1 for Statutory Lookup; Priority 2 for Grok failover | `SafeHandoffContract.validate_model_output` |
-| **Deterministic Fallback** | `FallbackDeterministicProvider` (`core/orchestration/provider.py`) | Zero-network in-memory rule engine | Always available (100% offline) | Final fallback in cascade | Enforces zero-hallucination abstention |
+| **Deterministic Fallback** | `FallbackDeterministicProvider` (`core/orchestration/provider.py`) | Zero-network in-memory rule engine | Always available (100% offline) | Final fallback in cascade | Enforces verification-gated abstention |
 
 ### Key Orchestration Controls
 - **Remote Provider Disablement**: Setting `LOCAL_ONLY=true` or `ALLOW_REMOTE_PROVIDERS=false` completely bypasses Grok and remote network calls.

@@ -29,6 +29,6 @@
   - Temporal accuracy: > 90%
   - Authority accuracy: > 93%
   - Hallucination rate: < 5%
-- [x] Zero-hallucination Final Review Agent gatekeeping responses.
+- [x] Verification-gated Final Review Agent gatekeeping responses.
 - [x] Automated test suite passing with 100% success rate.
 - [x] Privacy audit (`scripts/privacy_audit.py`) and deep security audit (`scripts/deep_security_audit.py`) passing with 0 violations.

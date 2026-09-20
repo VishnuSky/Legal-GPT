@@ -2,7 +2,7 @@
 
 ## 1. Architectural Overview & Hard Wall Isolation
 
-The **Legal-GPT Public Bridge** provides an authoritative, zero-hallucination statutory resolution and official civil services routing interface for autonomous legal agents, public legal scout interfaces, and self-represented litigants.
+The **Legal-GPT Public Bridge** provides an authoritative, verification-gated statutory resolution and official civil services routing interface for autonomous legal agents, public legal scout interfaces, and self-represented litigants.
 
 ```
 ┌─────────────────────────────────────────────────────────────┐

@@ -13,7 +13,7 @@ The Alpha 0.3.2 release marks a major operational and educational milestone for 
 Key accomplishments in this release:
 1. **README Overhaul (Alpha 0.3.1 Grounding):** Updated all user-facing documentation to reflect the Two-Brain architecture, linked the official Public Law Scout Grok bot, cataloged all 28 Public Legal Toolbox modules, detailed the 14-state CPS statutory matrix, provided curl snippets for all 8 public REST API endpoints, documented LM Studio local LLM integration, and published external benchmark results (95% accuracy, 9.5/10).
 2. **CLI Expansion (`cli.py`):** Implemented native command-line commands for `deadline`, `timeline`, `explain-doc`, and `questions`, complete with human-readable Rich output and machine-readable `--json` output.
-3. **Curriculum Seed Completion (14 Remaining Families + Expansion):** Implemented, verified, and committed on-disk JSONL training datasets for all 19 task families (5 existing + 14 new), expanding `17_due_process` to 25 examples and providing at least 10 concrete, schema-validated examples for each remaining family (205 total seeds), with zero citation hallucinations.
+3. **Curriculum Seed Completion (14 Remaining Families + Expansion):** Implemented, verified, and committed on-disk JSONL training datasets for all 19 task families (5 existing + 14 new), expanding `17_due_process` to 25 examples and providing at least 10 concrete, schema-validated examples for each remaining family (205 total seeds), with 100% statutory registry verification.
 
 ---
 
@@ -21,7 +21,7 @@ Key accomplishments in this release:
 
 ### Mission 1: README.md Overhaul
 - **Public Law Scout Integration:** Added direct links to the official Grok bot (`https://x.ai/bot/4p9YXeUcvV7TeiErQvdIj`) designed for conversational legal research grounded in the Two-Brain architecture.
-- **Two-Brain Architecture Diagram:** Included clear ASCII architecture diagram depicting the separation between the Neural Engine (LLM language parsing, plain-English translation) and the Symbolic Engine (`legal_registry`, strict statutory rules, citator verification, zero-hallucination guardrails).
+- **Two-Brain Architecture Diagram:** Included clear ASCII architecture diagram depicting the separation between the Neural Engine (LLM language parsing, plain-English translation) and the Symbolic Engine (`legal_registry`, strict statutory rules, citator verification, verification-gated guardrails).
 - **Public Legal Toolbox Catalog:** Documented all 28 capabilities with dedicated emoji icons, categories, and technical descriptions (e.g. Legal Research, Explain This Law, CPS Navigator, Due Process Auditor, Citation Verification, Law-at-Date Citator).
 - **14-Jurisdiction CPS Statutory Coverage Table:** Formatted a comprehensive comparison matrix detailing emergency removal statutes, hearing deadlines, and appointed counsel rights across WA, IL, OH, CA, TX, NY, FL, PA, GA, NC, MI, NJ, VA, and US Federal / ICWA.
 - **8 Public API Endpoints with Example Curl Commands:** Complete documentation and reproducible command-line requests for:
@@ -34,7 +34,7 @@ Key accomplishments in this release:
   - `POST /api/v1/public/questions` (Tactical Question Builder)
   - `POST /api/v1/public/mcp` (MCP JSON-RPC Gateway)
 - **LM Studio Integration Guide:** Step-by-step instructions for exporting and running Legal-GPT GGUF models locally with context templates and offline safety guarantees.
-- **Benchmark Performance Metrics:** Documented external audit metrics: 9.5/10 overall rating, 95% statutory compliance, and 0% citation hallucination.
+- **Benchmark Performance Metrics:** Documented external audit metrics: 9.5/10 overall rating, 95% statutory compliance, and 100% citation verification pass rate across benchmark scenarios.
 - **Contribution and Ethical Disclaimers:** Clarified public contribution protocols (`CONTRIBUTING_DATA.md`) and prominent Unauthorized Practice of Law (UPL) disclaimers.
 
 ---
@@ -92,7 +92,7 @@ Constructed and validated verified seed datasets for the full curriculum of 19 t
 | `23_procedural_rights` | 10 | Right to confront witnesses, subpoena powers, formal evidentiary standards |
 | **Total** | **205** | **100% Verified against `legal_registry`** |
 
-#### 3. Strict Verification & Zero Hallucination
+#### 3. Strict Verification & Abstention Discipline
 - Every single controlling citation in all 205 seed examples was strictly checked against `key_statutory_sections` in `legal_registry` (0 discrepancies found).
 - Every record complies with `DatasetSchema.validate()` and instantiates valid `LegalTrainingExample` Pydantic models.
 - Updated `tests/test_dataset_builder.py` and `tests/test_dataset_validation.py` to assert disk existence, valid JSONL structure, and minimum example count thresholds (all 19 task families validated).

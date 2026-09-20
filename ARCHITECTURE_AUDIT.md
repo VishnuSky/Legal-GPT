@@ -8,7 +8,7 @@
 
 ## 1. Executive Summary
 
-Legal-GPT v1.0 is an operational, jurisdiction-aware, citation-verified legal intelligence and RAG platform. The system operates on a 14-tier dynamic authority hierarchy (T0–T13), point-in-time statutory resolution (`LAW_AT_DATE`), a Shepherd's-style relational citator, an anti-contamination jurisdiction lock, and an adversarial due process reviewer.
+Legal-GPT v1.0 is an operational, jurisdiction-aware, citation-verified legal intelligence and RAG platform. The system operates on a 14-tier dynamic authority hierarchy (T0–T13), point-in-time statutory resolution (`LAW_AT_DATE`), a citator-style relational authority treatment engine, an anti-contamination jurisdiction lock, and an adversarial due process reviewer.
 
 The platform is now advancing to **Alpha 0.3.0**, implementing a **Two-Brain Architecture**:
 - **Brain 1 (Model Reasoning / GGUF / LoRA)**: Learns legal epistemology, issue spotting, argument synthesis, and epistemological statement classification across 12 distinct categories.
@@ -61,7 +61,7 @@ The platform is now advancing to **Alpha 0.3.0**, implementing a **Two-Brain Arc
                                                ▼
                         ┌──────────────────────────────────────────────┐
                         │     PROPOSITION & CITATION VERIFIER GATE     │
-                        │ (Zero hallucination & jurisdiction lock)     │
+                        │ (Verification-gated & jurisdiction lock)     │
                         └──────────────────────┬───────────────────────┘
                                                │ Verified Response
                                                ▼
@@ -118,7 +118,7 @@ While all 140 unit and integration tests are currently passing against symbolic 
 1. **MCP Streaming vs. Synchronous RPC**:
    - `FastAPI` supports async streaming responses for token generation, but the current `LegalMCPHandler` (`api/mcp_server.py`) returns complete tool-call payloads synchronously. Streaming MCP protocol support is pending.
 2. **In-Memory Citator Graph Scale**:
-   - The Shepherd's-style relational citator (`core/citator.py`) operates in-memory and in SQLite for testing. Scaling to 10M+ national judicial citation edges requires a dedicated PostgreSQL graph or Neo4j backend in Brain 2.
+   - The citator-style relational authority treatment engine (`core/citator.py`) operates in-memory and in SQLite for testing. Scaling to 10M+ national judicial citation edges requires a dedicated PostgreSQL graph or Neo4j backend in Brain 2.
 3. **External Scout Bot Webhook Bridge**:
    - The public bridge API contract (`POST /api/v1/public/resolve`, `GET /api/v1/public/services`) and MCP tools (`lookup_public_law`, `lookup_services`) are operational in `api/public_api.py`. However, the live external Grok bot webhook dispatcher runs outside the public repository.
 

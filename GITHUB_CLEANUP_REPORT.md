@@ -8,6 +8,11 @@
 
 ---
 
+> **GitHub Repository About Description:**  
+> `Open-source legal literacy. Official public law and service directories. Powers Public Law Scout on Grok. Not legal advice.`
+
+---
+
 ## 1. Privacy Hotfix Summary
 
 ### File URI Replacements
@@ -63,42 +68,29 @@
 
 ---
 
-## 6. Hector-Only Checklist (Manual Steps After PR Merges)
+## 6. GitHub Settings Status & Remaining Actions
 
-```
-MANUAL STEPS AFTER PR MERGES:
+> [!NOTE]
+> The previous checklist items regarding archiving stub repos or publishing `VishnuSky/VishnuSky` are **superseded**:
+> - **Stub repos:** Already set to **private** (not public/archived).
+> - **Profile repo (`VishnuSky/VishnuSky`):** Exists but kept **private**; `PROFILE_README.md` in Legal-GPT remains the local source of truth.
+> - **Pinning:** Legal-GPT is already pinned.
 
-Profile page (github.com/VishnuSky):
-[ ] Create VishnuSky/VishnuSky repo and paste PROFILE_README.md
-[ ] Pin only Legal-GPT (unpin everything else)
-[ ] Bio: Public legal literacy tools. Not a lawyer. Not legal advice.
-[ ] Website: https://x.ai/bot/4p9YXeUcvV7TeiErQvdIj
-[ ] Location: Washington, USA (no street/school/workplace)
-[ ] X @ixtly already linked — leave as-is
+### Remaining Manual Actions on `VishnuSky/Legal-GPT`:
+1. **About Description:**
+   Paste into repo settings (from `docs/ABOUT_BOX.txt`):
+   ```text
+   Open-source legal literacy. Official public law and service directories. Powers Public Law Scout on Grok. Not legal advice.
+   ```
+2. **Repository Topics (Add 8):**
+   ```text
+   legal-tech, legal-literacy, open-source, cps, civil-rights, icwa, grok, mcp
+   ```
+3. **Branch Deletions (Post-Merge Cleanup):**
+   - `feat/alpha-0.3.1-improvements`
+   - `feat/alpha-0.3.2-readme-cli-training`
+   - `feat/civil-service-core`
+   - Any merged `copilot/*` branches
 
-Legal-GPT repo Settings:
-[ ] About description: Open-source legal literacy. Verified public
-    law and service directories. Powers Public Law Scout on Grok.
-    Not legal advice.
-[ ] Homepage: https://x.ai/bot/4p9YXeUcvV7TeiErQvdIj
-[ ] Add 8 topics listed in Mission 5
-[ ] License: check if GitHub detects MIT — if it shows "Other",
-    add SPDX-License-Identifier: MIT on line 1 of LICENSE file
-    and keep the practice disclaimer below
-
-Stub repos (Archive button in each repo's Settings → Danger Zone):
-[ ] Archive JPT-Theory_in_Progress
-[ ] Archive Therapy-GPT
-[ ] Archive Nutritionist-GPT
-[ ] Archive Persona-GPT
-[ ] Paste archived README into each (optional but cleaner)
-
-Branches to delete after confirming merged:
-[ ] feat/alpha-0.3.1-improvements
-[ ] feat/alpha-0.3.2-readme-cli-training
-[ ] feat/civil-service-core
-[ ] copilot/* branches if fully merged
-
-Do NOT tag v1.0.0.
-Optional: tag v0.3.3 on current main after privacy fix merges.
-```
+> [!IMPORTANT]
+> Do NOT tag `v1.0.0`. Optional tag `v0.3.3` on main after merge.

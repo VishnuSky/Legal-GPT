@@ -12,7 +12,7 @@ Thank you for your interest in contributing to **Legal-GPT**!
    - **Tier 4**: Law firm articles & blogs.
    - **Tier 5**: Forums & ungrounded LLMs (*Strictly barred from serving as legal authority*).
 3. **Temporal Validity**: Always account for effective dates, enacted dates, and repeal dates.
-4. **Zero-Hallucination Citations**: Never allow the model to present fabricated citations. Every citation must resolve against the canonical registry.
+4. **Verification-Gated Citations**: Never allow the model to present unverified or fabricated citations. Every citation must resolve against the canonical registry.
 
 ## Development Setup
 
