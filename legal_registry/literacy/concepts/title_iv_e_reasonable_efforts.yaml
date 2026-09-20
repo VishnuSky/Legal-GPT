@@ -1,0 +1,98 @@
+id: title_iv_e_reasonable_efforts
+canonical_name: Title IV-E Statutory Requirement for Reasonable Efforts
+aliases:
+- title iv e
+- reasonable efforts requirement
+- asfa
+- adoption and safe families act
+- 42 usc 671
+jurisdiction: US
+retrieved_date: '2026-09-19'
+level_1_plain_english: Federal law requires state child welfare agencies to make real,
+  reasonable efforts to prevent children from being taken from their families, and
+  to help families reunite safely after a child is removed. The state cannot just
+  take a child and walk away without offering genuine help.
+level_2_practical: Before removing your child, and throughout your case, the caseworker
+  must offer active, relevant support services—such as housing assistance referrals,
+  counseling, food support, or family preservation services. At every court hearing,
+  the judge must formally determine on the record whether the state made 'reasonable
+  efforts' to prevent removal and reunify your family.
+level_3_terminology: 'Under Title IV-E of the Social Security Act (42 U.S.C. § 671(a)(15)),
+  enacted through the Adoption and Safe Families Act (ASFA), states receiving federal
+  foster care funding must ensure that reasonable efforts are made: (A) prior to placement,
+  to prevent or eliminate the need for removing the child; and (B) to make it possible
+  for the child to return home safely. Exceptions exist only under statutory ''aggravated
+  circumstances''.'
+level_4_primary_authority:
+- citation: 42 U.S.C. § 671(a)(15)
+  source_type: STATUTE
+  official_portal_url: https://uscode.house.gov/view.xhtml?req=granuleid:USC-prelim-title42-section671&num=0&edition=prelim
+  key_holding_or_text: In order for a State to be eligible for payments under this
+    part, it shall have a plan approved by the Secretary which provides that... reasonable
+    efforts shall be made to preserve and reunify families prior to the placement
+    of a child in foster care, and to make it possible for a child to safely return
+    home.
+  jurisdiction: US
+  is_binding: true
+  verification_status: VERIFIED
+- citation: 45 C.F.R. § 1356.21(b)
+  source_type: REGULATION
+  official_portal_url: https://www.ecfr.gov/current/title-45/subtitle-B/chapter-XIII/subchapter-G/part-1356/section-1356.21
+  key_holding_or_text: Judicial determination of reasonable efforts to prevent removal
+    must be made within 60 days of the date the child was removed from the home, and
+    reasonable efforts to finalize permanency must be made every 12 months.
+  jurisdiction: US
+  is_binding: true
+  verification_status: VERIFIED
+level_5_advanced_analysis: Title IV-E conditioning of federal foster care funding
+  under the Spending Clause creates mandatory statutory duties for state courts and
+  agencies. While Suter v. Artist M., 503 U.S. 347 (1992), limited private § 1983
+  damages actions enforcing Title IV-E directly, state dependency statutes codify
+  identical reasonable efforts standards as mandatory threshold requirements for maintaining
+  protective custody and terminating parental rights.
+drill_downs:
+  SHOW_SOURCE:
+    title: Title IV-E Social Security Act Statutory Language
+    content: 42 U.S.C. § 671(a)(15) controls state eligibility for federal child welfare
+      funding and dictates reasonable efforts.
+    citations:
+    - 42 U.S.C. § 671(a)(15)
+    official_sources:
+    - https://uscode.house.gov/
+  SHOW_STATUTE:
+    title: Federal Regulations on Judicial Findings of Reasonable Efforts
+    content: 45 C.F.R. § 1356.21(b) mandates explicit judicial findings of reasonable
+      efforts within 60 days of child removal.
+    citations:
+    - 45 C.F.R. § 1356.21(b)
+    official_sources:
+    - https://www.ecfr.gov/
+  SHOW_CASE:
+    title: 'Supreme Court Review: Suter v. Artist M., 503 U.S. 347 (1992)'
+    content: Holding that Title IV-E creates programmatic state plan requirements
+      enforced primarily through federal funding oversight.
+    citations:
+    - Suter v. Artist M., 503 U.S. 347 (1992)
+    official_sources:
+    - https://www.supremecourt.gov/
+  EXPLAIN_OPPOSING:
+    title: Aggravated Circumstances and Safety Paramountcy
+    content: Under ASFA amendments, child safety is paramount; reasonable efforts
+      are not required when the parent has subjected the child to aggravated circumstances.
+    citations:
+    - 42 U.S.C. § 671(a)(15)(D)
+    official_sources:
+    - https://uscode.house.gov/
+  SHOW_TEMPORAL_CHANGE:
+    title: Shift from Adoption Acceleration to Prevention (Family First Act)
+    content: The Family First Prevention Services Act (2018) amended Title IV-E to
+      allow federal funding for mental health, substance abuse, and in-home parenting
+      to prevent foster care entries.
+    citations:
+    - 42 U.S.C. § 671
+    official_sources:
+    - https://uscode.house.gov/
+related_concepts:
+- reasonable_efforts
+- active_efforts
+- permanency_planning

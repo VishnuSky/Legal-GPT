@@ -1,0 +1,21 @@
+state_code: SC
+state_id: SC
+state_name: South Carolina
+legislature_url: https://www.scstatehouse.gov/
+statutes_url: https://www.scstatehouse.gov/code/statmast.php
+courts_url: https://www.sccourts.org/
+cps_agency: South Carolina Department of Social Services (SCDSS)
+cps_agency_url: https://dss.sc.gov/child-well-being/
+cps_statute_title: ''
+cps_statute_url: ''
+emergency_removal_citation: UNVERIFIED
+shelter_hearing_hours: UNVERIFIED
+shelter_hearing_citation: UNVERIFIED
+counsel_citation: UNVERIFIED
+tpr_citation: UNVERIFIED
+icwa_inquiry: not_specified
+verification_status: PARTIAL
+verified_sources: []
+notes: Scaffold entry for SC. Official portal linked; statutory citations unverified
+  pending primary source audit.
+sources: []

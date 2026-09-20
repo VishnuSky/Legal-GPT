@@ -1,0 +1,21 @@
+state_code: IA
+state_id: IA
+state_name: Iowa
+legislature_url: https://www.legis.iowa.gov/
+statutes_url: https://www.legis.iowa.gov/law/iowaCode
+courts_url: https://www.iowacourts.gov/
+cps_agency: Iowa Department of Health and Human Services (HHS)
+cps_agency_url: https://hhs.iowa.gov/programs/programs-and-services/child-welfare
+cps_statute_title: ''
+cps_statute_url: ''
+emergency_removal_citation: UNVERIFIED
+shelter_hearing_hours: UNVERIFIED
+shelter_hearing_citation: UNVERIFIED
+counsel_citation: UNVERIFIED
+tpr_citation: UNVERIFIED
+icwa_inquiry: not_specified
+verification_status: PARTIAL
+verified_sources: []
+notes: Scaffold entry for IA. Official portal linked; statutory citations unverified
+  pending primary source audit.
+sources: []

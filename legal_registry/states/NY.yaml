@@ -1,53 +1,74 @@
-# New York State (NY) Legal Source Registry v1.0
+state_code: NY
 state_id: NY
-state_name: "New York"
-fips: "36"
-
+state_name: New York
+legislature_url: https://www.nysenate.gov/legislation/laws
+statutes_url: https://www.nysenate.gov/legislation/laws
+courts_url: https://www.nycourts.gov/
+cps_agency: New York State Office of Children and Family Services (OCFS)
+cps_agency_url: https://ocfs.ny.gov/main/cps/
+cps_statute_title: New York Child Welfare Statutes
+cps_statute_url: https://www.nysenate.gov/legislation/laws
+emergency_removal_citation: VERIFIED
+shelter_hearing_hours: 72
+shelter_hearing_citation: UNVERIFIED
+counsel_citation: VERIFIED
+tpr_citation: VERIFIED
+icwa_inquiry: required
+verification_status: VERIFIED
+verified_sources:
+- https://www.nysenate.gov/legislation/laws
+notes: Verified deep CPS coverage for NY.
 sources:
-  - source_id: NY_FCA
-    jurisdiction: US-NY
-    level: state
-    authority_tier: TIER_0
-    legal_domain: ["statutes", "family_court_act", "child_protective_proceedings"]
-    source_type: statute
-    title: "New York Family Court Act (FCA) — Article 10: Child Protective Proceedings"
-    citation_format: "N.Y. Fam. Ct. Act § {section}"
-    publisher:
-      name: "New York State Senate"
-      official: true
-      entity_type: legislature
-      contact_url: "https://www.nysenate.gov/legislation/laws/FCT"
-    canonical_url: "https://www.nysenate.gov/legislation/laws/FCT/A10"
-    temporal:
-      versioned: true
-      effective_dates_available: true
-      historical_versions_available: true
-    acquisition_method: html_scrape
-    parser_name: new_york_statutes_parser
-    update_frequency: daily
-    cps_priority: 10
-    active: true
-
-  - source_id: NY_SSL
-    jurisdiction: US-NY
-    level: state
-    authority_tier: TIER_0
-    legal_domain: ["statutes", "social_services_law", "child_welfare", "abuse_reporting"]
-    source_type: statute
-    title: "New York Social Services Law (SSL) — Article 6: Children"
-    citation_format: "N.Y. Soc. Serv. Law § {section}"
-    publisher:
-      name: "New York State Senate"
-      official: true
-      entity_type: legislature
-      contact_url: "https://www.nysenate.gov/legislation/laws/SOS"
-    canonical_url: "https://www.nysenate.gov/legislation/laws/SOS/A6"
-    temporal:
-      versioned: true
-      effective_dates_available: true
-      historical_versions_available: true
-    acquisition_method: html_scrape
-    parser_name: new_york_statutes_parser
-    update_frequency: daily
-    cps_priority: 10
-    active: true
+- source_id: NY_FCA
+  jurisdiction: US-NY
+  level: state
+  authority_tier: TIER_0
+  legal_domain:
+  - statutes
+  - family_court_act
+  - child_protective_proceedings
+  source_type: statute
+  title: 'New York Family Court Act (FCA) — Article 10: Child Protective Proceedings'
+  citation_format: N.Y. Fam. Ct. Act § {section}
+  publisher:
+    name: New York State Senate
+    official: true
+    entity_type: legislature
+    contact_url: https://www.nysenate.gov/legislation/laws/FCT
+  canonical_url: https://www.nysenate.gov/legislation/laws/FCT/A10
+  temporal:
+    versioned: true
+    effective_dates_available: true
+    historical_versions_available: true
+  acquisition_method: html_scrape
+  parser_name: new_york_statutes_parser
+  update_frequency: daily
+  cps_priority: 10
+  active: true
+- source_id: NY_SSL
+  jurisdiction: US-NY
+  level: state
+  authority_tier: TIER_0
+  legal_domain:
+  - statutes
+  - social_services_law
+  - child_welfare
+  - abuse_reporting
+  source_type: statute
+  title: 'New York Social Services Law (SSL) — Article 6: Children'
+  citation_format: N.Y. Soc. Serv. Law § {section}
+  publisher:
+    name: New York State Senate
+    official: true
+    entity_type: legislature
+    contact_url: https://www.nysenate.gov/legislation/laws/SOS
+  canonical_url: https://www.nysenate.gov/legislation/laws/SOS/A6
+  temporal:
+    versioned: true
+    effective_dates_available: true
+    historical_versions_available: true
+  acquisition_method: html_scrape
+  parser_name: new_york_statutes_parser
+  update_frequency: daily
+  cps_priority: 10
+  active: true

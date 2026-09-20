@@ -1,0 +1,2067 @@
+{
+  "package_version": "0.3.2",
+  "generated_at": "2026-09-20T01:09:28.793906+00:00",
+  "state_code": "NH",
+  "state_info": {
+    "state_name": "New Hampshire",
+    "emergency_removal_hours": 72,
+    "shelter_hearing_hours": "UNVERIFIED",
+    "shelter_hearing_citation": "UNVERIFIED",
+    "counsel_citation": "UNVERIFIED",
+    "tpr_citation": "UNVERIFIED",
+    "icwa_inquiry": "not_specified",
+    "official_portal": "https://www.gencourt.state.nh.us/rsa/html/nhtoc.htm",
+    "legislature_url": "https://www.gencourt.state.nh.us/",
+    "verification_status": "PARTIAL"
+  },
+  "concepts": {
+    "active_efforts": {
+      "name": "ICWA Active Efforts Requirement",
+      "level_1": "Under federal and state law protecting Native American families, caseworkers cannot merely hand parents a list of phone numbers and leave them to fix their problems alone. Caseworkers are legally required to provide 'active efforts'\u2014meaning they must personally assist the family, work side-by-side with them and their Tribe, help arrange transportation and appointments, and provide culturally meaningful services to keep the family safely together.",
+      "level_2": "In practical terms for your situation: If your child qualifies under ICWA/WICWA, the agency must actively help you navigate housing programs, substance treatment, and parenting services. Passive referrals ('call this number') violate active efforts. Before a court can place your child in foster care or terminate parental rights, the agency must prove to the judge that it made affirmative, active, thorough, and culturally competent efforts in direct consultation with your Tribe.",
+      "level_3": "Codified in 25 U.S.C. \u00a7 1912(d) and 25 C.F.R. \u00a7 23.2, 'active efforts' are affirmative, active, thorough, and timely efforts intended primarily to maintain or reunite an Indian child with the family. This standard is distinctly higher than the standard state-law 'reasonable efforts' requirement under ASFA. In Washington, RCW 13.38.040(1) and RCW 13.38.130 explicitly require active efforts to be provided in partnership with the Indian child's tribe, involving tribal elders and cultural resources.",
+      "level_4_citations": [
+        {
+          "citation": "25 U.S.C. \u00a7 1912",
+          "jurisdiction": "US",
+          "official_url": "https://uscode.house.gov/view.xhtml?path=/prelim@title25/chapter21&edition=prelim",
+          "key_text": "Any party seeking foster care placement of or termination of parental rights to an Indian child shall satisfy the court that active efforts have been made to provide remedial services and rehabilitative programs and that these efforts have proved unsuccessful.",
+          "verification_status": "VERIFIED"
+        },
+        {
+          "citation": "25 C.F.R. \u00a7 23.2",
+          "jurisdiction": "US",
+          "official_url": "https://www.ecfr.gov/current/title-25/chapter-I/subchapter-D/part-23/subpart-A/section-23.2",
+          "key_text": "Defines active efforts as affirmative, active, thorough, and timely efforts, providing eleven illustrative examples of mandatory agency assistance.",
+          "verification_status": "VERIFIED"
+        },
+        {
+          "citation": "RCW 13.38.040",
+          "jurisdiction": "WA",
+          "official_url": "https://app.leg.wa.gov/rcw/default.aspx?cite=13.38.040",
+          "key_text": "Statutorily defines active efforts under Washington law, mandating documented partnership with the child's tribe and culturally appropriate services.",
+          "verification_status": "VERIFIED"
+        },
+        {
+          "citation": "RCW 13.38.130",
+          "jurisdiction": "WA",
+          "official_url": "https://app.leg.wa.gov/rcw/default.aspx?cite=13.38.130",
+          "key_text": "Prohibits foster placement or termination without clear, cogent, and convincing proof that active efforts were provided and proved unsuccessful.",
+          "verification_status": "VERIFIED"
+        }
+      ],
+      "level_5": "The doctrinal distinction between 'active efforts' and 'reasonable efforts' is a frequent subject of appellate review. State appellate decisions hold that while 'reasonable efforts' may be satisfied by providing referrals or case plans, 'active efforts' requires the caseworker to affirmatively assist the parent in overcoming barriers\u2014such as driving the parent to appointments, helping complete intake paperwork, and adapting service requirements to tribal cultural norms. A finding of active efforts must be supported by clear, cogent, and convincing evidence for foster placement under 25 U.S.C. \u00a7 1912(d), and beyond a reasonable doubt for parental termination under \u00a7 1912(f).",
+      "drill_downs": {
+        "SHOW_SOURCE": {
+          "title": "Official Primary Legal Authorities for Active Efforts",
+          "content": "United States Code: 25 U.S.C. \u00a7 1912(d) (uscode.house.gov); Code of Federal Regulations: 25 C.F.R. \u00a7 23.2 (ecfr.gov); Washington Revised Code: RCW 13.38.040 & RCW 13.38.130 (app.leg.wa.gov).",
+          "citations": [
+            "25 U.S.C. \u00a7 1912",
+            "25 C.F.R. \u00a7 23.2",
+            "RCW 13.38.040",
+            "RCW 13.38.130"
+          ],
+          "official_sources": [
+            "https://uscode.house.gov/",
+            "https://www.ecfr.gov/",
+            "https://app.leg.wa.gov/rcw/default.aspx?cite=13.38.040"
+          ]
+        },
+        "SHOW_STATUTE": {
+          "title": "Federal and Washington Active Efforts Mandates",
+          "content": "25 C.F.R. \u00a7 23.2 itemizes 11 required active efforts examples. RCW 13.38.040(1) codifies Washington state-level enforceable standards.",
+          "citations": [
+            "25 C.F.R. \u00a7 23.2",
+            "RCW 13.38.040"
+          ],
+          "official_sources": [
+            "https://www.ecfr.gov/",
+            "https://app.leg.wa.gov/rcw/default.aspx?cite=13.38.040"
+          ]
+        },
+        "SHOW_CASE": {
+          "title": "Caselaw Distinguishing Active Efforts from Passive Referrals",
+          "content": "Appellate courts hold that merely developing a case plan and expecting the parent to execute it independently constitutes passive, not active, efforts.",
+          "citations": [
+            "25 C.F.R. \u00a7 23.2"
+          ],
+          "official_sources": [
+            "https://www.ecfr.gov/"
+          ]
+        },
+        "EXPLAIN_OPPOSING": {
+          "title": "Opposing Interpretation: Futility & Parent Non-Cooperation",
+          "content": "Agency argument: Child welfare departments argue that when a parent repeatedly refuses contact, evades caseworkers, or explicitly rejects tribal services, active efforts should be excused under a judicial doctrine of futility.",
+          "citations": [
+            "25 C.F.R. \u00a7 23.2"
+          ],
+          "official_sources": [
+            "https://www.ecfr.gov/"
+          ]
+        },
+        "SHOW_TEMPORAL_CHANGE": {
+          "title": "2016 BIA Regulation Clarification of Active Efforts",
+          "content": "Prior to the 2016 federal regulations, state courts frequently blurred active and reasonable efforts. The 2016 BIA rule (25 C.F.R. \u00a7 23.2) explicitly codified that active efforts must be significantly more rigorous than Title IV-E reasonable efforts.",
+          "citations": [
+            "81 Fed. Reg. 38778 (2016)",
+            "25 C.F.R. \u00a7 23.2"
+          ],
+          "official_sources": [
+            "https://www.govinfo.gov"
+          ]
+        }
+      },
+      "related_concepts": [
+        "icwa_inquiry",
+        "reasonable_efforts",
+        "due_process"
+      ]
+    },
+    "ada_section_504_dependency": {
+      "name": "ADA Title II and Section 504 Protections in Child Welfare",
+      "level_1": "Federal disability rights laws protect parents who have physical, intellectual, or mental health disabilities. A child welfare agency cannot remove your child or refuse to reunite your family simply because you have a disability. They must provide reasonable accommodations to help you succeed.",
+      "level_2": "If you have a disability (such as depression, anxiety, physical mobility issues, hearing impairment, or an intellectual limitation), CPS cannot simply hand you standard parenting class packets and expect you to fail. Under the Americans with Disabilities Act (ADA) and Section 504, they must adapt their services\u2014providing specialized in-home coaching, sign language interpreters, or modified timelines\u2014to accommodate your disability.",
+      "level_3": "Title II of the Americans with Disabilities Act (42 U.S.C. \u00a7 12132) and Section 504 of the Rehabilitation Act (29 U.S.C. \u00a7 794) prohibit public entities and federally funded programs from discriminating against qualified individuals with disabilities. In dependency matters, child welfare agencies are mandated to provide 'reasonable modifications in policies, practices, or procedures' and individually tailored remedial services before pursuing termination.",
+      "level_4_citations": [
+        {
+          "citation": "42 U.S.C. \u00a7 12132",
+          "jurisdiction": "US",
+          "official_url": "https://uscode.house.gov/view.xhtml?req=granuleid:USC-prelim-title42-section12132&num=0&edition=prelim",
+          "key_text": "Subject to the provisions of this subchapter, no qualified individual with a disability shall, by reason of such disability, be excluded from participation in or be denied the benefits of the services, programs, or activities of a public entity, or be subjected to discrimination by any such entity.",
+          "verification_status": "VERIFIED"
+        },
+        {
+          "citation": "29 U.S.C. \u00a7 794",
+          "jurisdiction": "US",
+          "official_url": "https://uscode.house.gov/view.xhtml?req=granuleid:USC-prelim-title29-section794&num=0&edition=prelim",
+          "key_text": "No otherwise qualified individual with a disability in the United States... shall, solely by reason of her or his disability, be excluded from the participation in, be denied the benefits of, or be subjected to discrimination under any program or activity receiving Federal financial assistance.",
+          "verification_status": "VERIFIED"
+        },
+        {
+          "citation": "DOJ & HHS Joint Guidance on Protecting Parental Rights (2015)",
+          "jurisdiction": "US",
+          "official_url": "https://www.ada.gov/doj_hhs_ta/child_welfare_ta.html",
+          "key_text": "Child welfare agencies and family courts must ensure that parents with disabilities are not subjected to discrimination, must conduct individualized assessments, and must provide reasonable modifications.",
+          "verification_status": "VERIFIED"
+        }
+      ],
+      "level_5": "Federal circuit and state appellate authority reflect an ongoing doctrinal division regarding whether an ADA violation can serve as a direct defense to termination of parental rights, or must be brought as a separate \u00a7 1983/Title II action. However, virtually all jurisdictions recognize that failure to provide reasonable accommodations directly undermines the statutory finding that the agency provided 'reasonable efforts' to reunify the family under Title IV-E.",
+      "drill_downs": {
+        "SHOW_SOURCE": {
+          "title": "ADA Title II and Rehabilitation Act Statutes",
+          "content": "42 U.S.C. \u00a7 12132 and 29 U.S.C. \u00a7 794 establish affirmative duties to accommodate parents with disabilities.",
+          "citations": [
+            "42 U.S.C. \u00a7 12132",
+            "29 U.S.C. \u00a7 794"
+          ],
+          "official_sources": [
+            "https://uscode.house.gov/"
+          ]
+        },
+        "SHOW_STATUTE": {
+          "title": "Statutory Duty to Modify Services",
+          "content": "Federal regulations 28 CFR \u00a7 35.130(b)(7) require public entities to make reasonable modifications in policies and services.",
+          "citations": [
+            "42 U.S.C. \u00a7 12132",
+            "28 CFR \u00a7 35.130"
+          ],
+          "official_sources": [
+            "https://www.ecfr.gov/"
+          ]
+        },
+        "SHOW_CASE": {
+          "title": "Controlling Agency Guidance: DOJ & HHS Joint Guidance (2015)",
+          "content": "DOJ and HHS affirm that child welfare agencies must provide tailored, accessible accommodations rather than generic requirements.",
+          "citations": [
+            "DOJ & HHS Joint Guidance (2015)"
+          ],
+          "official_sources": [
+            "https://www.ada.gov/"
+          ]
+        },
+        "EXPLAIN_OPPOSING": {
+          "title": "Agency Argument: Child Safety Trumps ADA Accommodations",
+          "content": "Agencies argue that the primary focus of child welfare proceedings is the child's safety, asserting ADA claims cannot delay permanency.",
+          "citations": [
+            "42 U.S.C. \u00a7 12132"
+          ],
+          "official_sources": [
+            "https://uscode.house.gov/"
+          ]
+        },
+        "SHOW_TEMPORAL_CHANGE": {
+          "title": "Rise of Disability Rights Protections in State Family Codes",
+          "content": "Multiple states have enacted specific statutory provisions prohibiting termination of parental rights based on disability without clear proof of direct harm.",
+          "citations": [
+            "42 U.S.C. \u00a7 12132"
+          ],
+          "official_sources": [
+            "https://uscode.house.gov/"
+          ]
+        }
+      },
+      "related_concepts": [
+        "reasonable_efforts",
+        "due_process",
+        "civil_rights_section_1983"
+      ]
+    },
+    "administrative_appeal_exhaustion": {
+      "name": "Administrative Appeal and Exhaustion of Remedies Doctrine",
+      "level_1": "Before you can sue a state agency in a court of law over an administrative decision (like being placed on a child abuse registry or having benefits denied), you must first complete every step of the agency's internal appeal process. This rule is called 'exhausting administrative remedies.'",
+      "level_2": "If CPS issues a 'founded' or 'substantiated' finding of child abuse against you, that finding can harm your job and background checks. You have a strict, limited window (often 20 to 30 days) to file an administrative appeal with the agency. If you miss this agency deadline, you usually lose your right to challenge the finding in court later.",
+      "level_3": "The doctrine of exhaustion of administrative remedies mandates that no one is entitled to judicial relief for a supposed or threatened injury until the prescribed administrative remedy has been exhausted (Myers v. Bethlehem Shipbuilding Corp., 303 U.S. 41). Exceptions are narrow and require demonstrating: (1) futility; (2) irreparable harm; or (3) that the agency lacks statutory jurisdiction. State specific administrative procedures vary widely; local rules must be verified.",
+      "level_4_citations": [
+        {
+          "citation": "Myers v. Bethlehem Shipbuilding Corp., 303 U.S. 41 (1938)",
+          "jurisdiction": "US",
+          "official_url": "https://www.supremecourt.gov/",
+          "key_text": "The rule requiring the exhaustion of administrative remedies before resorting to the courts is a long settled rule of judicial administration.",
+          "verification_status": "VERIFIED"
+        },
+        {
+          "citation": "Woodford v. Ngo, 548 U.S. 81 (2006)",
+          "jurisdiction": "US",
+          "official_url": "https://www.supremecourt.gov/opinions/05pdf/05-416.pdf",
+          "key_text": "Proper exhaustion of administrative remedies demands compliance with an agency's deadlines and other critical procedural rules.",
+          "verification_status": "VERIFIED"
+        }
+      ],
+      "level_5": "In child welfare administrative practice, tension often exists between parallel dependency court proceedings and central registry administrative appeals. While some states automatically stay administrative registry appeals pending the outcome of the juvenile court dependency trial, other states maintain independent tracks. Failure to exhaust administrative avenues bars subsequent state court judicial review under state administrative procedure acts.",
+      "drill_downs": {
+        "SHOW_SOURCE": {
+          "title": "Exhaustion Doctrine Judicial Precedent",
+          "content": "Myers v. Bethlehem Shipbuilding Corp. and Woodford v. Ngo define federal exhaustion requirements.",
+          "citations": [
+            "Myers v. Bethlehem Shipbuilding Corp., 303 U.S. 41 (1938)"
+          ],
+          "official_sources": [
+            "https://www.supremecourt.gov/"
+          ]
+        },
+        "SHOW_STATUTE": {
+          "title": "Administrative Procedure Act Framework",
+          "content": "Federal Administrative Procedure Act (5 U.S.C. \u00a7 704) and state APAs govern judicial review of final agency actions.",
+          "citations": [
+            "5 U.S.C. \u00a7 704"
+          ],
+          "official_sources": [
+            "https://uscode.house.gov/"
+          ]
+        },
+        "SHOW_CASE": {
+          "title": "Controlling Precedent: Woodford v. Ngo, 548 U.S. 81 (2006)",
+          "content": "Holding that proper exhaustion requires adherence to all agency deadlines and critical procedural rules.",
+          "citations": [
+            "Woodford v. Ngo, 548 U.S. 81 (2006)"
+          ],
+          "official_sources": [
+            "https://www.supremecourt.gov/"
+          ]
+        },
+        "EXPLAIN_OPPOSING": {
+          "title": "Agency Finality and Administrative Efficiency",
+          "content": "Agencies argue that exhaustion promotes administrative efficiency and allows the agency to correct its own errors before court intervention.",
+          "citations": [
+            "Woodford v. Ngo, 548 U.S. 81 (2006)"
+          ],
+          "official_sources": [
+            "https://www.supremecourt.gov/"
+          ]
+        },
+        "SHOW_TEMPORAL_CHANGE": {
+          "title": "Clarification of State Central Registry Appeal Rights",
+          "content": "Due process challenges have forced states to implement clear administrative hearing rights for individuals placed on child abuse registries.",
+          "citations": [
+            "5 U.S.C. \u00a7 704"
+          ],
+          "official_sources": [
+            "https://uscode.house.gov/"
+          ]
+        }
+      },
+      "related_concepts": [
+        "due_process",
+        "notice",
+        "civil_rights_section_1983"
+      ]
+    },
+    "appeal_or_revision_dependency": {
+      "name": "Appellate Review and Motion for Revision in Dependency",
+      "level_1": "If a court decision in your dependency case was legally wrong or unfair, you do not have to just accept it. You have the right to challenge that decision. If a court commissioner made the ruling, you can quickly ask a superior court judge to review it (called a Motion for Revision). If a judge entered a final order, you can appeal to the state Court of Appeals.",
+      "level_2": "In practical terms for your situation: In Washington juvenile courts, many hearings are run by court commissioners rather than elected judges. If a commissioner enters an order (like keeping a child in foster care or approving a bad service plan), you have a strict deadline of 10 calendar days under RCW 2.24.050 to file a Motion for Revision. If you miss that 10-day window, the order becomes final. For final dependency disposition orders or termination decrees, you have 30 days under court rules (RAP 5.2) to file a notice of appeal.",
+      "level_3": "Post-hearing challenge mechanisms in Washington juvenile practice operate through two distinct procedural vehicles: 1. Motion for Revision (RCW 2.24.050 / Wash. Const. art. IV, \u00a7 23): Requires a superior court judge to review the commissioner's ruling de novo based on the evidentiary record created before the commissioner. 2. Direct Appeal as of Right (RAP 2.2(a)(5)): Disposition orders in dependency and orders terminating parental rights are appealable as a matter of right to the Washington Court of Appeals within 30 days (RAP 5.2). Under M.L.B. v. S.L.J. (519 U.S. 102), indigent parents cannot be denied appellate review due to inability to pay transcript preparation fees.",
+      "level_4_citations": [
+        {
+          "citation": "RCW 2.24.050",
+          "jurisdiction": "WA",
+          "official_url": "https://app.leg.wa.gov/rcw/default.aspx?cite=2.24.050",
+          "key_text": "Mandates that all acts and proceedings of court commissioners are subject to revision by the superior court upon motion filed within ten days from the entry of the order.",
+          "verification_status": "VERIFIED"
+        },
+        {
+          "citation": "RAP 2.2",
+          "jurisdiction": "WA",
+          "official_url": "https://www.courts.wa.gov/court_rules/?fa=court_rules.display&group=app&set=RAP&ruleid=apprap02.02",
+          "key_text": "Designates the juvenile court disposition order in a dependency proceeding and an order terminating parental rights as appealable decisions as a matter of right.",
+          "verification_status": "VERIFIED"
+        },
+        {
+          "citation": "RAP 5.2",
+          "jurisdiction": "WA",
+          "official_url": "https://www.courts.wa.gov/court_rules/?fa=court_rules.display&group=app&set=RAP&ruleid=apprap05.02",
+          "key_text": "Establishes that a notice of appeal must be filed within 30 days after the entry of the decision of the trial court which the party filing the notice wants reviewed.",
+          "verification_status": "VERIFIED"
+        },
+        {
+          "citation": "M.L.B. v. S.L.J., 519 U.S. 102 (1996)",
+          "jurisdiction": "US",
+          "official_url": "https://www.supremecourt.gov/",
+          "key_text": "Held that Fourteenth Amendment due process and equal protection prohibit states from conditioning an indigent parent's appeal of parental termination on prepayment of record fees.",
+          "verification_status": "VERIFIED"
+        }
+      ],
+      "level_5": "The standard of review differs substantially between revision and appellate review. On revision under RCW 2.24.050, the superior court judge conducts a complete de novo review of the commissioner's record, affording no deference to the commissioner's factual determinations or legal conclusions. In contrast, when the Court of Appeals reviews a trial judge's dependency disposition or termination decree, factual findings are reviewed under the deferential 'substantial evidence' standard, while statutory interpretations and constitutional due process claims are reviewed de novo.",
+      "drill_downs": {
+        "SHOW_SOURCE": {
+          "title": "Official Sources for Revision and Appeal",
+          "content": "Washington Revised Code: RCW 2.24.050 (app.leg.wa.gov); Washington Rules of Appellate Procedure: RAP 2.2 & RAP 5.2 (courts.wa.gov); Supreme Court Opinion: M.L.B. v. S.L.J., 519 U.S. 102 (supremecourt.gov).",
+          "citations": [
+            "RCW 2.24.050",
+            "RAP 2.2",
+            "RAP 5.2",
+            "M.L.B. v. S.L.J., 519 U.S. 102 (1996)"
+          ],
+          "official_sources": [
+            "https://app.leg.wa.gov/rcw/default.aspx?cite=2.24.050",
+            "https://www.courts.wa.gov/court_rules/",
+            "https://www.supremecourt.gov/"
+          ]
+        },
+        "SHOW_STATUTE": {
+          "title": "Statutory 10-Day Revision Deadline",
+          "content": "RCW 2.24.050 strictly establishes that a motion for revision must be filed within 10 days of the commissioner's order entry.",
+          "citations": [
+            "RCW 2.24.050"
+          ],
+          "official_sources": [
+            "https://app.leg.wa.gov/rcw/default.aspx?cite=2.24.050"
+          ]
+        },
+        "SHOW_CASE": {
+          "title": "Supreme Court Protection for Indigent Appellants: M.L.B. v. S.L.J.",
+          "content": "M.L.B. established that access to judicial review in family severance proceedings is of such paramount constitutional stature that indigent parents cannot be blocked by fees.",
+          "citations": [
+            "M.L.B. v. S.L.J., 519 U.S. 102 (1996)"
+          ],
+          "official_sources": [
+            "https://www.supremecourt.gov/"
+          ]
+        },
+        "EXPLAIN_OPPOSING": {
+          "title": "Opposing Interpretation: Interlocutory Order Non-Appealability",
+          "content": "State agency argument: Orders entered at temporary shelter hearings or 6-month review hearings are interlocutory and cannot be directly appealed under RAP 2.2; parents must seek discretionary review under RAP 2.3, which requires demonstrating obvious or probable judicial error.",
+          "citations": [
+            "RAP 2.2",
+            "RAP 2.3"
+          ],
+          "official_sources": [
+            "https://www.courts.wa.gov/court_rules/"
+          ]
+        },
+        "SHOW_TEMPORAL_CHANGE": {
+          "title": "Historical Evolution of Parental Appeal Rights",
+          "content": "Historical development: Following M.L.B. v. S.L.J. (1996), Washington reformed appellate court rules to ensure state funding for indigent parent transcripts and appellate representation in all dependency appeals.",
+          "citations": [
+            "M.L.B. v. S.L.J., 519 U.S. 102 (1996)",
+            "RAP 15.2"
+          ],
+          "official_sources": [
+            "https://www.courts.wa.gov/court_rules/"
+          ]
+        }
+      },
+      "related_concepts": [
+        "due_process",
+        "right_to_counsel_dependency",
+        "opportunity_to_be_heard"
+      ]
+    },
+    "civil_rights_section_1983": {
+      "name": "Civil Rights Remedy Under 42 U.S.C. \u00a7 1983",
+      "level_1": "Section 1983 is a powerful federal law that allows everyday citizens to sue government workers or municipalities in federal court when those officials abuse their official authority to violate your constitutional rights.",
+      "level_2": "If caseworkers or police officers break the law\u2014such as seizing your children without a warrant or emergency, fabricating false evidence in court reports, or retaliating against you for exercising your free speech\u2014you may have grounds to file a federal civil rights lawsuit for monetary damages or court orders barring their illegal practices. Note: Claiming a civil rights violation is an assertion by the individual, not an established judicial fact.",
+      "level_3": "Under 42 U.S.C. \u00a7 1983, a plaintiff must prove that: (1) the defendant acted 'under color of state law'; and (2) their conduct deprived the plaintiff of a right secured by the U.S. Constitution or federal statutes. Under Monell v. Dept. of Social Services, 436 U.S. 658, local governments and municipal agencies can be liable only if the constitutional violation was caused by an official policy, custom, or systemic failure to train.",
+      "level_4_citations": [
+        {
+          "citation": "42 U.S.C. \u00a7 1983",
+          "jurisdiction": "US",
+          "official_url": "https://uscode.house.gov/view.xhtml?req=granuleid:USC-prelim-title42-section1983&num=0&edition=prelim",
+          "key_text": "Every person who, under color of any statute, ordinance, regulation, custom, or usage, of any State... subjects, or causes to be subjected, any citizen of the United States... to the deprivation of any rights, privileges, or immunities secured by the Constitution and laws, shall be liable to the party injured.",
+          "verification_status": "VERIFIED"
+        },
+        {
+          "citation": "Monell v. Dept. of Social Services, 436 U.S. 658 (1978)",
+          "jurisdiction": "US",
+          "official_url": "https://www.supremecourt.gov/",
+          "key_text": "Local governing bodies can be sued directly under \u00a7 1983 for monetary, declaratory, or injunctive relief where the action that is alleged to be unconstitutional implements or executes a policy statement, ordinance, regulation, or decision officially adopted and promulgated by that body's officers.",
+          "verification_status": "VERIFIED"
+        }
+      ],
+      "level_5": "Litigating \u00a7 1983 child welfare actions requires navigating two formidable federal doctrines: (1) Qualified Immunity, which shields individual workers unless they violated 'clearly established' statutory or constitutional rights that every reasonable official would have known; and (2) The Rooker-Feldman and Younger abstention doctrines, which prohibit federal district courts from reviewing or interfering with ongoing state family court proceedings. Federal damages suits typically proceed after state court adjudication concludes.",
+      "drill_downs": {
+        "SHOW_SOURCE": {
+          "title": "Federal Civil Rights Statute Text",
+          "content": "42 U.S.C. \u00a7 1983 authorizes civil actions for deprivation of constitutional rights under color of state law.",
+          "citations": [
+            "42 U.S.C. \u00a7 1983"
+          ],
+          "official_sources": [
+            "https://uscode.house.gov/"
+          ]
+        },
+        "SHOW_STATUTE": {
+          "title": "Civil Rights Attorney's Fees Awards Act",
+          "content": "42 U.S.C. \u00a7 1988 permits prevailing plaintiffs in \u00a7 1983 actions to recover reasonable attorney's fees.",
+          "citations": [
+            "42 U.S.C. \u00a7 1988"
+          ],
+          "official_sources": [
+            "https://uscode.house.gov/"
+          ]
+        },
+        "SHOW_CASE": {
+          "title": "Controlling Precedent: Monell v. Dept. of Social Services, 436 U.S. 658 (1978)",
+          "content": "Establishes municipal liability standards under \u00a7 1983 for unconstitutional agency policies or customs.",
+          "citations": [
+            "Monell v. Dept. of Social Services, 436 U.S. 658 (1978)"
+          ],
+          "official_sources": [
+            "https://www.supremecourt.gov/"
+          ]
+        },
+        "EXPLAIN_OPPOSING": {
+          "title": "Qualified Immunity and Absolute Prosecutorial Immunity Defenses",
+          "content": "Caseworkers and agency attorneys assert qualified immunity for investigative acts and quasi-prosecutorial immunity for initiating dependency petitions.",
+          "citations": [
+            "Monell v. Dept. of Social Services, 436 U.S. 658 (1978)"
+          ],
+          "official_sources": [
+            "https://www.supremecourt.gov/"
+          ]
+        },
+        "SHOW_TEMPORAL_CHANGE": {
+          "title": "Judicial Rejection of Absolute Immunity for Falsifying Evidence",
+          "content": "Modern federal decisions uniformly hold that social workers do not possess immunity for submitting deliberately fabricated evidence or perjury in sworn removal declarations.",
+          "citations": [
+            "42 U.S.C. \u00a7 1983"
+          ],
+          "official_sources": [
+            "https://uscode.house.gov/"
+          ]
+        }
+      },
+      "related_concepts": [
+        "fourth_amendment_home_entry",
+        "due_process",
+        "fourteenth_amendment_equal_protection"
+      ]
+    },
+    "due_process": {
+      "name": "Due Process of Law",
+      "level_1": "The basic idea is that government officials cannot simply take away your freedom, your children, or your property on their own whim. Before they take an action that deeply harms your life, they must follow fair, required rules and procedures\u2014such as giving you clear written notice beforehand and allowing you to speak and defend yourself in front of a neutral decision-maker.",
+      "level_2": "In practical terms for your situation: If an agency (like CPS, law enforcement, or a licensing board) investigates or intervenes in your family, they cannot hold secret proceedings or change your rights without giving you advance notice. You are entitled to know exactly what allegations are made against you, to inspect the evidence they claim to have, to have a lawyer present, to present your own witnesses, and to have a formal hearing before an independent judge within strict statutory deadlines (such as 72 hours in Washington emergency child welfare matters).",
+      "level_3": "Due Process divides into two distinct constitutional doctrines: 1. Procedural Due Process: Governs the fairness of the decision-making process. Under the three-factor balancing test of Mathews v. Eldridge, courts weigh: (a) the private interest affected; (b) the risk of an erroneous deprivation through current procedures and the probable value of additional procedural safeguards; and (c) the government's interest, including administrative and fiscal burdens. 2. Substantive Due Process: Protects fundamental liberty interests that are deeply rooted in the nation's history and tradition (such as parental care and custody under Troxel v. Granville) that the government cannot infringe upon regardless of procedure, unless the infringement survives strict judicial scrutiny.",
+      "level_4_citations": [
+        {
+          "citation": "U.S. Const. amend. XIV, \u00a7 1",
+          "jurisdiction": "US",
+          "official_url": "https://www.govinfo.gov/content/pkg/GPO-CONAN-2017/pdf/GPO-CONAN-2017.pdf",
+          "key_text": "No State shall make or enforce any law which shall abridge the privileges or immunities of citizens of the United States; nor shall any State deprive any person of life, liberty, or property, without due process of law.",
+          "verification_status": "VERIFIED"
+        },
+        {
+          "citation": "Mathews v. Eldridge, 424 U.S. 319 (1976)",
+          "jurisdiction": "US",
+          "official_url": "https://www.supremecourt.gov/",
+          "key_text": "Identified the three-part balancing test determining the constitutional adequacy of administrative and pre-deprivation procedural protections.",
+          "verification_status": "VERIFIED"
+        },
+        {
+          "citation": "Santosky v. Kramer, 455 U.S. 745 (1982)",
+          "jurisdiction": "US",
+          "official_url": "https://www.supremecourt.gov/",
+          "key_text": "Before a State may sever completely and irrevocably the rights of parents in their natural child, due process requires that the State support its allegations by at least clear and convincing evidence.",
+          "verification_status": "VERIFIED"
+        },
+        {
+          "citation": "Wash. Const. art. I, \u00a7 3",
+          "jurisdiction": "WA",
+          "official_url": "https://leg.wa.gov/CodeReviser/Pages/constitution.aspx",
+          "key_text": "No person shall be deprived of life, liberty, or property, without due process of law.",
+          "verification_status": "VERIFIED"
+        },
+        {
+          "citation": "RCW 13.34.065",
+          "jurisdiction": "WA",
+          "official_url": "https://app.leg.wa.gov/rcw/default.aspx?cite=13.34.065",
+          "key_text": "Requires a mandatory court shelter care hearing within 72 hours of emergency custody, excluding weekends and holidays, with notice and appointed counsel.",
+          "verification_status": "VERIFIED"
+        }
+      ],
+      "level_5": "Advanced constitutional tension centers on the interplay between the emergency doctrine (exigent circumstances) and the fundamental liberty interest in family integrity under Troxel v. Granville and Santosky v. Kramer. While government agencies invoke administrative discretion and child safety under parens patriae as paramount sovereign interests, federal circuits (e.g., 9th Cir. Wallis v. Spencer; 2nd Cir. Nicholson v. Scoppetta) rigorously restrict post-hoc rationalizations of emergency warrantless entries. When the government asserts that pre-deprivation hearings are impractical, due process mandates an immediate, robust post-deprivation adversary hearing with appointed counsel and clear evidentiary standards.",
+      "drill_downs": {
+        "SHOW_SOURCE": {
+          "title": "Official Primary Sources for Due Process",
+          "content": "United States Constitution, Fourteenth Amendment, \u00a7 1 (Accessible at www.govinfo.gov); Washington State Constitution, Article I, \u00a7 3 (Accessible at leg.wa.gov).",
+          "citations": [
+            "U.S. Const. amend. XIV, \u00a7 1",
+            "Wash. Const. art. I, \u00a7 3"
+          ],
+          "official_sources": [
+            "https://www.govinfo.gov",
+            "https://leg.wa.gov"
+          ]
+        },
+        "SHOW_STATUTE": {
+          "title": "Controlling Statutory Frameworks Governing Due Process Timelines",
+          "content": "Under Washington law, RCW 13.34.065 requires a shelter care hearing within 72 hours of emergency custody excluding weekends and holidays. Under federal Title IV-E, 42 U.S.C. \u00a7 671 requires judicial determinations of reasonable efforts.",
+          "citations": [
+            "RCW 13.34.065",
+            "42 U.S.C. \u00a7 671"
+          ],
+          "official_sources": [
+            "https://app.leg.wa.gov/rcw/default.aspx?cite=13.34.065",
+            "https://uscode.house.gov/"
+          ]
+        },
+        "SHOW_CASE": {
+          "title": "Controlling Precedent: Santosky v. Kramer, 455 U.S. 745 (1982)",
+          "content": "Santosky v. Kramer, 455 U.S. 745 (1982) holding: Due process requires that the State prove allegations by at least clear and convincing evidence before completely severing parental rights.",
+          "citations": [
+            "Santosky v. Kramer, 455 U.S. 745 (1982)"
+          ],
+          "official_sources": [
+            "https://www.supremecourt.gov/"
+          ]
+        },
+        "EXPLAIN_OPPOSING": {
+          "title": "Opposing Interpretation: The State's Parens Patriae & Public Safety Interest",
+          "content": "Government argument: Under parens patriae and DeShaney v. Winnebago County, the State asserts an urgent child safety interest in immediately intervening to prevent catastrophic injury to children, justifying emergency protective custody prior to formal notice.",
+          "citations": [
+            "DeShaney v. Winnebago County Dept. of Social Services, 489 U.S. 189 (1989)"
+          ],
+          "official_sources": [
+            "https://www.supremecourt.gov/"
+          ]
+        },
+        "SHOW_TEMPORAL_CHANGE": {
+          "title": "Historical Evolution of Due Process Standards",
+          "content": "Historical evolution: Prior to Mathews v. Eldridge (1976) and Santosky v. Kramer (1982), juvenile courts operated under informal administrative discretion. The Keeping Families Together Act (Wash. Laws 2021, ch. 211) amended RCW 13.34.065 to heighten the removal standard from imminent danger to imminent physical harm.",
+          "citations": [
+            "Wash. Laws 2021, ch. 211",
+            "RCW 13.34.065 (Amended 2021)"
+          ],
+          "official_sources": [
+            "https://leg.wa.gov/CodeReviser"
+          ]
+        }
+      },
+      "related_concepts": [
+        "notice",
+        "opportunity_to_be_heard",
+        "shelter_care_hearing"
+      ]
+    },
+    "emergency_removal": {
+      "name": "Emergency Removal and Protective Custody",
+      "level_1": "Caseworkers and police cannot simply take a child away from their parents without a judge's written permission (a court order or warrant), unless there is an immediate, severe physical emergency happening right then that would cause serious injury before anyone could contact a judge.",
+      "level_2": "In practical terms for your situation: If law enforcement or CPS removes your child without a prior court order, they must document exact facts proving that the child was in imminent danger of serious physical harm. They cannot remove a child merely because of poverty, messy housing, or past allegations. Furthermore, once a child is removed, the state must file a petition and hold an emergency court hearing within 72 hours (excluding weekends and holidays).",
+      "level_3": "Under the Fourth Amendment, removing a child from parental custody constitutes a constitutional seizure. Warrantless removals are presumptively unconstitutional under Wallis v. Spencer (9th Cir.) unless the state proves the narrow exigent circumstances exception: reasonable cause to believe the child is in imminent danger of serious bodily injury and that the intrusion is reasonably necessary to avert that injury. In Washington, RCW 13.34.050 requires a judicial order, while RCW 26.44.050 and RCW 13.34.055 restrict warrantless law enforcement custody to situations of imminent harm.",
+      "level_4_citations": [
+        {
+          "citation": "U.S. Const. amend. IV",
+          "jurisdiction": "US",
+          "official_url": "https://www.govinfo.gov/content/pkg/GPO-CONAN-2017/pdf/GPO-CONAN-2017.pdf",
+          "key_text": "The right of the people to be secure in their persons, houses, papers, and effects, against unreasonable searches and seizures, shall not be violated.",
+          "verification_status": "VERIFIED"
+        },
+        {
+          "citation": "Wallis v. Spencer, 202 F.3d 1126 (9th Cir. 2000)",
+          "jurisdiction": "US",
+          "official_url": "https://www.ca9.uscourts.gov/",
+          "key_text": "Officials may not remove children from parental custody without a court order unless they have information establishing reasonable cause to believe the child is in imminent danger of serious bodily injury.",
+          "verification_status": "VERIFIED"
+        },
+        {
+          "citation": "RCW 13.34.050",
+          "jurisdiction": "WA",
+          "official_url": "https://app.leg.wa.gov/rcw/default.aspx?cite=13.34.050",
+          "key_text": "Authorizes the court to enter an order directing that a child be taken into custody only upon a verified petition demonstrating reasonable grounds to believe removal is necessary.",
+          "verification_status": "VERIFIED"
+        },
+        {
+          "citation": "RCW 26.44.050",
+          "jurisdiction": "WA",
+          "official_url": "https://app.leg.wa.gov/rcw/default.aspx?cite=26.44.050",
+          "key_text": "Authorizes law enforcement officers to take a child into custody without a court order only when the officer has reasonable cause to believe custody is necessary to prevent imminent physical damage.",
+          "verification_status": "VERIFIED"
+        }
+      ],
+      "level_5": "Advanced civil rights litigation under 42 U.S.C. \u00a7 1983 centers on qualified immunity and the definition of 'imminent danger'. The Ninth Circuit (*Wallis*, *Ram v. Rubin*, *Kirkpatrick v. County of Washoe*) strictly holds that caseworkers who remove children without attempting to obtain a telephonic warrant when time permits are not entitled to qualified immunity. State statutory reforms (e.g. Washington's 2021 Keeping Families Together Act) heightened the removal standard, clarifying that substance use or poverty without a demonstrable causal nexus to imminent physical harm cannot support removal.",
+      "drill_downs": {
+        "SHOW_SOURCE": {
+          "title": "Official Primary Authorities for Emergency Removal",
+          "content": "United States Constitution, Fourth Amendment (govinfo.gov); Ninth Circuit Opinion: Wallis v. Spencer, 202 F.3d 1126 (ca9.uscourts.gov); Washington Revised Code: RCW 13.34.050 & RCW 26.44.050 (app.leg.wa.gov).",
+          "citations": [
+            "U.S. Const. amend. IV",
+            "Wallis v. Spencer, 202 F.3d 1126 (9th Cir. 2000)",
+            "RCW 13.34.050"
+          ],
+          "official_sources": [
+            "https://www.govinfo.gov/",
+            "https://www.ca9.uscourts.gov/",
+            "https://app.leg.wa.gov/rcw/default.aspx?cite=13.34.050"
+          ]
+        },
+        "SHOW_STATUTE": {
+          "title": "Washington Emergency Custody Statutes",
+          "content": "RCW 13.34.050 governs judicial pickup orders. RCW 26.44.050 governs warrantless police custody based on imminent physical damage.",
+          "citations": [
+            "RCW 13.34.050",
+            "RCW 26.44.050"
+          ],
+          "official_sources": [
+            "https://app.leg.wa.gov/rcw/default.aspx?cite=13.34.050",
+            "https://app.leg.wa.gov/rcw/default.aspx?cite=26.44.050"
+          ]
+        },
+        "SHOW_CASE": {
+          "title": "Controlling Precedent: Wallis v. Spencer, 202 F.3d 1126 (9th Cir. 2000)",
+          "content": "Holding: The Fourth Amendment protects children and parents from warrantless seizures. Exigency requires specific evidence of imminent bodily harm.",
+          "citations": [
+            "Wallis v. Spencer, 202 F.3d 1126 (9th Cir. 2000)"
+          ],
+          "official_sources": [
+            "https://www.ca9.uscourts.gov/"
+          ]
+        },
+        "EXPLAIN_OPPOSING": {
+          "title": "Opposing Interpretation: Immediate Protective Discretion",
+          "content": "State agency argument: In fast-moving domestic disturbance investigations, caseworkers must make instantaneous triage decisions. The State argues that imposing strict pre-removal warrant hurdles jeopardizes child lives in marginal domestic cases.",
+          "citations": [
+            "Roska ex rel. Roska v. Peterson, 328 F.3d 1230 (10th Cir. 2003)"
+          ],
+          "official_sources": [
+            "https://www.ca10.uscourts.gov/"
+          ]
+        },
+        "SHOW_TEMPORAL_CHANGE": {
+          "title": "Statutory Reform of Emergency Removal Standards (2021)",
+          "content": "Wash. Laws 2021, ch. 211 explicitly restricted emergency removals, eliminating subjective allegations of 'improper care' and establishing an objective requirement of imminent physical harm.",
+          "citations": [
+            "Wash. Laws 2021, ch. 211",
+            "RCW 13.34.050 (Amended 2021)"
+          ],
+          "official_sources": [
+            "https://leg.wa.gov/CodeReviser"
+          ]
+        }
+      },
+      "related_concepts": [
+        "due_process",
+        "shelter_care_hearing",
+        "reasonable_efforts"
+      ]
+    },
+    "first_amendment_family_association": {
+      "name": "First Amendment Right to Intimate Family Association",
+      "level_1": "You have a fundamental constitutional right to live together as a family and to love, raise, and guide your children without government meddling. The Constitution protects family bonds as one of the most basic freedoms in American life.",
+      "level_2": "The state cannot dictate your family life, beliefs, or cultural traditions simply because an agency prefers a different lifestyle. As long as you provide adequate care and do not abuse or neglect your child, the legal presumption is that you\u2014not a state caseworker or judge\u2014act in your child's best interests.",
+      "level_3": "The right to intimate family association emanates from both the First Amendment (freedom of association) and the Fourteenth Amendment Due Process Clause (Roberts v. United States Jaycees, 468 U.S. 609; Troxel v. Granville, 530 U.S. 57). Under Troxel, fit parents are endowed with a constitutional presumption that their decisions serve the best interests of their children, subject to strict judicial scrutiny.",
+      "level_4_citations": [
+        {
+          "citation": "U.S. Const. amend. I",
+          "jurisdiction": "US",
+          "official_url": "https://www.govinfo.gov/content/pkg/GPO-CONAN-2017/pdf/GPO-CONAN-2017.pdf",
+          "key_text": "Congress shall make no law respecting an establishment of religion, or prohibiting the free exercise thereof; or abridging the freedom of speech, or of the press; or the right of the people peaceably to assemble.",
+          "verification_status": "VERIFIED"
+        },
+        {
+          "citation": "Troxel v. Granville, 530 U.S. 57 (2000)",
+          "jurisdiction": "US",
+          "official_url": "https://www.supremecourt.gov/opinions/boundvolumes/530bv.pdf",
+          "key_text": "The interest of parents in the care, custody, and control of their children is perhaps the oldest of the fundamental liberty interests recognized by the Supreme Court.",
+          "verification_status": "VERIFIED"
+        },
+        {
+          "citation": "Roberts v. United States Jaycees, 468 U.S. 609 (1984)",
+          "jurisdiction": "US",
+          "official_url": "https://www.supremecourt.gov/",
+          "key_text": "Choices to enter into and maintain certain intimate human relationships must be secured against undue cultural intrusion by the State because of the role of such relationships in safeguarding individual freedom.",
+          "verification_status": "VERIFIED"
+        }
+      ],
+      "level_5": "The intersection of First Amendment expressive association and Fourteenth Amendment substantive liberty establishes a heightened shield around the nuclear and extended family. State intrusion into familial integrity must survive strict scrutiny: the state must demonstrate a compelling governmental interest (preventing severe harm) and that the deprivation is narrowly tailored using the least restrictive means.",
+      "drill_downs": {
+        "SHOW_SOURCE": {
+          "title": "First Amendment Association and Parental Rights Authority",
+          "content": "U.S. Constitution First Amendment protects freedom of association and family ties.",
+          "citations": [
+            "U.S. Const. amend. I"
+          ],
+          "official_sources": [
+            "https://www.govinfo.gov"
+          ]
+        },
+        "SHOW_STATUTE": {
+          "title": "Family Integrity Preservation Statutes",
+          "content": "Federal and state statutes mandate reasonable efforts to maintain the child in the family home prior to placement.",
+          "citations": [
+            "42 U.S.C. \u00a7 671(a)(15)"
+          ],
+          "official_sources": [
+            "https://uscode.house.gov/"
+          ]
+        },
+        "SHOW_CASE": {
+          "title": "Controlling Precedent: Troxel v. Granville, 530 U.S. 57 (2000)",
+          "content": "Troxel v. Granville affirms that fit parents are presumed to act in their child's best interests.",
+          "citations": [
+            "Troxel v. Granville, 530 U.S. 57 (2000)"
+          ],
+          "official_sources": [
+            "https://www.supremecourt.gov/"
+          ]
+        },
+        "EXPLAIN_OPPOSING": {
+          "title": "State Best Interests Test vs Parental Presumption",
+          "content": "Agencies often argue that the state's independent evaluation of the child's best interests can supersede parental decision-making.",
+          "citations": [
+            "Troxel v. Granville, 530 U.S. 57 (2000)"
+          ],
+          "official_sources": [
+            "https://www.supremecourt.gov/"
+          ]
+        },
+        "SHOW_TEMPORAL_CHANGE": {
+          "title": "Strengthening of Parental Fit Presumption",
+          "content": "Since Troxel (2000), courts have systematically struck down state statutes granting non-parents visitation rights over fit parents' objections.",
+          "citations": [
+            "Troxel v. Granville, 530 U.S. 57 (2000)"
+          ],
+          "official_sources": [
+            "https://www.supremecourt.gov/"
+          ]
+        }
+      },
+      "related_concepts": [
+        "due_process",
+        "fourteenth_amendment_substantive_due_process"
+      ]
+    },
+    "first_amendment_religion_custody": {
+      "name": "First Amendment Free Exercise of Religion in Parental Custody",
+      "level_1": "The First Amendment protects your right to teach your religious beliefs and values to your children. A court or child welfare agency cannot take your children away or judge your fitness as a parent simply because they disagree with your religious faith, spiritual practices, or church.",
+      "level_2": "The state cannot condition reunification or judge your parenting based on whether you attend a traditional church, follow particular dietary laws, pray, or hold non-mainstream religious views. The state can only intervene if a specific action creates an immediate, demonstrable physical danger to the child's life or health.",
+      "level_3": "Under the Free Exercise Clause of the First Amendment and parental rights doctrine (Wisconsin v. Yoder, 406 U.S. 205), the government must demonstrate a compelling interest of the highest order to override parental religious decisions. The state's parens patriae authority allows intervention only to prevent direct physical harm (Prince v. Massachusetts, 321 U.S. 158), not to enforce religious orthodoxy or social conformity.",
+      "level_4_citations": [
+        {
+          "citation": "U.S. Const. amend. I",
+          "jurisdiction": "US",
+          "official_url": "https://www.govinfo.gov/content/pkg/GPO-CONAN-2017/pdf/GPO-CONAN-2017.pdf",
+          "key_text": "Congress shall make no law respecting an establishment of religion, or prohibiting the free exercise thereof.",
+          "verification_status": "VERIFIED"
+        },
+        {
+          "citation": "Wisconsin v. Yoder, 406 U.S. 205 (1972)",
+          "jurisdiction": "US",
+          "official_url": "https://www.supremecourt.gov/",
+          "key_text": "The primary role of parents in the upbringing of their children is established beyond debate as an enduring American tradition; a parent's religious beliefs and custody cannot be lightly overborne by state educational goals.",
+          "verification_status": "VERIFIED"
+        },
+        {
+          "citation": "Prince v. Massachusetts, 321 U.S. 158 (1944)",
+          "jurisdiction": "US",
+          "official_url": "https://www.supremecourt.gov/",
+          "key_text": "The family itself is not beyond regulation in the public interest, as against a claim of religious liberty; the state may intervene to protect children from direct physical harm or exploitation.",
+          "verification_status": "VERIFIED"
+        }
+      ],
+      "level_5": "Constitutional analysis distinguishes between purely religious instruction and practices that impose acute physical hazards (such as denial of life-saving blood transfusions or critical medical care). Under the Religious Freedom Restoration Act (RFRA) and state RFRAs, when the state burdens a parent's religious exercise in family court, the state must prove that the restriction is the least restrictive means of achieving the compelling governmental interest of preventing grave bodily injury.",
+      "drill_downs": {
+        "SHOW_SOURCE": {
+          "title": "First Amendment Free Exercise Clause Text",
+          "content": "U.S. Constitution First Amendment forbids state laws prohibiting the free exercise of religion.",
+          "citations": [
+            "U.S. Const. amend. I"
+          ],
+          "official_sources": [
+            "https://www.govinfo.gov"
+          ]
+        },
+        "SHOW_STATUTE": {
+          "title": "Federal Religious Freedom Restoration Act (RFRA)",
+          "content": "42 U.S.C. \u00a7 2000bb-1 prohibits government from substantially burdening religious exercise without compelling interest.",
+          "citations": [
+            "42 U.S.C. \u00a7 2000bb-1"
+          ],
+          "official_sources": [
+            "https://uscode.house.gov/"
+          ]
+        },
+        "SHOW_CASE": {
+          "title": "Controlling Precedent: Wisconsin v. Yoder, 406 U.S. 205 (1972)",
+          "content": "Supreme Court upheld parents' fundamental right to guide the religious future and upbringing of their children.",
+          "citations": [
+            "Wisconsin v. Yoder, 406 U.S. 205 (1972)"
+          ],
+          "official_sources": [
+            "https://www.supremecourt.gov/"
+          ]
+        },
+        "EXPLAIN_OPPOSING": {
+          "title": "Medical Neglect and Child Safety Boundaries",
+          "content": "Under Prince v. Massachusetts, the state contends that religious conviction cannot exempt parents from mandatory medical treatments necessary to preserve a child's life.",
+          "citations": [
+            "Prince v. Massachusetts, 321 U.S. 158 (1944)"
+          ],
+          "official_sources": [
+            "https://www.supremecourt.gov/"
+          ]
+        },
+        "SHOW_TEMPORAL_CHANGE": {
+          "title": "Narrowing of Religious Exemptions in Child Protection Laws",
+          "content": "States have progressively modified statutory faith-healing exemptions to ensure emergency medical care can be authorized for imperiled children.",
+          "citations": [
+            "Prince v. Massachusetts, 321 U.S. 158 (1944)"
+          ],
+          "official_sources": [
+            "https://www.supremecourt.gov/"
+          ]
+        }
+      },
+      "related_concepts": [
+        "first_amendment_family_association",
+        "due_process",
+        "fourteenth_amendment_substantive_due_process"
+      ]
+    },
+    "fourteenth_amendment_equal_protection": {
+      "name": "Fourteenth Amendment Equal Protection of the Laws",
+      "level_1": "The government must treat people fairly and equally under the law. State agencies cannot target you, take away your children, or hold you to harsher rules because of your race, national origin, religion, or disability.",
+      "level_2": "If child welfare caseworkers treat you differently than other parents in the same situation\u2014such as demanding extra conditions or subjecting your home to harsher scrutiny because of your background, race, or language\u2014the agency may be violating the Equal Protection Clause. You have the right to equal treatment and services.",
+      "level_3": "Under the Fourteenth Amendment's Equal Protection Clause, judicial review of government action employs three tiers of scrutiny: (1) Strict Scrutiny for suspect classifications (race, religion, national origin) or fundamental rights, requiring a compelling state interest and narrow tailoring; (2) Intermediate Scrutiny for quasi-suspect classifications (gender); and (3) Rational Basis Review for general social/economic regulations, requiring a legitimate state interest.",
+      "level_4_citations": [
+        {
+          "citation": "U.S. Const. amend. XIV, \u00a7 1",
+          "jurisdiction": "US",
+          "official_url": "https://www.govinfo.gov/content/pkg/GPO-CONAN-2017/pdf/GPO-CONAN-2017.pdf",
+          "key_text": "No State shall make or enforce any law which shall abridge the privileges or immunities of citizens of the United States... nor deny to any person within its jurisdiction the equal protection of the laws.",
+          "verification_status": "VERIFIED"
+        },
+        {
+          "citation": "Palmore v. Sidoti, 466 U.S. 429 (1984)",
+          "jurisdiction": "US",
+          "official_url": "https://www.supremecourt.gov/",
+          "key_text": "Private racial biases and the possible injury they might inflict are not permissible considerations for depriving a parent of the custody of a child.",
+          "verification_status": "VERIFIED"
+        },
+        {
+          "citation": "City of Cleburne v. Cleburne Living Center, 473 U.S. 432 (1985)",
+          "jurisdiction": "US",
+          "official_url": "https://www.supremecourt.gov/",
+          "key_text": "Government actions motivated by prejudice or irrational antipathy against individuals with disabilities violate the Equal Protection Clause.",
+          "verification_status": "VERIFIED"
+        }
+      ],
+      "level_5": "In systemic child welfare litigation, plaintiffs increasingly assert disparate impact and selective enforcement claims under Washington v. Davis, 426 U.S. 229, and Title VI of the Civil Rights Act of 1964. While constitutional equal protection requires establishing discriminatory intent, institutional practices that disproportionately remove children from minority or low-income households without objective evidence of imminent harm face rigorous statutory and judicial scrutiny.",
+      "drill_downs": {
+        "SHOW_SOURCE": {
+          "title": "Equal Protection Clause Primary Text",
+          "content": "Fourteenth Amendment, Section 1 guarantees equal protection of the laws to all persons.",
+          "citations": [
+            "U.S. Const. amend. XIV, \u00a7 1"
+          ],
+          "official_sources": [
+            "https://www.govinfo.gov"
+          ]
+        },
+        "SHOW_STATUTE": {
+          "title": "Federal Anti-Discrimination Statutes in Child Welfare",
+          "content": "Title VI of the Civil Rights Act of 1964 (42 U.S.C. \u00a7 2000d) prohibits racial discrimination by recipients of federal child welfare funds.",
+          "citations": [
+            "42 U.S.C. \u00a7 2000d"
+          ],
+          "official_sources": [
+            "https://uscode.house.gov/"
+          ]
+        },
+        "SHOW_CASE": {
+          "title": "Controlling Precedent: Palmore v. Sidoti, 466 U.S. 429 (1984)",
+          "content": "Supreme Court held that racial bias cannot justify modifying custody or removing children from parents.",
+          "citations": [
+            "Palmore v. Sidoti, 466 U.S. 429 (1984)"
+          ],
+          "official_sources": [
+            "https://www.supremecourt.gov/"
+          ]
+        },
+        "EXPLAIN_OPPOSING": {
+          "title": "State Neutrality Defense",
+          "content": "Agencies argue that removals are based on facially neutral child safety assessments rather than discriminatory factors.",
+          "citations": [
+            "Palmore v. Sidoti, 466 U.S. 429 (1984)"
+          ],
+          "official_sources": [
+            "https://www.supremecourt.gov/"
+          ]
+        },
+        "SHOW_TEMPORAL_CHANGE": {
+          "title": "Heightened Oversight of Child Welfare Disparities",
+          "content": "State and federal reforms have mandated data tracking on disproportionality and banned consideration of poverty alone as child neglect.",
+          "citations": [
+            "42 U.S.C. \u00a7 2000d"
+          ],
+          "official_sources": [
+            "https://uscode.house.gov/"
+          ]
+        }
+      },
+      "related_concepts": [
+        "due_process",
+        "fourteenth_amendment_substantive_due_process",
+        "ada_section_504_dependency"
+      ]
+    },
+    "fourteenth_amendment_substantive_due_process": {
+      "name": "Fourteenth Amendment Substantive Due Process and Parental Liberty",
+      "level_1": "Substantive due process protects your fundamental right to raise your child. Because your bond with your child is so vital, the government cannot permanently tear your family apart based on mere guesswork or minor disagreements; it must meet an exceptionally high burden of proof in court.",
+      "level_2": "In dependency and child welfare proceedings, the state cannot permanently terminate your parental rights based on a simple 'preponderance of evidence' (51% likelihood). The U.S. Supreme Court requires the state to prove its allegations by at least 'clear and convincing evidence'\u2014a much higher standard\u2014before it can sever your parental bond.",
+      "level_3": "Substantive Due Process under the Fourteenth Amendment protects fundamental liberty interests deeply rooted in tradition (Santosky v. Kramer, 455 U.S. 745). Procedural protections are calibrated under Mathews v. Eldridge, 424 U.S. 319, balancing: (1) the private interest; (2) the risk of erroneous deprivation and value of additional safeguards; and (3) the government's interest. In parental termination, the parent's interest is commanding, requiring clear and convincing proof.",
+      "level_4_citations": [
+        {
+          "citation": "Santosky v. Kramer, 455 U.S. 745 (1982)",
+          "jurisdiction": "US",
+          "official_url": "https://www.supremecourt.gov/",
+          "key_text": "Before a State may sever completely and irrevocably the rights of parents in their natural child, due process requires that the State support its allegations by at least clear and convincing evidence.",
+          "verification_status": "VERIFIED"
+        },
+        {
+          "citation": "Mathews v. Eldridge, 424 U.S. 319 (1976)",
+          "jurisdiction": "US",
+          "official_url": "https://www.supremecourt.gov/",
+          "key_text": "Procedural due process requires balancing the private interest affected, the risk of erroneous deprivation under existing procedures, and the Government's interest, including administrative burdens.",
+          "verification_status": "VERIFIED"
+        },
+        {
+          "citation": "Stanley v. Illinois, 405 U.S. 645 (1972)",
+          "jurisdiction": "US",
+          "official_url": "https://www.supremecourt.gov/",
+          "key_text": "The rights of parents to the companionship, care, custody, and management of their children are cognizable and substantial interests warranting constitutional deference.",
+          "verification_status": "VERIFIED"
+        }
+      ],
+      "level_5": "The constitutional tension under Santosky and Mathews centers on asymmetric risk allocation. Because termination of parental rights works an irrevocable and total destruction of the parent-child relationship, the standard of proof must reflect the gravity of erroneous permanent termination. State statutes attempting to relax evidentiary burdens or rely on default judgments in termination proceedings violate Fourteenth Amendment substantive due process.",
+      "drill_downs": {
+        "SHOW_SOURCE": {
+          "title": "Fourteenth Amendment Due Process Clause",
+          "content": "Fourteenth Amendment, \u00a7 1 prohibits states from depriving any person of life, liberty, or property without due process.",
+          "citations": [
+            "U.S. Const. amend. XIV, \u00a7 1"
+          ],
+          "official_sources": [
+            "https://www.govinfo.gov"
+          ]
+        },
+        "SHOW_STATUTE": {
+          "title": "Statutory Termination of Parental Rights Standards",
+          "content": "State termination statutes must incorporate clear and convincing evidence standards to comply with Santosky v. Kramer.",
+          "citations": [
+            "Santosky v. Kramer, 455 U.S. 745 (1982)"
+          ],
+          "official_sources": [
+            "https://www.supremecourt.gov/"
+          ]
+        },
+        "SHOW_CASE": {
+          "title": "Controlling Precedent: Santosky v. Kramer, 455 U.S. 745 (1982)",
+          "content": "Holding that due process mandates at least clear and convincing evidence for termination of parental rights.",
+          "citations": [
+            "Santosky v. Kramer, 455 U.S. 745 (1982)"
+          ],
+          "official_sources": [
+            "https://www.supremecourt.gov/"
+          ]
+        },
+        "EXPLAIN_OPPOSING": {
+          "title": "State Permanency Timeline Priority",
+          "content": "Agencies argue that rapid termination promotes child stability and adoption permanence under the Adoption and Safe Families Act (ASFA).",
+          "citations": [
+            "Santosky v. Kramer, 455 U.S. 745 (1982)"
+          ],
+          "official_sources": [
+            "https://www.supremecourt.gov/"
+          ]
+        },
+        "SHOW_TEMPORAL_CHANGE": {
+          "title": "Evolution of Evidentiary Standards in Family Courts",
+          "content": "Before Santosky (1982), several states permitted termination on a mere fair preponderance standard, which was invalidated nationwide.",
+          "citations": [
+            "Santosky v. Kramer, 455 U.S. 745 (1982)"
+          ],
+          "official_sources": [
+            "https://www.supremecourt.gov/"
+          ]
+        }
+      },
+      "related_concepts": [
+        "due_process",
+        "first_amendment_family_association",
+        "probable_cause_vs_preponderance"
+      ]
+    },
+    "fourth_amendment_home_entry": {
+      "name": "Fourth Amendment Protection Against Warrantless Home Entry",
+      "level_1": "The Fourth Amendment gives you a sacred right to privacy inside your home. Government workers, including police officers and Child Protective Services (CPS) caseworkers, cannot force their way inside your private residence without a valid judicial warrant signed by a judge, your voluntary and knowing consent, or a true, life-or-death emergency.",
+      "level_2": "If caseworkers or police officers knock on your door, you have the right to speak to them from your porch or with the door closed. You can calmly state: 'I do not consent to any entry or search of my home without a warrant.' Unless they possess a signed court order or face an immediate emergency where someone is suffering imminent, serious physical injury, they cannot kick down your door or enter without your permission.",
+      "level_3": "The Fourth Amendment's warrant requirement applies fully to administrative child welfare investigations (Camara v. Municipal Court, 387 U.S. 523). Exceptions are strictly limited to: (1) Voluntary Consent (must be freely given and not coerced); (2) Exigent Circumstances under the emergency aid doctrine (Brigham City v. Stuart), requiring an objectively reasonable basis to believe an occupant is seriously injured or imminently threatened; and (3) Valid Judicial Warrant based on probable cause.",
+      "level_4_citations": [
+        {
+          "citation": "U.S. Const. amend. IV",
+          "jurisdiction": "US",
+          "official_url": "https://www.govinfo.gov/content/pkg/GPO-CONAN-2017/pdf/GPO-CONAN-2017.pdf",
+          "key_text": "The right of the people to be secure in their persons, houses, papers, and effects, against unreasonable searches and seizures, shall not be violated, and no Warrants shall issue, but upon probable cause.",
+          "verification_status": "VERIFIED"
+        },
+        {
+          "citation": "Brigham City v. Stuart, 547 U.S. 398 (2006)",
+          "jurisdiction": "US",
+          "official_url": "https://www.supremecourt.gov/opinions/05pdf/05-502.pdf",
+          "key_text": "Warrantless entry under the emergency aid exception requires an objectively reasonable basis for believing that an occupant is seriously injured or imminently threatened with such injury.",
+          "verification_status": "VERIFIED"
+        },
+        {
+          "citation": "Camara v. Municipal Court, 387 U.S. 523 (1967)",
+          "jurisdiction": "US",
+          "official_url": "https://www.supremecourt.gov/",
+          "key_text": "Except in certain carefully defined classes of cases, a search of private property without proper consent is unreasonable unless authorized by a valid search warrant.",
+          "verification_status": "VERIFIED"
+        }
+      ],
+      "level_5": "Federal circuit jurisprudence establishes that child protection investigators are governed by the Fourth Amendment to the same degree as law enforcement officers (e.g., Wallis v. Spencer, 202 F.3d 1126 (9th Cir. 2000); Calabretta v. Floyd, 189 F.3d 808 (9th Cir. 1999)). Government officials cannot claim qualified immunity when conducting warrantless home entries in the absence of demonstrable imminent physical peril. Speculative allegations of neglect or unverified hotline tips never constitute exigent circumstances justifying warrantless intrusion.",
+      "drill_downs": {
+        "SHOW_SOURCE": {
+          "title": "Constitutional Text of the Fourth Amendment",
+          "content": "U.S. Constitution, Fourth Amendment guarantees the right to be secure in houses against unreasonable searches.",
+          "citations": [
+            "U.S. Const. amend. IV"
+          ],
+          "official_sources": [
+            "https://www.govinfo.gov"
+          ]
+        },
+        "SHOW_STATUTE": {
+          "title": "Statutory Authority for Judicial Entry Orders",
+          "content": "Administrative search warrants and dependency pickup orders require sworn affidavits demonstrating probable cause of imminent harm.",
+          "citations": [
+            "42 U.S.C. \u00a7 1983",
+            "U.S. Const. amend. IV"
+          ],
+          "official_sources": [
+            "https://uscode.house.gov/"
+          ]
+        },
+        "SHOW_CASE": {
+          "title": "Controlling Precedent: Brigham City v. Stuart, 547 U.S. 398 (2006)",
+          "content": "Emergency aid exception permits warrantless home entry only when officers have an objectively reasonable basis to believe an occupant is seriously injured or imminently threatened.",
+          "citations": [
+            "Brigham City v. Stuart, 547 U.S. 398 (2006)"
+          ],
+          "official_sources": [
+            "https://www.supremecourt.gov/"
+          ]
+        },
+        "EXPLAIN_OPPOSING": {
+          "title": "Government Position: Community Caretaking and Child Welfare Exigency",
+          "content": "Caseworkers argue that the state's parens patriae interest requires rapid inspection of living quarters when responding to severe child abuse allegations.",
+          "citations": [
+            "Brigham City v. Stuart, 547 U.S. 398 (2006)"
+          ],
+          "official_sources": [
+            "https://www.supremecourt.gov/"
+          ]
+        },
+        "SHOW_TEMPORAL_CHANGE": {
+          "title": "Narrowing of Administrative Search Exceptions",
+          "content": "Modern doctrine has rejected broad 'social worker exceptions' to the Fourth Amendment, holding caseworkers strictly accountable to traditional warrant requirements.",
+          "citations": [
+            "Brigham City v. Stuart, 547 U.S. 398 (2006)"
+          ],
+          "official_sources": [
+            "https://www.supremecourt.gov/"
+          ]
+        }
+      },
+      "related_concepts": [
+        "due_process",
+        "emergency_removal",
+        "civil_rights_section_1983"
+      ]
+    },
+    "icwa_inquiry": {
+      "name": "ICWA Duty of Inquiry and Tribal Notice",
+      "level_1": "If a child involved in a custody or dependency case has any Native American or Alaska Native family background, the judge and caseworkers are legally required to ask about it immediately and investigate. They must contact the relevant Native American Tribe so the Tribe can participate in the case and protect the child's heritage.",
+      "level_2": "In practical terms for your situation: At your very first court appearance and in every court questionnaire, the judge and caseworker will ask: \"Do you or the other parent have any Native American ancestry or tribal affiliation?\" If you believe you may have tribal heritage (even if you are not yet formally enrolled), state the names of the tribes, grandparents, or bands. Under the law, the state must pause certain proceedings and send formal legal notice by registered mail to the Tribe's designated ICWA agent.",
+      "level_3": "Under federal ICWA regulations (25 C.F.R. \u00a7 23.107) and Washington's WICWA (RCW 13.38.070), state courts and child welfare agencies bear an \"affirmative and continuing duty\" to inquire whether a child is or may be an \"Indian child\" (defined under 25 U.S.C. \u00a7 1903(4) as an unmarried person under eighteen who is either a member of an Indian tribe or is eligible for membership and the biological child of a member). If there is \"reason to know\" the child is an Indian child, the court must treat the child as an Indian child pending tribal verification.",
+      "level_4_citations": [
+        {
+          "citation": "25 U.S.C. \u00a7 1912",
+          "jurisdiction": "US",
+          "official_url": "https://uscode.house.gov/view.xhtml?path=/prelim@title25/chapter21&edition=prelim",
+          "key_text": "Requires that in any involuntary proceeding in a State court, the party seeking foster care placement of, or termination of parental rights to, an Indian child shall notify the parent or Indian custodian and the Indian child's tribe.",
+          "verification_status": "VERIFIED"
+        },
+        {
+          "citation": "25 C.F.R. \u00a7 23.107",
+          "jurisdiction": "US",
+          "official_url": "https://www.ecfr.gov/current/title-25/chapter-I/subchapter-D/part-23/subpart-I/section-23.107",
+          "key_text": "Establishes that state courts must ask each participant in an emergency or child-custody proceeding whether the participant knows or has reason to know that the child is an Indian child.",
+          "verification_status": "VERIFIED"
+        },
+        {
+          "citation": "RCW 13.38.070",
+          "jurisdiction": "WA",
+          "official_url": "https://app.leg.wa.gov/rcw/default.aspx?cite=13.38.070",
+          "key_text": "Codifies Washington's state-law duty of inquiry requiring DCYF and the court to seek to determine whether a child is an Indian child in every dependency petition.",
+          "verification_status": "VERIFIED"
+        },
+        {
+          "citation": "Haaland v. Brackeen, 599 U.S. 255 (2023)",
+          "jurisdiction": "US",
+          "official_url": "https://www.supremecourt.gov/",
+          "key_text": "Upheld the constitutionality of the Indian Child Welfare Act against Tenth Amendment anticommandeering, Article I commerce clause, and equal protection challenges.",
+          "verification_status": "VERIFIED"
+        }
+      ],
+      "level_5": "The jurisdictional threshold under ICWA is strictly enforced on appellate review. In Haaland v. Brackeen (2023), the Supreme Court rejected constitutional challenges to ICWA's structure, affirming tribal sovereignty over child welfare. Under state appellate jurisprudence, a failure by DCYF or the trial court to conduct a thorough, documented initial and continuing inquiry\u2014or failure to send registered mail notice to all identified tribes\u2014constitutes reversible error. Orders entered without proper inquiry are voidable on petition by the parent, Indian custodian, or the Tribe under 25 U.S.C. \u00a7 1914.",
+      "drill_downs": {
+        "SHOW_SOURCE": {
+          "title": "Official Primary Legal Authorities for ICWA Inquiry",
+          "content": "United States Code Title 25: 25 U.S.C. \u00a7 1912 (uscode.house.gov); Code of Federal Regulations: 25 C.F.R. \u00a7 23.107 (ecfr.gov); Washington Revised Code: RCW 13.38.070 (app.leg.wa.gov); Supreme Court Opinion: Haaland v. Brackeen, 599 U.S. 255 (supremecourt.gov).",
+          "citations": [
+            "25 U.S.C. \u00a7 1912",
+            "25 C.F.R. \u00a7 23.107",
+            "RCW 13.38.070",
+            "Haaland v. Brackeen, 599 U.S. 255 (2023)"
+          ],
+          "official_sources": [
+            "https://uscode.house.gov/",
+            "https://www.ecfr.gov/",
+            "https://app.leg.wa.gov/rcw/default.aspx?cite=13.38.070",
+            "https://www.supremecourt.gov/"
+          ]
+        },
+        "SHOW_STATUTE": {
+          "title": "Controlling ICWA & WICWA Inquiry Enactments",
+          "content": "25 C.F.R. \u00a7 23.107 mandates continuous inquiry at every hearing. RCW 13.38.070 establishes Washington state compliance standards.",
+          "citations": [
+            "25 C.F.R. \u00a7 23.107",
+            "RCW 13.38.070"
+          ],
+          "official_sources": [
+            "https://www.ecfr.gov/",
+            "https://app.leg.wa.gov/rcw/default.aspx?cite=13.38.070"
+          ]
+        },
+        "SHOW_CASE": {
+          "title": "Supreme Court Confirmation of ICWA: Haaland v. Brackeen",
+          "content": "Haaland affirmed that Congress possessed broad constitutional authority to protect Indian children and preserve tribal existence through ICWA.",
+          "citations": [
+            "Haaland v. Brackeen, 599 U.S. 255 (2023)"
+          ],
+          "official_sources": [
+            "https://www.supremecourt.gov/"
+          ]
+        },
+        "EXPLAIN_OPPOSING": {
+          "title": "Opposing Interpretation: Burdensome Delay & Substantial Compliance",
+          "content": "Agency argument: State child welfare agencies occasionally argue that failure to send formal registered mail should be treated as harmless error where maternal ancestors were only vaguely rumored to have indigenous ties without specific tribal enrollment.",
+          "citations": [
+            "25 C.F.R. \u00a7 23.107"
+          ],
+          "official_sources": [
+            "https://www.ecfr.gov/"
+          ]
+        },
+        "SHOW_TEMPORAL_CHANGE": {
+          "title": "Codification History of ICWA Inquiry Rules",
+          "content": "In 2016, the Bureau of Indian Affairs (BIA) promulgated binding federal regulations (25 C.F.R. part 23) replacing older non-binding guidelines and establishing the mandatory 'affirmative and continuing duty' of inquiry.",
+          "citations": [
+            "81 Fed. Reg. 38778 (2016)",
+            "25 C.F.R. \u00a7 23.107"
+          ],
+          "official_sources": [
+            "https://www.govinfo.gov"
+          ]
+        }
+      },
+      "related_concepts": [
+        "active_efforts",
+        "notice",
+        "due_process"
+      ]
+    },
+    "notice": {
+      "name": "Legal Notice and Service of Process",
+      "level_1": "Notice means the government or an opposing party cannot take legal action against you in secret. They must officially inform you in writing about what they claim you did wrong, what legal orders they are asking a judge to make, and exactly when and where you need to appear in court to defend yourself.",
+      "level_2": "In practical terms for your situation: You should receive official court papers\u2014such as a Summons, Dependency Petition, or Notice of Hearing. These documents must list the specific factual allegations (not just vague conclusions), the date and time of your court appearance, and your right to an attorney. If the state takes custody of a child, caseworkers must make reasonable, immediate efforts to notify parents by telephone, in person, or by written delivery.",
+      "level_3": "Under constitutional due process, the controlling standard for notice derives from Mullane v. Central Hanover Bank & Trust Co.: notice must be \"reasonably calculated, under all the circumstances, to apprise interested parties of the pendency of the action and afford them an opportunity to present their objections.\" In child dependency law, notice encompasses personal service of summons, statutory notice of emergency shelter hearings (RCW 13.34.060), and mandatory ICWA tribal notice (25 U.S.C. \u00a7 1912(a)).",
+      "level_4_citations": [
+        {
+          "citation": "Mullane v. Central Hanover Bank & Trust Co., 339 U.S. 306 (1950)",
+          "jurisdiction": "US",
+          "official_url": "https://www.supremecourt.gov/",
+          "key_text": "Due process requires notice reasonably calculated, under all the circumstances, to apprise interested parties of the pendency of the action and afford them an opportunity to present their objections.",
+          "verification_status": "VERIFIED"
+        },
+        {
+          "citation": "RCW 13.34.070",
+          "jurisdiction": "WA",
+          "official_url": "https://app.leg.wa.gov/rcw/default.aspx?cite=13.34.070",
+          "key_text": "Requires issuance of summons and personal service upon parents, guardians, or legal custodians with verified petition attached.",
+          "verification_status": "VERIFIED"
+        },
+        {
+          "citation": "RCW 13.34.060",
+          "jurisdiction": "WA",
+          "official_url": "https://app.leg.wa.gov/rcw/default.aspx?cite=13.34.060",
+          "key_text": "Mandates that reasonable efforts be made to inform parents immediately upon emergency custody taking and provide written notice of the shelter care hearing.",
+          "verification_status": "VERIFIED"
+        }
+      ],
+      "level_5": "Doctrinal tensions in notice jurisprudence involve the adequacy of constructive service (service by publication or certified mail) when parents are unhoused, transient, or incarcerated. While Mullane permits substitute service when personal service is impossible despite diligent inquiry, appellate courts strictly scrutinize state declarations of diligent search before permitting default judgments. In Indian Child Welfare Act proceedings, 25 U.S.C. \u00a7 1912(a) establishes a heightened jurisdictional requirement: registered mail notice to tribes with return receipt requested is an absolute prerequisite to judicial jurisdiction.",
+      "drill_downs": {
+        "SHOW_SOURCE": {
+          "title": "Official Sources for Legal Notice Requirements",
+          "content": "Supreme Court Opinions: Mullane v. Central Hanover Bank, 339 U.S. 306 (supremecourt.gov); Washington Revised Code: RCW 13.34.060 & RCW 13.34.070 (app.leg.wa.gov).",
+          "citations": [
+            "Mullane v. Central Hanover Bank & Trust Co., 339 U.S. 306 (1950)",
+            "RCW 13.34.070"
+          ],
+          "official_sources": [
+            "https://www.supremecourt.gov/",
+            "https://app.leg.wa.gov/rcw/default.aspx?cite=13.34.070"
+          ]
+        },
+        "SHOW_STATUTE": {
+          "title": "Controlling Washington Notice Statutes",
+          "content": "RCW 13.34.060 governs emergency shelter care notice. RCW 13.34.070 governs dependency summons and service of process.",
+          "citations": [
+            "RCW 13.34.060",
+            "RCW 13.34.070"
+          ],
+          "official_sources": [
+            "https://app.leg.wa.gov/rcw/default.aspx?cite=13.34.060",
+            "https://app.leg.wa.gov/rcw/default.aspx?cite=13.34.070"
+          ]
+        },
+        "SHOW_CASE": {
+          "title": "Controlling Precedent: Mullane v. Central Hanover Bank & Trust Co.",
+          "content": "Mullane established that process which is a mere gesture is not due process. The means employed must be such as one desirous of actually informing the absentee might reasonably adopt.",
+          "citations": [
+            "Mullane v. Central Hanover Bank & Trust Co., 339 U.S. 306 (1950)"
+          ],
+          "official_sources": [
+            "https://www.supremecourt.gov/"
+          ]
+        },
+        "EXPLAIN_OPPOSING": {
+          "title": "Opposing Interpretation: Exigent Notice Truncation & Harmless Error",
+          "content": "Agency argument: When children face imminent physical danger, formal written notice may be truncated prior to emergency taking. The agency contends that technical notice defects are harmless if actual notice is achieved prior to the formal adversary hearing.",
+          "citations": [
+            "In re Gault, 387 U.S. 1 (1967)"
+          ],
+          "official_sources": [
+            "https://www.supremecourt.gov/"
+          ]
+        },
+        "SHOW_TEMPORAL_CHANGE": {
+          "title": "Legislative Evolution of Dependency Notice Requirements",
+          "content": "The Washington 2021 Keeping Families Together Act heightened notice duties under RCW 13.34.060, requiring caseworkers to specifically document all attempts to notify parents and relative kin immediately upon removal.",
+          "citations": [
+            "Wash. Laws 2021, ch. 211",
+            "RCW 13.34.060 (Amended 2021)"
+          ],
+          "official_sources": [
+            "https://leg.wa.gov/CodeReviser"
+          ]
+        }
+      },
+      "related_concepts": [
+        "due_process",
+        "opportunity_to_be_heard",
+        "shelter_care_hearing"
+      ]
+    },
+    "opportunity_to_be_heard": {
+      "name": "Right to an Opportunity to Be Heard",
+      "level_1": "The opportunity to be heard means that a judge cannot decide your case based solely on what government workers say behind closed doors. You have the fundamental right to come to court, tell your side of what happened, present your own documents and witnesses, and challenge the claims and evidence presented against you.",
+      "level_2": "In practical terms for your situation: At any court hearing (including a 72-hour shelter care hearing or 75-day fact-finding trial), you or your attorney have the right to speak, testify under oath, submit evidence (like drug tests, housing leases, or medical records), and cross-examine the caseworker or investigators who wrote reports about you. A judge cannot cut off your defense without allowing you to present your evidence.",
+      "level_3": "Procedural due process guarantees an opportunity to be heard \"at a meaningful time and in a meaningful manner\" under Armstrong v. Manzo. In Washington child welfare jurisprudence, RCW 13.34.090 codifies the statutory right of parents to be heard, to present evidence, and to examine witnesses on all matters within the court's jurisdiction. An ex parte order that deprives a parent of custody without a prompt subsequent evidentiary hearing violates this core constitutional guarantee.",
+      "level_4_citations": [
+        {
+          "citation": "Armstrong v. Manzo, 380 U.S. 545 (1965)",
+          "jurisdiction": "US",
+          "official_url": "https://www.supremecourt.gov/",
+          "key_text": "A fundamental requirement of due process is the opportunity to be heard at a meaningful time and in a meaningful manner.",
+          "verification_status": "VERIFIED"
+        },
+        {
+          "citation": "RCW 13.34.090",
+          "jurisdiction": "WA",
+          "official_url": "https://app.leg.wa.gov/rcw/default.aspx?cite=13.34.090",
+          "key_text": "Guarantees the right of parents, guardians, or legal custodians to be heard, to present evidence material to the proceedings, and to examine witnesses.",
+          "verification_status": "VERIFIED"
+        },
+        {
+          "citation": "Wash. Const. art. I, \u00a7 3",
+          "jurisdiction": "WA",
+          "official_url": "https://leg.wa.gov/CodeReviser/Pages/constitution.aspx",
+          "key_text": "Provides that no person shall be deprived of life, liberty, or property without due process of law.",
+          "verification_status": "VERIFIED"
+        }
+      ],
+      "level_5": "Constitutional litigation focuses on whether the hearing provided was truly \"meaningful\" or merely perfunctory. Courts hold that an opportunity to be heard requires an impartial judicial officer, the right to confront adverse witnesses under the rules of evidence, and findings of fact supported by a verified evidentiary record. When a trial court restricts parental testimony or denies a continuance to secure crucial rebuttal evidence, appellate review applies a de novo due process standard, reversing orders where procedural restrictions created a substantial risk of erroneous deprivation under Mathews v. Eldridge.",
+      "drill_downs": {
+        "SHOW_SOURCE": {
+          "title": "Primary Sources for Right to Be Heard",
+          "content": "United States Supreme Court: Armstrong v. Manzo, 380 U.S. 545 (supremecourt.gov); Washington Revised Code: RCW 13.34.090 (app.leg.wa.gov).",
+          "citations": [
+            "Armstrong v. Manzo, 380 U.S. 545 (1965)",
+            "RCW 13.34.090"
+          ],
+          "official_sources": [
+            "https://www.supremecourt.gov/",
+            "https://app.leg.wa.gov/rcw/default.aspx?cite=13.34.090"
+          ]
+        },
+        "SHOW_STATUTE": {
+          "title": "Washington Statute Guaranteeing Right to Present Evidence",
+          "content": "RCW 13.34.090(1) guarantees that parents have the right to be heard, present evidence, and cross-examine witnesses at all stages.",
+          "citations": [
+            "RCW 13.34.090"
+          ],
+          "official_sources": [
+            "https://app.leg.wa.gov/rcw/default.aspx?cite=13.34.090"
+          ]
+        },
+        "SHOW_CASE": {
+          "title": "Controlling Precedent: Armstrong v. Manzo, 380 U.S. 545 (1965)",
+          "content": "Holding: Post-hoc hearing did not cure failure to provide notice and hearing prior to entry of an adoption decree terminating parental rights.",
+          "citations": [
+            "Armstrong v. Manzo, 380 U.S. 545 (1965)"
+          ],
+          "official_sources": [
+            "https://www.supremecourt.gov/"
+          ]
+        },
+        "EXPLAIN_OPPOSING": {
+          "title": "Opposing Interpretation: Judicial Economy & Preliminary Offers of Proof",
+          "content": "Court/Agency argument: Judges possess inherent courtroom management discretion to limit cumulative testimony and require formal offers of proof before allowing extensive witness examination, particularly at expedited preliminary hearings.",
+          "citations": [
+            "Mathews v. Eldridge, 424 U.S. 319 (1976)"
+          ],
+          "official_sources": [
+            "https://www.supremecourt.gov/"
+          ]
+        },
+        "SHOW_TEMPORAL_CHANGE": {
+          "title": "Evolution from Administrative Discretion to Adversary Hearings",
+          "content": "Modern dependency practice shifted from informal judicial conferences to rigorous adversarial hearings governed by civil evidence rules, culminating in Washington's mandatory evidentiary standards under RCW 13.34.090.",
+          "citations": [
+            "RCW 13.34.090",
+            "Wash. Laws 2021, ch. 211"
+          ],
+          "official_sources": [
+            "https://leg.wa.gov/CodeReviser"
+          ]
+        }
+      },
+      "related_concepts": [
+        "due_process",
+        "notice",
+        "right_to_counsel_dependency"
+      ]
+    },
+    "permanency_planning": {
+      "name": "Permanency Planning and Concurrent Case Goals",
+      "level_1": "Permanency planning is the court process designed to prevent children from being stuck in temporary foster care indefinitely. The law establishes a strict calendar: by a certain deadline (usually within 12 months), the court must make a firm decision about the child's permanent home\u2014either returning home to parents, living permanently with relatives, or pursuing adoption.",
+      "level_2": "In practical terms for your situation: While you are working on your service plan to get your children back, DCYF will run 'concurrent planning'\u2014meaning they work on a backup plan (such as placement with an aunt or foster parent) at the exact same time. Every 6 months there is a review hearing, and by month 12 there is a mandatory 'Permanency Planning Hearing.' If the child has been in out-of-home care for 15 of the past 22 months, federal law pressures the agency to file for termination unless a good cause exception applies.",
+      "level_3": "Under Title IV-E and ASFA (42 U.S.C. \u00a7 675(5)(C)), a permanency hearing must occur no later than 12 months after the child enters foster care to determine the permanency plan: return home, adoption, legal guardianship, or placement with a fit and willing relative. In Washington, RCW 13.34.136 and RCW 13.34.145 codify permanency requirements, mandating that the primary goal must remain reunification unless the court enters findings that reasonable efforts have failed.",
+      "level_4_citations": [
+        {
+          "citation": "42 U.S.C. \u00a7 675",
+          "jurisdiction": "US",
+          "official_url": "https://uscode.house.gov/view.xhtml?path=/prelim@title42/chapter7/subchapter4/partE&edition=prelim",
+          "key_text": "Defines case review systems, mandating permanency planning hearings within 12 months and requiring termination petitions when a child has been in foster care for 15 of the most recent 22 months.",
+          "verification_status": "VERIFIED"
+        },
+        {
+          "citation": "RCW 13.34.136",
+          "jurisdiction": "WA",
+          "official_url": "https://app.leg.wa.gov/rcw/default.aspx?cite=13.34.136",
+          "key_text": "Requires the permanency plan to identify primary and concurrent goals, services to be provided, and steps toward achieving a permanent home.",
+          "verification_status": "VERIFIED"
+        },
+        {
+          "citation": "RCW 13.34.145",
+          "jurisdiction": "WA",
+          "official_url": "https://app.leg.wa.gov/rcw/default.aspx?cite=13.34.145",
+          "key_text": "Mandates an initial permanency planning hearing within 12 months of removal and specifies court inquiries into reunification progress and barrier removal.",
+          "verification_status": "VERIFIED"
+        }
+      ],
+      "level_5": "The core structural tension in permanency planning involves the collision between federal ASFA fiscal timelines and constitutional parental rights under Santosky and Troxel. While 42 U.S.C. \u00a7 675(5)(E) creates a presumption of filing for termination at 15 of 22 months, Washington law (RCW 13.34.145) recognizes explicit 'good cause' exceptions: (a) the child is placed with a relative; (b) the department has not provided necessary services; or (c) compelling reasons exist showing termination is not in the child's best interests. Skillful defense counsel uses agency service delays to block TPR filings.",
+      "drill_downs": {
+        "SHOW_SOURCE": {
+          "title": "Official Sources for Permanency Planning Rules",
+          "content": "United States Code Title 42: 42 U.S.C. \u00a7 675 (uscode.house.gov); Washington Revised Code: RCW 13.34.136 & RCW 13.34.145 (app.leg.wa.gov).",
+          "citations": [
+            "42 U.S.C. \u00a7 675",
+            "RCW 13.34.136",
+            "RCW 13.34.145"
+          ],
+          "official_sources": [
+            "https://uscode.house.gov/",
+            "https://app.leg.wa.gov/rcw/default.aspx?cite=13.34.136"
+          ]
+        },
+        "SHOW_STATUTE": {
+          "title": "Controlling Permanency Statutes",
+          "content": "RCW 13.34.145 details the 12-month hearing procedures, while 42 U.S.C. \u00a7 675(5)(C) establishes federal funding benchmarks.",
+          "citations": [
+            "RCW 13.34.145",
+            "42 U.S.C. \u00a7 675"
+          ],
+          "official_sources": [
+            "https://app.leg.wa.gov/rcw/default.aspx?cite=13.34.145",
+            "https://uscode.house.gov/"
+          ]
+        },
+        "SHOW_CASE": {
+          "title": "Appellate Interpretation of Compelling Reasons",
+          "content": "Courts hold that the 15/22 month timeline is not automatic; trial courts must rigorously evaluate whether DCYF failed to provide services before changing permanency goals.",
+          "citations": [
+            "RCW 13.34.145"
+          ],
+          "official_sources": [
+            "https://app.leg.wa.gov/rcw/default.aspx?cite=13.34.145"
+          ]
+        },
+        "EXPLAIN_OPPOSING": {
+          "title": "Opposing Interpretation: Childhood Sense of Time & Foster Drift",
+          "content": "Child advocate / Guardian ad Litem argument: Psychological literature emphasizes a young child's sense of time, arguing that parental rehabilitation timelines must yield to the child's urgent need for permanent attachment and stability.",
+          "citations": [
+            "42 U.S.C. \u00a7 675"
+          ],
+          "official_sources": [
+            "https://uscode.house.gov/"
+          ]
+        },
+        "SHOW_TEMPORAL_CHANGE": {
+          "title": "ASFA 1997 Landmark Shift",
+          "content": "ASFA (1997) replaced the 1980 foster care framework, introducing mandatory 12-month permanency hearings and the 15/22-month rule to end long-term unplaced foster drift.",
+          "citations": [
+            "Pub. L. 105-89",
+            "42 U.S.C. \u00a7 675"
+          ],
+          "official_sources": [
+            "https://uscode.house.gov/"
+          ]
+        }
+      },
+      "related_concepts": [
+        "reasonable_efforts",
+        "shelter_care_hearing",
+        "due_process"
+      ]
+    },
+    "probable_cause_vs_preponderance": {
+      "name": "Standards of Proof: Probable Cause vs. Preponderance of the Evidence",
+      "level_1": "The law does not require the exact same amount of certainty at every stage of a court case. Initial emergency actions only require 'probable cause'\u2014meaning specific, believable facts suggesting immediate danger. However, to formally decide a dependency case at trial, the state must meet a higher standard called 'preponderance of the evidence,' meaning the facts must show it is more likely true than not (more than 50% likely).",
+      "level_2": "In practical procedural terms (educational description only; not applied to any specific case): At the initial emergency removal and shelter stage, the judge only looks for reasonable grounds or probable cause. However, when the case reaches the formal trial (the fact-finding hearing), the state cannot rely on hunches or unverified reports; it must present sworn evidence proving allegations by a preponderance of the evidence. If the state later seeks termination of parental rights, the standard escalates to the constitutional 'clear, cogent, and convincing' evidence threshold.",
+      "level_3": "Jurisprudence categorizes burdens of proof into distinct evidentiary tiers: 1. Probable Cause / Reasonable Cause: A reasonable ground for belief of guilt or danger, supported by less than prima facie proof but more than mere suspicion (Beck v. Ohio). Governs emergency warrants and shelter care intake under RCW 13.34.050. 2. Preponderance of the Evidence: Evidence that produces the stronger impression, has the greater weight, and is more convincing as to its truth when compared with the evidence offered in opposition (Addington v. Texas). Governs Washington fact-finding under RCW 13.34.110. 3. Clear and Convincing Evidence: A heightened standard required by Santosky v. Kramer for permanent parental termination under RCW 13.34.190.",
+      "level_4_citations": [
+        {
+          "citation": "Addington v. Texas, 441 U.S. 418 (1979)",
+          "jurisdiction": "US",
+          "official_url": "https://www.supremecourt.gov/",
+          "key_text": "Analyzed the three standards of proof (preponderance, clear and convincing, reasonable doubt), holding that the function of a standard of proof is to allocate the risk of error between litigants.",
+          "verification_status": "VERIFIED"
+        },
+        {
+          "citation": "Santosky v. Kramer, 455 U.S. 745 (1982)",
+          "jurisdiction": "US",
+          "official_url": "https://www.supremecourt.gov/",
+          "key_text": "Held that the fair preponderance standard is constitutionally inadequate in parental termination proceedings, requiring clear and convincing proof.",
+          "verification_status": "VERIFIED"
+        },
+        {
+          "citation": "RCW 13.34.110",
+          "jurisdiction": "WA",
+          "official_url": "https://app.leg.wa.gov/rcw/default.aspx?cite=13.34.110",
+          "key_text": "Codifies that the petitioner in a Washington dependency fact-finding hearing must prove the allegations of the petition by a preponderance of the evidence.",
+          "verification_status": "VERIFIED"
+        },
+        {
+          "citation": "RCW 13.34.190",
+          "jurisdiction": "WA",
+          "official_url": "https://app.leg.wa.gov/rcw/default.aspx?cite=13.34.190",
+          "key_text": "Requires that allegations supporting termination of parental rights be established by clear, cogent, and convincing evidence.",
+          "verification_status": "VERIFIED"
+        }
+      ],
+      "level_5": "The constitutional jurisprudence of evidentiary thresholds, established in Addington and Santosky, operates to allocate the societal risk of judicial error. In Santosky, the Supreme Court held that using the preponderance standard in severance actions violates Fourteenth Amendment due process because an erroneous termination irrevocably destroys the sacred parent-child relationship, whereas an erroneous refusal to terminate leaves the child in foster care with future opportunities for state intervention. Under the Indian Child Welfare Act (25 U.S.C. \u00a7 1912(f)), Congress raised the standard even higher: parental termination requires proof beyond a reasonable doubt supported by testimony of qualified expert witnesses.",
+      "drill_downs": {
+        "SHOW_SOURCE": {
+          "title": "Official Sources for Evidentiary Standards",
+          "content": "United States Supreme Court Opinions: Addington v. Texas, 441 U.S. 418; Santosky v. Kramer, 455 U.S. 745 (supremecourt.gov); Washington Revised Code: RCW 13.34.110 & RCW 13.34.190 (app.leg.wa.gov).",
+          "citations": [
+            "Addington v. Texas, 441 U.S. 418 (1979)",
+            "Santosky v. Kramer, 455 U.S. 745 (1982)",
+            "RCW 13.34.110"
+          ],
+          "official_sources": [
+            "https://www.supremecourt.gov/",
+            "https://app.leg.wa.gov/rcw/default.aspx?cite=13.34.110"
+          ]
+        },
+        "SHOW_STATUTE": {
+          "title": "Washington Statutory Proof Standards",
+          "content": "RCW 13.34.110 explicitly establishes the preponderance of evidence standard for dependency fact-finding trials, while RCW 13.34.190 mandates clear, cogent, and convincing evidence for termination.",
+          "citations": [
+            "RCW 13.34.110",
+            "RCW 13.34.190"
+          ],
+          "official_sources": [
+            "https://app.leg.wa.gov/rcw/default.aspx?cite=13.34.110",
+            "https://app.leg.wa.gov/rcw/default.aspx?cite=13.34.190"
+          ]
+        },
+        "SHOW_CASE": {
+          "title": "Leading Precedent on Evidentiary Allocation: Addington v. Texas",
+          "content": "Addington held that the standard of proof reflects society's judgment about how the risk of error should be distributed between the private individual and the state.",
+          "citations": [
+            "Addington v. Texas, 441 U.S. 418 (1979)"
+          ],
+          "official_sources": [
+            "https://www.supremecourt.gov/"
+          ]
+        },
+        "EXPLAIN_OPPOSING": {
+          "title": "Opposing Interpretation: Preliminary Child Protection Flexibility",
+          "content": "State agency argument: Society owes children an emergency protective shield. Therefore, at preliminary shelter care stages, requiring higher trial-level proof would endanger vulnerable youth before full investigation can occur.",
+          "citations": [
+            "Addington v. Texas, 441 U.S. 418 (1979)"
+          ],
+          "official_sources": [
+            "https://www.supremecourt.gov/"
+          ]
+        },
+        "SHOW_TEMPORAL_CHANGE": {
+          "title": "Evolution of Proof Standards in Parental Rights",
+          "content": "Before Santosky (1982), many states permitted termination of parental rights on a simple 51% preponderance standard. Santosky established a nationwide constitutional floor of clear and convincing evidence.",
+          "citations": [
+            "Santosky v. Kramer, 455 U.S. 745 (1982)"
+          ],
+          "official_sources": [
+            "https://www.supremecourt.gov/"
+          ]
+        }
+      },
+      "related_concepts": [
+        "due_process",
+        "shelter_care_hearing",
+        "active_efforts"
+      ]
+    },
+    "reasonable_efforts": {
+      "name": "Reasonable Efforts Requirement (Federal ASFA and Washington State Analog)",
+      "level_1": "In standard child welfare cases, state caseworkers cannot simply remove children and place them in foster care without trying to help the family first. The law requires the state agency to make 'reasonable efforts'\u2014meaning they must offer real assistance, support services, and treatment programs to help the family resolve safety problems so the child can stay at home, or return home safely as soon as possible.",
+      "level_2": "In practical terms for your situation: At every single dependency court hearing (the 72-hour shelter hearing, 6-month reviews, and permanency hearings), the judge must ask what specific services the agency offered you. If DCYF failed to provide housing referrals, drug evaluations, mental health counseling, or visitation, your attorney can argue that the agency failed to make reasonable efforts, which can stop termination proceedings or lead to court-ordered services.",
+      "level_3": "The 'reasonable efforts' doctrine operates at two distinct legal levels: 1. Federal Statutory Mandate (Adoption and Safe Families Act / Title IV-E): 42 U.S.C. \u00a7 671(a)(15) requires states to make reasonable efforts to prevent removal and to finalize a permanent plan (reunification or adoption) as a condition of federal foster care funding. 2. Washington State Statutory Analog: RCW 13.34.065(5) and RCW 13.34.136 require DCYF to provide all reasonable services capable of correcting parental deficiencies, while RCW 13.34.180(1)(d) makes proof of reasonable efforts a mandatory statutory element at termination of parental rights.",
+      "level_4_citations": [
+        {
+          "citation": "42 U.S.C. \u00a7 671",
+          "jurisdiction": "US",
+          "official_url": "https://uscode.house.gov/view.xhtml?path=/prelim@title42/chapter7/subchapter4/partE&edition=prelim",
+          "key_text": "Mandates that reasonable efforts shall be made to preserve and reunify families, prior to the placement of a child in foster care, to prevent or eliminate the need for removing the child from the home.",
+          "verification_status": "VERIFIED"
+        },
+        {
+          "citation": "RCW 13.34.065",
+          "jurisdiction": "WA",
+          "official_url": "https://app.leg.wa.gov/rcw/default.aspx?cite=13.34.065",
+          "key_text": "Requires the court to make an express finding whether reasonable efforts were made by the department to prevent or eliminate the need for removal of the child from the home.",
+          "verification_status": "VERIFIED"
+        },
+        {
+          "citation": "RCW 13.34.136",
+          "jurisdiction": "WA",
+          "official_url": "https://app.leg.wa.gov/rcw/default.aspx?cite=13.34.136",
+          "key_text": "Requires the permanency plan to specify what services were offered to the parents to facilitate reunification.",
+          "verification_status": "VERIFIED"
+        },
+        {
+          "citation": "RCW 13.34.180",
+          "jurisdiction": "WA",
+          "official_url": "https://app.leg.wa.gov/rcw/default.aspx?cite=13.34.180",
+          "key_text": "Requires DCYF to prove that all services reasonably available and capable of correcting parental deficiencies were expressly and understandably offered or provided.",
+          "verification_status": "VERIFIED"
+        }
+      ],
+      "level_5": "Appellate scrutiny under RCW 13.34.180(1)(d) establishes that the State's duty to provide reasonable services is affirmative and rigorous. Services must be tailored to the parent's specific individual needs, including mental health accommodations under the ADA, language interpreter services, and transportation assistance. If DCYF merely offers a generic service plan without addressing underlying cognitive limitations or housing instability, appellate courts reverse termination decrees for failure to satisfy the statutory reasonable efforts prerequisite.",
+      "drill_downs": {
+        "SHOW_SOURCE": {
+          "title": "Official Statutory Sources for Reasonable Efforts",
+          "content": "Federal Title IV-E: 42 U.S.C. \u00a7 671(a)(15) (uscode.house.gov); Washington Juvenile Court Act: RCW 13.34.065, RCW 13.34.136, RCW 13.34.180 (app.leg.wa.gov).",
+          "citations": [
+            "42 U.S.C. \u00a7 671",
+            "RCW 13.34.065",
+            "RCW 13.34.136",
+            "RCW 13.34.180"
+          ],
+          "official_sources": [
+            "https://uscode.house.gov/",
+            "https://app.leg.wa.gov/rcw/default.aspx?cite=13.34.065"
+          ]
+        },
+        "SHOW_STATUTE": {
+          "title": "Washington Reasonable Efforts Provisions",
+          "content": "RCW 13.34.065(5) establishes initial shelter hearing findings. RCW 13.34.180(1)(d) establishes mandatory termination prerequisites.",
+          "citations": [
+            "RCW 13.34.065",
+            "RCW 13.34.180"
+          ],
+          "official_sources": [
+            "https://app.leg.wa.gov/rcw/default.aspx?cite=13.34.065",
+            "https://app.leg.wa.gov/rcw/default.aspx?cite=13.34.180"
+          ]
+        },
+        "SHOW_CASE": {
+          "title": "Washington Precedent on Individualized Services",
+          "content": "Washington appellate courts hold that services must be tailored to the parent's actual disabilities and financial realities; cookie-cutter referrals do not constitute reasonable efforts.",
+          "citations": [
+            "RCW 13.34.180"
+          ],
+          "official_sources": [
+            "https://app.leg.wa.gov/rcw/default.aspx?cite=13.34.180"
+          ]
+        },
+        "EXPLAIN_OPPOSING": {
+          "title": "Opposing Interpretation: Aggravated Circumstances Exception",
+          "content": "Agency argument: Under 42 U.S.C. \u00a7 671(a)(15)(D) and state analogs, reasonable efforts are not required if the court finds the parent subjected the child to aggravated circumstances (e.g. torture, chronic severe sexual abuse, or prior involuntary termination to siblings).",
+          "citations": [
+            "42 U.S.C. \u00a7 671(a)(15)(D)"
+          ],
+          "official_sources": [
+            "https://uscode.house.gov/"
+          ]
+        },
+        "SHOW_TEMPORAL_CHANGE": {
+          "title": "Adoption and Safe Families Act (ASFA 1997) Transformation",
+          "content": "Enacted in 1997, ASFA established the dual timeline: requiring reasonable efforts to reunify while simultaneously mandating permanency planning within 12 months to prevent foster care drift.",
+          "citations": [
+            "42 U.S.C. \u00a7 671",
+            "Pub. L. 105-89 (1997)"
+          ],
+          "official_sources": [
+            "https://uscode.house.gov/"
+          ]
+        }
+      },
+      "related_concepts": [
+        "active_efforts",
+        "shelter_care_hearing",
+        "permanency_planning"
+      ]
+    },
+    "right_to_counsel_dependency": {
+      "name": "Right to Appointed Counsel in Child Dependency Proceedings",
+      "level_1": "If the state or child welfare agency files a court case against you regarding your children, you have the right to be represented by a lawyer. If you cannot afford to pay for an attorney, the court must appoint a lawyer to represent you at public expense at all stages of the case.",
+      "level_2": "In practical terms for your situation: At your very first court appearance (such as the 72-hour shelter care hearing), inform the judge immediately that you want an attorney. The court will screen your income and appoint a parent representation attorney. Your attorney will review the agency's petition, speak with you confidentially, demand discovery evidence, cross-examine caseworkers, and advocate for relative placement or return of your child.",
+      "level_3": "Under federal constitutional law, Lassiter v. Department of Social Services held that Fourteenth Amendment due process does not establish an absolute constitutional right to appointed counsel in all parental rights proceedings, but requires a case-by-case assessment under the Mathews balancing factors. However, Washington State provides heightened statutory protections: RCW 13.34.090(2) and RCW 13.34.092 establish an absolute categorical right to appointed counsel for indigent parents at all critical stages of dependency and termination proceedings.",
+      "level_4_citations": [
+        {
+          "citation": "Lassiter v. Department of Social Services, 452 U.S. 18 (1981)",
+          "jurisdiction": "US",
+          "official_url": "https://www.supremecourt.gov/",
+          "key_text": "Fourteenth Amendment due process does not universally mandate appointed counsel in every parental rights termination, but leaves appointment to trial court discretion evaluated under Mathews factors.",
+          "verification_status": "VERIFIED"
+        },
+        {
+          "citation": "RCW 13.34.090",
+          "jurisdiction": "WA",
+          "official_url": "https://app.leg.wa.gov/rcw/default.aspx?cite=13.34.090",
+          "key_text": "At all stages of a proceeding in which a child is alleged to be dependent, the child's parent, guardian, or legal custodian has the right to be represented by counsel, and if indigent, to have counsel appointed.",
+          "verification_status": "VERIFIED"
+        },
+        {
+          "citation": "RCW 13.34.092",
+          "jurisdiction": "WA",
+          "official_url": "https://app.leg.wa.gov/rcw/default.aspx?cite=13.34.092",
+          "key_text": "Establishes Office of Public Defense parent representation program standards ensuring qualified, caseload-controlled defense counsel.",
+          "verification_status": "VERIFIED"
+        }
+      ],
+      "level_5": "A major doctrinal divide separates the federal constitutional floor from progressive state statutory mandates. While Lassiter remains controlling federal precedent, almost all states have enacted statutes providing categorical counsel. In Washington, indigent parents have an enforceable statutory right to effective assistance of counsel. When an attorney fails to investigate relative placement options, contest unproven allegations, or timely file for revision under RCW 2.24.050, parents can establish statutory ineffective assistance of counsel warranting reversal of dependency or termination decrees.",
+      "drill_downs": {
+        "SHOW_SOURCE": {
+          "title": "Official Legal Sources for Right to Counsel in Dependency",
+          "content": "United States Supreme Court: Lassiter, 452 U.S. 18 (supremecourt.gov); Washington Revised Code: RCW 13.34.090 & RCW 13.34.092 (app.leg.wa.gov).",
+          "citations": [
+            "Lassiter v. Department of Social Services, 452 U.S. 18 (1981)",
+            "RCW 13.34.090"
+          ],
+          "official_sources": [
+            "https://www.supremecourt.gov/",
+            "https://app.leg.wa.gov/rcw/default.aspx?cite=13.34.090"
+          ]
+        },
+        "SHOW_STATUTE": {
+          "title": "Washington Statutory Mandate for Appointed Counsel",
+          "content": "RCW 13.34.090(2) strictly requires the court to appoint counsel for indigent parents immediately upon the filing of a dependency petition.",
+          "citations": [
+            "RCW 13.34.090",
+            "RCW 13.34.092"
+          ],
+          "official_sources": [
+            "https://app.leg.wa.gov/rcw/default.aspx?cite=13.34.090",
+            "https://app.leg.wa.gov/rcw/default.aspx?cite=13.34.092"
+          ]
+        },
+        "SHOW_CASE": {
+          "title": "Leading Precedent: Lassiter v. Department of Social Services",
+          "content": "Lassiter evaluated due process claims against the presumption that an indigent litigant has a right to appointed counsel only when personal physical liberty is at stake.",
+          "citations": [
+            "Lassiter v. Department of Social Services, 452 U.S. 18 (1981)"
+          ],
+          "official_sources": [
+            "https://www.supremecourt.gov/"
+          ]
+        },
+        "EXPLAIN_OPPOSING": {
+          "title": "Opposing Interpretation: Purely Civil Characterization & Fiscal Limits",
+          "content": "Fiscal conservative/administrative argument: Child dependency proceedings are civil rather than criminal matters designed to protect children rather than punish parents, meaning constitutional Sixth Amendment protections do not apply and legislative funding controls appointment scope.",
+          "citations": [
+            "Lassiter v. Department of Social Services, 452 U.S. 18 (1981)"
+          ],
+          "official_sources": [
+            "https://www.supremecourt.gov/"
+          ]
+        },
+        "SHOW_TEMPORAL_CHANGE": {
+          "title": "Expansion of Parental Representation Programs",
+          "content": "Following Washington's pilot programs in the early 2000s, RCW 13.34.092 established statewide Office of Public Defense oversight, drastically reducing racial disproportionality and shortening foster care stays.",
+          "citations": [
+            "RCW 13.34.092",
+            "Wash. Laws 2018, ch. 21"
+          ],
+          "official_sources": [
+            "https://leg.wa.gov/CodeReviser"
+          ]
+        }
+      },
+      "related_concepts": [
+        "due_process",
+        "opportunity_to_be_heard",
+        "shelter_care_hearing"
+      ]
+    },
+    "shelter_care_hearing": {
+      "name": "Shelter Care Hearing (Initial Detention Hearing)",
+      "level_1": "A shelter care hearing is the emergency court hearing that must take place immediately after child welfare workers take a child into state custody. At this hearing, an independent judge decides whether the state had a legal right to remove the child, whether the child can immediately return home, or whether the child should be placed temporarily with relatives.",
+      "level_2": "In practical terms for your situation: In Washington State, this hearing must occur within 72 hours of removal (excluding Saturdays, Sundays, and legal holidays). You will meet your appointed attorney right before the hearing. Bring names and contact information of willing grandmothers, aunts, uncles, or adult family members who can take the children instead of foster care. The judge will also order visitation (family time) and decide what services the agency must provide.",
+      "level_3": "Governed by RCW 13.34.065, the shelter care hearing serves as the initial adversary judicial review of state custody. To maintain custody, the Department of Children, Youth, and Families (DCYF) must establish reasonable cause to believe that: (a) the child has no parent able to provide adequate care, or (b) release would present a serious threat of substantial harm. Under RCW 13.34.065(5), the court must make an explicit finding as to whether the department made reasonable efforts to prevent removal and whether placement with an available relative or suitable person is possible.",
+      "level_4_citations": [
+        {
+          "citation": "RCW 13.34.065",
+          "jurisdiction": "WA",
+          "official_url": "https://app.leg.wa.gov/rcw/default.aspx?cite=13.34.065",
+          "key_text": "Mandates that the court hold a shelter care hearing within seventy-two hours of emergency custody, excluding Saturdays, Sundays, and holidays, to determine release or continued shelter care.",
+          "verification_status": "VERIFIED"
+        },
+        {
+          "citation": "RCW 13.34.060",
+          "jurisdiction": "WA",
+          "official_url": "https://app.leg.wa.gov/rcw/default.aspx?cite=13.34.060",
+          "key_text": "Establishes mandatory notice requirements and informs parents of their right to counsel at the shelter care hearing.",
+          "verification_status": "VERIFIED"
+        },
+        {
+          "citation": "Gerstein v. Pugh, 420 U.S. 103 (1975)",
+          "jurisdiction": "US",
+          "official_url": "https://www.supremecourt.gov/",
+          "key_text": "Established Fourth Amendment requirement for a prompt judicial determination of probable cause as a prerequisite to extended restraint of liberty following a warrantless seizure.",
+          "verification_status": "VERIFIED"
+        },
+        {
+          "citation": "42 U.S.C. \u00a7 671(a)(15)",
+          "jurisdiction": "US",
+          "official_url": "https://uscode.house.gov/view.xhtml?path=/prelim@title42/chapter7/subchapter4/partE&edition=prelim",
+          "key_text": "Requires state foster care plans to provide that reasonable efforts shall be made to prevent or eliminate the need for removing the child from the child's home.",
+          "verification_status": "VERIFIED"
+        }
+      ],
+      "level_5": "The procedural boundary at the shelter care hearing involves evidentiary standards and relative placement mandates. Because of the expedited 72-hour timeframe, traditional hearsay rules are relaxed under juvenile court rules (JuCR 2.4), allowing the court to consider caseworker social files and declarations. However, RCW 13.34.065(5) was amended in 2021 to establish an explicit kinship preference: the court must place the child with a willing, qualified relative or suitable person unless placement would jeopardize the child's safety, shifting the burden to DCYF to justify licensed stranger foster care.",
+      "drill_downs": {
+        "SHOW_SOURCE": {
+          "title": "Official Sources for Washington Shelter Care Hearings",
+          "content": "Washington Revised Code: RCW 13.34.065 (app.leg.wa.gov); Federal Title IV-E: 42 U.S.C. \u00a7 671 (uscode.house.gov).",
+          "citations": [
+            "RCW 13.34.065",
+            "42 U.S.C. \u00a7 671(a)(15)"
+          ],
+          "official_sources": [
+            "https://app.leg.wa.gov/rcw/default.aspx?cite=13.34.065",
+            "https://uscode.house.gov/"
+          ]
+        },
+        "SHOW_STATUTE": {
+          "title": "RCW 13.34.065 Statutory Shelter Care Standards",
+          "content": "RCW 13.34.065 details the 72-hour deadline, mandatory appointment of counsel, notice requirements, relative placement priority, and 30-day shelter care rehearing options.",
+          "citations": [
+            "RCW 13.34.065"
+          ],
+          "official_sources": [
+            "https://app.leg.wa.gov/rcw/default.aspx?cite=13.34.065"
+          ]
+        },
+        "SHOW_CASE": {
+          "title": "Constitutional Baseline: Gerstein v. Pugh",
+          "content": "Gerstein established that whenever the executive branch seizes a person without a warrant, due process and the Fourth Amendment mandate prompt judicial evaluation by a neutral magistrate.",
+          "citations": [
+            "Gerstein v. Pugh, 420 U.S. 103 (1975)"
+          ],
+          "official_sources": [
+            "https://www.supremecourt.gov/"
+          ]
+        },
+        "EXPLAIN_OPPOSING": {
+          "title": "Opposing Interpretation: Preliminary Evidentiary Lower Threshold",
+          "content": "Agency argument: The 72-hour shelter hearing is preliminary, not an adjudication of parental unfitness. The State contends that custody may be retained on probable cause or reasonable cause grounds pending formal discovery.",
+          "citations": [
+            "RCW 13.34.065"
+          ],
+          "official_sources": [
+            "https://app.leg.wa.gov/rcw/default.aspx?cite=13.34.065"
+          ]
+        },
+        "SHOW_TEMPORAL_CHANGE": {
+          "title": "Washington Shelter Care Statutory Amendments",
+          "content": "The 2021 Keeping Families Together Act (Wash. Laws 2021, ch. 211) transformed shelter hearings by strictly prohibiting removals based solely on substance use or lack of housing.",
+          "citations": [
+            "Wash. Laws 2021, ch. 211",
+            "RCW 13.34.065 (Amended 2021)"
+          ],
+          "official_sources": [
+            "https://leg.wa.gov/CodeReviser"
+          ]
+        }
+      },
+      "related_concepts": [
+        "emergency_removal",
+        "due_process",
+        "right_to_counsel_dependency",
+        "reasonable_efforts"
+      ]
+    },
+    "sixth_amendment_confrontation": {
+      "name": "Sixth Amendment Confrontation and Hearsay Distinction in Dependency",
+      "level_1": "In criminal court, the Sixth Amendment gives defendants the absolute right to confront and cross-examine witnesses face-to-face. However, child welfare and dependency cases are civil matters, not criminal trials. While you do not get the full Sixth Amendment criminal guarantee, the Fourteenth Amendment Due Process Clause still gives you a right to challenge evidence, object to unreliable hearsay, and question witnesses who testify against you.",
+      "level_2": "Caseworkers often submit written reports containing rumors, second-hand statements, or anonymous hotline calls. Because dependency is a civil proceeding, judges sometimes consider written agency reports. But you and your lawyer have the right to subpoena the authors of those reports, call the caseworker to the stand, cross-examine them under oath, and expose factual inaccuracies or bias.",
+      "level_3": "The Sixth Amendment Confrontation Clause (Crawford v. Washington, 541 U.S. 36) strictly bars testimonial hearsay in criminal prosecutions unless the declarant is unavailable and the defendant had a prior opportunity for cross-examination. CRITICAL DISTINCTION: Because child dependency proceedings are civil actions, the Sixth Amendment does NOT apply directly. Instead, procedural fairness is governed by Fourteenth Amendment Due Process and state evidentiary rules (e.g. ER 801-804), which balance evidentiary reliability against the state's interest in protecting child witnesses.",
+      "level_4_citations": [
+        {
+          "citation": "Crawford v. Washington, 541 U.S. 36 (2004)",
+          "jurisdiction": "US",
+          "official_url": "https://www.supremecourt.gov/opinions/03pdf/02-9410.pdf",
+          "key_text": "Where testimonial evidence is at issue, however, the Sixth Amendment demands what the common law required: unavailability and a prior opportunity for cross-examination.",
+          "verification_status": "VERIFIED"
+        },
+        {
+          "citation": "U.S. Const. amend. VI",
+          "jurisdiction": "US",
+          "official_url": "https://www.govinfo.gov/content/pkg/GPO-CONAN-2017/pdf/GPO-CONAN-2017.pdf",
+          "key_text": "In all criminal prosecutions, the accused shall enjoy the right... to be confronted with the witnesses against him.",
+          "verification_status": "VERIFIED"
+        },
+        {
+          "citation": "U.S. Const. amend. XIV, \u00a7 1",
+          "jurisdiction": "US",
+          "official_url": "https://www.govinfo.gov/content/pkg/GPO-CONAN-2017/pdf/GPO-CONAN-2017.pdf",
+          "key_text": "No State shall deprive any person of life, liberty, or property, without due process of law.",
+          "verification_status": "VERIFIED"
+        }
+      ],
+      "level_5": "State courts universally hold that Crawford's Sixth Amendment confrontation rule does not govern juvenile dependency hearings (e.g. In re Mary S., 186 Cal. App. 3d 414; In re Dependency of A.E.P., 135 Wn.2d 208). Instead, cross-examination in family court is evaluated under the Mathews v. Eldridge due process balancing test. When child hearsay is admitted under specialized statutory exceptions, due process requires corroboration and safeguards ensuring substantial reliability.",
+      "drill_downs": {
+        "SHOW_SOURCE": {
+          "title": "Sixth Amendment and Confrontation Authority",
+          "content": "Sixth Amendment text provides confrontation rights in criminal prosecutions; Fourteenth Amendment provides civil due process.",
+          "citations": [
+            "U.S. Const. amend. VI",
+            "U.S. Const. amend. XIV, \u00a7 1"
+          ],
+          "official_sources": [
+            "https://www.govinfo.gov"
+          ]
+        },
+        "SHOW_STATUTE": {
+          "title": "Child Hearsay Exceptions in Dependency Proceedings",
+          "content": "State evidentiary codes establish specific exceptions allowing reliable statements of young children regarding abuse.",
+          "citations": [
+            "Fed. R. Evid. 803",
+            "Fed. R. Evid. 804"
+          ],
+          "official_sources": [
+            "https://www.law.cornell.edu/rules/fre"
+          ]
+        },
+        "SHOW_CASE": {
+          "title": "Controlling Precedent: Crawford v. Washington, 541 U.S. 36 (2004)",
+          "content": "Landmark ruling establishing criminal confrontation standards, highlighting the distinction with civil dependency matters.",
+          "citations": [
+            "Crawford v. Washington, 541 U.S. 36 (2004)"
+          ],
+          "official_sources": [
+            "https://www.supremecourt.gov/"
+          ]
+        },
+        "EXPLAIN_OPPOSING": {
+          "title": "Child Protection from Trauma vs Parental Cross-Examination",
+          "content": "State child welfare agencies argue that requiring traumatized children to testify directly in court causes severe secondary trauma.",
+          "citations": [
+            "Crawford v. Washington, 541 U.S. 36 (2004)"
+          ],
+          "official_sources": [
+            "https://www.supremecourt.gov/"
+          ]
+        },
+        "SHOW_TEMPORAL_CHANGE": {
+          "title": "Evolution of Video and In-Camera Child Testimony Rules",
+          "content": "Family courts have adopted closed-circuit television, videotaped interviews, and in-chambers interviews with counsel to balance child well-being and parental fairness.",
+          "citations": [
+            "Crawford v. Washington, 541 U.S. 36 (2004)"
+          ],
+          "official_sources": [
+            "https://www.supremecourt.gov/"
+          ]
+        }
+      },
+      "related_concepts": [
+        "due_process",
+        "opportunity_to_be_heard",
+        "right_to_counsel_dependency"
+      ]
+    },
+    "title_iv_e_reasonable_efforts": {
+      "name": "Title IV-E Statutory Requirement for Reasonable Efforts",
+      "level_1": "Federal law requires state child welfare agencies to make real, reasonable efforts to prevent children from being taken from their families, and to help families reunite safely after a child is removed. The state cannot just take a child and walk away without offering genuine help.",
+      "level_2": "Before removing your child, and throughout your case, the caseworker must offer active, relevant support services\u2014such as housing assistance referrals, counseling, food support, or family preservation services. At every court hearing, the judge must formally determine on the record whether the state made 'reasonable efforts' to prevent removal and reunify your family.",
+      "level_3": "Under Title IV-E of the Social Security Act (42 U.S.C. \u00a7 671(a)(15)), enacted through the Adoption and Safe Families Act (ASFA), states receiving federal foster care funding must ensure that reasonable efforts are made: (A) prior to placement, to prevent or eliminate the need for removing the child; and (B) to make it possible for the child to return home safely. Exceptions exist only under statutory 'aggravated circumstances'.",
+      "level_4_citations": [
+        {
+          "citation": "42 U.S.C. \u00a7 671(a)(15)",
+          "jurisdiction": "US",
+          "official_url": "https://uscode.house.gov/view.xhtml?req=granuleid:USC-prelim-title42-section671&num=0&edition=prelim",
+          "key_text": "In order for a State to be eligible for payments under this part, it shall have a plan approved by the Secretary which provides that... reasonable efforts shall be made to preserve and reunify families prior to the placement of a child in foster care, and to make it possible for a child to safely return home.",
+          "verification_status": "VERIFIED"
+        },
+        {
+          "citation": "45 C.F.R. \u00a7 1356.21(b)",
+          "jurisdiction": "US",
+          "official_url": "https://www.ecfr.gov/current/title-45/subtitle-B/chapter-XIII/subchapter-G/part-1356/section-1356.21",
+          "key_text": "Judicial determination of reasonable efforts to prevent removal must be made within 60 days of the date the child was removed from the home, and reasonable efforts to finalize permanency must be made every 12 months.",
+          "verification_status": "VERIFIED"
+        }
+      ],
+      "level_5": "Title IV-E conditioning of federal foster care funding under the Spending Clause creates mandatory statutory duties for state courts and agencies. While Suter v. Artist M., 503 U.S. 347 (1992), limited private \u00a7 1983 damages actions enforcing Title IV-E directly, state dependency statutes codify identical reasonable efforts standards as mandatory threshold requirements for maintaining protective custody and terminating parental rights.",
+      "drill_downs": {
+        "SHOW_SOURCE": {
+          "title": "Title IV-E Social Security Act Statutory Language",
+          "content": "42 U.S.C. \u00a7 671(a)(15) controls state eligibility for federal child welfare funding and dictates reasonable efforts.",
+          "citations": [
+            "42 U.S.C. \u00a7 671(a)(15)"
+          ],
+          "official_sources": [
+            "https://uscode.house.gov/"
+          ]
+        },
+        "SHOW_STATUTE": {
+          "title": "Federal Regulations on Judicial Findings of Reasonable Efforts",
+          "content": "45 C.F.R. \u00a7 1356.21(b) mandates explicit judicial findings of reasonable efforts within 60 days of child removal.",
+          "citations": [
+            "45 C.F.R. \u00a7 1356.21(b)"
+          ],
+          "official_sources": [
+            "https://www.ecfr.gov/"
+          ]
+        },
+        "SHOW_CASE": {
+          "title": "Supreme Court Review: Suter v. Artist M., 503 U.S. 347 (1992)",
+          "content": "Holding that Title IV-E creates programmatic state plan requirements enforced primarily through federal funding oversight.",
+          "citations": [
+            "Suter v. Artist M., 503 U.S. 347 (1992)"
+          ],
+          "official_sources": [
+            "https://www.supremecourt.gov/"
+          ]
+        },
+        "EXPLAIN_OPPOSING": {
+          "title": "Aggravated Circumstances and Safety Paramountcy",
+          "content": "Under ASFA amendments, child safety is paramount; reasonable efforts are not required when the parent has subjected the child to aggravated circumstances.",
+          "citations": [
+            "42 U.S.C. \u00a7 671(a)(15)(D)"
+          ],
+          "official_sources": [
+            "https://uscode.house.gov/"
+          ]
+        },
+        "SHOW_TEMPORAL_CHANGE": {
+          "title": "Shift from Adoption Acceleration to Prevention (Family First Act)",
+          "content": "The Family First Prevention Services Act (2018) amended Title IV-E to allow federal funding for mental health, substance abuse, and in-home parenting to prevent foster care entries.",
+          "citations": [
+            "42 U.S.C. \u00a7 671"
+          ],
+          "official_sources": [
+            "https://uscode.house.gov/"
+          ]
+        }
+      },
+      "related_concepts": [
+        "reasonable_efforts",
+        "active_efforts",
+        "permanency_planning"
+      ]
+    }
+  },
+  "crisis_checklist": {
+    "cps_removal": [
+      "Write down exact removal date/time and worker name",
+      "Ask for copies of all removal paperwork",
+      "Request appointed counsel immediately",
+      "Name relatives for placement in writing",
+      "Note hearing date/time from notice"
+    ]
+  },
+  "legal_aid": {
+    "NH": {
+      "statewide_legal_aid": "https://www.gencourt.state.nh.us/rsa/html/nhtoc.htm"
+    }
+  },
+  "disclaimer": "Legal information only. Not legal advice. Not a lawyer. Verify with qualified counsel.",
+  "staleness_warning_days": 90,
+  "abstention_note": "Where verification_status is PARTIAL or UNVERIFIED, consult the official_url for current law."
+}

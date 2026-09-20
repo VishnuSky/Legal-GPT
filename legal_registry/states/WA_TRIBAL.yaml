@@ -1,0 +1,49 @@
+state_code: WA_TRIBAL
+state_id: WA_TRIBAL
+state_name: Washington Tribal Nations & ICWA Overlay
+legislature_url: https://www.bia.gov/
+statutes_url: https://www.govinfo.gov/app/details/USCODE-2023-title25/USCODE-2023-title25-chap21
+courts_url: https://www.courts.wa.gov/
+cps_agency: Tribal Child Welfare Services & WA DCYF Office of Tribal Relations
+cps_agency_url: https://www.dcyf.wa.gov/tribal-relations
+cps_statute_title: 25 U.S.C. Chapter 21 (ICWA) & RCW Chapter 13.38 (WICWA)
+cps_statute_url: https://app.leg.wa.gov/rcw/default.aspx?cite=13.38
+emergency_removal_citation: 25 U.S.C. § 1922; RCW 13.38.140
+shelter_hearing_hours: 72
+shelter_hearing_citation: 25 U.S.C. § 1912; RCW 13.38.070
+counsel_citation: 25 U.S.C. § 1912(b); RCW 13.38.110
+tpr_citation: 25 U.S.C. § 1912(f); RCW 13.38.130
+icwa_inquiry: required
+verification_status: VERIFIED
+verified_sources:
+- https://www.govinfo.gov/content/pkg/USCODE-2023-title25/pdf/USCODE-2023-title25-chap21.pdf
+- https://app.leg.wa.gov/rcw/default.aspx?cite=13.38
+notes: Verified overlay governing Puyallup, Tulalip, Lummi, Yakama, and other federally
+  recognized tribes in Washington under ICWA and WICWA.
+sources:
+- source_id: WA_TRIBAL_CPS_STATUTES
+  jurisdiction: US-WA_TRIBAL
+  level: state
+  authority_tier: TIER_0
+  legal_domain:
+  - statutes
+  - child_welfare
+  - dependency
+  source_type: statute
+  title: 25 U.S.C. Chapter 21 (ICWA) & RCW Chapter 13.38 (WICWA)
+  citation_format: WA_TRIBAL Stat. § {section}
+  publisher:
+    name: Washington Tribal Nations & ICWA Overlay Legislature
+    official: true
+    entity_type: legislature
+    contact_url: https://www.bia.gov/
+  canonical_url: https://app.leg.wa.gov/rcw/default.aspx?cite=13.38
+  temporal:
+    versioned: true
+    effective_dates_available: true
+    is_current: true
+  acquisition_method: html_scrape
+  parser_name: wa_tribal_parser
+  update_frequency: daily
+  cps_priority: 10
+  active: true

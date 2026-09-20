@@ -1,0 +1,21 @@
+state_code: ID
+state_id: ID
+state_name: Idaho
+legislature_url: https://legislature.idaho.gov/
+statutes_url: https://legislature.idaho.gov/statutesrules/idstat/
+courts_url: https://isc.idaho.gov/
+cps_agency: Idaho Department of Health and Welfare - Child Welfare
+cps_agency_url: https://healthandwelfare.idaho.gov/services-programs/children-families/child-welfare
+cps_statute_title: ''
+cps_statute_url: ''
+emergency_removal_citation: UNVERIFIED
+shelter_hearing_hours: UNVERIFIED
+shelter_hearing_citation: UNVERIFIED
+counsel_citation: UNVERIFIED
+tpr_citation: UNVERIFIED
+icwa_inquiry: not_specified
+verification_status: PARTIAL
+verified_sources: []
+notes: Scaffold entry for ID. Official portal linked; statutory citations unverified
+  pending primary source audit.
+sources: []

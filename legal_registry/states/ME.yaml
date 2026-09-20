@@ -1,0 +1,21 @@
+state_code: ME
+state_id: ME
+state_name: Maine
+legislature_url: https://legislature.maine.gov/
+statutes_url: https://legislature.maine.gov/statutes/
+courts_url: https://www.courts.maine.gov/
+cps_agency: Maine Office of Child and Family Services (OCFS)
+cps_agency_url: https://www.maine.gov/dhhs/ocfs/cw
+cps_statute_title: ''
+cps_statute_url: ''
+emergency_removal_citation: UNVERIFIED
+shelter_hearing_hours: UNVERIFIED
+shelter_hearing_citation: UNVERIFIED
+counsel_citation: UNVERIFIED
+tpr_citation: UNVERIFIED
+icwa_inquiry: not_specified
+verification_status: PARTIAL
+verified_sources: []
+notes: Scaffold entry for ME. Official portal linked; statutory citations unverified
+  pending primary source audit.
+sources: []

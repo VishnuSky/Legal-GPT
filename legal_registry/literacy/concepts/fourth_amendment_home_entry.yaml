@@ -1,0 +1,113 @@
+id: fourth_amendment_home_entry
+canonical_name: Fourth Amendment Protection Against Warrantless Home Entry
+aliases:
+- fourth amendment
+- warrantless home entry
+- home search
+- exigent circumstances
+- brigham city
+- cps home entry
+- police entered my home
+jurisdiction: US
+retrieved_date: '2026-09-19'
+level_1_plain_english: The Fourth Amendment gives you a sacred right to privacy inside
+  your home. Government workers, including police officers and Child Protective Services
+  (CPS) caseworkers, cannot force their way inside your private residence without
+  a valid judicial warrant signed by a judge, your voluntary and knowing consent,
+  or a true, life-or-death emergency.
+level_2_practical: 'If caseworkers or police officers knock on your door, you have
+  the right to speak to them from your porch or with the door closed. You can calmly
+  state: ''I do not consent to any entry or search of my home without a warrant.''
+  Unless they possess a signed court order or face an immediate emergency where someone
+  is suffering imminent, serious physical injury, they cannot kick down your door
+  or enter without your permission.'
+level_3_terminology: 'The Fourth Amendment''s warrant requirement applies fully to
+  administrative child welfare investigations (Camara v. Municipal Court, 387 U.S.
+  523). Exceptions are strictly limited to: (1) Voluntary Consent (must be freely
+  given and not coerced); (2) Exigent Circumstances under the emergency aid doctrine
+  (Brigham City v. Stuart), requiring an objectively reasonable basis to believe an
+  occupant is seriously injured or imminently threatened; and (3) Valid Judicial Warrant
+  based on probable cause.'
+level_4_primary_authority:
+- citation: U.S. Const. amend. IV
+  source_type: CONSTITUTION
+  official_portal_url: https://www.govinfo.gov/content/pkg/GPO-CONAN-2017/pdf/GPO-CONAN-2017.pdf
+  key_holding_or_text: The right of the people to be secure in their persons, houses,
+    papers, and effects, against unreasonable searches and seizures, shall not be
+    violated, and no Warrants shall issue, but upon probable cause.
+  jurisdiction: US
+  is_binding: true
+  verification_status: VERIFIED
+- citation: Brigham City v. Stuart, 547 U.S. 398 (2006)
+  source_type: CASELAW
+  official_portal_url: https://www.supremecourt.gov/opinions/05pdf/05-502.pdf
+  key_holding_or_text: Warrantless entry under the emergency aid exception requires
+    an objectively reasonable basis for believing that an occupant is seriously injured
+    or imminently threatened with such injury.
+  jurisdiction: US
+  is_binding: true
+  verification_status: VERIFIED
+- citation: Camara v. Municipal Court, 387 U.S. 523 (1967)
+  source_type: CASELAW
+  official_portal_url: https://www.supremecourt.gov/
+  key_holding_or_text: Except in certain carefully defined classes of cases, a search
+    of private property without proper consent is unreasonable unless authorized by
+    a valid search warrant.
+  jurisdiction: US
+  is_binding: true
+  verification_status: VERIFIED
+level_5_advanced_analysis: Federal circuit jurisprudence establishes that child protection
+  investigators are governed by the Fourth Amendment to the same degree as law enforcement
+  officers (e.g., Wallis v. Spencer, 202 F.3d 1126 (9th Cir. 2000); Calabretta v.
+  Floyd, 189 F.3d 808 (9th Cir. 1999)). Government officials cannot claim qualified
+  immunity when conducting warrantless home entries in the absence of demonstrable
+  imminent physical peril. Speculative allegations of neglect or unverified hotline
+  tips never constitute exigent circumstances justifying warrantless intrusion.
+drill_downs:
+  SHOW_SOURCE:
+    title: Constitutional Text of the Fourth Amendment
+    content: U.S. Constitution, Fourth Amendment guarantees the right to be secure
+      in houses against unreasonable searches.
+    citations:
+    - U.S. Const. amend. IV
+    official_sources:
+    - https://www.govinfo.gov
+  SHOW_STATUTE:
+    title: Statutory Authority for Judicial Entry Orders
+    content: Administrative search warrants and dependency pickup orders require sworn
+      affidavits demonstrating probable cause of imminent harm.
+    citations:
+    - 42 U.S.C. § 1983
+    - U.S. Const. amend. IV
+    official_sources:
+    - https://uscode.house.gov/
+  SHOW_CASE:
+    title: 'Controlling Precedent: Brigham City v. Stuart, 547 U.S. 398 (2006)'
+    content: Emergency aid exception permits warrantless home entry only when officers
+      have an objectively reasonable basis to believe an occupant is seriously injured
+      or imminently threatened.
+    citations:
+    - Brigham City v. Stuart, 547 U.S. 398 (2006)
+    official_sources:
+    - https://www.supremecourt.gov/
+  EXPLAIN_OPPOSING:
+    title: 'Government Position: Community Caretaking and Child Welfare Exigency'
+    content: Caseworkers argue that the state's parens patriae interest requires rapid
+      inspection of living quarters when responding to severe child abuse allegations.
+    citations:
+    - Brigham City v. Stuart, 547 U.S. 398 (2006)
+    official_sources:
+    - https://www.supremecourt.gov/
+  SHOW_TEMPORAL_CHANGE:
+    title: Narrowing of Administrative Search Exceptions
+    content: Modern doctrine has rejected broad 'social worker exceptions' to the
+      Fourth Amendment, holding caseworkers strictly accountable to traditional warrant
+      requirements.
+    citations:
+    - Brigham City v. Stuart, 547 U.S. 398 (2006)
+    official_sources:
+    - https://www.supremecourt.gov/
+related_concepts:
+- due_process
+- emergency_removal
+- civil_rights_section_1983

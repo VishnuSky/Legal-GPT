@@ -1,0 +1,21 @@
+state_code: NH
+state_id: NH
+state_name: New Hampshire
+legislature_url: https://www.gencourt.state.nh.us/
+statutes_url: https://www.gencourt.state.nh.us/rsa/html/nhtoc.htm
+courts_url: https://www.courts.nh.gov/
+cps_agency: New Hampshire Division for Children, Youth and Families (DCYF)
+cps_agency_url: https://www.dhhs.nh.gov/programs-services/child-protection
+cps_statute_title: ''
+cps_statute_url: ''
+emergency_removal_citation: UNVERIFIED
+shelter_hearing_hours: UNVERIFIED
+shelter_hearing_citation: UNVERIFIED
+counsel_citation: UNVERIFIED
+tpr_citation: UNVERIFIED
+icwa_inquiry: not_specified
+verification_status: PARTIAL
+verified_sources: []
+notes: Scaffold entry for NH. Official portal linked; statutory citations unverified
+  pending primary source audit.
+sources: []

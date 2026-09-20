@@ -1,0 +1,21 @@
+state_code: AR
+state_id: AR
+state_name: Arkansas
+legislature_url: https://www.arkleg.state.ar.us/
+statutes_url: https://www.arkleg.state.ar.us/ArkansasCode
+courts_url: https://www.arcourts.gov/
+cps_agency: Arkansas Division of Children and Family Services (DCFS)
+cps_agency_url: https://humanservices.arkansas.gov/divisions-shared-services/children-family-services/
+cps_statute_title: ''
+cps_statute_url: ''
+emergency_removal_citation: UNVERIFIED
+shelter_hearing_hours: UNVERIFIED
+shelter_hearing_citation: UNVERIFIED
+counsel_citation: UNVERIFIED
+tpr_citation: UNVERIFIED
+icwa_inquiry: not_specified
+verification_status: PARTIAL
+verified_sources: []
+notes: Scaffold entry for AR. Official portal linked; statutory citations unverified
+  pending primary source audit.
+sources: []

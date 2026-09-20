@@ -1,0 +1,51 @@
+sources:
+- source_id: CPS_NM_STATUTES
+  jurisdiction: US-NM
+  level: state
+  authority_tier: TIER_0
+  legal_domain:
+  - child_welfare
+  - statutes
+  - shelter_hearing
+  - dependency
+  cps_subdomain: state_statute
+  source_type: statute
+  title: NMSA 1978 Chapter 32A Children's Code
+  citation_format: NM Stat. § {section}
+  publisher:
+    name: New Mexico Legislature
+    official: true
+    entity_type: legislature
+    contact_url: https://www.nmlegis.gov/
+  canonical_url: https://www.nmlegis.gov/
+  key_statutory_sections:
+  - 'NMSA 1978 Chapter 32A Children''s Code § 32A-4-6 # Taking into custody without
+    court order'
+  - 'NMSA 1978 Chapter 32A Children''s Code § 32A-4-18 # Custody hearing; 48 hours
+    or two business days requirement'
+  - 'NMSA 1978 Chapter 32A Children''s Code § 32A-4-10 # Appointment of counsel for
+    parents and guardians'
+  - 'NMSA 1978 Chapter 32A Children''s Code § 32A-4-28 # Termination of parental rights;
+    grounds and procedures'
+  topics:
+    emergency_removal: true
+    shelter_care_hearing: true
+    dependency_petition: true
+    fact_finding_adjudication: true
+    disposition_placement: true
+    reasonable_efforts: true
+    permanency_planning: true
+    termination_parental_rights: true
+    parent_rights_counsel: true
+    icwa_compliance: true
+  standard_of_proof: Preponderance of Evidence (Dependency) / Clear and Convincing
+    Evidence (TPR)
+  mandatory_timeframes_days:
+    shelter_hearing_hours: 48
+    adjudicatory_hearing_days: 60
+    permanency_hearing_months: 12
+  acquisition_method: html_scrape
+  parser_name: new_mexico_parser
+  update_frequency: daily
+  cps_priority: 10
+  active: true

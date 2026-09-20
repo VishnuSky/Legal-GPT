@@ -780,3 +780,84 @@ def public_explain_concept_endpoint(req: dict):
 from api.mcp_public import router as mcp_router
 app.include_router(mcp_router)
 
+
+# ==================================================
+# MISSION 2 — OFFLINE DATA PACKAGE DOWNLOAD ENDPOINTS
+# ==================================================
+from pathlib import Path
+from fastapi.responses import FileResponse
+
+OFFLINE_PACKAGES_DIR = Path(__file__).resolve().parent.parent / "offline_packages"
+
+
+@app.get("/api/v1/offline/manifest")
+async def get_offline_manifest():
+    """Returns list of available offline packages with sizes, generation dates, and state codes."""
+    if not OFFLINE_PACKAGES_DIR.exists():
+        raise HTTPException(status_code=404, detail="Offline packages directory not found. Run scripts/build_offline_package.py.")
+
+    manifest = {
+        "full_packages": [],
+        "state_packages": []
+    }
+
+    for fpath in sorted(OFFLINE_PACKAGES_DIR.glob("legal_gpt_offline_*.json")):
+        st = fpath.stat()
+        manifest["full_packages"].append({
+            "filename": fpath.name,
+            "size_bytes": st.st_size,
+            "size_kb": round(st.st_size / 1024, 2),
+            "modified_time": st.st_mtime
+        })
+
+    states_dir = OFFLINE_PACKAGES_DIR / "states"
+    if states_dir.exists():
+        for fpath in sorted(states_dir.glob("*_offline.json")):
+            st = fpath.stat()
+            state_code = fpath.name.replace("_offline.json", "")
+            manifest["state_packages"].append({
+                "state_code": state_code,
+                "filename": fpath.name,
+                "size_bytes": st.st_size,
+                "size_kb": round(st.st_size / 1024, 2),
+                "modified_time": st.st_mtime
+            })
+
+    return manifest
+
+
+@app.get("/api/v1/offline/download/all")
+async def download_all_offline_package():
+    """Download full verified JSON package covering all jurisdictions and literacy concepts with Content-Length."""
+    latest_file = OFFLINE_PACKAGES_DIR / "legal_gpt_offline_latest.json"
+    if not latest_file.exists():
+        # Fallback to any full package
+        candidates = list(OFFLINE_PACKAGES_DIR.glob("legal_gpt_offline_*.json"))
+        if candidates:
+            latest_file = sorted(candidates)[-1]
+        else:
+            raise HTTPException(status_code=404, detail="No full offline package available. Run scripts/build_offline_package.py.")
+
+    return FileResponse(
+        path=latest_file,
+        media_type="application/json",
+        filename="legal_gpt_offline_full.json",
+        headers={"Content-Length": str(latest_file.stat().st_size)}
+    )
+
+
+@app.get("/api/v1/offline/download/{state_code}")
+async def download_state_offline_package(state_code: str):
+    """Download verified JSON offline package for a specific jurisdiction."""
+    state_file = OFFLINE_PACKAGES_DIR / "states" / f"{state_code.upper()}_offline.json"
+    if not state_file.exists():
+        raise HTTPException(status_code=404, detail=f"No offline package found for jurisdiction '{state_code.upper()}'.")
+
+    return FileResponse(
+        path=state_file,
+        media_type="application/json",
+        filename=f"{state_code.upper()}_offline.json",
+        headers={"Content-Length": str(state_file.stat().st_size)}
+    )
+
+

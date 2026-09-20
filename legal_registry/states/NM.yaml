@@ -1,0 +1,48 @@
+state_code: NM
+state_id: NM
+state_name: New Mexico
+legislature_url: https://www.nmlegis.gov/
+statutes_url: https://nmonesource.com/nmos/en/nav.do
+courts_url: https://www.nmcourts.gov/
+cps_agency: New Mexico Children, Youth & Families Department (CYFD)
+cps_agency_url: https://cyfd.org/
+cps_statute_title: NMSA 1978 Chapter 32A Children's Code
+cps_statute_url: https://www.nmlegis.gov/
+emergency_removal_citation: NMSA 1978 § 32A-4-6
+shelter_hearing_hours: 48
+shelter_hearing_citation: NMSA 1978 § 32A-4-18
+counsel_citation: NMSA 1978 § 32A-4-10
+tpr_citation: NMSA 1978 § 32A-4-28
+icwa_inquiry: required
+verification_status: VERIFIED
+verified_sources:
+- https://www.nmlegis.gov/
+notes: Verified against New Mexico Statutes Annotated 1978 Chapter 32A and Indian
+  Family Protection Act (NMSA 1978 § 32A-28-1).
+sources:
+- source_id: NM_CPS_STATUTES
+  jurisdiction: US-NM
+  level: state
+  authority_tier: TIER_0
+  legal_domain:
+  - statutes
+  - child_welfare
+  - dependency
+  source_type: statute
+  title: NMSA 1978 Chapter 32A Children's Code
+  citation_format: NM Stat. § {section}
+  publisher:
+    name: New Mexico Legislature
+    official: true
+    entity_type: legislature
+    contact_url: https://www.nmlegis.gov/
+  canonical_url: https://www.nmlegis.gov/
+  temporal:
+    versioned: true
+    effective_dates_available: true
+    is_current: true
+  acquisition_method: html_scrape
+  parser_name: nm_parser
+  update_frequency: daily
+  cps_priority: 10
+  active: true

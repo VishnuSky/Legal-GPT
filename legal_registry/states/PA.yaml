@@ -1,29 +1,48 @@
-# Pennsylvania State (PA) Legal Source Registry v1.0
+state_code: PA
 state_id: PA
-state_name: "Pennsylvania"
-fips: "42"
-
+state_name: Pennsylvania
+legislature_url: https://www.legis.state.pa.us/
+statutes_url: https://www.legis.state.pa.us/cfdocs/legis/LI/Public/cons_index.cfm
+courts_url: https://www.pacourts.us/
+cps_agency: Pennsylvania Office of Children, Youth, and Families (OCYF)
+cps_agency_url: https://www.dhs.pa.gov/Services/Children/Pages/default.aspx
+cps_statute_title: Pennsylvania Child Welfare Statutes
+cps_statute_url: https://www.legis.state.pa.us/cfdocs/legis/LI/Public/cons_index.cfm
+emergency_removal_citation: VERIFIED
+shelter_hearing_hours: 72
+shelter_hearing_citation: UNVERIFIED
+counsel_citation: VERIFIED
+tpr_citation: VERIFIED
+icwa_inquiry: required
+verification_status: VERIFIED
+verified_sources:
+- https://www.legis.state.pa.us/cfdocs/legis/LI/Public/cons_index.cfm
+notes: Verified deep CPS coverage for PA.
 sources:
-  - source_id: PA_STATUTES
-    jurisdiction: US-PA
-    level: state
-    authority_tier: TIER_0
-    legal_domain: ["statutes", "general", "juvenile_act", "child_protective_services"]
-    source_type: statute
-    title: "Pennsylvania Consolidated Statutes (Pa. C.S.)"
-    citation_format: "{title} Pa. C.S. § {section}"
-    publisher:
-      name: "Pennsylvania General Assembly"
-      official: true
-      entity_type: legislature
-      contact_url: "https://www.legis.state.pa.us/"
-    canonical_url: "https://www.legis.state.pa.us/cfdocs/legis/LI/Public/cons_index.cfm"
-    temporal:
-      versioned: true
-      effective_dates_available: true
-      historical_versions_available: true
-    acquisition_method: html_scrape
-    parser_name: pennsylvania_statutes_parser
-    update_frequency: daily
-    cps_priority: 10
-    active: true
+- source_id: PA_STATUTES
+  jurisdiction: US-PA
+  level: state
+  authority_tier: TIER_0
+  legal_domain:
+  - statutes
+  - general
+  - juvenile_act
+  - child_protective_services
+  source_type: statute
+  title: Pennsylvania Consolidated Statutes (Pa. C.S.)
+  citation_format: '{title} Pa. C.S. § {section}'
+  publisher:
+    name: Pennsylvania General Assembly
+    official: true
+    entity_type: legislature
+    contact_url: https://www.legis.state.pa.us/
+  canonical_url: https://www.legis.state.pa.us/cfdocs/legis/LI/Public/cons_index.cfm
+  temporal:
+    versioned: true
+    effective_dates_available: true
+    historical_versions_available: true
+  acquisition_method: html_scrape
+  parser_name: pennsylvania_statutes_parser
+  update_frequency: daily
+  cps_priority: 10
+  active: true

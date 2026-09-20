@@ -1,0 +1,21 @@
+state_code: WY
+state_id: WY
+state_name: Wyoming
+legislature_url: https://www.wyoleg.gov/
+statutes_url: https://www.wyoleg.gov/NXT/gateway.dll?f=templates&fn=default.htm
+courts_url: https://www.courts.state.wy.us/
+cps_agency: Wyoming Department of Family Services (DFS)
+cps_agency_url: https://dfs.wyo.gov/services/child-safety-and-protection/
+cps_statute_title: ''
+cps_statute_url: ''
+emergency_removal_citation: UNVERIFIED
+shelter_hearing_hours: UNVERIFIED
+shelter_hearing_citation: UNVERIFIED
+counsel_citation: UNVERIFIED
+tpr_citation: UNVERIFIED
+icwa_inquiry: not_specified
+verification_status: PARTIAL
+verified_sources: []
+notes: Scaffold entry for WY. Official portal linked; statutory citations unverified
+  pending primary source audit.
+sources: []

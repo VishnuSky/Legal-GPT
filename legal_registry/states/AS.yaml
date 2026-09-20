@@ -1,0 +1,21 @@
+state_code: AS
+state_id: AS
+state_name: American Samoa
+legislature_url: https://www.americansamoa.gov/fnono
+statutes_url: http://www.asbar.org/index.php?option=com_content&view=category&id=583&Itemid=172
+courts_url: http://www.asbar.org/
+cps_agency: American Samoa Department of Human and Social Services (DHSS)
+cps_agency_url: https://dhss.as/
+cps_statute_title: ''
+cps_statute_url: ''
+emergency_removal_citation: UNVERIFIED
+shelter_hearing_hours: UNVERIFIED
+shelter_hearing_citation: UNVERIFIED
+counsel_citation: UNVERIFIED
+tpr_citation: UNVERIFIED
+icwa_inquiry: not_specified
+verification_status: PARTIAL
+verified_sources: []
+notes: Scaffold entry for AS. Official portal linked; statutory citations unverified
+  pending primary source audit.
+sources: []

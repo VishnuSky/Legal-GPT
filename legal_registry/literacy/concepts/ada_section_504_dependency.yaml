@@ -1,0 +1,110 @@
+id: ada_section_504_dependency
+canonical_name: ADA Title II and Section 504 Protections in Child Welfare
+aliases:
+- ada in cps
+- section 504 dependency
+- disability discrimination
+- reasonable accommodations child welfare
+- ada parental rights
+jurisdiction: US
+retrieved_date: '2026-09-19'
+level_1_plain_english: Federal disability rights laws protect parents who have physical,
+  intellectual, or mental health disabilities. A child welfare agency cannot remove
+  your child or refuse to reunite your family simply because you have a disability.
+  They must provide reasonable accommodations to help you succeed.
+level_2_practical: If you have a disability (such as depression, anxiety, physical
+  mobility issues, hearing impairment, or an intellectual limitation), CPS cannot
+  simply hand you standard parenting class packets and expect you to fail. Under the
+  Americans with Disabilities Act (ADA) and Section 504, they must adapt their services—providing
+  specialized in-home coaching, sign language interpreters, or modified timelines—to
+  accommodate your disability.
+level_3_terminology: Title II of the Americans with Disabilities Act (42 U.S.C. §
+  12132) and Section 504 of the Rehabilitation Act (29 U.S.C. § 794) prohibit public
+  entities and federally funded programs from discriminating against qualified individuals
+  with disabilities. In dependency matters, child welfare agencies are mandated to
+  provide 'reasonable modifications in policies, practices, or procedures' and individually
+  tailored remedial services before pursuing termination.
+level_4_primary_authority:
+- citation: 42 U.S.C. § 12132
+  source_type: STATUTE
+  official_portal_url: https://uscode.house.gov/view.xhtml?req=granuleid:USC-prelim-title42-section12132&num=0&edition=prelim
+  key_holding_or_text: Subject to the provisions of this subchapter, no qualified
+    individual with a disability shall, by reason of such disability, be excluded
+    from participation in or be denied the benefits of the services, programs, or
+    activities of a public entity, or be subjected to discrimination by any such entity.
+  jurisdiction: US
+  is_binding: true
+  verification_status: VERIFIED
+- citation: 29 U.S.C. § 794
+  source_type: STATUTE
+  official_portal_url: https://uscode.house.gov/view.xhtml?req=granuleid:USC-prelim-title29-section794&num=0&edition=prelim
+  key_holding_or_text: No otherwise qualified individual with a disability in the
+    United States... shall, solely by reason of her or his disability, be excluded
+    from the participation in, be denied the benefits of, or be subjected to discrimination
+    under any program or activity receiving Federal financial assistance.
+  jurisdiction: US
+  is_binding: true
+  verification_status: VERIFIED
+- citation: DOJ & HHS Joint Guidance on Protecting Parental Rights (2015)
+  source_type: REGULATION
+  official_portal_url: https://www.ada.gov/doj_hhs_ta/child_welfare_ta.html
+  key_holding_or_text: Child welfare agencies and family courts must ensure that parents
+    with disabilities are not subjected to discrimination, must conduct individualized
+    assessments, and must provide reasonable modifications.
+  jurisdiction: US
+  is_binding: false
+  verification_status: VERIFIED
+level_5_advanced_analysis: Federal circuit and state appellate authority reflect an
+  ongoing doctrinal division regarding whether an ADA violation can serve as a direct
+  defense to termination of parental rights, or must be brought as a separate § 1983/Title
+  II action. However, virtually all jurisdictions recognize that failure to provide
+  reasonable accommodations directly undermines the statutory finding that the agency
+  provided 'reasonable efforts' to reunify the family under Title IV-E.
+drill_downs:
+  SHOW_SOURCE:
+    title: ADA Title II and Rehabilitation Act Statutes
+    content: 42 U.S.C. § 12132 and 29 U.S.C. § 794 establish affirmative duties to
+      accommodate parents with disabilities.
+    citations:
+    - 42 U.S.C. § 12132
+    - 29 U.S.C. § 794
+    official_sources:
+    - https://uscode.house.gov/
+  SHOW_STATUTE:
+    title: Statutory Duty to Modify Services
+    content: Federal regulations 28 CFR § 35.130(b)(7) require public entities to
+      make reasonable modifications in policies and services.
+    citations:
+    - 42 U.S.C. § 12132
+    - 28 CFR § 35.130
+    official_sources:
+    - https://www.ecfr.gov/
+  SHOW_CASE:
+    title: 'Controlling Agency Guidance: DOJ & HHS Joint Guidance (2015)'
+    content: DOJ and HHS affirm that child welfare agencies must provide tailored,
+      accessible accommodations rather than generic requirements.
+    citations:
+    - DOJ & HHS Joint Guidance (2015)
+    official_sources:
+    - https://www.ada.gov/
+  EXPLAIN_OPPOSING:
+    title: 'Agency Argument: Child Safety Trumps ADA Accommodations'
+    content: Agencies argue that the primary focus of child welfare proceedings is
+      the child's safety, asserting ADA claims cannot delay permanency.
+    citations:
+    - 42 U.S.C. § 12132
+    official_sources:
+    - https://uscode.house.gov/
+  SHOW_TEMPORAL_CHANGE:
+    title: Rise of Disability Rights Protections in State Family Codes
+    content: Multiple states have enacted specific statutory provisions prohibiting
+      termination of parental rights based on disability without clear proof of direct
+      harm.
+    citations:
+    - 42 U.S.C. § 12132
+    official_sources:
+    - https://uscode.house.gov/
+related_concepts:
+- reasonable_efforts
+- due_process
+- civil_rights_section_1983

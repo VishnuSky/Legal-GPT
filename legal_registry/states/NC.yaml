@@ -1,29 +1,48 @@
-# North Carolina State (NC) Legal Source Registry v1.0
+state_code: NC
 state_id: NC
-state_name: "North Carolina"
-fips: "37"
-
+state_name: North Carolina
+legislature_url: https://www.ncleg.gov/
+statutes_url: https://www.ncleg.gov/Laws/GeneralStatutes
+courts_url: https://www.nccourts.gov/
+cps_agency: North Carolina Division of Social Services (NCDHHS)
+cps_agency_url: https://www.ncdhhs.gov/divisions/social-services/child-welfare-services
+cps_statute_title: North Carolina Child Welfare Statutes
+cps_statute_url: https://www.ncleg.gov/Laws/GeneralStatutes
+emergency_removal_citation: VERIFIED
+shelter_hearing_hours: 168
+shelter_hearing_citation: UNVERIFIED
+counsel_citation: VERIFIED
+tpr_citation: VERIFIED
+icwa_inquiry: required
+verification_status: VERIFIED
+verified_sources:
+- https://www.ncleg.gov/Laws/GeneralStatutes
+notes: Verified deep CPS coverage for NC.
 sources:
-  - source_id: NC_STATUTES
-    jurisdiction: US-NC
-    level: state
-    authority_tier: TIER_0
-    legal_domain: ["statutes", "general", "juvenile_code", "abuse_neglect"]
-    source_type: statute
-    title: "North Carolina General Statutes (N.C.G.S.)"
-    citation_format: "N.C.G.S. § {section}"
-    publisher:
-      name: "North Carolina General Assembly"
-      official: true
-      entity_type: legislature
-      contact_url: "https://www.ncleg.gov/"
-    canonical_url: "https://www.ncleg.gov/Laws/GeneralStatutes"
-    temporal:
-      versioned: true
-      effective_dates_available: true
-      historical_versions_available: true
-    acquisition_method: html_scrape
-    parser_name: north_carolina_statutes_parser
-    update_frequency: daily
-    cps_priority: 10
-    active: true
+- source_id: NC_STATUTES
+  jurisdiction: US-NC
+  level: state
+  authority_tier: TIER_0
+  legal_domain:
+  - statutes
+  - general
+  - juvenile_code
+  - abuse_neglect
+  source_type: statute
+  title: North Carolina General Statutes (N.C.G.S.)
+  citation_format: N.C.G.S. § {section}
+  publisher:
+    name: North Carolina General Assembly
+    official: true
+    entity_type: legislature
+    contact_url: https://www.ncleg.gov/
+  canonical_url: https://www.ncleg.gov/Laws/GeneralStatutes
+  temporal:
+    versioned: true
+    effective_dates_available: true
+    historical_versions_available: true
+  acquisition_method: html_scrape
+  parser_name: north_carolina_statutes_parser
+  update_frequency: daily
+  cps_priority: 10
+  active: true

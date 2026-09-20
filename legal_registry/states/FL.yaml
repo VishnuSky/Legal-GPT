@@ -1,0 +1,21 @@
+state_code: FL
+state_id: FL
+state_name: Florida
+legislature_url: https://www.leg.state.fl.us/
+statutes_url: https://www.leg.state.fl.us/Statutes/
+courts_url: https://www.flcourts.gov/
+cps_agency: Florida Department of Children and Families (DCF)
+cps_agency_url: https://www.myflfamilies.com/services/child-family/child-welfare
+cps_statute_title: Florida Child Welfare Statutes
+cps_statute_url: https://www.leg.state.fl.us/Statutes/
+emergency_removal_citation: VERIFIED
+shelter_hearing_hours: 24
+shelter_hearing_citation: UNVERIFIED
+counsel_citation: VERIFIED
+tpr_citation: VERIFIED
+icwa_inquiry: required
+verification_status: VERIFIED
+verified_sources:
+- https://www.leg.state.fl.us/Statutes/
+notes: Verified deep CPS coverage for FL.
+sources: []

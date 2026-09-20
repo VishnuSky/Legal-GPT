@@ -1,0 +1,49 @@
+state_code: MN
+state_id: MN
+state_name: Minnesota
+legislature_url: https://www.revisor.mn.gov/
+statutes_url: https://www.revisor.mn.gov/statutes/cite/260C
+courts_url: https://www.mncourts.gov/
+cps_agency: Minnesota Department of Human Services (DHS)
+cps_agency_url: https://mn.gov/dhs/
+cps_statute_title: Minn. Stat. Chapter 260C Juvenile Safety and Placement
+cps_statute_url: https://www.revisor.mn.gov/statutes/cite/260C
+emergency_removal_citation: Minn. Stat. § 260C.175
+shelter_hearing_hours: 72
+shelter_hearing_citation: Minn. Stat. § 260C.178
+counsel_citation: Minn. Stat. § 260C.163
+tpr_citation: Minn. Stat. § 260C.301
+icwa_inquiry: required
+verification_status: VERIFIED
+verified_sources:
+- https://www.revisor.mn.gov/statutes/cite/260C.175
+- https://www.revisor.mn.gov/statutes/cite/260C.178
+notes: Verified against Minnesota Statutes Chapter 260C and Minnesota Indian Family
+  Preservation Act Minn. Stat. 260.751.
+sources:
+- source_id: MN_CPS_STATUTES
+  jurisdiction: US-MN
+  level: state
+  authority_tier: TIER_0
+  legal_domain:
+  - statutes
+  - child_welfare
+  - dependency
+  source_type: statute
+  title: Minn. Stat. Chapter 260C Juvenile Safety and Placement
+  citation_format: MN Stat. § {section}
+  publisher:
+    name: Minnesota Legislature
+    official: true
+    entity_type: legislature
+    contact_url: https://www.revisor.mn.gov/
+  canonical_url: https://www.revisor.mn.gov/statutes/cite/260C
+  temporal:
+    versioned: true
+    effective_dates_available: true
+    is_current: true
+  acquisition_method: html_scrape
+  parser_name: mn_parser
+  update_frequency: daily
+  cps_priority: 10
+  active: true

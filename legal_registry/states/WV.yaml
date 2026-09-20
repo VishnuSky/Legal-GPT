@@ -1,0 +1,21 @@
+state_code: WV
+state_id: WV
+state_name: West Virginia
+legislature_url: https://www.wvlegislature.gov/
+statutes_url: https://www.wvlegislature.gov/WVCODE/Code.cfm
+courts_url: http://www.courtswv.gov/
+cps_agency: West Virginia Bureau for Social Services (DoHS)
+cps_agency_url: https://dhhr.wv.gov/bcf/Services/familyassistance/Pages/Child-Protective-Services.aspx
+cps_statute_title: ''
+cps_statute_url: ''
+emergency_removal_citation: UNVERIFIED
+shelter_hearing_hours: UNVERIFIED
+shelter_hearing_citation: UNVERIFIED
+counsel_citation: UNVERIFIED
+tpr_citation: UNVERIFIED
+icwa_inquiry: not_specified
+verification_status: PARTIAL
+verified_sources: []
+notes: Scaffold entry for WV. Official portal linked; statutory citations unverified
+  pending primary source audit.
+sources: []

@@ -1,0 +1,93 @@
+id: administrative_appeal_exhaustion
+canonical_name: Administrative Appeal and Exhaustion of Remedies Doctrine
+aliases:
+- exhaustion of administrative remedies
+- administrative appeal
+- central registry appeal
+- founded finding appeal
+- exhaustion doctrine
+jurisdiction: US
+retrieved_date: '2026-09-19'
+level_1_plain_english: Before you can sue a state agency in a court of law over an
+  administrative decision (like being placed on a child abuse registry or having benefits
+  denied), you must first complete every step of the agency's internal appeal process.
+  This rule is called 'exhausting administrative remedies.'
+level_2_practical: If CPS issues a 'founded' or 'substantiated' finding of child abuse
+  against you, that finding can harm your job and background checks. You have a strict,
+  limited window (often 20 to 30 days) to file an administrative appeal with the agency.
+  If you miss this agency deadline, you usually lose your right to challenge the finding
+  in court later.
+level_3_terminology: 'The doctrine of exhaustion of administrative remedies mandates
+  that no one is entitled to judicial relief for a supposed or threatened injury until
+  the prescribed administrative remedy has been exhausted (Myers v. Bethlehem Shipbuilding
+  Corp., 303 U.S. 41). Exceptions are narrow and require demonstrating: (1) futility;
+  (2) irreparable harm; or (3) that the agency lacks statutory jurisdiction. State
+  specific administrative procedures vary widely; local rules must be verified.'
+level_4_primary_authority:
+- citation: Myers v. Bethlehem Shipbuilding Corp., 303 U.S. 41 (1938)
+  source_type: CASELAW
+  official_portal_url: https://www.supremecourt.gov/
+  key_holding_or_text: The rule requiring the exhaustion of administrative remedies
+    before resorting to the courts is a long settled rule of judicial administration.
+  jurisdiction: US
+  is_binding: true
+  verification_status: VERIFIED
+- citation: Woodford v. Ngo, 548 U.S. 81 (2006)
+  source_type: CASELAW
+  official_portal_url: https://www.supremecourt.gov/opinions/05pdf/05-416.pdf
+  key_holding_or_text: Proper exhaustion of administrative remedies demands compliance
+    with an agency's deadlines and other critical procedural rules.
+  jurisdiction: US
+  is_binding: true
+  verification_status: VERIFIED
+level_5_advanced_analysis: In child welfare administrative practice, tension often
+  exists between parallel dependency court proceedings and central registry administrative
+  appeals. While some states automatically stay administrative registry appeals pending
+  the outcome of the juvenile court dependency trial, other states maintain independent
+  tracks. Failure to exhaust administrative avenues bars subsequent state court judicial
+  review under state administrative procedure acts.
+drill_downs:
+  SHOW_SOURCE:
+    title: Exhaustion Doctrine Judicial Precedent
+    content: Myers v. Bethlehem Shipbuilding Corp. and Woodford v. Ngo define federal
+      exhaustion requirements.
+    citations:
+    - Myers v. Bethlehem Shipbuilding Corp., 303 U.S. 41 (1938)
+    official_sources:
+    - https://www.supremecourt.gov/
+  SHOW_STATUTE:
+    title: Administrative Procedure Act Framework
+    content: Federal Administrative Procedure Act (5 U.S.C. § 704) and state APAs
+      govern judicial review of final agency actions.
+    citations:
+    - 5 U.S.C. § 704
+    official_sources:
+    - https://uscode.house.gov/
+  SHOW_CASE:
+    title: 'Controlling Precedent: Woodford v. Ngo, 548 U.S. 81 (2006)'
+    content: Holding that proper exhaustion requires adherence to all agency deadlines
+      and critical procedural rules.
+    citations:
+    - Woodford v. Ngo, 548 U.S. 81 (2006)
+    official_sources:
+    - https://www.supremecourt.gov/
+  EXPLAIN_OPPOSING:
+    title: Agency Finality and Administrative Efficiency
+    content: Agencies argue that exhaustion promotes administrative efficiency and
+      allows the agency to correct its own errors before court intervention.
+    citations:
+    - Woodford v. Ngo, 548 U.S. 81 (2006)
+    official_sources:
+    - https://www.supremecourt.gov/
+  SHOW_TEMPORAL_CHANGE:
+    title: Clarification of State Central Registry Appeal Rights
+    content: Due process challenges have forced states to implement clear administrative
+      hearing rights for individuals placed on child abuse registries.
+    citations:
+    - 5 U.S.C. § 704
+    official_sources:
+    - https://uscode.house.gov/
+related_concepts:
+- due_process
+- notice
+- civil_rights_section_1983

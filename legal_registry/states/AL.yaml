@@ -1,0 +1,21 @@
+state_code: AL
+state_id: AL
+state_name: Alabama
+legislature_url: https://www.legislature.state.al.us/
+statutes_url: https://arc-sos.state.al.us/CGI/KEYWORD.MBR/INPUT
+courts_url: https://judicial.alabama.gov/
+cps_agency: Alabama Department of Human Resources (DHR)
+cps_agency_url: https://dhr.alabama.gov/child-protective-services/
+cps_statute_title: ''
+cps_statute_url: ''
+emergency_removal_citation: UNVERIFIED
+shelter_hearing_hours: UNVERIFIED
+shelter_hearing_citation: UNVERIFIED
+counsel_citation: UNVERIFIED
+tpr_citation: UNVERIFIED
+icwa_inquiry: not_specified
+verification_status: PARTIAL
+verified_sources: []
+notes: Scaffold entry for AL. Official portal linked; statutory citations unverified
+  pending primary source audit.
+sources: []

@@ -1,0 +1,105 @@
+id: first_amendment_religion_custody
+canonical_name: First Amendment Free Exercise of Religion in Parental Custody
+aliases:
+- first amendment religion custody
+- religious freedom in parenting
+- free exercise child welfare
+- religious upbringing
+- first amendment custody
+jurisdiction: US
+retrieved_date: '2026-09-19'
+level_1_plain_english: The First Amendment protects your right to teach your religious
+  beliefs and values to your children. A court or child welfare agency cannot take
+  your children away or judge your fitness as a parent simply because they disagree
+  with your religious faith, spiritual practices, or church.
+level_2_practical: The state cannot condition reunification or judge your parenting
+  based on whether you attend a traditional church, follow particular dietary laws,
+  pray, or hold non-mainstream religious views. The state can only intervene if a
+  specific action creates an immediate, demonstrable physical danger to the child's
+  life or health.
+level_3_terminology: Under the Free Exercise Clause of the First Amendment and parental
+  rights doctrine (Wisconsin v. Yoder, 406 U.S. 205), the government must demonstrate
+  a compelling interest of the highest order to override parental religious decisions.
+  The state's parens patriae authority allows intervention only to prevent direct
+  physical harm (Prince v. Massachusetts, 321 U.S. 158), not to enforce religious
+  orthodoxy or social conformity.
+level_4_primary_authority:
+- citation: U.S. Const. amend. I
+  source_type: CONSTITUTION
+  official_portal_url: https://www.govinfo.gov/content/pkg/GPO-CONAN-2017/pdf/GPO-CONAN-2017.pdf
+  key_holding_or_text: Congress shall make no law respecting an establishment of religion,
+    or prohibiting the free exercise thereof.
+  jurisdiction: US
+  is_binding: true
+  verification_status: VERIFIED
+- citation: Wisconsin v. Yoder, 406 U.S. 205 (1972)
+  source_type: CASELAW
+  official_portal_url: https://www.supremecourt.gov/
+  key_holding_or_text: The primary role of parents in the upbringing of their children
+    is established beyond debate as an enduring American tradition; a parent's religious
+    beliefs and custody cannot be lightly overborne by state educational goals.
+  jurisdiction: US
+  is_binding: true
+  verification_status: VERIFIED
+- citation: Prince v. Massachusetts, 321 U.S. 158 (1944)
+  source_type: CASELAW
+  official_portal_url: https://www.supremecourt.gov/
+  key_holding_or_text: The family itself is not beyond regulation in the public interest,
+    as against a claim of religious liberty; the state may intervene to protect children
+    from direct physical harm or exploitation.
+  jurisdiction: US
+  is_binding: true
+  verification_status: VERIFIED
+level_5_advanced_analysis: Constitutional analysis distinguishes between purely religious
+  instruction and practices that impose acute physical hazards (such as denial of
+  life-saving blood transfusions or critical medical care). Under the Religious Freedom
+  Restoration Act (RFRA) and state RFRAs, when the state burdens a parent's religious
+  exercise in family court, the state must prove that the restriction is the least
+  restrictive means of achieving the compelling governmental interest of preventing
+  grave bodily injury.
+drill_downs:
+  SHOW_SOURCE:
+    title: First Amendment Free Exercise Clause Text
+    content: U.S. Constitution First Amendment forbids state laws prohibiting the
+      free exercise of religion.
+    citations:
+    - U.S. Const. amend. I
+    official_sources:
+    - https://www.govinfo.gov
+  SHOW_STATUTE:
+    title: Federal Religious Freedom Restoration Act (RFRA)
+    content: 42 U.S.C. § 2000bb-1 prohibits government from substantially burdening
+      religious exercise without compelling interest.
+    citations:
+    - 42 U.S.C. § 2000bb-1
+    official_sources:
+    - https://uscode.house.gov/
+  SHOW_CASE:
+    title: 'Controlling Precedent: Wisconsin v. Yoder, 406 U.S. 205 (1972)'
+    content: Supreme Court upheld parents' fundamental right to guide the religious
+      future and upbringing of their children.
+    citations:
+    - Wisconsin v. Yoder, 406 U.S. 205 (1972)
+    official_sources:
+    - https://www.supremecourt.gov/
+  EXPLAIN_OPPOSING:
+    title: Medical Neglect and Child Safety Boundaries
+    content: Under Prince v. Massachusetts, the state contends that religious conviction
+      cannot exempt parents from mandatory medical treatments necessary to preserve
+      a child's life.
+    citations:
+    - Prince v. Massachusetts, 321 U.S. 158 (1944)
+    official_sources:
+    - https://www.supremecourt.gov/
+  SHOW_TEMPORAL_CHANGE:
+    title: Narrowing of Religious Exemptions in Child Protection Laws
+    content: States have progressively modified statutory faith-healing exemptions
+      to ensure emergency medical care can be authorized for imperiled children.
+    citations:
+    - Prince v. Massachusetts, 321 U.S. 158 (1944)
+    official_sources:
+    - https://www.supremecourt.gov/
+related_concepts:
+- first_amendment_family_association
+- due_process
+- fourteenth_amendment_substantive_due_process

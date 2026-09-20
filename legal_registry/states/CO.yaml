@@ -1,0 +1,48 @@
+state_code: CO
+state_id: CO
+state_name: Colorado
+legislature_url: https://leg.colorado.gov/
+statutes_url: https://leg.colorado.gov/colorado-revised-statutes
+courts_url: https://www.courts.state.co.us/
+cps_agency: Colorado Department of Human Services (CDHS)
+cps_agency_url: https://cdhs.colorado.gov/
+cps_statute_title: C.R.S. Title 19 Children's Code
+cps_statute_url: https://leg.colorado.gov/agencies/office-legislative-legal-services/colorado-revised-statutes
+emergency_removal_citation: C.R.S. § 19-3-401
+shelter_hearing_hours: 48
+shelter_hearing_citation: C.R.S. § 19-3-403
+counsel_citation: C.R.S. § 19-3-202
+tpr_citation: C.R.S. § 19-3-604
+icwa_inquiry: required
+verification_status: VERIFIED
+verified_sources:
+- https://leg.colorado.gov/sites/default/files/images/olls/crs2023-title-19.pdf
+notes: Verified against Colorado Revised Statutes Title 19 (Children's Code) and Colorado
+  ICWA C.R.S. 19-1-126.
+sources:
+- source_id: CO_CPS_STATUTES
+  jurisdiction: US-CO
+  level: state
+  authority_tier: TIER_0
+  legal_domain:
+  - statutes
+  - child_welfare
+  - dependency
+  source_type: statute
+  title: C.R.S. Title 19 Children's Code
+  citation_format: CO Stat. § {section}
+  publisher:
+    name: Colorado Legislature
+    official: true
+    entity_type: legislature
+    contact_url: https://leg.colorado.gov/
+  canonical_url: https://leg.colorado.gov/agencies/office-legislative-legal-services/colorado-revised-statutes
+  temporal:
+    versioned: true
+    effective_dates_available: true
+    is_current: true
+  acquisition_method: html_scrape
+  parser_name: co_parser
+  update_frequency: daily
+  cps_priority: 10
+  active: true

@@ -1,0 +1,21 @@
+state_code: NV
+state_id: NV
+state_name: Nevada
+legislature_url: https://www.leg.state.nv.us/
+statutes_url: https://www.leg.state.nv.us/NRS/
+courts_url: https://nvcourts.gov/
+cps_agency: Nevada Division of Child and Family Services (DCFS)
+cps_agency_url: https://dcfs.nv.gov/
+cps_statute_title: ''
+cps_statute_url: ''
+emergency_removal_citation: UNVERIFIED
+shelter_hearing_hours: UNVERIFIED
+shelter_hearing_citation: UNVERIFIED
+counsel_citation: UNVERIFIED
+tpr_citation: UNVERIFIED
+icwa_inquiry: not_specified
+verification_status: PARTIAL
+verified_sources: []
+notes: Scaffold entry for NV. Official portal linked; statutory citations unverified
+  pending primary source audit.
+sources: []

@@ -1,0 +1,21 @@
+state_code: CT
+state_id: CT
+state_name: Connecticut
+legislature_url: https://www.cga.ct.gov/
+statutes_url: https://www.cga.ct.gov/current/pub/titles.htm
+courts_url: https://www.jud.ct.gov/
+cps_agency: Connecticut Department of Children and Families (DCF)
+cps_agency_url: https://portal.ct.gov/dcf
+cps_statute_title: ''
+cps_statute_url: ''
+emergency_removal_citation: UNVERIFIED
+shelter_hearing_hours: UNVERIFIED
+shelter_hearing_citation: UNVERIFIED
+counsel_citation: UNVERIFIED
+tpr_citation: UNVERIFIED
+icwa_inquiry: not_specified
+verification_status: PARTIAL
+verified_sources: []
+notes: Scaffold entry for CT. Official portal linked; statutory citations unverified
+  pending primary source audit.
+sources: []

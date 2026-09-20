@@ -1,0 +1,21 @@
+state_code: KS
+state_id: KS
+state_name: Kansas
+legislature_url: https://www.kslegislature.org/
+statutes_url: https://www.ksrevisor.org/statutes.html
+courts_url: https://www.kscourts.org/
+cps_agency: Kansas Department for Children and Families (DCF)
+cps_agency_url: https://www.dcf.ks.gov/services/pps/Pages/default.aspx
+cps_statute_title: ''
+cps_statute_url: ''
+emergency_removal_citation: UNVERIFIED
+shelter_hearing_hours: UNVERIFIED
+shelter_hearing_citation: UNVERIFIED
+counsel_citation: UNVERIFIED
+tpr_citation: UNVERIFIED
+icwa_inquiry: not_specified
+verification_status: PARTIAL
+verified_sources: []
+notes: Scaffold entry for KS. Official portal linked; statutory citations unverified
+  pending primary source audit.
+sources: []

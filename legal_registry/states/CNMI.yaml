@@ -1,0 +1,21 @@
+state_code: CNMI
+state_id: CNMI
+state_name: Northern Mariana Islands
+legislature_url: https://www.cnmileg.net/
+statutes_url: https://cnmilaw.org/statutes.php
+courts_url: https://www.nmijudiciary.gov/
+cps_agency: CNMI Division of Youth Services (DYS) - Child Protective Services
+cps_agency_url: https://www.cnmidys.org/
+cps_statute_title: ''
+cps_statute_url: ''
+emergency_removal_citation: UNVERIFIED
+shelter_hearing_hours: UNVERIFIED
+shelter_hearing_citation: UNVERIFIED
+counsel_citation: UNVERIFIED
+tpr_citation: UNVERIFIED
+icwa_inquiry: not_specified
+verification_status: PARTIAL
+verified_sources: []
+notes: Scaffold entry for CNMI. Official portal linked; statutory citations unverified
+  pending primary source audit.
+sources: []
