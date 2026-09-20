@@ -19,20 +19,20 @@ The system ensures that ordinary individuals, self-represented litigants, child 
 ### Day 0 — Orient & Baseline Audit
 - Conducted full repo and architectural inspection across `core/literacy/`, `legal_registry/`, `api/`, and `cli.py`.
 - Audited test suite baseline (266 tests).
-- Documented findings in [`docs/LITERACY_MODEL_AUDIT.md`](file:///c:/Users/rolda/Documents/Legal%20GPT/docs/LITERACY_MODEL_AUDIT.md).
+- Documented findings in [`docs/LITERACY_MODEL_AUDIT.md`](docs/LITERACY_MODEL_AUDIT.md).
 
 ### Day 0.5 — Claim-Safety Patch
 - Audited claim-safety across codebase and documentation; eliminated speculative "zero hallucination" claims and replaced with "verification-gated" and "abstention-first" guarantees.
 - Clarified non-adjudication posture: Legal-GPT never declares that a user's rights were violated in fact.
-- Created [`docs/LEGAL_CLAIMS_AUDIT.md`](file:///c:/Users/rolda/Documents/Legal%20GPT/docs/LEGAL_CLAIMS_AUDIT.md) and [`docs/LITERACY_MODEL.md`](file:///c:/Users/rolda/Documents/Legal%20GPT/docs/LITERACY_MODEL.md).
-- Updated [`README.md`](file:///c:/Users/rolda/Documents/Legal%20GPT/README.md) capability count from 28 to 30.
+- Created [`docs/LEGAL_CLAIMS_AUDIT.md`](docs/LEGAL_CLAIMS_AUDIT.md) and [`docs/LITERACY_MODEL.md`](docs/LITERACY_MODEL.md).
+- Updated [`README.md`](README.md) capability count from 28 to 30.
 
 ### Days 1–2 — Contract Hardening
-- Extended Pydantic data schemas in [`core/literacy/models.py`](file:///c:/Users/rolda/Documents/Legal%20GPT/core/literacy/models.py):
+- Extended Pydantic data schemas in [`core/literacy/models.py`](core/literacy/models.py):
   - `PrimaryAuthorityReference`: added `verification_status`, `effective_date`, `pinpoint`.
   - `LegalConceptExploration`: added `verification_status`, `abstention_reason`, `related_concepts`, `disclaimer`.
-- Hardened [`core/literacy/registry.py`](file:///c:/Users/rolda/Documents/Legal%20GPT/core/literacy/registry.py) YAML loader with validation against statutory registries.
-- Authored contract tests in [`tests/test_literacy_contract.py`](file:///c:/Users/rolda/Documents/Legal%20GPT/tests/test_literacy_contract.py) (5/5 passing).
+- Hardened [`core/literacy/registry.py`](core/literacy/registry.py) YAML loader with validation against statutory registries.
+- Authored contract tests in [`tests/test_literacy_contract.py`](tests/test_literacy_contract.py) (5/5 passing).
 
 ### Days 3–5 — Concept Pack A Authoring
 - Created 12 production-grade concept packs in `legal_registry/literacy/concepts/`:
@@ -48,38 +48,38 @@ The system ensures that ordinary individuals, self-represented litigants, child 
   10. `reasonable_efforts.yaml`: Title IV-E state obligations to prevent removal and finalize permanency (42 U.S.C. § 671(a)(15)).
   11. `permanency_planning.yaml`: Statutory timelines, concurrent planning, and ASFA 15/22 benchmarks.
   12. `appeal_or_revision_dependency.yaml`: Judicial revision procedures and direct appellate review rights.
-- Authored concept pack tests in [`tests/test_literacy_pack_a.py`](file:///c:/Users/rolda/Documents/Legal%20GPT/tests/test_literacy_pack_a.py) (6/6 passing).
+- Authored concept pack tests in [`tests/test_literacy_pack_a.py`](tests/test_literacy_pack_a.py) (6/6 passing).
 
 ### Days 6–7 — Truth Engine Wiring
-- Expanded [`core/citation_verifier.py`](file:///c:/Users/rolda/Documents/Legal%20GPT/core/citation_verifier.py) to verify U.S. and State Constitutions, Court Rules (`JuCR`, `RAP`, `Juv. R.`), and canonical U.S. Supreme Court and Federal Circuit precedents.
-- Wired [`core/literacy/engine.py`](file:///c:/Users/rolda/Documents/Legal%20GPT/core/literacy/engine.py):
+- Expanded [`core/citation_verifier.py`](core/citation_verifier.py) to verify U.S. and State Constitutions, Court Rules (`JuCR`, `RAP`, `Juv. R.`), and canonical U.S. Supreme Court and Federal Circuit precedents.
+- Wired [`core/literacy/engine.py`](core/literacy/engine.py):
   - Automatically routes Level 4 authorities through `CitationVerifier.verify_citation()`, downgrading tampered citations to `UNVERIFIED`.
   - Wired `SHOW_TEMPORAL_CHANGE` to `temporal_graph` with explicit abstention protocols when temporal versions or effective dates are absent.
   - Integrated `ExplanationTraceEngine` to expose 10-field auditable explanation traces and answer 8 interrogative queries (`WHY`, `SOURCE`, `WHEN`, `WHERE`, `WHAT_IF`, `WHAT_CHANGED`, `WHAT_DISAGREES`, `WHAT_IS_MISSING`).
-- Authored verification tests in [`tests/test_literacy_verification.py`](file:///c:/Users/rolda/Documents/Legal%20GPT/tests/test_literacy_verification.py) (4/4 passing).
+- Authored verification tests in [`tests/test_literacy_verification.py`](tests/test_literacy_verification.py) (4/4 passing).
 
 ### Days 8–9 — Public Interfaces
-- Added REST endpoint `POST /api/v1/public/explain-concept` in [`api/server.py`](file:///c:/Users/rolda/Documents/Legal%20GPT/api/server.py), returning multi-level explanations, drill-downs, verification status, and markdown renderings.
-- Added CLI command `explain-concept` (`legal-gpt explain-concept`) in [`cli.py`](file:///c:/Users/rolda/Documents/Legal%20GPT/cli.py) supporting `--concept`, `--level`, `--state`, `--drill-down`, and `--json`.
-- Updated [`docs/PUBLIC_SCOUT_BRIDGE.md`](file:///c:/Users/rolda/Documents/Legal%20GPT/docs/PUBLIC_SCOUT_BRIDGE.md) with Subsection E: "Progressive Legal Literacy".
-- Authored API tests in [`tests/test_literacy_api.py`](file:///c:/Users/rolda/Documents/Legal%20GPT/tests/test_literacy_api.py) (5/5 passing).
+- Added REST endpoint `POST /api/v1/public/explain-concept` in [`api/server.py`](api/server.py), returning multi-level explanations, drill-downs, verification status, and markdown renderings.
+- Added CLI command `explain-concept` (`legal-gpt explain-concept`) in [`cli.py`](cli.py) supporting `--concept`, `--level`, `--state`, `--drill-down`, and `--json`.
+- Updated [`docs/PUBLIC_SCOUT_BRIDGE.md`](docs/PUBLIC_SCOUT_BRIDGE.md) with Subsection E: "Progressive Legal Literacy".
+- Authored API tests in [`tests/test_literacy_api.py`](tests/test_literacy_api.py) (5/5 passing).
 
 ### Days 10–11 — Adversarial Testing & Safety Audits
-- Authored adversarial test suite in [`tests/test_literacy_adversarial.py`](file:///c:/Users/rolda/Documents/Legal%20GPT/tests/test_literacy_adversarial.py) (5/5 passing):
+- Authored adversarial test suite in [`tests/test_literacy_adversarial.py`](tests/test_literacy_adversarial.py) (5/5 passing):
   - Crisis prompt non-adjudication: Ensures "did CPS break the law?" returns educational standards, not factual fault determinations.
   - Cross-state isolation: Verifies WA statutes never leak into IL queries and vice-versa.
   - Federal-only labeling: Verifies federal concepts without state packs are labeled `US` or `FEDERAL`.
   - Question builder integration: Verifies tactical questions focus on procedure, not legal conclusions.
   - Deadline engine routing: Verifies referral to statutory calculation engine for specific event dates.
-- Ran [`scripts/privacy_audit.py`](file:///c:/Users/rolda/Documents/Legal%20GPT/scripts/privacy_audit.py): 100% clean (zero PII, zero private paths).
-- Ran [`scripts/deep_security_audit.py`](file:///c:/Users/rolda/Documents/Legal%20GPT/scripts/deep_security_audit.py): 100% clean (zero tracked SQLite databases, clean git history).
+- Ran [`scripts/privacy_audit.py`](scripts/privacy_audit.py): 100% clean (zero PII, zero private paths).
+- Ran [`scripts/deep_security_audit.py`](scripts/deep_security_audit.py): 100% clean (zero tracked SQLite databases, clean git history).
 
 ### Days 12–13 — Deep Integration
 - Connected literacy concept references across core subsystems:
-  - Document Explainer ([`core/document_explainer/models.py`](file:///c:/Users/rolda/Documents/Legal%20GPT/core/document_explainer/models.py), [`core/document_explainer/engine.py`](file:///c:/Users/rolda/Documents/Legal%20GPT/core/document_explainer/engine.py)): Added `related_concept_ids`.
-  - Rights Engine ([`core/rights/models.py`](file:///c:/Users/rolda/Documents/Legal%20GPT/core/rights/models.py), [`core/rights/engine.py`](file:///c:/Users/rolda/Documents/Legal%20GPT/core/rights/engine.py)): Added `literacy_concept_id`.
-  - Navigator ([`core/navigator/navigator.py`](file:///c:/Users/rolda/Documents/Legal%20GPT/core/navigator/navigator.py)): Attached `related_literacy_concepts`.
-- Updated [`docs/LITERACY_MODEL.md`](file:///c:/Users/rolda/Documents/Legal%20GPT/docs/LITERACY_MODEL.md) with full Concept Pack A inventory and Truth Engine integration details.
+  - Document Explainer ([`core/document_explainer/models.py`](core/document_explainer/models.py), [`core/document_explainer/engine.py`](core/document_explainer/engine.py)): Added `related_concept_ids`.
+  - Rights Engine ([`core/rights/models.py`](core/rights/models.py), [`core/rights/engine.py`](core/rights/engine.py)): Added `literacy_concept_id`.
+  - Navigator ([`core/navigator/navigator.py`](core/navigator/navigator.py)): Attached `related_literacy_concepts`.
+- Updated [`docs/LITERACY_MODEL.md`](docs/LITERACY_MODEL.md) with full Concept Pack A inventory and Truth Engine integration details.
 
 ### Day 14 — Final Consistency Audit & Verification
 - Ran complete test suite: **300 passed out of 300 tests (100%)**.

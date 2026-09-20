@@ -30,8 +30,9 @@ WINDOWS_PRIVATE_DRIVE_PATTERN = r"(?<!https://)(?<!http://)(?<![A-Za-z0-9_])[L-Z
 
 LOCAL_PATH_PATTERNS = [
     (r"(?<!https://)(?<!http://)[C-Z]:\\Users\\[A-Za-z0-9_.\-]+(?!\.gemini)", "Windows Local User Path"),
+    (r"file:///[A-Za-z]:/[Uu]sers/[A-Za-z0-9_.\-]+", "Windows Local File URI User Path"),
     (WINDOWS_PRIVATE_DRIVE_PATTERN, "Windows Private Drive Letter (L:\\, J:\\)"),
-    (r"/media/ixtly", "Private Linux Media Mount"),
+    (r"/media/ixtly", "Private Linux Media Mount"),  # scan pattern, not a live mount
     (r"EvidenceWorkspace", "EvidenceWorkspace Reference"),
     (r"\b10\.0\.0\.\d{1,3}\b", "Private 10.0.0.x Subnet IP"),
     (r"\bAeon\b", "Private Aeon Identifier"),

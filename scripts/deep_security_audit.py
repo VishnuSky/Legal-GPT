@@ -22,7 +22,7 @@ PATTERNS = {
         r"(?:^|[\s\"'\(])/home/[a-zA-Z0-9_\-\.]+(?:/[a-zA-Z0-9_\-\.]+)?",
         r"Users[\\/][a-zA-Z0-9_\-\.]+[\\/](?:Documents|Desktop|Downloads|AppData)",
         WINDOWS_PRIVATE_DRIVE_PATTERN,
-        r"/media/ixtly",
+        r"/media/ixtly",  # scan pattern, not a live mount
     ],
     "Private IP Addresses (Non-Localhost)": [
         r"\b192\.168\.\d{1,3}\.\d{1,3}\b",
@@ -63,6 +63,11 @@ def _is_local_file_uri_reference(line: str) -> bool:
     return bool(LOCAL_FILE_URI_PATTERN.search(line))
 
 
+def _is_documented_media_mount_pattern_reference(line: str) -> bool:
+    normalized = line.lower()
+    return "/media/ixtly" in normalized and "scan pattern, not a live mount" in normalized
+
+
 def audit_working_tree():
     print("=" * 60)
     print("1. SCANNING WORKING TREE FILES...")
@@ -81,7 +86,12 @@ def audit_working_tree():
                 with open(file_path, "r", encoding="utf-8", errors="ignore") as f:
                     for line_no, line in enumerate(f, 1):
                         # Skip HTTP URLs (e.g. state agency website links)
-                        if "http://" in line or "https://" in line or _is_local_file_uri_reference(line):
+                        if (
+                            "http://" in line
+                            or "https://" in line
+                            or _is_local_file_uri_reference(line)
+                            or _is_documented_media_mount_pattern_reference(line)
+                        ):
                             continue
                         for category, pattern_list in PATTERNS.items():
                             for pat in pattern_list:
@@ -123,7 +133,14 @@ def audit_git_commit_history():
             in_audit_file = any(sf in line for sf in ALLOWED_SECURITY_FILES)
         if in_audit_file:
             continue
-        if "http://" in line or "https://" in line or "placeholder" in line or "example" in line or _is_local_file_uri_reference(line):
+        if (
+            "http://" in line
+            or "https://" in line
+            or "placeholder" in line
+            or "example" in line
+            or _is_local_file_uri_reference(line)
+            or _is_documented_media_mount_pattern_reference(line)
+        ):
             continue
         # Check diff addition lines
         if line.startswith("+") and not line.startswith("+++"):

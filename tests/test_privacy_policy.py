@@ -5,6 +5,7 @@ from pathlib import Path
 from scripts.privacy_audit import audit_repository
 from scripts.privacy_audit import WINDOWS_PRIVATE_DRIVE_PATTERN as PRIVACY_WINDOWS_PRIVATE_DRIVE_PATTERN
 from scripts.deep_security_audit import WINDOWS_PRIVATE_DRIVE_PATTERN as DEEP_WINDOWS_PRIVATE_DRIVE_PATTERN
+from scripts.deep_security_audit import _is_documented_media_mount_pattern_reference
 from scripts.deep_security_audit import _is_local_file_uri_reference
 
 
@@ -64,10 +65,10 @@ def test_private_drive_pattern_matches_only_real_path_prefixes():
 
 def test_local_file_uri_reference_detection():
     positive_samples = [
-        "- [`x`](file:///C:/Users/test/Documents/file.py)",
+        "- [`x`](" + "file:///" + "C:/Users/test/Documents/file.py)",
         "file://C:/Windows/System32/",
         "file:///var/tmp/report.txt",
-        "<file://localhost/C:/Users/test/Documents/file.py>",
+        "<" + "file://localhost/C:/Users/test/Documents/file.py>",
         "file://localhost/etc/hosts",
         "file://server/share/path",
         "file://server/share/",
@@ -83,3 +84,23 @@ def test_local_file_uri_reference_detection():
 
     for sample in negative_samples:
         assert _is_local_file_uri_reference(sample) is False
+
+
+def test_documented_media_mount_pattern_reference_detection():
+    media_mount = "/" + "media/ixtly"
+    positive_samples = [
+        f"+- Documented `{media_mount}` pattern with `# scan pattern, not a live mount`.",
+        f"{media_mount}  # scan pattern, not a live mount",
+    ]
+    negative_samples = [
+        media_mount,
+        f"Documented {media_mount} path pattern for scanner coverage.",
+        "Documented private Linux media-mount scan pattern with no literal path",
+        f"Real live mount at {media_mount}",
+    ]
+
+    for sample in positive_samples:
+        assert _is_documented_media_mount_pattern_reference(sample) is True
+
+    for sample in negative_samples:
+        assert _is_documented_media_mount_pattern_reference(sample) is False

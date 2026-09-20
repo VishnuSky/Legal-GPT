@@ -1,17 +1,27 @@
-# Legal-GPT ⚖️
+# Legal-GPT
 
-[![Python 3.10+](https://img.shields.io/badge/python-3.10+-blue.svg)](https://www.python.org/downloads/)
-[![Tests](https://img.shields.io/badge/tests-300%2F300%20passing-brightgreen.svg)](https://github.com/VishnuSky/Legal-GPT)
-[![Benchmark](https://img.shields.io/badge/benchmark-9.5%2F10%20(95%25)-brightgreen.svg)](https://github.com/VishnuSky/Legal-GPT)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
-[![Version: Alpha 0.3.1](https://img.shields.io/badge/version-Alpha%200.3.1-blue.svg)](https://github.com/VishnuSky/Legal-GPT)
-[![MCP Server](https://img.shields.io/badge/MCP-JSON--RPC%202.0-blueviolet.svg)](https://github.com/VishnuSky/Legal-GPT)
+Public legal literacy and navigation tools.
 
-> **An open-weight legal LLM and verified primary-law reasoning engine designed to help ordinary people, self-represented litigants, advocates, and attorneys navigate complex legal systems through verification-gated, authority-grounded assistance.**
+Not legal advice. Not a lawyer. Does not store case files.
 
-Legal-GPT combines local open-weight language models with a deterministic, citation-verified legal knowledge graph. Substantive authoritative legal text is retrieved dynamically from verified repositories; the neural model serves as a reasoning and language engine, while procedural rules, statutory deadlines, and controlling precedents are strictly cross-checked against primary government sources.
+**Use it:** https://x.ai/bot/4p9YXeUcvV7TeiErQvdIj
+**Code:** this repo
+**Start:** docs/QUICKSTART.md
+**Scout prompt:** docs/SCOUT_SYSTEM_PROMPT.md
 
-🔗 **Live Public Scout:** Chat with the [Public Law Scout Grok Bot](https://x.ai/bot/4p9YXeUcvV7TeiErQvdIj) for real-time legal orientation and service referrals.
+---
+
+### What it does
+- Explains public legal concepts across 5 literacy levels
+- Cites primary sources and abstains when a citation is not verified
+- Looks up official service and legal-aid directories
+- Maps procedures and source-backed deadline research
+- Works offline via downloadable state packages
+
+### What it does not do
+- Represent you legally
+- Decide that anyone's rights were violated
+- Ingest private evidence or store case files
 
 ---
 
