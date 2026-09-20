@@ -1,0 +1,124 @@
+id: tribal_court_jurisdiction_icwa
+canonical_name: Tribal Court Jurisdiction and Case Transfer under ICWA
+aliases:
+- tribal court jurisdiction icwa
+- 25 usc 1911
+- icwa transfer
+- holyfield
+- tribal court transfer
+jurisdiction: FED
+retrieved_date: '2026-09-19'
+level_1_plain_english: When a Native child is involved in a court proceeding, tribal
+  courts have special authority to hear the case. If the child lives on the reservation,
+  the tribal court has exclusive power. If the child lives off the reservation, parents
+  or the tribe have the legal right to ask the state judge to transfer the entire
+  case into tribal court.
+level_2_practical: If your child welfare case starts in a state county court, you
+  or your tribe can file a formal motion to transfer the case to your tribal nation's
+  court. The state court must transfer the case unless either parent objects or the
+  judge finds specific, lawful 'good cause' not to transfer. The state judge cannot
+  refuse transfer just because they believe the state court has more money or services.
+level_3_terminology: 'Under 25 U.S.C. § 1911, ICWA establishes a dual jurisdictional
+  framework: (a) Exclusive Jurisdiction (§ 1911(a)) over Indian children residing
+  or domiciled within the reservation (Mississippi Band of Choctaw Indians v. Holyfield);
+  and (b) Concurrent Presumptive Transfer Jurisdiction (§ 1911(b)) for off-reservation
+  children. Under § 1911(b), transfer to tribal court is mandatory upon petition of
+  a parent, custodian, or tribe, absent objection by either parent or good cause to
+  the contrary. Good cause is strictly defined under 25 C.F.R. § 23.118.'
+level_4_primary_authority:
+- citation: 25 U.S.C. § 1911
+  source_type: STATUTE
+  official_portal_url: https://uscode.house.gov/view.xhtml?req=granuleid:USC-prelim-title25-section1911&num=0&edition=prelim
+  key_holding_or_text: An Indian tribe shall have jurisdiction exclusive as to any
+    State over any child custody proceeding involving an Indian child who resides
+    or is domiciled within the reservation... In any State court proceeding... the
+    court, in the absence of good cause to the contrary, shall transfer such proceeding
+    to the jurisdiction of the tribe.
+  jurisdiction: US
+  is_binding: true
+  verification_status: VERIFIED
+- citation: Mississippi Band of Choctaw Indians v. Holyfield, 490 U.S. 30 (1989)
+  source_type: CASELAW
+  official_portal_url: https://supreme.justia.com/cases/federal/us/490/30/
+  key_holding_or_text: Tribal jurisdiction under ICWA cannot be defeated by individual
+    parents giving birth off-reservation; federal domicile principles control, and
+    the tribe's interest in its children is independent of the parents' preferences.
+  jurisdiction: US
+  is_binding: true
+  verification_status: VERIFIED
+- citation: 25 C.F.R. § 23.118
+  source_type: REGULATION
+  official_portal_url: https://www.ecfr.gov/current/title-25/chapter-I/subchapter-D/part-23/subpart-C/section-23.118
+  key_holding_or_text: In determining whether good cause exists, the court may not
+    consider whether the proceeding is at an advanced stage if the parent or tribe
+    did not receive prompt notice; whether transfer may affect placement; or the perceived
+    adequacy of tribal court services.
+  jurisdiction: US
+  is_binding: true
+  verification_status: VERIFIED
+level_5_advanced_analysis: 'Domestic U.S. law vs. International Norms:
+
+  - Domestic Law: ICWA § 1911(b) recognizes the presumptive authority of tribal judiciaries,
+  but grants individual parents absolute veto power over transfer to tribal court,
+  creating complex tensions between individual parental autonomy and collective tribal
+  sovereignty.
+
+  - UNDRIP (International Norm — non-binding in U.S. domestic proceedings): Article
+  5 affirms the right of Indigenous peoples to maintain and strengthen their distinct
+  political, legal, economic, social and cultural institutions, while retaining their
+  right to participate fully in the political life of the State.
+
+  - Alignment & Divergence: The transfer mechanism operationalizes tribal self-determination
+  within domestic family law, though parental veto provisions diverge from pure sovereign
+  territorial jurisdiction.
+
+  - Competing Positions: Foster parents and state agencies sometimes resist transfer
+  by citing bond attachments or litigation delay. Tribal nations argue that Holyfield
+  establishes that tribes possess an independent sovereign interest in the welfare
+  of their child citizens that transcends state court forum preference.'
+drill_downs:
+  SHOW_SOURCE:
+    title: Statutory Jurisdiction Framework
+    content: 25 U.S.C. § 1911 governs exclusive reservation jurisdiction and presumptive
+      transfer to tribal courts.
+    citations:
+    - 25 U.S.C. § 1911
+    official_sources:
+    - https://uscode.house.gov/
+  SHOW_STATUTE:
+    title: BIA Good Cause Regulations
+    content: 25 C.F.R. § 23.118 lists impermissible factors that state courts may
+      not use to deny transfer to tribal court.
+    citations:
+    - 25 C.F.R. § 23.118
+    official_sources:
+    - https://www.ecfr.gov/
+  SHOW_CASE:
+    title: 'Controlling Precedent: Mississippi Band of Choctaw Indians v. Holyfield,
+      490 U.S. 30 (1989)'
+    content: Landmark ruling defining tribal domicile and upholding exclusive tribal
+      jurisdiction under § 1911(a).
+    citations:
+    - Mississippi Band of Choctaw Indians v. Holyfield, 490 U.S. 30 (1989)
+    official_sources:
+    - https://supreme.justia.com/cases/federal/us/490/30/
+  EXPLAIN_OPPOSING:
+    title: Parental Veto Mechanics
+    content: Under 25 U.S.C. § 1911(b), an objection by either biological parent terminates
+      the transfer request and keeps the case in state court.
+    citations:
+    - 25 U.S.C. § 1911(b)
+    official_sources:
+    - https://uscode.house.gov/
+  SHOW_TEMPORAL_CHANGE:
+    title: Elimination of Socioeconomic Comparisons in Transfer Reviews
+    content: Historical state court practice of denying transfer based on perceived
+      inadequacy of tribal courts was expressly outlawed by the 2016 BIA regulations.
+    citations:
+    - 25 C.F.R. § 23.118
+    official_sources:
+    - https://www.ecfr.gov/
+related_concepts:
+- icwa_active_efforts
+- tribal_sovereignty
+- indian_country_jurisdiction

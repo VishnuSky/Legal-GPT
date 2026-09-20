@@ -1,0 +1,46 @@
+region: Pacific Northwest
+treaties:
+- name: Treaty of Point Elliott (1855)
+  statutory_citation: 12 Stat. 927
+  signatories:
+  - United States
+  - Duwamish
+  - Suquamish
+  - Snoqualmie
+  - Snohomish
+  - Lummi
+  - Skagit
+  - and allied tribes
+  ratified_date: March 8, 1859
+  official_source_url: https://www.loc.gov/law/help/statutes-at-large/35th-congress/session-2/c35s2ch85.pdf
+  reserved_rights: Article 5 reserves the right of taking fish at usual and accustomed
+    grounds and stations in common with citizens.
+  controlling_caselaw:
+  - citation: United States v. Washington (Boldt Decision), 384 F. Supp. 312 (W.D.
+      Wash. 1974), aff'd 520 F.2d 676 (9th Cir. 1975)
+    holding: Treaty tribes are entitled to the opportunity to harvest up to 50% of
+      the harvestable fish runs passing through traditional off-reservation grounds.
+    official_url: https://law.justia.com/cases/federal/district-courts/FSupp/384/312/1370676/
+  - citation: Washington v. Washington State Commercial Passenger Fishing Vessel Assn.,
+      443 U.S. 658 (1979)
+    holding: Affirmed the Boldt Decision; treaty words 'in common with' guarantee
+      a shared, equitable harvest up to 50%.
+    official_url: https://supreme.justia.com/cases/federal/us/443/658/
+- name: Treaty of Medicine Creek (1854)
+  statutory_citation: 10 Stat. 1132
+  signatories:
+  - United States
+  - Nisqually
+  - Puyallup
+  - Squaxin Island
+  ratified_date: March 3, 1855
+  official_source_url: https://www.loc.gov/law/help/statutes-at-large/33rd-congress/session-2/c33s2ch128.pdf
+  reserved_rights: Article 3 secured right of taking fish at all usual and accustomed
+    grounds.
+- name: Treaty of Neah Bay (1855)
+  statutory_citation: 12 Stat. 939
+  signatories:
+  - United States
+  - Makah Indian Tribe
+  reserved_rights: Explicitly secured rights of whaling and sealing in marine waters.
+verification_status: VERIFIED

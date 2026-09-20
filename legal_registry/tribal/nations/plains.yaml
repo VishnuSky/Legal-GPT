@@ -1,0 +1,19 @@
+region: Great Plains
+nations:
+- name: Oglala Sioux Tribe (Pine Ridge Reservation)
+  official_website: https://oglalalakotanation.com/
+  governing_treaty: Fort Laramie Treaty (1868), 15 Stat. 635
+  jurisdiction_notes: Oglala Sioux Supreme Court and District Court; unceded Black
+    Hills rights.
+  court_website: https://oglalalakotanation.com/
+- name: Rosebud Sioux Tribe (Sicangu Lakota)
+  official_website: https://www.rosebudsiouxtribe-nsn.gov/
+  governing_treaty: Fort Laramie Treaty (1868), 15 Stat. 635
+  jurisdiction_notes: Rosebud Tribal Court exercising sovereign civil and criminal
+    jurisdiction.
+- name: Cheyenne River Sioux Tribe
+  official_website: https://www.cheyenneriversiouxtribe.gov/
+  governing_treaty: Fort Laramie Treaty (1868), 15 Stat. 635
+  jurisdiction_notes: Tribal court in Eagle Butte, SD; Solem v. Bartlett, 465 U.S.
+    463 (1984) boundary confirmation.
+verification_status: VERIFIED

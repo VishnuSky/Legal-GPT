@@ -1,0 +1,125 @@
+id: icwa_active_efforts
+canonical_name: ICWA Active Efforts Requirement vs ASFA Reasonable Efforts
+aliases:
+- icwa active efforts
+- active efforts
+- 25 usc 1912 d
+- 25 cfr 23 2
+- active efforts standard
+jurisdiction: FED
+retrieved_date: '2026-09-19'
+level_1_plain_english: When child welfare agencies deal with a Native child, the law
+  requires them to do much more than simply give parents a list of phone numbers.
+  They must provide 'active efforts'—actively helping parents access housing, treatment,
+  transportation, and cultural support—to keep the family together before any child
+  can be placed in foster care or parental rights terminated.
+level_2_practical: 'In court, the caseworker cannot merely state: ''I gave the mother
+  referrals, but she failed to call.'' Under ICWA, active efforts means the caseworker
+  must take the parent to the appointment, arrange culturally appropriate tribal healing
+  programs, involve extended family, and consult the child''s tribe. The state must
+  prove by clear and convincing evidence that active efforts were provided and failed.'
+level_3_terminology: Under 25 U.S.C. § 1912(d), any party seeking foster care placement
+  or termination of parental rights to an Indian child must demonstrate that 'active
+  efforts have been made to provide remedial services and rehabilitative programs
+  designed to prevent the breakup of the Indian family and that these efforts have
+  proved unsuccessful.' The Bureau of Indian Affairs (25 C.F.R. § 23.2) defines active
+  efforts as affirmative, active, thorough, and timely efforts tailored to the specific
+  circumstances of the Indian family.
+level_4_primary_authority:
+- citation: 25 U.S.C. § 1912(d)
+  source_type: STATUTE
+  official_portal_url: https://uscode.house.gov/view.xhtml?req=granuleid:USC-prelim-title25-section1912&num=0&edition=prelim
+  key_holding_or_text: Any party seeking to effect a foster care placement of, or
+    termination of parental rights to, an Indian child under State law shall satisfy
+    the court that active efforts have been made to provide remedial services and
+    rehabilitative programs designed to prevent the breakup of the Indian family and
+    that these efforts have proved unsuccessful.
+  jurisdiction: US
+  is_binding: true
+  verification_status: VERIFIED
+- citation: 25 C.F.R. § 23.2
+  source_type: REGULATION
+  official_portal_url: https://www.ecfr.gov/current/title-25/chapter-I/subchapter-D/part-23/subpart-A/section-23.2
+  key_holding_or_text: Active efforts means affirmative, active, thorough, and timely
+    efforts intended primarily to maintain or reunite an Indian child with his or
+    her family... Active efforts must involve assisting the parent or parents or Indian
+    custodian through the steps of a case plan and with accessing or developing the
+    resources necessary to satisfy the case plan.
+  jurisdiction: US
+  is_binding: true
+  verification_status: VERIFIED
+- citation: Haaland v. Brackeen, 599 U.S. 255 (2023)
+  source_type: CASELAW
+  official_portal_url: https://supreme.justia.com/cases/federal/us/599/255/
+  key_holding_or_text: Upholding the constitutionality of ICWA, including the statutory
+    requirements governing state court child custody proceedings.
+  jurisdiction: US
+  is_binding: true
+  verification_status: VERIFIED
+level_5_advanced_analysis: 'Domestic U.S. law vs. International Norms:
+
+  - Domestic Law: ICWA § 1912(d) imposes an affirmative duty substantially higher
+  than the ''reasonable efforts'' standard under the Adoption and Safe Families Act
+  (ASFA, 42 U.S.C. § 671). However, some state courts have attempted to create non-statutory
+  exceptions (such as the discredited ''existing Indian family doctrine'' or futility
+  exceptions).
+
+  - UNDRIP (International Norm — non-binding in U.S. domestic proceedings): Article
+  7 guarantees collective freedom from forced assimilation, and Article 10 prohibits
+  forced relocation of Indigenous persons from their families and lands.
+
+  - Alignment & Divergence: ICWA aligns closely with international human rights standards
+  on family preservation and cultural integrity, serving as the gold standard of domestic
+  child welfare law.
+
+  - Competing Positions: State agencies sometimes argue that emergency safety risks
+  or parental non-compliance excuse rigorous active efforts. Tribal nations and parents
+  argue that federal law permits no exceptions: active efforts must be documented
+  on the record before any non-emergency removal or termination can be sustained.'
+drill_downs:
+  SHOW_SOURCE:
+    title: Statutory Text of 25 U.S.C. § 1912(d)
+    content: Federal statute governing mandatory active efforts in Indian child custody
+      proceedings.
+    citations:
+    - 25 U.S.C. § 1912(d)
+    official_sources:
+    - https://uscode.house.gov/
+  SHOW_STATUTE:
+    title: BIA Regulations on Active Efforts
+    content: 25 C.F.R. § 23.2 provides 11 non-exhaustive examples of active efforts
+      required of child welfare agencies.
+    citations:
+    - 25 C.F.R. § 23.2
+    official_sources:
+    - https://www.ecfr.gov/
+  SHOW_CASE:
+    title: 'Controlling Precedent: Haaland v. Brackeen, 599 U.S. 255 (2023)'
+    content: Supreme Court held that ICWA's statutory requirements are constitutional
+      exercises of congressional Article I power.
+    citations:
+    - Haaland v. Brackeen, 599 U.S. 255 (2023)
+    official_sources:
+    - https://supreme.justia.com/cases/federal/us/599/255/
+  EXPLAIN_OPPOSING:
+    title: ASFA Timeline Conflicts
+    content: Agencies argue that ASFA's 15/22 month termination timeline conflicts
+      with extensive active efforts, but federal regulations make clear ICWA controls.
+    citations:
+    - 42 U.S.C. § 675(5)(E)
+    - 25 C.F.R. § 23.106
+    official_sources:
+    - https://uscode.house.gov/
+  SHOW_TEMPORAL_CHANGE:
+    title: Codification of BIA Regulations into Binding Rules (2016)
+    content: In 2016, the Department of the Interior promulgated binding federal regulations
+      (25 C.F.R. Part 23) replacing advisory guidelines to ensure uniform national
+      enforcement.
+    citations:
+    - 81 Fed. Reg. 38778 (June 14, 2016)
+    official_sources:
+    - https://www.federalregister.gov/
+related_concepts:
+- icwa_qualified_expert_witness
+- tribal_court_jurisdiction_icwa
+- reasonable_efforts

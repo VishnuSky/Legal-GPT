@@ -1,0 +1,26 @@
+region: Southwest
+treaties:
+- name: Treaty of Guadalupe Hidalgo (1848)
+  statutory_citation: 9 Stat. 922
+  signatories:
+  - United States
+  - United Mexican States
+  ratified_date: May 30, 1848
+  official_source_url: https://www.loc.gov/law/help/statutes-at-large/30th-congress/session-1/c30s1ch28.pdf
+  indigenous_rights_relevance: Articles VIII and IX guaranteed the property rights
+    and citizenship of Mexican citizens inhabiting the ceded territory, including
+    Pueblo peoples recognized as citizens under Mexican law. Later addressed in United
+    States v. Sandoval, 231 U.S. 28 (1913), confirming federal guardianship over Pueblo
+    lands.
+- name: Navajo Treaty of 1868 (Treaty of Bosque Redondo)
+  statutory_citation: 15 Stat. 667
+  signatories:
+  - United States
+  - Navajo Nation (Diné)
+  ratified_date: August 12, 1868
+  official_source_url: https://www.loc.gov/law/help/statutes-at-large/40th-congress/session-2/c40s2ch173.pdf
+  historical_and_legal_effect: Concluded the forced internment at Bosque Redondo following
+    the Long Walk of the Navajo (1864). The treaty established a recognized reservation
+    in the Diné ancestral homeland (Diné Bikéyah), reserving permanent land rights,
+    education commitments, and tribal self-governance.
+verification_status: VERIFIED

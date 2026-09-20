@@ -1,0 +1,124 @@
+id: land_rights_and_trust_responsibility
+canonical_name: Federal Trust Responsibility and Tribal Land Rights
+aliases:
+- federal trust responsibility
+- trust responsibility
+- cobell v salazar
+- indian trust lands
+- 25 usc 162a
+jurisdiction: FED
+retrieved_date: '2026-09-19'
+level_1_plain_english: Because the United States took millions of acres of land through
+  treaties and statutes, the federal government owes a strict, sacred legal duty to
+  protect Indian tribes, their lands, their resources, and their funds. This duty
+  is called the 'federal trust responsibility.'
+level_2_practical: Reservation land is often held in 'trust status' by the United
+  States for the benefit of the tribe or individual tribal members. This means county
+  tax assessors cannot tax or foreclose on trust land, and state governments cannot
+  regulate it. However, it also means the Bureau of Indian Affairs (BIA) must approve
+  leases, sales, and resource development on the land.
+level_3_terminology: The federal trust responsibility is a legally enforceable fiduciary
+  obligation established in Seminole Nation v. United States, 316 U.S. 286 (1942),
+  holding the government to the most exacting fiduciary standards. Under 25 U.S.C.
+  § 162a, Congress codified specific trust accounting responsibilities. In Cobell
+  v. Salazar (settled 2009 for $3.4 billion), the federal courts held that the Department
+  of the Interior breached its fiduciary duties by mismanaging Individual Indian Money
+  (IIM) accounts for over a century.
+level_4_primary_authority:
+- citation: Seminole Nation v. United States, 316 U.S. 286 (1942)
+  source_type: CASELAW
+  official_portal_url: https://supreme.justia.com/cases/federal/us/316/286/
+  key_holding_or_text: In carrying out its treaty obligations with the Indian tribes,
+    the Government is something more than a mere contracting party. Under a humane
+    and self imposed policy which has found expression in many acts of Congress and
+    numerous decisions of this Court, it has charged itself with moral obligations
+    of the highest responsibility and trust... judged by the most exacting fiduciary
+    standards.
+  jurisdiction: US
+  is_binding: true
+  verification_status: VERIFIED
+- citation: 25 U.S.C. § 162a
+  source_type: STATUTE
+  official_portal_url: https://uscode.house.gov/view.xhtml?req=granuleid:USC-prelim-title25-section162a&num=0&edition=prelim
+  key_holding_or_text: The Secretary's proper discharge of the trust responsibilities
+    of the United States shall include... providing adequate systems for accounting
+    for and reporting trust balances... and auditing and reconciling of these accounts.
+  jurisdiction: US
+  is_binding: true
+  verification_status: VERIFIED
+- citation: Cobell v. Salazar, 573 F.3d 808 (D.C. Cir. 2009)
+  source_type: CASELAW
+  official_portal_url: https://scholar.google.com/
+  key_holding_or_text: Affirmed systemic federal breach of fiduciary duties regarding
+    individual Indian trust accounts, leading to a landmark $3.4 billion settlement.
+  jurisdiction: US
+  is_binding: true
+  verification_status: VERIFIED
+level_5_advanced_analysis: 'Domestic U.S. law vs. International Norms:
+
+  - Domestic Law: While Seminole Nation and Cobell enforce strict trust accounting
+  when specific statutes establish fiduciary duties, the Supreme Court in United States
+  v. Jicarilla Apache Nation (564 U.S. 162) and Arizona v. Navajo Nation (599 U.S.
+  555, 2023) held that the trust responsibility does not create broad common-law fiduciary
+  duties unless tied to specific statutory text.
+
+  - UNDRIP (International Norm — non-binding in U.S. domestic proceedings): Article
+  26 guarantees that Indigenous peoples have the right to own, use, develop and control
+  the lands, territories and resources that they possess by reason of traditional
+  ownership.
+
+  - Alignment & Divergence: The domestic trust model provides crucial protection against
+  state taxation and alienation, but gives the federal government paternalistic control
+  over land management, diverging from UNDRIP''s model of full self-determined indigenous
+  ownership.
+
+  - Competing Positions: The Federal Government contends that its trust duties are
+  defined solely by explicit statutory mandates. Tribal nations argue that the trust
+  responsibility represents an enduring, moral and legal covenant arising from the
+  cession of millions of acres of land.'
+drill_downs:
+  SHOW_SOURCE:
+    title: 'Fiduciary Standard Authority: Seminole Nation (1942)'
+    content: Supreme Court held that the government is held to the most exacting fiduciary
+      standards in managing Indian affairs.
+    citations:
+    - Seminole Nation v. United States, 316 U.S. 286 (1942)
+    official_sources:
+    - https://supreme.justia.com/cases/federal/us/316/286/
+  SHOW_STATUTE:
+    title: American Indian Trust Fund Management Reform Act of 1994
+    content: 25 U.S.C. § 4001 et seq. codifies detailed federal accounting and auditing
+      duties for tribal trust funds.
+    citations:
+    - 25 U.S.C. § 4001
+    official_sources:
+    - https://uscode.house.gov/
+  SHOW_CASE:
+    title: Cobell v. Salazar Trust Litigation
+    content: Historical class action led by Elouise Cobell challenging federal accounting
+      failures, resulting in the Claims Resolution Act of 2010.
+    citations:
+    - Claims Resolution Act of 2010, Pub. L. 111-291, 124 Stat. 3064
+    official_sources:
+    - https://www.govinfo.gov/
+  EXPLAIN_OPPOSING:
+    title: Narrow Statutory Construction of Trust Duties
+    content: In Arizona v. Navajo Nation (2023), the Court held 5-4 that the 1868
+      Navajo treaty did not require the federal government to secure water rights
+      for the tribe.
+    citations:
+    - Arizona v. Navajo Nation, 599 U.S. 555 (2023)
+    official_sources:
+    - https://supreme.justia.com/cases/federal/us/599/21-1484/
+  SHOW_TEMPORAL_CHANGE:
+    title: Land Buy-Back Program for Tribal Nations
+    content: The Cobell settlement funded a $1.9 billion federal program that purchased
+      highly fractionated trust allotments and consolidated them into tribal ownership.
+    citations:
+    - DOI Land Buy-Back Program Report (2022)
+    official_sources:
+    - https://www.doi.gov/
+related_concepts:
+- doctrine_of_discovery_repudiation
+- treaty_rights
+- tribal_sovereignty

@@ -1,0 +1,41 @@
+doctrine: tribal_sovereignty
+description: The inherent sovereign authority of Indian tribes predates the United
+  States Constitution. Tribes are distinct, independent political communities that
+  retain all sovereignty not expressly divested by Congress or necessarily lost by
+  virtue of their status as domestic dependent nations.
+primary_authorities:
+- citation: Worcester v. Georgia, 31 U.S. 515 (1832)
+  holding: The Cherokee Nation is a distinct community occupying its own territory
+    in which the laws of Georgia can have no force. The whole intercourse between
+    the United States and this nation is by our Constitution and laws vested in the
+    government of the United States.
+  official_url: https://supreme.justia.com/cases/federal/us/31/515/
+  significance: Established tribal nations as distinct political communities outside
+    state jurisdiction
+  historical_note: President Andrew Jackson refused to enforce this ruling, leading
+    to the forced removal known as the Trail of Tears. This is a verified historical
+    fact, not a legal conclusion.
+- citation: Cherokee Nation v. Georgia, 30 U.S. 1 (1831)
+  holding: Indian tribes are domestic dependent nations whose relation to the United
+    States resembles that of a ward to a guardian.
+  official_url: https://supreme.justia.com/cases/federal/us/30/1/
+  significance: Defined tribes as distinct political societies possessing sovereign
+    status beneath international nations but above states
+- citation: Johnson v. M'Intosh, 21 U.S. 543 (1823)
+  holding: The Doctrine of Discovery gave discovering European nations the power to
+    extinguish the Indian title of occupancy, either by purchase or by conquest.
+  official_url: https://supreme.justia.com/cases/federal/us/21/543/
+  significance: Codified the Doctrine of Discovery into domestic federal property
+    law
+  historical_note: This ruling codified the Doctrine of Discovery into U.S. law. The
+    United Nations Special Rapporteur on the Rights of Indigenous Peoples has called
+    for its repudiation. International human rights bodies have characterized it as
+    a legal rationale for colonialism. This note reflects documented legal and historical
+    scholarship, not a political position of Legal-GPT.
+- citation: McGirt v. Oklahoma, 591 U.S. 894 (2020)
+  holding: Congress has not disestablished the Muscogee (Creek) Nation reservation.
+    Much of eastern Oklahoma remains Indian Country.
+  official_url: https://supreme.justia.com/cases/federal/us/591/894/
+  significance: Affirmed that treaty promises to the Five Civilized Tribes were never
+    legally extinguished by statehood
+verification_status: VERIFIED

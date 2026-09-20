@@ -1,0 +1,36 @@
+region: Southeast
+nations:
+- name: Cherokee Nation
+  official_website: https://www.cherokee.org/
+  governing_treaty: Treaty of New Echota (1835), 7 Stat. 478; Treaty of 1866, 14 Stat.
+    799
+  jurisdiction_notes: Largest federally recognized tribe by population; Supreme Court
+    of the Cherokee Nation; McGirt v. Oklahoma (2020) and Hogner v. State (2021) confirmed
+    reservation status.
+  court_website: https://cherokeecourts.org/
+- name: Muscogee (Creek) Nation
+  official_website: https://www.muscogeenation.com/
+  governing_treaty: Treaties of 1832 and 1866
+  jurisdiction_notes: Supreme Court affirmed reservation in McGirt v. Oklahoma (2020);
+    full court system.
+  court_website: https://www.creeksupremecourt.com/
+- name: Choctaw Nation of Oklahoma
+  official_website: https://www.choctawnation.com/
+  governing_treaty: Treaty of Dancing Rabbit Creek (1830), 7 Stat. 333
+  jurisdiction_notes: Reservation confirmed under McGirt framework in Sizemore v.
+    State (Okla. Crim. App. 2021).
+- name: Chickasaw Nation
+  official_website: https://chickasaw.net/
+  governing_treaty: Treaty of Pontotoc Creek (1832), 7 Stat. 381
+  jurisdiction_notes: Reservation confirmed in Bosse v. State (Okla. Crim. App. 2021).
+- name: Seminole Nation of Oklahoma
+  official_website: https://www.sno-nsn.gov/
+  governing_treaty: Treaty of Payne's Landing (1832), 7 Stat. 368; Treaty of 1866,
+    14 Stat. 755
+  jurisdiction_notes: Reservation confirmed in State v. Cole (Okla. Crim. App. 2021).
+- name: Eastern Band of Cherokee Indians
+  official_website: https://ebci.com/
+  jurisdiction_notes: Qualla Boundary in North Carolina; Cherokees who remained in
+    ancestral homeland; Cherokee Tribal Court.
+  court_website: https://cherokeecourts.org/
+verification_status: VERIFIED

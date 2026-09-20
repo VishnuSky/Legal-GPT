@@ -1,0 +1,49 @@
+instrument: United Nations Declaration on the Rights of Indigenous Peoples (UNDRIP)
+adopted: September 13, 2007 (UN General Assembly Resolution 61/295)
+us_position_2007: Voted against (with Australia, Canada, and New Zealand)
+us_endorsement: Endorsed by President Barack Obama, December 16, 2010
+legal_status_domestic: 'UNDRIP is NOT a legally binding treaty in U.S. domestic law.
+  It is an international declaration expressing aspirational norms. It cannot be enforced
+  in U.S. federal or state courts as binding law. Label in Legal-GPT: ''International
+  norm (non-binding in U.S. domestic proceedings)'''
+legal_status_international: UNDRIP represents the international community's consensus
+  on the minimum standards for the survival, dignity, and well-being of indigenous
+  peoples worldwide.
+official_url: https://www.un.org/development/desa/indigenouspeoples/declaration-on-the-rights-of-indigenous-peoples.html
+key_articles:
+- article: 3
+  text: Indigenous peoples have the right to self-determination. By virtue of that
+    right they freely determine their political status and freely pursue their economic,
+    social and cultural development.
+- article: 7
+  text: Indigenous peoples have the collective right to live in freedom, peace and
+    security as distinct peoples and shall not be subjected to any act of genocide
+    or any other act of violence.
+- article: 10
+  text: Indigenous peoples shall not be forcibly removed from their lands or territories.
+    No relocation shall take place without the free, prior and informed consent of
+    the indigenous peoples concerned.
+- article: 19
+  text: States shall consult and cooperate in good faith with the indigenous peoples
+    concerned through their own representative institutions in order to obtain their
+    free, prior and informed consent before adopting and implementing legislative
+    or administrative measures that may affect them.
+- article: 26
+  text: Indigenous peoples have the right to the lands, territories and resources
+    which they have traditionally owned, occupied or otherwise used or acquired.
+comparison_to_domestic_law:
+- topic: Self-determination
+  undrip: Full right to self-determination without qualification (Art. 3)
+  domestic: Tribal sovereignty exists inherently but remains subject to Congress's
+    plenary power (Lone Wolf v. Hitchcock)
+  gap: Congress can alter or abrogate tribal rights without tribal consent under domestic
+    law; UNDRIP requires free, prior and informed consent (FPIC).
+- topic: Land rights
+  undrip: Right to lands, territories, and resources traditionally owned or occupied
+    (Art. 26)
+  domestic: Doctrine of Discovery codified in Johnson v. M'Intosh leaves fee title
+    with federal government in trust; aboriginal title extinguishable without Fifth
+    Amendment just compensation (Tee-Hit-Ton Indians v. United States, 348 U.S. 272)
+  gap: UNDRIP prohibits involuntary extinguishment of traditional land tenure without
+    compensation and consent; domestic law permits unilateral federal management.
+verification_status: VERIFIED

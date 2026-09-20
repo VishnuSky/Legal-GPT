@@ -1,0 +1,122 @@
+id: tribal_sovereignty
+canonical_name: Inherent Tribal Sovereignty
+aliases:
+- tribal sovereignty
+- inherent sovereignty
+- tribal nation
+- domestic dependent nations
+- worcester v georgia
+jurisdiction: FED
+retrieved_date: '2026-09-19'
+level_1_plain_english: Tribal nations are separate governments that existed long before
+  the United States was formed. Because their authority comes from their own existence
+  as nations—not from a gift by the U.S. government—they retain the power to govern
+  their own people, lands, and internal affairs, unless Congress has clearly taken
+  that power away.
+level_2_practical: 'If you or your family are members of a federally recognized tribe,
+  you are citizens of two governments: your tribal nation and the United States. State
+  police, child welfare caseworkers, and state court judges generally cannot enforce
+  state laws against you on reservation land or make decisions about your internal
+  tribal relationships without specific federal statutory authorization.'
+level_3_terminology: Inherent tribal sovereignty is a foundational doctrine of federal
+  Indian law established in the Marshall Trilogy (Johnson v. M'Intosh; Cherokee Nation
+  v. Georgia; Worcester v. Georgia). Under Worcester, tribes are 'distinct, independent
+  political communities'. Tribal sovereignty is inherent rather than delegated, meaning
+  tribes retain all powers of self-governance not expressly divested by treaty or
+  federal statute, or implicitly lost by virtue of their domestic dependent status
+  (United States v. Wheeler, 435 U.S. 313).
+level_4_primary_authority:
+- citation: Worcester v. Georgia, 31 U.S. 515 (1832)
+  source_type: CASELAW
+  official_portal_url: https://supreme.justia.com/cases/federal/us/31/515/
+  key_holding_or_text: The Indian nations had always been considered as distinct,
+    independent political communities, retaining their original natural rights, as
+    the undisputed possessors of the soil, from time immemorial... The Cherokee nation,
+    then, is a distinct community occupying its own territory in which the laws of
+    Georgia can have no force.
+  jurisdiction: US
+  is_binding: true
+  verification_status: VERIFIED
+- citation: Santa Clara Pueblo v. Martinez, 436 U.S. 49 (1978)
+  source_type: CASELAW
+  official_portal_url: https://supreme.justia.com/cases/federal/us/436/49/
+  key_holding_or_text: Indian tribes are distinct, independent political communities,
+    retaining their original natural rights in matters of local self-government; tribes
+    possess the common-law immunity from suit traditionally enjoyed by sovereign powers.
+  jurisdiction: US
+  is_binding: true
+  verification_status: VERIFIED
+- citation: U.S. Const. art. I, § 8, cl. 3
+  source_type: CONSTITUTION
+  official_portal_url: https://www.govinfo.gov/content/pkg/GPO-CONAN-2017/pdf/GPO-CONAN-2017.pdf
+  key_holding_or_text: Congress shall have Power... To regulate Commerce with foreign
+    Nations, and among the several States, and with the Indian Tribes.
+  jurisdiction: US
+  is_binding: true
+  verification_status: VERIFIED
+level_5_advanced_analysis: 'Domestic U.S. law vs. International Norms:
+
+  - Domestic Law: U.S. jurisprudence classifies tribes as ''domestic dependent nations''
+  subject to Congress''s plenary power (Lone Wolf v. Hitchcock), meaning Congress
+  may unilaterally diminish or redefine tribal authority.
+
+  - UNDRIP (International Norm — non-binding in U.S. domestic proceedings): Article
+  3 affirms that Indigenous peoples have the unqualified right to self-determination,
+  and Article 19 requires States to obtain free, prior and informed consent (FPIC)
+  before adopting legislative measures affecting them.
+
+  - Alignment & Divergence: While domestic law recognizes inherent self-governance
+  and judicial immunity, it diverges from UNDRIP by asserting unilateral federal plenary
+  supremacy without requiring tribal consent.
+
+  - Competing Positions: The Federal Government maintains that historical constitutional
+  doctrine grants Congress plenary control over Indian affairs. Tribal nations contend
+  that their pre-constitutional sovereignty and international principles of self-determination
+  preclude unilateral federal extinguishment of sovereign rights.'
+drill_downs:
+  SHOW_SOURCE:
+    title: Primary Sources for Inherent Tribal Sovereignty
+    content: U.S. Constitution, Article I, § 8, cl. 3 (Commerce Clause) and Worcester
+      v. Georgia (31 U.S. 515).
+    citations:
+    - U.S. Const. art. I, § 8, cl. 3
+    - Worcester v. Georgia, 31 U.S. 515 (1832)
+    official_sources:
+    - https://www.govinfo.gov
+    - https://supreme.justia.com/cases/federal/us/31/515/
+  SHOW_STATUTE:
+    title: Federal Statutes Affirming Tribal Self-Determination
+    content: Indian Self-Determination and Education Assistance Act of 1975 (25 U.S.C.
+      § 5301 et seq.) authorizing tribal administration of federal programs.
+    citations:
+    - 25 U.S.C. § 5301
+    official_sources:
+    - https://uscode.house.gov/
+  SHOW_CASE:
+    title: 'Controlling Precedent: Worcester v. Georgia, 31 U.S. 515 (1832)'
+    content: Holding that tribal nations are independent political communities free
+      from state jurisdictional control.
+    citations:
+    - Worcester v. Georgia, 31 U.S. 515 (1832)
+    official_sources:
+    - https://supreme.justia.com/cases/federal/us/31/515/
+  EXPLAIN_OPPOSING:
+    title: State Encroachment vs Tribal Exclusive Sovereignty
+    content: States argue that statehood and general police powers permit concurrent
+      jurisdiction over non-members or fee lands within reservations.
+    citations:
+    - Oklahoma v. Castro-Huerta, 597 U.S. 629 (2022)
+    official_sources:
+    - https://supreme.justia.com/cases/federal/us/597/629/
+  SHOW_TEMPORAL_CHANGE:
+    title: Evolution from Termination to Self-Determination Policy
+    content: In 1970, President Nixon formally repudiated the 1950s termination policy,
+      ushering in the modern federal policy of tribal self-determination.
+    citations:
+    - 25 U.S.C. § 5301
+    official_sources:
+    - https://uscode.house.gov/
+related_concepts:
+- treaty_rights
+- indian_country_jurisdiction
+- doctrine_of_discovery_repudiation

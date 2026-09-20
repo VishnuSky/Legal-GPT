@@ -1,0 +1,41 @@
+doctrine: plenary_power_doctrine
+description: The doctrine that the United States Congress possesses broad, plenary
+  legislative authority over Indian affairs, derived judicial interpretations of the
+  Indian Commerce Clause (U.S. Const. art. I, § 8, cl. 3) and the Treaty Clause.
+primary_authorities:
+- citation: Lone Wolf v. Hitchcock, 187 U.S. 553 (1903)
+  holding: Plenary authority over the tribal relations of the Indians has been exercised
+    by Congress from the beginning, and the power has always been deemed a political
+    one, not subject to be controlled by the judicial department.
+  official_url: https://supreme.justia.com/cases/federal/us/187/553/
+  significance: Affirmed congressional power to unilaterally abrogate treaty provisions
+    via federal statute
+  historical_note: Lone Wolf upheld the allotment of Kiowa, Comanche, and Apache lands
+    over the objection of tribal leadership. Modern legal scholars and tribal advocates
+    note that this decision created expansive unilateral federal authority.
+- citation: United States v. Kagama, 118 U.S. 375 (1886)
+  holding: The Major Crimes Act is within the constitutional power of Congress. Indian
+    tribes owe no allegiance to the states, and receive from them no protection; because
+    of the local ill feeling, the people of the states where they are found are often
+    their deadliest enemies.
+  official_url: https://supreme.justia.com/cases/federal/us/118/375/
+  significance: Located congressional power over Indian affairs in extra-constitutional
+    federal sovereignty and the guardian-ward relationship
+- citation: United States v. Lara, 541 U.S. 193 (2004)
+  holding: Congress has the constitutional power to lift federal statutory restrictions
+    on tribes' inherent sovereign authority, enabling tribes to prosecute non-member
+    Indians.
+  official_url: https://supreme.justia.com/cases/federal/us/541/193/
+  significance: Recognized tribal inherent sovereignty as distinct from delegated
+    federal power
+international_law_context:
+  status: Contested under international human rights norms
+  undrip_assessment: The United Nations Declaration on the Rights of Indigenous Peoples
+    (UNDRIP Arts. 3, 19) affirms the right to self-determination and requires States
+    to obtain free, prior and informed consent before adopting legislative measures
+    affecting Indigenous peoples. International human rights bodies have characterized
+    the unilateral plenary power doctrine as incompatible with the principle of self-determination.
+  domestic_legal_status: Under current U.S. domestic constitutional jurisprudence,
+    Congress's plenary power over Indian affairs remains controlling law, subject
+    to modern rational basis review (Morton v. Mancari, 417 U.S. 535).
+verification_status: VERIFIED

@@ -1,0 +1,28 @@
+statutory_framework: 25 U.S.C. § 1911 (Indian Child Welfare Act Jurisdiction)
+categories:
+  exclusive_jurisdiction:
+    citation: 25 U.S.C. § 1911(a)
+    rule: An Indian tribe shall have jurisdiction exclusive as to any State over any
+      child custody proceeding involving an Indian child who resides or is domiciled
+      within the reservation of such tribe, except where such jurisdiction is otherwise
+      vested in the State by existing Federal law.
+    caselaw: Mississippi Band of Choctaw Indians v. Holyfield, 490 U.S. 30 (1989)
+      (federal domicile definition controls; reservation domicile cannot be defeated
+      by off-reservation birth)
+  transfer_jurisdiction:
+    citation: 25 U.S.C. § 1911(b)
+    rule: In any State court proceeding for the foster care placement of, or termination
+      of parental rights to, an Indian child not domiciled or residing within the
+      reservation of the Indian child's tribe, the court, in the absence of good cause
+      to the contrary, shall transfer such proceeding to the jurisdiction of the tribe,
+      upon the petition of either parent or the Indian custodian or the Indian child's
+      tribe.
+    parental_veto: Transfer is barred if either parent objects.
+    good_cause_standards: BIA Guidelines (25 C.F.R. § 23.118) forbid state courts
+      from considering advanced stage of proceedings if notice was delayed, or considering
+      socio-economic perceived adequacy of tribal courts.
+  right_of_intervention:
+    citation: 25 U.S.C. § 1911(c)
+    rule: The Indian custodian of the child and the Indian child's tribe shall have
+      a right to intervene at any point in state court child custody proceedings.
+verification_status: VERIFIED

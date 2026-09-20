@@ -1,0 +1,27 @@
+region: Great Plains
+treaties:
+- name: Fort Laramie Treaty (1868)
+  statutory_citation: 15 Stat. 635
+  signatories:
+  - United States
+  - Sioux Nation (Lakota/Dakota)
+  - Arapaho
+  ratified_date: February 16, 1869
+  official_source_url: https://www.loc.gov/law/help/statutes-at-large/40th-congress/session-3/c40s3ch154.pdf
+  treaty_terms: Article 2 set apart the Great Sioux Reservation (including the Black
+    Hills) for the absolute and undisturbed use and occupation of the Sioux Nation.
+    Article 12 mandated that no treaty for the cession of any portion of the reservation
+    shall be valid unless executed and signed by at least three-fourths of all adult
+    male Indians.
+  controlling_caselaw:
+  - citation: United States v. Sioux Nation of Indians, 448 U.S. 371 (1980)
+    holding: Congress's 1877 enactment taking the Black Hills violated the Fort Laramie
+      Treaty of 1868 and effected a taking of tribal property under the Fifth Amendment
+      requiring just compensation.
+    official_url: https://supreme.justia.com/cases/federal/us/448/371/
+    historical_note: The Supreme Court affirmed an award of $17.5 million plus interest.
+      The Sioux Nation has refused to accept the monetary award (now exceeding $1
+      billion held in trust accounts), asserting that the land was illegally taken
+      and maintaining a continuous legal demand for the physical return of the Black
+      Hills.
+verification_status: VERIFIED

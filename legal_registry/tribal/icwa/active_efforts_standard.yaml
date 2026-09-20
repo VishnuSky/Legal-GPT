@@ -1,0 +1,27 @@
+standard: Active Efforts Standard vs Reasonable Efforts Standard
+statutory_authority: 25 U.S.C. § 1912(d)
+regulatory_definition: 25 C.F.R. § 23.2 (BIA 2016 Final Rule)
+core_distinction:
+  icwa_active_efforts:
+    statutory_text: Any party seeking to effect a foster care placement of, or termination
+      of parental rights to, an Indian child under State law shall satisfy the court
+      that active efforts have been made to provide remedial services and rehabilitative
+      programs designed to prevent the breakup of the Indian family and that these
+      efforts have proved unsuccessful.
+    evidentiary_requirement: Affirmative, active, thorough, and culturally relevant
+      efforts partnering directly with the child's tribe and extended family.
+    burden_of_proof: Clear and convincing evidence for foster placement (§ 1912(e));
+      beyond a reasonable doubt for termination (§ 1912(f)).
+  asfa_reasonable_efforts:
+    statutory_text: 42 U.S.C. § 671(a)(15) (Adoption and Safe Families Act)
+    evidentiary_requirement: State agencies must provide reasonable services to prevent
+      removal and reunify families, but caseworkers often fulfill this by simply providing
+      referrals or service lists.
+    burden_of_proof: Preponderance of the evidence in typical state dependency reviews.
+state_statutory_overlays:
+- Washington State ICWA (WICWA, RCW 13.38.040(1)) codifies explicit active efforts
+  requirements
+- Minnesota Indian Family Preservation Act (MIFPA, Minn. Stat. § 260.751) heightened
+  standards
+- California Welfare & Institutions Code § 224.2 inquiry and active efforts requirements
+verification_status: VERIFIED
