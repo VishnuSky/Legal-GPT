@@ -638,9 +638,105 @@ def explain_concept_cli(
     state: Optional[str] = typer.Option(None, "--state", "-s", help="Jurisdiction state code e.g. WA, IL, OH"),
     level: int = typer.Option(1, "--level", "-l", help="Literacy level: 1 (Plain English), 2 (Practical), 3 (Terminology), 4 (Primary Authority), 5 (Advanced Analysis)"),
     drill_down: Optional[str] = typer.Option(None, "--drill-down", "-d", help="Drill down query: SHOW_SOURCE, SHOW_STATUTE, SHOW_CASE, EXPLAIN_OPPOSING, SHOW_TEMPORAL_CHANGE"),
-    json_output: bool = typer.Option(False, "--json", help="Output machine-readable JSON")
+    json_output: bool = typer.Option(False, "--json", help="Output machine-readable JSON"),
+    offline: bool = typer.Option(False, "--offline", help="Use local offline package instead of live registry")
 ):
     """Explain a legal concept across 5 literacy levels with on-demand drill-downs and verification-gated authority."""
+    from datetime import datetime, timezone
+    from pathlib import Path
+
+    if offline:
+        target_state = (state or "WA").upper()
+        state_file = Path("offline_packages/states") / f"{target_state}_offline.json"
+        pkg_data = None
+        if state_file.exists():
+            with open(state_file, "r", encoding="utf-8") as f:
+                pkg_data = json.load(f)
+        else:
+            latest_file = Path("offline_packages/legal_gpt_offline_latest.json")
+            if latest_file.exists():
+                with open(latest_file, "r", encoding="utf-8") as f:
+                    pkg_data = json.load(f)
+
+        if not pkg_data:
+            console.print("[bold red]Error:[/bold red] Offline package not found. Run scripts/build_offline_package.py first.")
+            raise typer.Exit(code=1)
+
+        # Check staleness (> 90 days)
+        gen_str = pkg_data.get("generated_at", "")
+        staleness_msg = ""
+        official_portal = (
+            pkg_data.get("state_info", {}).get("official_portal") or 
+            pkg_data.get("states", {}).get(target_state, {}).get("official_portal") or
+            "official state legislature portal"
+        )
+        if gen_str:
+            try:
+                gen_date = datetime.fromisoformat(gen_str)
+                age_days = (datetime.now(timezone.utc) - gen_date).days
+                if age_days > 90:
+                    staleness_msg = (
+                        f"This offline package was generated {gen_date.strftime('%Y-%m-%d')}.\n"
+                        f"Verify current law at {official_portal}."
+                    )
+            except Exception:
+                pass
+
+        c_info = pkg_data.get("concepts", {}).get(concept)
+        if not c_info:
+            console.print(f"[bold yellow]Concept '{concept}' not found in offline package.[/bold yellow]")
+            raise typer.Exit(code=1)
+
+        if staleness_msg and not json_output:
+            console.print(f"[bold yellow]WARNING: STALENESS NOTICE[/bold yellow]\n{staleness_msg}\n")
+
+        if drill_down:
+            action_key = drill_down.upper().strip()
+            dd = c_info.get("drill_downs", {}).get(action_key, {})
+            if json_output:
+                res = {"concept": concept, "drill_down": dd, "staleness_warning": staleness_msg or None}
+                print(json.dumps(res, indent=2))
+            else:
+                console.print(f"\n[bold cyan]=== OFFLINE DRILL DOWN: {dd.get('title', action_key)} ===[/bold cyan]")
+                console.print(dd.get("content", "No offline content available."))
+                if dd.get("citations"):
+                    console.print(f"\n[bold yellow]Citations:[/bold yellow] {', '.join(dd['citations'])}")
+                if dd.get("official_sources"):
+                    console.print(f"[bold green]Official Sources:[/bold green] {', '.join(dd['official_sources'])}")
+                console.print(f"\n[dim]{pkg_data.get('disclaimer', '')}[/dim]\n")
+            return
+
+        if json_output:
+            res = {
+                "concept": concept,
+                "state": target_state,
+                "offline": True,
+                "level": level,
+                "staleness_warning": staleness_msg or None,
+                "data": c_info,
+                "disclaimer": pkg_data.get("disclaimer", "")
+            }
+            print(json.dumps(res, indent=2))
+        else:
+            console.print(f"\n[bold green]=== OFFLINE CONCEPT: {c_info.get('name', concept)} ({target_state}) ===[/bold green]")
+            if level == 1:
+                console.print(f"[bold]Level 1 (Plain English):[/bold]\n{c_info.get('level_1')}")
+            elif level == 2:
+                console.print(f"[bold]Level 2 (Practical Application):[/bold]\n{c_info.get('level_2')}")
+            elif level == 3:
+                console.print(f"[bold]Level 3 (Legal Terminology & Doctrine):[/bold]\n{c_info.get('level_3')}")
+            elif level == 4:
+                console.print("[bold]Level 4 (Primary Authority):[/bold]")
+                for a in c_info.get("level_4_citations", []):
+                    console.print(f"  - [bold]{a.get('citation')}[/bold] ({a.get('jurisdiction')}) [{a.get('verification_status')}]: {a.get('key_text')}")
+                    console.print(f"    Portal: {a.get('official_url')}")
+            elif level == 5:
+                console.print(f"[bold]Level 5 (Advanced Analysis):[/bold]\n{c_info.get('level_5')}")
+            else:
+                console.print(f"[bold]Level 1 (Plain English):[/bold]\n{c_info.get('level_1')}")
+            console.print(f"\n[dim]{pkg_data.get('disclaimer', '')}[/dim]\n")
+        return
+
     from core.literacy.engine import LegalLiteracyEngine
     from core.literacy.models import DrillDownAction
     from core.literacy.renderer import LiteracyRenderer

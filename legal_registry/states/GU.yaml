@@ -1,0 +1,21 @@
+state_code: GU
+state_id: GU
+state_name: Guam
+legislature_url: https://www.guamlegislature.com/
+statutes_url: https://guamlawlibrary.org/guam-code-annotated/
+courts_url: http://www.guamcourts.org/
+cps_agency: Guam Bureau of Social Services Administration (BOSSA)
+cps_agency_url: https://dphss.guam.gov/
+cps_statute_title: ''
+cps_statute_url: ''
+emergency_removal_citation: UNVERIFIED
+shelter_hearing_hours: UNVERIFIED
+shelter_hearing_citation: UNVERIFIED
+counsel_citation: UNVERIFIED
+tpr_citation: UNVERIFIED
+icwa_inquiry: not_specified
+verification_status: PARTIAL
+verified_sources: []
+notes: Scaffold entry for GU. Official portal linked; statutory citations unverified
+  pending primary source audit.
+sources: []

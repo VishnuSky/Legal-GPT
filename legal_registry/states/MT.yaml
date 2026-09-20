@@ -1,0 +1,21 @@
+state_code: MT
+state_id: MT
+state_name: Montana
+legislature_url: https://leg.mt.gov/
+statutes_url: https://leg.mt.gov/bills/mca/index.html
+courts_url: https://courts.mt.gov/
+cps_agency: Montana Child and Family Services Division (CFSD)
+cps_agency_url: https://dphhs.mt.gov/cfsd
+cps_statute_title: ''
+cps_statute_url: ''
+emergency_removal_citation: UNVERIFIED
+shelter_hearing_hours: UNVERIFIED
+shelter_hearing_citation: UNVERIFIED
+counsel_citation: UNVERIFIED
+tpr_citation: UNVERIFIED
+icwa_inquiry: not_specified
+verification_status: PARTIAL
+verified_sources: []
+notes: Scaffold entry for MT. Official portal linked; statutory citations unverified
+  pending primary source audit.
+sources: []

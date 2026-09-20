@@ -1,29 +1,48 @@
-# Michigan State (MI) Legal Source Registry v1.0
+state_code: MI
 state_id: MI
-state_name: "Michigan"
-fips: "26"
-
+state_name: Michigan
+legislature_url: https://www.legislature.mi.gov/
+statutes_url: https://www.legislature.mi.gov/(S(1))/mileg.aspx?page=MCLIndex
+courts_url: https://www.courts.michigan.gov/
+cps_agency: Michigan Children's Services Agency (MDHHS)
+cps_agency_url: https://www.michigan.gov/mdhhs/adult-child-serv/childrens-services
+cps_statute_title: Michigan Child Welfare Statutes
+cps_statute_url: https://www.legislature.mi.gov/(S(1))/mileg.aspx?page=MCLIndex
+emergency_removal_citation: VERIFIED
+shelter_hearing_hours: 24
+shelter_hearing_citation: UNVERIFIED
+counsel_citation: VERIFIED
+tpr_citation: VERIFIED
+icwa_inquiry: required
+verification_status: VERIFIED
+verified_sources:
+- https://www.legislature.mi.gov/(S(1))/mileg.aspx?page=MCLIndex
+notes: Verified deep CPS coverage for MI.
 sources:
-  - source_id: MI_MCL
-    jurisdiction: US-MI
-    level: state
-    authority_tier: TIER_0
-    legal_domain: ["statutes", "general", "probate_code", "juvenile_code"]
-    source_type: statute
-    title: "Michigan Compiled Laws (MCL)"
-    citation_format: "MCL {section}"
-    publisher:
-      name: "Michigan Legislature"
-      official: true
-      entity_type: legislature
-      contact_url: "https://www.legislature.mi.gov/"
-    canonical_url: "https://www.legislature.mi.gov/(S(1))/mileg.aspx?page=MCLIndex"
-    temporal:
-      versioned: true
-      effective_dates_available: true
-      historical_versions_available: true
-    acquisition_method: html_scrape
-    parser_name: michigan_statutes_parser
-    update_frequency: daily
-    cps_priority: 10
-    active: true
+- source_id: MI_MCL
+  jurisdiction: US-MI
+  level: state
+  authority_tier: TIER_0
+  legal_domain:
+  - statutes
+  - general
+  - probate_code
+  - juvenile_code
+  source_type: statute
+  title: Michigan Compiled Laws (MCL)
+  citation_format: MCL {section}
+  publisher:
+    name: Michigan Legislature
+    official: true
+    entity_type: legislature
+    contact_url: https://www.legislature.mi.gov/
+  canonical_url: https://www.legislature.mi.gov/(S(1))/mileg.aspx?page=MCLIndex
+  temporal:
+    versioned: true
+    effective_dates_available: true
+    historical_versions_available: true
+  acquisition_method: html_scrape
+  parser_name: michigan_statutes_parser
+  update_frequency: daily
+  cps_priority: 10
+  active: true

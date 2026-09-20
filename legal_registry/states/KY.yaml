@@ -1,0 +1,21 @@
+state_code: KY
+state_id: KY
+state_name: Kentucky
+legislature_url: https://legislature.ky.gov/
+statutes_url: https://legislature.ky.gov/Law/Statutes/Pages/default.aspx
+courts_url: https://www.kycourts.gov/
+cps_agency: Kentucky Department for Community Based Services (DCBS)
+cps_agency_url: https://www.chfs.ky.gov/agencies/dcbs/dpp/cpb/Pages/default.aspx
+cps_statute_title: ''
+cps_statute_url: ''
+emergency_removal_citation: UNVERIFIED
+shelter_hearing_hours: UNVERIFIED
+shelter_hearing_citation: UNVERIFIED
+counsel_citation: UNVERIFIED
+tpr_citation: UNVERIFIED
+icwa_inquiry: not_specified
+verification_status: PARTIAL
+verified_sources: []
+notes: Scaffold entry for KY. Official portal linked; statutory citations unverified
+  pending primary source audit.
+sources: []

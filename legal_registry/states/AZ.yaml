@@ -1,0 +1,50 @@
+state_code: AZ
+state_id: AZ
+state_name: Arizona
+legislature_url: https://www.azleg.gov/
+statutes_url: https://www.azleg.gov/arstitle/
+courts_url: https://www.azcourts.gov/
+cps_agency: Arizona Department of Child Safety (DCS)
+cps_agency_url: https://dcs.az.gov/
+cps_statute_title: A.R.S. Title 8 Child Safety
+cps_statute_url: https://www.azleg.gov/arsDetail/?title=8
+emergency_removal_citation: A.R.S. § 8-821
+shelter_hearing_hours: 72
+shelter_hearing_citation: A.R.S. § 8-824
+counsel_citation: A.R.S. § 8-221
+tpr_citation: A.R.S. § 8-533
+icwa_inquiry: required
+verification_status: VERIFIED
+verified_sources:
+- https://www.azleg.gov/ars/8/00821.htm
+- https://www.azleg.gov/ars/8/00824.htm
+- https://www.azleg.gov/ars/8/00221.htm
+- https://www.azleg.gov/ars/8/00533.htm
+notes: Verified against Arizona Revised Statutes Title 8 (Child Safety).
+sources:
+- source_id: AZ_CPS_STATUTES
+  jurisdiction: US-AZ
+  level: state
+  authority_tier: TIER_0
+  legal_domain:
+  - statutes
+  - child_welfare
+  - dependency
+  source_type: statute
+  title: A.R.S. Title 8 Child Safety
+  citation_format: AZ Stat. § {section}
+  publisher:
+    name: Arizona Legislature
+    official: true
+    entity_type: legislature
+    contact_url: https://www.azleg.gov/
+  canonical_url: https://www.azleg.gov/arsDetail/?title=8
+  temporal:
+    versioned: true
+    effective_dates_available: true
+    is_current: true
+  acquisition_method: html_scrape
+  parser_name: az_parser
+  update_frequency: daily
+  cps_priority: 10
+  active: true

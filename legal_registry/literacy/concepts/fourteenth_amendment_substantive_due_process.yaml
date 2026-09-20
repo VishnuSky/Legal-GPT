@@ -1,0 +1,105 @@
+id: fourteenth_amendment_substantive_due_process
+canonical_name: Fourteenth Amendment Substantive Due Process and Parental Liberty
+aliases:
+- substantive due process
+- parental liberty interest
+- santosky
+- mathews balancing
+- fundamental right to parent
+jurisdiction: US
+retrieved_date: '2026-09-19'
+level_1_plain_english: Substantive due process protects your fundamental right to
+  raise your child. Because your bond with your child is so vital, the government
+  cannot permanently tear your family apart based on mere guesswork or minor disagreements;
+  it must meet an exceptionally high burden of proof in court.
+level_2_practical: In dependency and child welfare proceedings, the state cannot permanently
+  terminate your parental rights based on a simple 'preponderance of evidence' (51%
+  likelihood). The U.S. Supreme Court requires the state to prove its allegations
+  by at least 'clear and convincing evidence'—a much higher standard—before it can
+  sever your parental bond.
+level_3_terminology: 'Substantive Due Process under the Fourteenth Amendment protects
+  fundamental liberty interests deeply rooted in tradition (Santosky v. Kramer, 455
+  U.S. 745). Procedural protections are calibrated under Mathews v. Eldridge, 424
+  U.S. 319, balancing: (1) the private interest; (2) the risk of erroneous deprivation
+  and value of additional safeguards; and (3) the government''s interest. In parental
+  termination, the parent''s interest is commanding, requiring clear and convincing
+  proof.'
+level_4_primary_authority:
+- citation: Santosky v. Kramer, 455 U.S. 745 (1982)
+  source_type: CASELAW
+  official_portal_url: https://www.supremecourt.gov/
+  key_holding_or_text: Before a State may sever completely and irrevocably the rights
+    of parents in their natural child, due process requires that the State support
+    its allegations by at least clear and convincing evidence.
+  jurisdiction: US
+  is_binding: true
+  verification_status: VERIFIED
+- citation: Mathews v. Eldridge, 424 U.S. 319 (1976)
+  source_type: CASELAW
+  official_portal_url: https://www.supremecourt.gov/
+  key_holding_or_text: Procedural due process requires balancing the private interest
+    affected, the risk of erroneous deprivation under existing procedures, and the
+    Government's interest, including administrative burdens.
+  jurisdiction: US
+  is_binding: true
+  verification_status: VERIFIED
+- citation: Stanley v. Illinois, 405 U.S. 645 (1972)
+  source_type: CASELAW
+  official_portal_url: https://www.supremecourt.gov/
+  key_holding_or_text: The rights of parents to the companionship, care, custody,
+    and management of their children are cognizable and substantial interests warranting
+    constitutional deference.
+  jurisdiction: US
+  is_binding: true
+  verification_status: VERIFIED
+level_5_advanced_analysis: The constitutional tension under Santosky and Mathews centers
+  on asymmetric risk allocation. Because termination of parental rights works an irrevocable
+  and total destruction of the parent-child relationship, the standard of proof must
+  reflect the gravity of erroneous permanent termination. State statutes attempting
+  to relax evidentiary burdens or rely on default judgments in termination proceedings
+  violate Fourteenth Amendment substantive due process.
+drill_downs:
+  SHOW_SOURCE:
+    title: Fourteenth Amendment Due Process Clause
+    content: Fourteenth Amendment, § 1 prohibits states from depriving any person
+      of life, liberty, or property without due process.
+    citations:
+    - U.S. Const. amend. XIV, § 1
+    official_sources:
+    - https://www.govinfo.gov
+  SHOW_STATUTE:
+    title: Statutory Termination of Parental Rights Standards
+    content: State termination statutes must incorporate clear and convincing evidence
+      standards to comply with Santosky v. Kramer.
+    citations:
+    - Santosky v. Kramer, 455 U.S. 745 (1982)
+    official_sources:
+    - https://www.supremecourt.gov/
+  SHOW_CASE:
+    title: 'Controlling Precedent: Santosky v. Kramer, 455 U.S. 745 (1982)'
+    content: Holding that due process mandates at least clear and convincing evidence
+      for termination of parental rights.
+    citations:
+    - Santosky v. Kramer, 455 U.S. 745 (1982)
+    official_sources:
+    - https://www.supremecourt.gov/
+  EXPLAIN_OPPOSING:
+    title: State Permanency Timeline Priority
+    content: Agencies argue that rapid termination promotes child stability and adoption
+      permanence under the Adoption and Safe Families Act (ASFA).
+    citations:
+    - Santosky v. Kramer, 455 U.S. 745 (1982)
+    official_sources:
+    - https://www.supremecourt.gov/
+  SHOW_TEMPORAL_CHANGE:
+    title: Evolution of Evidentiary Standards in Family Courts
+    content: Before Santosky (1982), several states permitted termination on a mere
+      fair preponderance standard, which was invalidated nationwide.
+    citations:
+    - Santosky v. Kramer, 455 U.S. 745 (1982)
+    official_sources:
+    - https://www.supremecourt.gov/
+related_concepts:
+- due_process
+- first_amendment_family_association
+- probable_cause_vs_preponderance

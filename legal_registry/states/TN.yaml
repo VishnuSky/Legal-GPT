@@ -1,0 +1,48 @@
+state_code: TN
+state_id: TN
+state_name: Tennessee
+legislature_url: https://www.capitol.tn.gov/
+statutes_url: https://www.tn.gov/content/tn/attorneygeneral/tennessee-code-annotated.html
+courts_url: https://www.tncourts.gov/
+cps_agency: Tennessee Department of Children's Services (DCS)
+cps_agency_url: https://www.tn.gov/dcs.html
+cps_statute_title: T.C.A. Title 37 Juveniles
+cps_statute_url: https://www.tn.gov/dcs/program-areas/child-safety.html
+emergency_removal_citation: T.C.A. § 37-1-113
+shelter_hearing_hours: 72
+shelter_hearing_citation: T.C.A. § 37-1-117
+counsel_citation: T.C.A. § 37-1-126
+tpr_citation: T.C.A. § 36-1-113
+icwa_inquiry: required
+verification_status: VERIFIED
+verified_sources:
+- https://www.tn.gov/content/tn/attorneygeneral/tennessee-code-annotated.html
+- https://www.tncourts.gov/
+notes: Verified against Tennessee Code Annotated Title 37 (Juveniles) and Title 36.
+sources:
+- source_id: TN_CPS_STATUTES
+  jurisdiction: US-TN
+  level: state
+  authority_tier: TIER_0
+  legal_domain:
+  - statutes
+  - child_welfare
+  - dependency
+  source_type: statute
+  title: T.C.A. Title 37 Juveniles
+  citation_format: TN Stat. § {section}
+  publisher:
+    name: Tennessee Legislature
+    official: true
+    entity_type: legislature
+    contact_url: https://www.capitol.tn.gov/
+  canonical_url: https://www.tn.gov/dcs/program-areas/child-safety.html
+  temporal:
+    versioned: true
+    effective_dates_available: true
+    is_current: true
+  acquisition_method: html_scrape
+  parser_name: tn_parser
+  update_frequency: daily
+  cps_priority: 10
+  active: true

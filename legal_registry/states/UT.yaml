@@ -1,0 +1,21 @@
+state_code: UT
+state_id: UT
+state_name: Utah
+legislature_url: https://le.utah.gov/
+statutes_url: https://le.utah.gov/xcode/code.html
+courts_url: https://www.utcourts.gov/
+cps_agency: Utah Division of Child and Family Services (DCFS)
+cps_agency_url: https://dcfs.utah.gov/
+cps_statute_title: ''
+cps_statute_url: ''
+emergency_removal_citation: UNVERIFIED
+shelter_hearing_hours: UNVERIFIED
+shelter_hearing_citation: UNVERIFIED
+counsel_citation: UNVERIFIED
+tpr_citation: UNVERIFIED
+icwa_inquiry: not_specified
+verification_status: PARTIAL
+verified_sources: []
+notes: Scaffold entry for UT. Official portal linked; statutory citations unverified
+  pending primary source audit.
+sources: []

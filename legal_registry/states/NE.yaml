@@ -1,0 +1,21 @@
+state_code: NE
+state_id: NE
+state_name: Nebraska
+legislature_url: https://nebraskalegislature.gov/
+statutes_url: https://nebraskalegislature.gov/laws/browse-statutes.php
+courts_url: https://supremecourt.nebraska.gov/
+cps_agency: Nebraska Division of Children and Family Services (DHHS)
+cps_agency_url: https://dhhs.ne.gov/Pages/Child-Welfare.aspx
+cps_statute_title: ''
+cps_statute_url: ''
+emergency_removal_citation: UNVERIFIED
+shelter_hearing_hours: UNVERIFIED
+shelter_hearing_citation: UNVERIFIED
+counsel_citation: UNVERIFIED
+tpr_citation: UNVERIFIED
+icwa_inquiry: not_specified
+verification_status: PARTIAL
+verified_sources: []
+notes: Scaffold entry for NE. Official portal linked; statutory citations unverified
+  pending primary source audit.
+sources: []

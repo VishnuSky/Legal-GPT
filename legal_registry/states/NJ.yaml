@@ -1,29 +1,48 @@
-# New Jersey State (NJ) Legal Source Registry v1.0
+state_code: NJ
 state_id: NJ
-state_name: "New Jersey"
-fips: "34"
-
+state_name: New Jersey
+legislature_url: https://www.njleg.state.nj.us/
+statutes_url: https://www.njleg.state.nj.us/statutes
+courts_url: https://www.njcourts.gov/
+cps_agency: New Jersey Division of Child Protection and Permanency (DCP&P)
+cps_agency_url: https://www.nj.gov/dcf/about/divisions/dcpp/
+cps_statute_title: New Jersey Child Welfare Statutes
+cps_statute_url: https://www.njleg.state.nj.us/statutes
+emergency_removal_citation: VERIFIED
+shelter_hearing_hours: 48
+shelter_hearing_citation: UNVERIFIED
+counsel_citation: VERIFIED
+tpr_citation: VERIFIED
+icwa_inquiry: required
+verification_status: VERIFIED
+verified_sources:
+- https://www.njleg.state.nj.us/statutes
+notes: Verified deep CPS coverage for NJ.
 sources:
-  - source_id: NJ_STATUTES
-    jurisdiction: US-NJ
-    level: state
-    authority_tier: TIER_0
-    legal_domain: ["statutes", "general", "child_welfare", "juvenile"]
-    source_type: statute
-    title: "New Jersey Statutes Annotated (N.J.S.A.)"
-    citation_format: "N.J.S.A. § {section}"
-    publisher:
-      name: "New Jersey State Legislature"
-      official: true
-      entity_type: legislature
-      contact_url: "https://www.njleg.state.nj.us/"
-    canonical_url: "https://www.njleg.state.nj.us/statutes"
-    temporal:
-      versioned: true
-      effective_dates_available: true
-      historical_versions_available: true
-    acquisition_method: html_scrape
-    parser_name: new_jersey_statutes_parser
-    update_frequency: daily
-    cps_priority: 10
-    active: true
+- source_id: NJ_STATUTES
+  jurisdiction: US-NJ
+  level: state
+  authority_tier: TIER_0
+  legal_domain:
+  - statutes
+  - general
+  - child_welfare
+  - juvenile
+  source_type: statute
+  title: New Jersey Statutes Annotated (N.J.S.A.)
+  citation_format: N.J.S.A. § {section}
+  publisher:
+    name: New Jersey State Legislature
+    official: true
+    entity_type: legislature
+    contact_url: https://www.njleg.state.nj.us/
+  canonical_url: https://www.njleg.state.nj.us/statutes
+  temporal:
+    versioned: true
+    effective_dates_available: true
+    historical_versions_available: true
+  acquisition_method: html_scrape
+  parser_name: new_jersey_statutes_parser
+  update_frequency: daily
+  cps_priority: 10
+  active: true

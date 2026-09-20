@@ -36,10 +36,26 @@ class LegalIssueClassificationResult(BaseModel):
     domain_scores: Dict[str, float] = Field(default_factory=dict)
     all_classifications: List[DomainClassification] = Field(default_factory=list)
     spotted_issues: List[str] = Field(default_factory=list)
+    routed_concepts: List[str] = Field(default_factory=list)
 
 
 class IssueClassifier:
     """Classifies user situations across 14 substantive legal domains and spots potential issues."""
+
+    CONCEPT_ROUTES = {
+        "police entered my home": "fourth_amendment_home_entry",
+        "disability discrimination": "ada_section_504_dependency",
+        "violated my civil rights": "civil_rights_section_1983",
+    }
+
+    @classmethod
+    def route_concept(cls, narrative: str) -> Optional[str]:
+        """Routes specific trigger phrases to verified legal literacy concepts."""
+        text_lower = narrative.lower()
+        for phrase, concept_id in cls.CONCEPT_ROUTES.items():
+            if phrase in text_lower:
+                return concept_id
+        return None
 
     DOMAIN_KEYWORDS = {
         LegalDomain.CPS_CHILD_WELFARE: [
@@ -151,6 +167,12 @@ class IssueClassifier:
                     summary=f"Identified {cnt} concept matches for {d.value}."
                 ))
 
+        # Concept routing check
+        routed_concepts = []
+        for phrase, cid in cls.CONCEPT_ROUTES.items():
+            if phrase in text_lower and cid not in routed_concepts:
+                routed_concepts.append(cid)
+
         # Spot specific legal issues based on top domains and keywords
         spotted_issues = cls._generate_spotted_issues(primary, secondary, text_lower)
 
@@ -159,7 +181,8 @@ class IssueClassifier:
             secondary_domains=secondary,
             domain_scores=scores,
             all_classifications=classifications,
-            spotted_issues=spotted_issues
+            spotted_issues=spotted_issues,
+            routed_concepts=routed_concepts
         )
 
     @classmethod
@@ -171,6 +194,14 @@ class IssueClassifier:
     ) -> List[str]:
         """Generates concrete legal issues based on domain and factual trigger terms."""
         issues = []
+
+        # Civil rights concept routes
+        if "police entered my home" in text_lower:
+            issues.append("Fourth Amendment protection against warrantless home entry (fourth_amendment_home_entry)")
+        if "disability discrimination" in text_lower:
+            issues.append("ADA Title II / Section 504 reasonable accommodation duty (ada_section_504_dependency)")
+        if "violated my civil rights" in text_lower:
+            issues.append("Civil rights claim under 42 U.S.C. § 1983 (Note: user claim, not an established judicial fact; civil_rights_section_1983)")
 
         # CPS Issues
         if primary == LegalDomain.CPS_CHILD_WELFARE or LegalDomain.CPS_CHILD_WELFARE in secondary:

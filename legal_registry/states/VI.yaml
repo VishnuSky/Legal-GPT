@@ -1,0 +1,21 @@
+state_code: VI
+state_id: VI
+state_name: U.S. Virgin Islands
+legislature_url: https://www.legvi.org/
+statutes_url: https://www.lexisnexis.com/hottopics/vicode/
+courts_url: https://www.vicourts.org/
+cps_agency: USVI Department of Human Services - Child Protective Services
+cps_agency_url: https://dhs.vi.gov/
+cps_statute_title: ''
+cps_statute_url: ''
+emergency_removal_citation: UNVERIFIED
+shelter_hearing_hours: UNVERIFIED
+shelter_hearing_citation: UNVERIFIED
+counsel_citation: UNVERIFIED
+tpr_citation: UNVERIFIED
+icwa_inquiry: not_specified
+verification_status: PARTIAL
+verified_sources: []
+notes: Scaffold entry for VI. Official portal linked; statutory citations unverified
+  pending primary source audit.
+sources: []

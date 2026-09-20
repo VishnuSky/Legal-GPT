@@ -1,0 +1,102 @@
+id: fourteenth_amendment_equal_protection
+canonical_name: Fourteenth Amendment Equal Protection of the Laws
+aliases:
+- equal protection
+- fourteenth amendment equal protection
+- discrimination
+- strict scrutiny
+- rational basis
+jurisdiction: US
+retrieved_date: '2026-09-19'
+level_1_plain_english: The government must treat people fairly and equally under the
+  law. State agencies cannot target you, take away your children, or hold you to harsher
+  rules because of your race, national origin, religion, or disability.
+level_2_practical: If child welfare caseworkers treat you differently than other parents
+  in the same situation—such as demanding extra conditions or subjecting your home
+  to harsher scrutiny because of your background, race, or language—the agency may
+  be violating the Equal Protection Clause. You have the right to equal treatment
+  and services.
+level_3_terminology: 'Under the Fourteenth Amendment''s Equal Protection Clause, judicial
+  review of government action employs three tiers of scrutiny: (1) Strict Scrutiny
+  for suspect classifications (race, religion, national origin) or fundamental rights,
+  requiring a compelling state interest and narrow tailoring; (2) Intermediate Scrutiny
+  for quasi-suspect classifications (gender); and (3) Rational Basis Review for general
+  social/economic regulations, requiring a legitimate state interest.'
+level_4_primary_authority:
+- citation: U.S. Const. amend. XIV, § 1
+  source_type: CONSTITUTION
+  official_portal_url: https://www.govinfo.gov/content/pkg/GPO-CONAN-2017/pdf/GPO-CONAN-2017.pdf
+  key_holding_or_text: No State shall make or enforce any law which shall abridge
+    the privileges or immunities of citizens of the United States... nor deny to any
+    person within its jurisdiction the equal protection of the laws.
+  jurisdiction: US
+  is_binding: true
+  verification_status: VERIFIED
+- citation: Palmore v. Sidoti, 466 U.S. 429 (1984)
+  source_type: CASELAW
+  official_portal_url: https://www.supremecourt.gov/
+  key_holding_or_text: Private racial biases and the possible injury they might inflict
+    are not permissible considerations for depriving a parent of the custody of a
+    child.
+  jurisdiction: US
+  is_binding: true
+  verification_status: VERIFIED
+- citation: City of Cleburne v. Cleburne Living Center, 473 U.S. 432 (1985)
+  source_type: CASELAW
+  official_portal_url: https://www.supremecourt.gov/
+  key_holding_or_text: Government actions motivated by prejudice or irrational antipathy
+    against individuals with disabilities violate the Equal Protection Clause.
+  jurisdiction: US
+  is_binding: true
+  verification_status: VERIFIED
+level_5_advanced_analysis: In systemic child welfare litigation, plaintiffs increasingly
+  assert disparate impact and selective enforcement claims under Washington v. Davis,
+  426 U.S. 229, and Title VI of the Civil Rights Act of 1964. While constitutional
+  equal protection requires establishing discriminatory intent, institutional practices
+  that disproportionately remove children from minority or low-income households without
+  objective evidence of imminent harm face rigorous statutory and judicial scrutiny.
+drill_downs:
+  SHOW_SOURCE:
+    title: Equal Protection Clause Primary Text
+    content: Fourteenth Amendment, Section 1 guarantees equal protection of the laws
+      to all persons.
+    citations:
+    - U.S. Const. amend. XIV, § 1
+    official_sources:
+    - https://www.govinfo.gov
+  SHOW_STATUTE:
+    title: Federal Anti-Discrimination Statutes in Child Welfare
+    content: Title VI of the Civil Rights Act of 1964 (42 U.S.C. § 2000d) prohibits
+      racial discrimination by recipients of federal child welfare funds.
+    citations:
+    - 42 U.S.C. § 2000d
+    official_sources:
+    - https://uscode.house.gov/
+  SHOW_CASE:
+    title: 'Controlling Precedent: Palmore v. Sidoti, 466 U.S. 429 (1984)'
+    content: Supreme Court held that racial bias cannot justify modifying custody
+      or removing children from parents.
+    citations:
+    - Palmore v. Sidoti, 466 U.S. 429 (1984)
+    official_sources:
+    - https://www.supremecourt.gov/
+  EXPLAIN_OPPOSING:
+    title: State Neutrality Defense
+    content: Agencies argue that removals are based on facially neutral child safety
+      assessments rather than discriminatory factors.
+    citations:
+    - Palmore v. Sidoti, 466 U.S. 429 (1984)
+    official_sources:
+    - https://www.supremecourt.gov/
+  SHOW_TEMPORAL_CHANGE:
+    title: Heightened Oversight of Child Welfare Disparities
+    content: State and federal reforms have mandated data tracking on disproportionality
+      and banned consideration of poverty alone as child neglect.
+    citations:
+    - 42 U.S.C. § 2000d
+    official_sources:
+    - https://uscode.house.gov/
+related_concepts:
+- due_process
+- fourteenth_amendment_substantive_due_process
+- ada_section_504_dependency

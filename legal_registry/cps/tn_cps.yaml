@@ -1,0 +1,50 @@
+sources:
+- source_id: CPS_TN_STATUTES
+  jurisdiction: US-TN
+  level: state
+  authority_tier: TIER_0
+  legal_domain:
+  - child_welfare
+  - statutes
+  - shelter_hearing
+  - dependency
+  cps_subdomain: state_statute
+  source_type: statute
+  title: T.C.A. Title 37 Juveniles
+  citation_format: TN Stat. § {section}
+  publisher:
+    name: Tennessee Legislature
+    official: true
+    entity_type: legislature
+    contact_url: https://www.capitol.tn.gov/
+  canonical_url: https://www.tn.gov/dcs/program-areas/child-safety.html
+  key_statutory_sections:
+  - 'T.C.A. Title 37 Juveniles § 37-1-113 # Taking into custody; grounds and limitations'
+  - 'T.C.A. Title 37 Juveniles § 37-1-117 # Detention hearing within 72 hours; release
+    or continued detention'
+  - 'T.C.A. Title 37 Juveniles § 37-1-126 # Right to legal counsel for indigent parents
+    and child'
+  - 'T.C.A. Title 37 Juveniles § 36-1-113 # Termination of parental rights; statutory
+    grounds'
+  topics:
+    emergency_removal: true
+    shelter_care_hearing: true
+    dependency_petition: true
+    fact_finding_adjudication: true
+    disposition_placement: true
+    reasonable_efforts: true
+    permanency_planning: true
+    termination_parental_rights: true
+    parent_rights_counsel: true
+    icwa_compliance: true
+  standard_of_proof: Preponderance of Evidence (Dependency) / Clear and Convincing
+    Evidence (TPR)
+  mandatory_timeframes_days:
+    shelter_hearing_hours: 72
+    adjudicatory_hearing_days: 60
+    permanency_hearing_months: 12
+  acquisition_method: html_scrape
+  parser_name: tennessee_parser
+  update_frequency: daily
+  cps_priority: 10
+  active: true

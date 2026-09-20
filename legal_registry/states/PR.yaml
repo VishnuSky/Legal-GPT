@@ -1,0 +1,21 @@
+state_code: PR
+state_id: PR
+state_name: Puerto Rico
+legislature_url: https://sutra.oslpr.org/
+statutes_url: https://www.lexisnexis.com/hottopics/prcode/
+courts_url: https://poderjudicial.pr/
+cps_agency: Departamento de la Familia de Puerto Rico
+cps_agency_url: https://www.familia.pr.gov/
+cps_statute_title: ''
+cps_statute_url: ''
+emergency_removal_citation: UNVERIFIED
+shelter_hearing_hours: UNVERIFIED
+shelter_hearing_citation: UNVERIFIED
+counsel_citation: UNVERIFIED
+tpr_citation: UNVERIFIED
+icwa_inquiry: not_specified
+verification_status: PARTIAL
+verified_sources: []
+notes: Scaffold entry for PR. Official portal linked; statutory citations unverified
+  pending primary source audit.
+sources: []

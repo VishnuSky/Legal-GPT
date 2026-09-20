@@ -1,0 +1,21 @@
+state_code: MS
+state_id: MS
+state_name: Mississippi
+legislature_url: https://www.legislature.ms.gov/
+statutes_url: https://www.sos.ms.gov/administrative-code
+courts_url: https://courts.ms.gov/
+cps_agency: Mississippi Department of Child Protection Services (MDCPS)
+cps_agency_url: https://www.mdcps.ms.gov/
+cps_statute_title: ''
+cps_statute_url: ''
+emergency_removal_citation: UNVERIFIED
+shelter_hearing_hours: UNVERIFIED
+shelter_hearing_citation: UNVERIFIED
+counsel_citation: UNVERIFIED
+tpr_citation: UNVERIFIED
+icwa_inquiry: not_specified
+verification_status: PARTIAL
+verified_sources: []
+notes: Scaffold entry for MS. Official portal linked; statutory citations unverified
+  pending primary source audit.
+sources: []

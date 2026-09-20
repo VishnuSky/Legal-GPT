@@ -1,0 +1,21 @@
+state_code: SD
+state_id: SD
+state_name: South Dakota
+legislature_url: https://sdlegislature.gov/
+statutes_url: https://sdlegislature.gov/Statutes/Codified_Laws
+courts_url: https://ujs.sd.gov/
+cps_agency: South Dakota Division of Child Protection Services (DSS)
+cps_agency_url: https://dss.sd.gov/childprotection/
+cps_statute_title: ''
+cps_statute_url: ''
+emergency_removal_citation: UNVERIFIED
+shelter_hearing_hours: UNVERIFIED
+shelter_hearing_citation: UNVERIFIED
+counsel_citation: UNVERIFIED
+tpr_citation: UNVERIFIED
+icwa_inquiry: not_specified
+verification_status: PARTIAL
+verified_sources: []
+notes: Scaffold entry for SD. Official portal linked; statutory citations unverified
+  pending primary source audit.
+sources: []

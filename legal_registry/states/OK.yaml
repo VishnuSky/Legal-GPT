@@ -1,0 +1,21 @@
+state_code: OK
+state_id: OK
+state_name: Oklahoma
+legislature_url: https://www.oklegislature.gov/
+statutes_url: https://www.oscn.net/applications/oscn/index.asp?ftdb=STOKST&level=1
+courts_url: https://www.oscn.net/
+cps_agency: Oklahoma Human Services - Child Welfare Services
+cps_agency_url: https://oklahoma.gov/okdhs/services/child-welfare.html
+cps_statute_title: ''
+cps_statute_url: ''
+emergency_removal_citation: UNVERIFIED
+shelter_hearing_hours: UNVERIFIED
+shelter_hearing_citation: UNVERIFIED
+counsel_citation: UNVERIFIED
+tpr_citation: UNVERIFIED
+icwa_inquiry: not_specified
+verification_status: PARTIAL
+verified_sources: []
+notes: Scaffold entry for OK. Official portal linked; statutory citations unverified
+  pending primary source audit.
+sources: []

@@ -181,6 +181,8 @@ class PublicLegalNavigator:
         if any(k in n_lower for k in ["icwa", "tribal", "indian", "native"]):
             rel_concepts.append("icwa_inquiry")
             rel_concepts.append("active_efforts")
+        if issue_result.routed_concepts:
+            rel_concepts.extend(issue_result.routed_concepts)
         if not rel_concepts:
             rel_concepts.append("due_process")
         rel_concepts = list(dict.fromkeys(rel_concepts))

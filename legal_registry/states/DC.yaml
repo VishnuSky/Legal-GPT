@@ -1,0 +1,21 @@
+state_code: DC
+state_id: DC
+state_name: District of Columbia
+legislature_url: https://dccouncil.gov/
+statutes_url: https://code.dccouncil.gov/
+courts_url: https://www.dccourts.gov/
+cps_agency: DC Child and Family Services Agency (CFSA)
+cps_agency_url: https://cfsa.dc.gov/
+cps_statute_title: ''
+cps_statute_url: ''
+emergency_removal_citation: UNVERIFIED
+shelter_hearing_hours: UNVERIFIED
+shelter_hearing_citation: UNVERIFIED
+counsel_citation: UNVERIFIED
+tpr_citation: UNVERIFIED
+icwa_inquiry: not_specified
+verification_status: PARTIAL
+verified_sources: []
+notes: Scaffold entry for DC. Official portal linked; statutory citations unverified
+  pending primary source audit.
+sources: []

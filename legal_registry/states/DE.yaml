@@ -1,0 +1,21 @@
+state_code: DE
+state_id: DE
+state_name: Delaware
+legislature_url: https://legis.delaware.gov/
+statutes_url: https://delcode.delaware.gov/
+courts_url: https://courts.delaware.gov/
+cps_agency: Delaware Division of Family Services (DFS)
+cps_agency_url: https://kids.delaware.gov/fs/fs_index.shtml
+cps_statute_title: ''
+cps_statute_url: ''
+emergency_removal_citation: UNVERIFIED
+shelter_hearing_hours: UNVERIFIED
+shelter_hearing_citation: UNVERIFIED
+counsel_citation: UNVERIFIED
+tpr_citation: UNVERIFIED
+icwa_inquiry: not_specified
+verification_status: PARTIAL
+verified_sources: []
+notes: Scaffold entry for DE. Official portal linked; statutory citations unverified
+  pending primary source audit.
+sources: []

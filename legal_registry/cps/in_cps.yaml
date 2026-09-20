@@ -1,0 +1,51 @@
+sources:
+- source_id: CPS_IN_STATUTES
+  jurisdiction: US-IN
+  level: state
+  authority_tier: TIER_0
+  legal_domain:
+  - child_welfare
+  - statutes
+  - shelter_hearing
+  - dependency
+  cps_subdomain: state_statute
+  source_type: statute
+  title: IC Title 31 Family Law and Juvenile Law
+  citation_format: IN Stat. § {section}
+  publisher:
+    name: Indiana Legislature
+    official: true
+    entity_type: legislature
+    contact_url: https://iga.in.gov/
+  canonical_url: https://iga.in.gov/laws/current/ic/title/31/
+  key_statutory_sections:
+  - 'IC Title 31 Family Law and Juvenile Law § 31-34-2-1 # Taking a child into custody
+    without court order'
+  - 'IC Title 31 Family Law and Juvenile Law § 31-34-5-1 # Detention hearing time
+    limits; 48 hours excluding nonjudicial days'
+  - 'IC Title 31 Family Law and Juvenile Law § 31-32-4-1 # Right to representation
+    by counsel'
+  - 'IC Title 31 Family Law and Juvenile Law § 31-35-2-4 # Petition for termination
+    of parent-child relationship'
+  topics:
+    emergency_removal: true
+    shelter_care_hearing: true
+    dependency_petition: true
+    fact_finding_adjudication: true
+    disposition_placement: true
+    reasonable_efforts: true
+    permanency_planning: true
+    termination_parental_rights: true
+    parent_rights_counsel: true
+    icwa_compliance: true
+  standard_of_proof: Preponderance of Evidence (Dependency) / Clear and Convincing
+    Evidence (TPR)
+  mandatory_timeframes_days:
+    shelter_hearing_hours: 48
+    adjudicatory_hearing_days: 60
+    permanency_hearing_months: 12
+  acquisition_method: html_scrape
+  parser_name: indiana_parser
+  update_frequency: daily
+  cps_priority: 10
+  active: true

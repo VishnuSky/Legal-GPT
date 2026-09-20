@@ -1,0 +1,109 @@
+id: sixth_amendment_confrontation
+canonical_name: Sixth Amendment Confrontation and Hearsay Distinction in Dependency
+aliases:
+- sixth amendment confrontation
+- confrontation clause dependency
+- crawford v washington
+- hearsay in cps
+- cross examination dependency
+jurisdiction: US
+retrieved_date: '2026-09-19'
+level_1_plain_english: In criminal court, the Sixth Amendment gives defendants the
+  absolute right to confront and cross-examine witnesses face-to-face. However, child
+  welfare and dependency cases are civil matters, not criminal trials. While you do
+  not get the full Sixth Amendment criminal guarantee, the Fourteenth Amendment Due
+  Process Clause still gives you a right to challenge evidence, object to unreliable
+  hearsay, and question witnesses who testify against you.
+level_2_practical: Caseworkers often submit written reports containing rumors, second-hand
+  statements, or anonymous hotline calls. Because dependency is a civil proceeding,
+  judges sometimes consider written agency reports. But you and your lawyer have the
+  right to subpoena the authors of those reports, call the caseworker to the stand,
+  cross-examine them under oath, and expose factual inaccuracies or bias.
+level_3_terminology: 'The Sixth Amendment Confrontation Clause (Crawford v. Washington,
+  541 U.S. 36) strictly bars testimonial hearsay in criminal prosecutions unless the
+  declarant is unavailable and the defendant had a prior opportunity for cross-examination.
+  CRITICAL DISTINCTION: Because child dependency proceedings are civil actions, the
+  Sixth Amendment does NOT apply directly. Instead, procedural fairness is governed
+  by Fourteenth Amendment Due Process and state evidentiary rules (e.g. ER 801-804),
+  which balance evidentiary reliability against the state''s interest in protecting
+  child witnesses.'
+level_4_primary_authority:
+- citation: Crawford v. Washington, 541 U.S. 36 (2004)
+  source_type: CASELAW
+  official_portal_url: https://www.supremecourt.gov/opinions/03pdf/02-9410.pdf
+  key_holding_or_text: 'Where testimonial evidence is at issue, however, the Sixth
+    Amendment demands what the common law required: unavailability and a prior opportunity
+    for cross-examination.'
+  jurisdiction: US
+  is_binding: true
+  verification_status: VERIFIED
+- citation: U.S. Const. amend. VI
+  source_type: CONSTITUTION
+  official_portal_url: https://www.govinfo.gov/content/pkg/GPO-CONAN-2017/pdf/GPO-CONAN-2017.pdf
+  key_holding_or_text: In all criminal prosecutions, the accused shall enjoy the right...
+    to be confronted with the witnesses against him.
+  jurisdiction: US
+  is_binding: true
+  verification_status: VERIFIED
+- citation: U.S. Const. amend. XIV, § 1
+  source_type: CONSTITUTION
+  official_portal_url: https://www.govinfo.gov/content/pkg/GPO-CONAN-2017/pdf/GPO-CONAN-2017.pdf
+  key_holding_or_text: No State shall deprive any person of life, liberty, or property,
+    without due process of law.
+  jurisdiction: US
+  is_binding: true
+  verification_status: VERIFIED
+level_5_advanced_analysis: State courts universally hold that Crawford's Sixth Amendment
+  confrontation rule does not govern juvenile dependency hearings (e.g. In re Mary
+  S., 186 Cal. App. 3d 414; In re Dependency of A.E.P., 135 Wn.2d 208). Instead, cross-examination
+  in family court is evaluated under the Mathews v. Eldridge due process balancing
+  test. When child hearsay is admitted under specialized statutory exceptions, due
+  process requires corroboration and safeguards ensuring substantial reliability.
+drill_downs:
+  SHOW_SOURCE:
+    title: Sixth Amendment and Confrontation Authority
+    content: Sixth Amendment text provides confrontation rights in criminal prosecutions;
+      Fourteenth Amendment provides civil due process.
+    citations:
+    - U.S. Const. amend. VI
+    - U.S. Const. amend. XIV, § 1
+    official_sources:
+    - https://www.govinfo.gov
+  SHOW_STATUTE:
+    title: Child Hearsay Exceptions in Dependency Proceedings
+    content: State evidentiary codes establish specific exceptions allowing reliable
+      statements of young children regarding abuse.
+    citations:
+    - Fed. R. Evid. 803
+    - Fed. R. Evid. 804
+    official_sources:
+    - https://www.law.cornell.edu/rules/fre
+  SHOW_CASE:
+    title: 'Controlling Precedent: Crawford v. Washington, 541 U.S. 36 (2004)'
+    content: Landmark ruling establishing criminal confrontation standards, highlighting
+      the distinction with civil dependency matters.
+    citations:
+    - Crawford v. Washington, 541 U.S. 36 (2004)
+    official_sources:
+    - https://www.supremecourt.gov/
+  EXPLAIN_OPPOSING:
+    title: Child Protection from Trauma vs Parental Cross-Examination
+    content: State child welfare agencies argue that requiring traumatized children
+      to testify directly in court causes severe secondary trauma.
+    citations:
+    - Crawford v. Washington, 541 U.S. 36 (2004)
+    official_sources:
+    - https://www.supremecourt.gov/
+  SHOW_TEMPORAL_CHANGE:
+    title: Evolution of Video and In-Camera Child Testimony Rules
+    content: Family courts have adopted closed-circuit television, videotaped interviews,
+      and in-chambers interviews with counsel to balance child well-being and parental
+      fairness.
+    citations:
+    - Crawford v. Washington, 541 U.S. 36 (2004)
+    official_sources:
+    - https://www.supremecourt.gov/
+related_concepts:
+- due_process
+- opportunity_to_be_heard
+- right_to_counsel_dependency

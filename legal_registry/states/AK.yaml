@@ -1,0 +1,21 @@
+state_code: AK
+state_id: AK
+state_name: Alaska
+legislature_url: https://www.akleg.gov/
+statutes_url: https://www.akleg.gov/basis/statutes.asp
+courts_url: https://courts.alaska.gov/
+cps_agency: Alaska Office of Children's Services (OCS)
+cps_agency_url: https://health.alaska.gov/ocs/Pages/default.aspx
+cps_statute_title: ''
+cps_statute_url: ''
+emergency_removal_citation: UNVERIFIED
+shelter_hearing_hours: UNVERIFIED
+shelter_hearing_citation: UNVERIFIED
+counsel_citation: UNVERIFIED
+tpr_citation: UNVERIFIED
+icwa_inquiry: not_specified
+verification_status: PARTIAL
+verified_sources: []
+notes: Scaffold entry for AK. Official portal linked; statutory citations unverified
+  pending primary source audit.
+sources: []

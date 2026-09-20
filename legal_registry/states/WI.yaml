@@ -1,0 +1,49 @@
+state_code: WI
+state_id: WI
+state_name: Wisconsin
+legislature_url: https://docs.legis.wisconsin.gov/
+statutes_url: https://docs.legis.wisconsin.gov/statutes/statutes/48
+courts_url: https://www.wicourts.gov/
+cps_agency: Wisconsin Department of Children and Families (DCF)
+cps_agency_url: https://dcf.wisconsin.gov/
+cps_statute_title: Wis. Stat. Chapter 48 Children's Code
+cps_statute_url: https://docs.legis.wisconsin.gov/statutes/statutes/48
+emergency_removal_citation: Wis. Stat. § 48.19
+shelter_hearing_hours: 48
+shelter_hearing_citation: Wis. Stat. § 48.21
+counsel_citation: Wis. Stat. § 48.23
+tpr_citation: Wis. Stat. § 48.415
+icwa_inquiry: required
+verification_status: VERIFIED
+verified_sources:
+- https://docs.legis.wisconsin.gov/statutes/statutes/48/iv/21
+- https://docs.legis.wisconsin.gov/statutes/statutes/48/iv/23
+notes: Verified against Wisconsin Statutes Chapter 48 and Wisconsin ICWA Wis. Stat.
+  48.028.
+sources:
+- source_id: WI_CPS_STATUTES
+  jurisdiction: US-WI
+  level: state
+  authority_tier: TIER_0
+  legal_domain:
+  - statutes
+  - child_welfare
+  - dependency
+  source_type: statute
+  title: Wis. Stat. Chapter 48 Children's Code
+  citation_format: WI Stat. § {section}
+  publisher:
+    name: Wisconsin Legislature
+    official: true
+    entity_type: legislature
+    contact_url: https://docs.legis.wisconsin.gov/
+  canonical_url: https://docs.legis.wisconsin.gov/statutes/statutes/48
+  temporal:
+    versioned: true
+    effective_dates_available: true
+    is_current: true
+  acquisition_method: html_scrape
+  parser_name: wi_parser
+  update_frequency: daily
+  cps_priority: 10
+  active: true

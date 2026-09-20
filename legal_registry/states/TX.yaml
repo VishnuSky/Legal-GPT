@@ -1,52 +1,76 @@
-# Texas State (TX) Legal Source Registry v1.0
+state_code: TX
 state_id: TX
-state_name: "Texas"
-fips: "48"
-
+state_name: Texas
+legislature_url: https://capitol.texas.gov/
+statutes_url: https://statutes.capitol.texas.gov/
+courts_url: https://www.txcourts.gov/
+cps_agency: Texas Department of Family and Protective Services (DFPS) - Child Protective
+  Services (CPS)
+cps_agency_url: https://www.dfps.texas.gov/Child_Protection/
+cps_statute_title: Texas Child Welfare Statutes
+cps_statute_url: https://statutes.capitol.texas.gov/
+emergency_removal_citation: VERIFIED
+shelter_hearing_hours: 72
+shelter_hearing_citation: UNVERIFIED
+counsel_citation: VERIFIED
+tpr_citation: VERIFIED
+icwa_inquiry: required
+verification_status: VERIFIED
+verified_sources:
+- https://statutes.capitol.texas.gov/
+notes: Verified deep CPS coverage for TX.
 sources:
-  - source_id: TX_FAMILY_CODE
-    jurisdiction: US-TX
-    level: state
-    authority_tier: TIER_0
-    legal_domain: ["statutes", "family_law", "child_welfare", "investigation"]
-    source_type: statute
-    title: "Texas Family Code — Title 5: The Parent-Child Relationship and the Suit Affecting the Parent-Child Relationship"
-    citation_format: "Tex. Fam. Code § {section}"
-    publisher:
-      name: "Texas Legislature Online (TLO)"
-      official: true
-      entity_type: legislature
-      contact_url: "https://statutes.capitol.texas.gov/"
-    canonical_url: "https://statutes.capitol.texas.gov/Docs/FA/htm/FA.261.htm"
-    temporal:
-      versioned: true
-      effective_dates_available: true
-      historical_versions_available: true
-    acquisition_method: html_scrape
-    parser_name: texas_statutes_parser
-    update_frequency: daily
-    cps_priority: 10
-    active: true
-
-  - source_id: TX_DFPS_HANDBOOK
-    jurisdiction: US-TX
-    level: state
-    authority_tier: TIER_0
-    legal_domain: ["child_welfare", "agency_policy", "cps_handbook", "dfps_rules"]
-    source_type: agency_policy
-    title: "Texas DFPS Child Protective Services Handbook (CPS Handbook)"
-    publisher:
-      name: "Texas Department of Family and Protective Services"
-      official: true
-      entity_type: executive_agency
-      contact_url: "https://www.dfps.texas.gov/handbooks/CPS/"
-    canonical_url: "https://www.dfps.texas.gov/handbooks/CPS/"
-    temporal:
-      versioned: true
-      effective_dates_available: true
-      historical_versions_available: true
-    acquisition_method: html_scrape
-    parser_name: texas_dfps_parser
-    update_frequency: weekly
-    cps_priority: 10
-    active: true
+- source_id: TX_FAMILY_CODE
+  jurisdiction: US-TX
+  level: state
+  authority_tier: TIER_0
+  legal_domain:
+  - statutes
+  - family_law
+  - child_welfare
+  - investigation
+  source_type: statute
+  title: 'Texas Family Code — Title 5: The Parent-Child Relationship and the Suit
+    Affecting the Parent-Child Relationship'
+  citation_format: Tex. Fam. Code § {section}
+  publisher:
+    name: Texas Legislature Online (TLO)
+    official: true
+    entity_type: legislature
+    contact_url: https://statutes.capitol.texas.gov/
+  canonical_url: https://statutes.capitol.texas.gov/Docs/FA/htm/FA.261.htm
+  temporal:
+    versioned: true
+    effective_dates_available: true
+    historical_versions_available: true
+  acquisition_method: html_scrape
+  parser_name: texas_statutes_parser
+  update_frequency: daily
+  cps_priority: 10
+  active: true
+- source_id: TX_DFPS_HANDBOOK
+  jurisdiction: US-TX
+  level: state
+  authority_tier: TIER_0
+  legal_domain:
+  - child_welfare
+  - agency_policy
+  - cps_handbook
+  - dfps_rules
+  source_type: agency_policy
+  title: Texas DFPS Child Protective Services Handbook (CPS Handbook)
+  publisher:
+    name: Texas Department of Family and Protective Services
+    official: true
+    entity_type: executive_agency
+    contact_url: https://www.dfps.texas.gov/handbooks/CPS/
+  canonical_url: https://www.dfps.texas.gov/handbooks/CPS/
+  temporal:
+    versioned: true
+    effective_dates_available: true
+    historical_versions_available: true
+  acquisition_method: html_scrape
+  parser_name: texas_dfps_parser
+  update_frequency: weekly
+  cps_priority: 10
+  active: true

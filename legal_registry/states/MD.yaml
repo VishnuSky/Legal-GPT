@@ -1,0 +1,48 @@
+state_code: MD
+state_id: MD
+state_name: Maryland
+legislature_url: https://mgaleg.maryland.gov/
+statutes_url: https://mgaleg.maryland.gov/mgawebsite/Laws/Statutes
+courts_url: https://www.mdcourts.gov/
+cps_agency: Maryland Department of Human Services (DHS)
+cps_agency_url: https://dhs.maryland.gov/
+cps_statute_title: Md. Code, Courts & Jud. Proc. § 3-801 et seq. / Family Law § 5-701
+cps_statute_url: https://mgaleg.maryland.gov/mgawebsite/Laws/Statutes
+emergency_removal_citation: Md. Code, Cts. & Jud. Proc. § 3-814
+shelter_hearing_hours: 24
+shelter_hearing_citation: Md. Code, Cts. & Jud. Proc. § 3-815
+counsel_citation: Md. Code, Cts. & Jud. Proc. § 3-813
+tpr_citation: Md. Code, Fam. Law § 5-323
+icwa_inquiry: required
+verification_status: VERIFIED
+verified_sources:
+- https://mgaleg.maryland.gov/mgawebsite/Laws/Statutes
+notes: Verified against Maryland Code, Courts and Judicial Proceedings Article and
+  Family Law Article.
+sources:
+- source_id: MD_CPS_STATUTES
+  jurisdiction: US-MD
+  level: state
+  authority_tier: TIER_0
+  legal_domain:
+  - statutes
+  - child_welfare
+  - dependency
+  source_type: statute
+  title: Md. Code, Courts & Jud. Proc. § 3-801 et seq. / Family Law § 5-701
+  citation_format: MD Stat. § {section}
+  publisher:
+    name: Maryland Legislature
+    official: true
+    entity_type: legislature
+    contact_url: https://mgaleg.maryland.gov/
+  canonical_url: https://mgaleg.maryland.gov/mgawebsite/Laws/Statutes
+  temporal:
+    versioned: true
+    effective_dates_available: true
+    is_current: true
+  acquisition_method: html_scrape
+  parser_name: md_parser
+  update_frequency: daily
+  cps_priority: 10
+  active: true

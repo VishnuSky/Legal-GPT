@@ -1,0 +1,48 @@
+state_code: MO
+state_id: MO
+state_name: Missouri
+legislature_url: https://revisor.mo.gov/
+statutes_url: https://revisor.mo.gov/main/Home.aspx
+courts_url: https://www.courts.mo.gov/
+cps_agency: Missouri Department of Social Services (DSS) - Children's Division
+cps_agency_url: https://dss.mo.gov/cd/
+cps_statute_title: RSMo Chapter 210 Child Protection and Chapter 211 Juvenile Courts
+cps_statute_url: https://revisor.mo.gov/main/OneChapter.aspx?chapter=210
+emergency_removal_citation: RSMo § 210.125
+shelter_hearing_hours: 72
+shelter_hearing_citation: RSMo § 211.059
+counsel_citation: RSMo § 211.211
+tpr_citation: RSMo § 211.447
+icwa_inquiry: required
+verification_status: VERIFIED
+verified_sources:
+- https://revisor.mo.gov/main/OneSection.aspx?section=210.125
+- https://revisor.mo.gov/main/OneSection.aspx?section=211.059
+notes: Verified against Revised Statutes of Missouri Chapters 210 and 211.
+sources:
+- source_id: MO_CPS_STATUTES
+  jurisdiction: US-MO
+  level: state
+  authority_tier: TIER_0
+  legal_domain:
+  - statutes
+  - child_welfare
+  - dependency
+  source_type: statute
+  title: RSMo Chapter 210 Child Protection and Chapter 211 Juvenile Courts
+  citation_format: MO Stat. § {section}
+  publisher:
+    name: Missouri Legislature
+    official: true
+    entity_type: legislature
+    contact_url: https://revisor.mo.gov/
+  canonical_url: https://revisor.mo.gov/main/OneChapter.aspx?chapter=210
+  temporal:
+    versioned: true
+    effective_dates_available: true
+    is_current: true
+  acquisition_method: html_scrape
+  parser_name: mo_parser
+  update_frequency: daily
+  cps_priority: 10
+  active: true

@@ -1,0 +1,21 @@
+state_code: ND
+state_id: ND
+state_name: North Dakota
+legislature_url: https://ndlegis.gov/
+statutes_url: https://ndlegis.gov/general-information/north-dakota-century-code
+courts_url: https://www.ndcourts.gov/
+cps_agency: North Dakota Children and Family Services Division (HHS)
+cps_agency_url: https://www.hhs.nd.gov/cfs
+cps_statute_title: ''
+cps_statute_url: ''
+emergency_removal_citation: UNVERIFIED
+shelter_hearing_hours: UNVERIFIED
+shelter_hearing_citation: UNVERIFIED
+counsel_citation: UNVERIFIED
+tpr_citation: UNVERIFIED
+icwa_inquiry: not_specified
+verification_status: PARTIAL
+verified_sources: []
+notes: Scaffold entry for ND. Official portal linked; statutory citations unverified
+  pending primary source audit.
+sources: []

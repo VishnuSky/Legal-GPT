@@ -1,0 +1,102 @@
+id: first_amendment_family_association
+canonical_name: First Amendment Right to Intimate Family Association
+aliases:
+- family association
+- intimate association
+- troxel
+- parental liberty
+- first amendment family
+jurisdiction: US
+retrieved_date: '2026-09-19'
+level_1_plain_english: You have a fundamental constitutional right to live together
+  as a family and to love, raise, and guide your children without government meddling.
+  The Constitution protects family bonds as one of the most basic freedoms in American
+  life.
+level_2_practical: The state cannot dictate your family life, beliefs, or cultural
+  traditions simply because an agency prefers a different lifestyle. As long as you
+  provide adequate care and do not abuse or neglect your child, the legal presumption
+  is that you—not a state caseworker or judge—act in your child's best interests.
+level_3_terminology: The right to intimate family association emanates from both the
+  First Amendment (freedom of association) and the Fourteenth Amendment Due Process
+  Clause (Roberts v. United States Jaycees, 468 U.S. 609; Troxel v. Granville, 530
+  U.S. 57). Under Troxel, fit parents are endowed with a constitutional presumption
+  that their decisions serve the best interests of their children, subject to strict
+  judicial scrutiny.
+level_4_primary_authority:
+- citation: U.S. Const. amend. I
+  source_type: CONSTITUTION
+  official_portal_url: https://www.govinfo.gov/content/pkg/GPO-CONAN-2017/pdf/GPO-CONAN-2017.pdf
+  key_holding_or_text: Congress shall make no law respecting an establishment of religion,
+    or prohibiting the free exercise thereof; or abridging the freedom of speech,
+    or of the press; or the right of the people peaceably to assemble.
+  jurisdiction: US
+  is_binding: true
+  verification_status: VERIFIED
+- citation: Troxel v. Granville, 530 U.S. 57 (2000)
+  source_type: CASELAW
+  official_portal_url: https://www.supremecourt.gov/opinions/boundvolumes/530bv.pdf
+  key_holding_or_text: The interest of parents in the care, custody, and control of
+    their children is perhaps the oldest of the fundamental liberty interests recognized
+    by the Supreme Court.
+  jurisdiction: US
+  is_binding: true
+  verification_status: VERIFIED
+- citation: Roberts v. United States Jaycees, 468 U.S. 609 (1984)
+  source_type: CASELAW
+  official_portal_url: https://www.supremecourt.gov/
+  key_holding_or_text: Choices to enter into and maintain certain intimate human relationships
+    must be secured against undue cultural intrusion by the State because of the role
+    of such relationships in safeguarding individual freedom.
+  jurisdiction: US
+  is_binding: true
+  verification_status: VERIFIED
+level_5_advanced_analysis: 'The intersection of First Amendment expressive association
+  and Fourteenth Amendment substantive liberty establishes a heightened shield around
+  the nuclear and extended family. State intrusion into familial integrity must survive
+  strict scrutiny: the state must demonstrate a compelling governmental interest (preventing
+  severe harm) and that the deprivation is narrowly tailored using the least restrictive
+  means.'
+drill_downs:
+  SHOW_SOURCE:
+    title: First Amendment Association and Parental Rights Authority
+    content: U.S. Constitution First Amendment protects freedom of association and
+      family ties.
+    citations:
+    - U.S. Const. amend. I
+    official_sources:
+    - https://www.govinfo.gov
+  SHOW_STATUTE:
+    title: Family Integrity Preservation Statutes
+    content: Federal and state statutes mandate reasonable efforts to maintain the
+      child in the family home prior to placement.
+    citations:
+    - 42 U.S.C. § 671(a)(15)
+    official_sources:
+    - https://uscode.house.gov/
+  SHOW_CASE:
+    title: 'Controlling Precedent: Troxel v. Granville, 530 U.S. 57 (2000)'
+    content: Troxel v. Granville affirms that fit parents are presumed to act in their
+      child's best interests.
+    citations:
+    - Troxel v. Granville, 530 U.S. 57 (2000)
+    official_sources:
+    - https://www.supremecourt.gov/
+  EXPLAIN_OPPOSING:
+    title: State Best Interests Test vs Parental Presumption
+    content: Agencies often argue that the state's independent evaluation of the child's
+      best interests can supersede parental decision-making.
+    citations:
+    - Troxel v. Granville, 530 U.S. 57 (2000)
+    official_sources:
+    - https://www.supremecourt.gov/
+  SHOW_TEMPORAL_CHANGE:
+    title: Strengthening of Parental Fit Presumption
+    content: Since Troxel (2000), courts have systematically struck down state statutes
+      granting non-parents visitation rights over fit parents' objections.
+    citations:
+    - Troxel v. Granville, 530 U.S. 57 (2000)
+    official_sources:
+    - https://www.supremecourt.gov/
+related_concepts:
+- due_process
+- fourteenth_amendment_substantive_due_process

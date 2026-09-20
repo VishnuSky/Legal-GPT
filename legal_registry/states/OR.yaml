@@ -1,0 +1,48 @@
+state_code: OR
+state_id: OR
+state_name: Oregon
+legislature_url: https://www.oregonlegislature.gov/
+statutes_url: https://www.oregonlegislature.gov/bills_laws/Pages/ORS.aspx
+courts_url: https://www.courts.oregon.gov/
+cps_agency: Oregon Department of Human Services (ODHS)
+cps_agency_url: https://www.oregon.gov/odhs/child-welfare/
+cps_statute_title: 'ORS Chapter 419B Juvenile Code: Dependency'
+cps_statute_url: https://www.oregonlegislature.gov/bills_laws/ors/ors419B.html
+emergency_removal_citation: ORS § 419B.150
+shelter_hearing_hours: 24
+shelter_hearing_citation: ORS § 419B.183
+counsel_citation: ORS § 419B.195
+tpr_citation: ORS § 419B.500
+icwa_inquiry: required
+verification_status: VERIFIED
+verified_sources:
+- https://www.oregonlegislature.gov/bills_laws/ors/ors419B.html
+notes: Verified against Oregon Revised Statutes Chapter 419B and Oregon ICWA (ORICWA
+  ORS 419B.600 et seq.).
+sources:
+- source_id: OR_CPS_STATUTES
+  jurisdiction: US-OR
+  level: state
+  authority_tier: TIER_0
+  legal_domain:
+  - statutes
+  - child_welfare
+  - dependency
+  source_type: statute
+  title: 'ORS Chapter 419B Juvenile Code: Dependency'
+  citation_format: OR Stat. § {section}
+  publisher:
+    name: Oregon Legislature
+    official: true
+    entity_type: legislature
+    contact_url: https://www.oregonlegislature.gov/
+  canonical_url: https://www.oregonlegislature.gov/bills_laws/ors/ors419B.html
+  temporal:
+    versioned: true
+    effective_dates_available: true
+    is_current: true
+  acquisition_method: html_scrape
+  parser_name: or_parser
+  update_frequency: daily
+  cps_priority: 10
+  active: true
